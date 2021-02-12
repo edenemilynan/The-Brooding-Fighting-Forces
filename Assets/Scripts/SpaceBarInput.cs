@@ -10,8 +10,9 @@ public class SpaceBarInput : MonoBehaviour
     private float dawLength  = 0.35f;
     private float ditLength  = 0.1f;
     private float gapTimer   = 0.0f;
-    private enum  Signal {Dit, Daw};
-    private List<Signal> morseCodeSignals = new List<Signal>();
+    public enum  Signal {Dit, Daw};
+    public List<Signal> morseCodeSignals = new List<Signal>();
+    public string morseReturn = "";
     private float gapLength = 1.5f;
 
 
@@ -58,10 +59,26 @@ public class SpaceBarInput : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Return))
         {
-            PrintLetter(true);
+            //PrintLetter(true);
+
+            morseReturn = "";
+            Debug.Log("Current String: " + morseReturn);
+            foreach (Signal sig in morseCodeSignals)
+            {
+                if (sig == Signal.Dit)
+                {
+                    morseReturn += ".";
+                }
+                else
+                {
+                    morseReturn += "-";
+                }
+            }
+            morseCodeSignals.Clear();
+            Debug.Log("Return String: " + morseReturn);
         }
 
-        if(Input.GetKeyDown(KeyCode.Backspace))
+        if (morseCodeSignals.Count > 0 && Input.GetKeyDown(KeyCode.Backspace))
         {
             morseCodeSignals.RemoveAt(morseCodeSignals.Count - 1);
             PrintLetter();
