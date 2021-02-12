@@ -603,8 +603,26 @@ MonoBehaviour:
     - "Hello! I am IVAAL, Bexos\u2019 Interactive Virtual Artificial Assistant Lodestar.\r\n"
     - "I am here to assist your security training for a seamless transition into
       our grand company. \r\r\n"
-    - "First, let me share a personal message with you from the Lord\u2019s right
-      hand:"
+    - 'You must have worked so hard to earn a job ranking here. '
+    - "It is quite the position, especially with an employee as\u2026 unseasoned
+      as yourself\u2026"
+    - Anyway, enough about you! Let us get back to work!
+    - 'Your job is a hard one, especially because your usual means of input are all
+      out of order! '
+    - Only the spacebar, enter, and backspaces buttons are functional on your keyboard.
+    - That is more than alright though! Do not fret! Humans are so very adaptable
+      after all!
+    - 'Four entire centuries ago someone named Samuel Morse created the telegraph. '
+    - That technology only had one button and you get a whopping three times more!
+    - "You can use this ancient and demeaning tool to perform your tasks. Isn\u2019t
+      that such a relief?"
+    - Right now, you are on the Main Screen.
+    - You have access to cameras, one to the Trucking Area.
+    - Perhaps it is confusing, yes?
+    - Well, do not worry! It is easy, and we can practice together!!!
+    - Let us do that now!
+    - Go to the Trucking area. There should be a note of reference to the left of
+      your monitor!
 --- !u!4 &894581042
 Transform:
   m_ObjectHideFlags: 0
