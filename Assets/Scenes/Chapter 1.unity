@@ -259,6 +259,7 @@ MonoBehaviour:
   entryDoor: {fileID: 48255858}
   truckingDoor: {fileID: 780701800}
   ramp: {fileID: 1695154724}
+  DialogueController: {fileID: 245659556}
 --- !u!4 &232540502
 Transform:
   m_ObjectHideFlags: 0
@@ -316,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ab68d885f0e5b4987026897bb20dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  secondConversation: 1
 --- !u!1 &279747037
 GameObject:
   m_ObjectHideFlags: 0

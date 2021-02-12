@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour
     public Animator entryDoor;
     public Animator truckingDoor;
     public Animator ramp;
+    public GameObject DialogueController;
 
     // Update is called once per frame
     void Update()
@@ -27,8 +28,9 @@ public class InputManager : MonoBehaviour
                 mainScreen.SetActive(false);
                 truckingScreen.SetActive(true);
                 scanningScreen.SetActive(false);
+                DialogueController.GetComponent<DialogueController>().secondConversation = false;
             }
-            if (morseCommand == ".") // Entry
+            /*if (morseCommand == ".") // Entry
             {
                 mainScreen.SetActive(false);
                 truckingScreen.SetActive(false);
@@ -39,7 +41,7 @@ public class InputManager : MonoBehaviour
                 mainScreen.SetActive(true);
                 truckingScreen.SetActive(false);
                 scanningScreen.SetActive(false);
-            }
+            }*/
             if (morseCommand == "-.") // Negative
             {
                 if (scanningScreen.activeInHierarchy)
@@ -63,6 +65,7 @@ public class InputManager : MonoBehaviour
                     truckingDoor.SetBool("isTruckingOpen", true);
                 }
             }
+            /*
             if (morseCommand == "..") // Interact
             {
                 if (truckingScreen.activeInHierarchy)
@@ -74,6 +77,7 @@ public class InputManager : MonoBehaviour
                     else ramp.SetBool("isRampDown", false);
                 }
             }
+            */
             else 
             {
                 // Invalid Input
