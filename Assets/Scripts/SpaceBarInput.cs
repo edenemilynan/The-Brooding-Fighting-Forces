@@ -12,7 +12,7 @@ public class SpaceBarInput : MonoBehaviour
     private float gapTimer   = 0.0f;
     public enum  Signal {Dit, Daw};
     public List<Signal> morseCodeSignals = new List<Signal>();
-    public string morseReturn = "";
+    public string morseReturn;
     private float gapLength = 1.5f;
 
 
@@ -26,6 +26,7 @@ public class SpaceBarInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        morseReturn = "";
         if (Input.GetKey(KeyCode.Space))
         {
             
