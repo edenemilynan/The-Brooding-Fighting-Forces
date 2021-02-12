@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class FollowPath : MonoBehaviour
-{
+{ 
     public MovementPath path;
     public float speed = 1;
     public float MaxDistanceToGoal = .1f;
+    public int currentPath;
     private IEnumerator<Transform> pointInPath;
+  
     // Start is called before the first frame update
     void Start()
     {
+        //GameObject thePath = GameObject.Find("Path_0");
+        //MovementPath movementScript = thePath.GetComponent<MovementPath>();
+
         pointInPath = path.GetNextPathPoint();
         pointInPath.MoveNext();
 
@@ -20,15 +26,34 @@ public class FollowPath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        transform.position = Vector3.MoveTowards(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
+        //GameObject thePlayer = GameObject.Find("ThePlayer");
+        //PlayerScript playerScript = thePlayer.GetComponent<PlayerScript>();
+        //playerScript.Health -= 10.0f;
 
-        var distanceSquared = (transform.position - pointInPath.Current.position).sqrMagnitude;
-        if (distanceSquared < MaxDistanceToGoal * MaxDistanceToGoal)
-        {
-            pointInPath.MoveNext();
-            
+        /*GameObject theController = GameObject.Find("TruckingController");
+        TruckingController controllerScript = theController.GetComponent<TruckingController>();
+
+        if (currentPath == controllerScript.path)
+        {*/
+            transform.position = Vector3.MoveTowards(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
+
+            var distanceSquared = (transform.position - pointInPath.Current.position).sqrMagnitude;
+            if (distanceSquared < MaxDistanceToGoal * MaxDistanceToGoal)
+            {
+                pointInPath.MoveNext();
+
+            }
+            /*else
+            {
+                if (movementScript.movingTo > movementScript.pathSequence.Length)
+                {
+                    controllerScript.path = controllerScript.path + 1;
+                }
+                
+            }*/
         }
+       
+      
 
     }
 }

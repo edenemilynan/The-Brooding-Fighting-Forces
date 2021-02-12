@@ -14,7 +14,7 @@ public class MovementPath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator.SetInteger("facing", 3);
+        animator.SetInteger("facing", direction);
     }
 
     // Update is called once per frame
