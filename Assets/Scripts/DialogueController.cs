@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogueController : MonoBehaviour
 {
     private bool firstConversation = false;
+    public bool secondConversation = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,16 +23,27 @@ public class DialogueController : MonoBehaviour
     void Update()
     {
         if (firstConversation == false)
-    {
-        GameObject conversation = GameObject.Find("FirstConversation");
-        DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
-        firstConversation = true;
-
-        if (other != null)
         {
-            other.TriggerDialogue();
+            GameObject conversation = GameObject.Find("FirstConversation");
+            DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
+            firstConversation = true;
+
+            if (other != null)
+            {
+                other.TriggerDialogue();
+            }
         }
-    }
+        if (secondConversation == false)
+        {
+            GameObject conversation = GameObject.Find("SecondConversation");
+            DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
+            firstConversation = true;
+
+            if (other != null)
+            {
+                other.TriggerDialogue();
+            }
+        }
         
     }
 }

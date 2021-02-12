@@ -7,13 +7,13 @@ public class SpaceBarInput : MonoBehaviour
 {
 
     private float morseTimer = 0.0f; //timer to track how long someone has pressed the spacebar to input morse code.
-    private float dawLength  = 0.35f;
-    private float ditLength  = 0.1f;
-    private float gapTimer   = 0.0f;
+    private float dawLength  = 0.45f;
+    //private float ditLength  = 0.1f;
+    //private float gapTimer   = 0.0f;
     public enum  Signal {Dit, Daw};
     public List<Signal> morseCodeSignals = new List<Signal>();
     public string morseReturn;
-    private float gapLength = 1.5f;
+    //private float gapLength = 1.5f;
 
 
 
@@ -31,12 +31,7 @@ public class SpaceBarInput : MonoBehaviour
         {
             
             morseTimer += Time.deltaTime;
-            gapTimer    = 0.0f;
 
-        }
-        else
-        {
-            gapTimer += Time.deltaTime;
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
