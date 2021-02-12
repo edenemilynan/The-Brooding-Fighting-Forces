@@ -310,6 +310,36 @@ Transform:
   m_Father: {fileID: 1286792270}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &993107347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 993107348}
+  m_Layer: 0
+  m_Name: P0P2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &993107348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993107347}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25, y: -133, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1779509129}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1025529278
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,6 +871,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1662805430}
+  - component: {fileID: 1662805429}
   m_Layer: 0
   m_Name: TruckingController
   m_TagString: Untagged
@@ -848,6 +879,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1662805429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662805428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 484b459f63fc672408518fdd617e850a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: 0
 --- !u!4 &1662805430
 Transform:
   m_ObjectHideFlags: 0
@@ -873,6 +917,7 @@ GameObject:
   - component: {fileID: 1771442524}
   - component: {fileID: 1771442523}
   - component: {fileID: 1771442521}
+  - component: {fileID: 1771442522}
   m_Layer: 0
   m_Name: truck forwards_0
   m_TagString: Untagged
@@ -899,6 +944,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1771442522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771442520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b142055fb5a556b4b9e34a43457f940d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: {fileID: 1779509130}
+  speed: 20
+  MaxDistanceToGoal: 0.1
+  currentPath: 0
 --- !u!212 &1771442523
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -973,6 +1034,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1779509129}
+  - component: {fileID: 1779509130}
   m_Layer: 0
   m_Name: Path_0
   m_TagString: Untagged
@@ -993,9 +1055,31 @@ Transform:
   m_Children:
   - {fileID: 1920805380}
   - {fileID: 1624158131}
+  - {fileID: 993107348}
   m_Father: {fileID: 1286792270}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1779509130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779509128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c23c4740f37f048ae7c39cdb1bfbbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementDirection: 1
+  movingTo: 0
+  pathSequence:
+  - {fileID: 1920805380}
+  - {fileID: 1624158131}
+  - {fileID: 993107348}
+  directionStart: 3
+  directionTurn: 2
+  animator: {fileID: 1771442521}
 --- !u!1 &1920805379
 GameObject:
   m_ObjectHideFlags: 0

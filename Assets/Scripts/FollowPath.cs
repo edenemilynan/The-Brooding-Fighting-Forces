@@ -4,13 +4,13 @@ using UnityEngine;
 
 [System.Serializable]
 public class FollowPath : MonoBehaviour
-{ 
+{
     public MovementPath path;
     public float speed = 1;
     public float MaxDistanceToGoal = .1f;
     public int currentPath;
     private IEnumerator<Transform> pointInPath;
-  
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,16 +30,17 @@ public class FollowPath : MonoBehaviour
         //PlayerScript playerScript = thePlayer.GetComponent<PlayerScript>();
         //playerScript.Health -= 10.0f;
 
-        /*GameObject theController = GameObject.Find("TruckingController");
+        GameObject theController = GameObject.Find("TruckingController");
         TruckingController controllerScript = theController.GetComponent<TruckingController>();
 
         if (currentPath == controllerScript.path)
-        {*/
+        {
             transform.position = Vector3.MoveTowards(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
 
             var distanceSquared = (transform.position - pointInPath.Current.position).sqrMagnitude;
             if (distanceSquared < MaxDistanceToGoal * MaxDistanceToGoal)
             {
+                //truck.SetInteger("facing", turn);
                 pointInPath.MoveNext();
 
             }
@@ -52,8 +53,10 @@ public class FollowPath : MonoBehaviour
                 
             }*/
         }
-       
-      
+
+
 
     }
+
 }
+

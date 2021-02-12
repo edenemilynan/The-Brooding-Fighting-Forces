@@ -8,13 +8,14 @@ public class MovementPath : MonoBehaviour
     public int movementDirection = 1;
     public int movingTo = 0;
     public Transform[] pathSequence;
-    public int direction;
+    public int directionStart;
+    public int directionTurn;
     public Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator.SetInteger("facing", direction);
+        animator.SetInteger("facing", directionStart);
     }
 
     // Update is called once per frame
@@ -48,6 +49,12 @@ public class MovementPath : MonoBehaviour
             }
 
             movingTo = movingTo + movementDirection;
+
+            if (movingTo == pathSequence.Length - 1)
+            {
+                animator.SetInteger("facing", directionTurn);
+            }
+
         }
 
     }
