@@ -1456,6 +1456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 413904284}
+  waitTime: 90
   animator: {fileID: 380011015}
 --- !u!4 &1760289995
 Transform:
