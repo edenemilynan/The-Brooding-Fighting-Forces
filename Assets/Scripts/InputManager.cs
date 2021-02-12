@@ -9,6 +9,9 @@ public class InputManager : MonoBehaviour
     public GameObject truckingScreen;
     public GameObject scanningScreen;
     public GameObject morseInput;
+    public Animator entryDoor;
+    public Animator truckingDoor;
+    public Animator ramp;
 
     // Update is called once per frame
     void Update()
@@ -39,12 +42,37 @@ public class InputManager : MonoBehaviour
             }
             if (morseCommand == "-.") // Negative
             {
+                if (scanningScreen.activeInHierarchy)
+                {
+                    entryDoor.SetBool("entryIsOpen", false);
+                }
+
+                else if (truckingScreen.activeInHierarchy)
+                {
+                    truckingDoor.SetBool("isTruckingOpen", false);
+                }
             }
             if (morseCommand == ".-") // Affirm
             {
+                if (scanningScreen.activeInHierarchy)
+                {
+                    entryDoor.SetBool("entryIsOpen", true);
+                }
+                else if (truckingScreen.activeInHierarchy)
+                {
+                    truckingDoor.SetBool("isTruckingOpen", true);
+                }
             }
             if (morseCommand == "..") // Interact
             {
+                if (truckingScreen.activeInHierarchy)
+                {
+                    if (ramp.GetBool("isRampDown") == false)
+                    {
+                        ramp.SetBool("isRampDown", true);
+                    }
+                    else ramp.SetBool("isRampDown", false);
+                }
             }
             else 
             {
