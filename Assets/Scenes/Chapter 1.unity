@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 48255856}
   - component: {fileID: 48255857}
+  - component: {fileID: 48255858}
   m_Layer: 0
   m_Name: entryway
   m_TagString: Untagged
@@ -202,6 +203,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &48255858
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48255855}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e247c719d2a276a42a310f7ac8dc75fb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &232540500
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,6 +256,7 @@ MonoBehaviour:
   truckingScreen: {fileID: 1358372213}
   scanningScreen: {fileID: 1025529278}
   morseInput: {fileID: 2080051344}
+  entryDoor: {fileID: 48255858}
 --- !u!4 &232540502
 Transform:
   m_ObjectHideFlags: 0
