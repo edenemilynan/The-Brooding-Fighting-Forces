@@ -11,6 +11,7 @@ public class MovementPath : MonoBehaviour
     public int directionStart;
     public int directionTurn;
     public Animator animator;
+    public TruckingController truckingPath;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +54,12 @@ public class MovementPath : MonoBehaviour
             if (movingTo == pathSequence.Length - 1)
             {
                 animator.SetInteger("facing", directionTurn);
+            }
+
+            if (movingTo == pathSequence.Length)
+            {
+                int path = truckingPath.path;
+                truckingPath.path = (path + 1);
             }
 
         }
