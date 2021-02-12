@@ -23,13 +23,23 @@ public class DialogueManager : MonoBehaviour
         
     }
 
-    /*void Update()
+    void Update()
     {
+       
         if (Input.GetKey(KeyCode.Return))
         {
-            pressed = true;
+            if (sentences.Count != 0)
+            {
+                DisplayNextSentence();
+            }
+            else if (Input.GetKey(KeyCode.Return))
+            {
+                EndDialogue();
+            }
+                
+           
         }
-    }*/
+    }
     /*void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
@@ -79,14 +89,11 @@ public class DialogueManager : MonoBehaviour
 
         DisplayNextSentence();
     }
-    IEnumerator wait()
-    {
-        yield return new WaitForSeconds(10);
-    }
+    
     public void DisplayNextSentence()
     {
         //pressed = false;
-
+        /*
         if (sentences.Count == 0)
         {
             //StartCoroutine(waitForInput(KeyCode.Return));
@@ -95,18 +102,18 @@ public class DialogueManager : MonoBehaviour
             //pressed = false;
             return;
             
-        }
+        }*/
         
         string sentence = sentences.Dequeue();
         dialogueText.text = sentence;
-        StartCoroutine(wait());
+        /*StartCoroutine(wait());
         Debug.Log("What about you?");
         //pressed = false;
         //StartCoroutine(waitForInput(KeyCode.Return));
         if (Input.GetKey(KeyCode.Return))
         {
             DisplayNextSentence();
-        }
+        }*/
 
         //}
     }
