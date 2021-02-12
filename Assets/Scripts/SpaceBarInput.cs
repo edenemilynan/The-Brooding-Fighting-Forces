@@ -89,6 +89,19 @@ public class SpaceBarInput : MonoBehaviour
 
     void PrintLetter(bool deleteLetter = false)
     {   
+        string morseLetter = GetCurrentMorseLetter();
+
+        Debug.Log("Current Letter: " + morseLetter);
+
+        if(deleteLetter)
+        {
+            morseCodeSignals.Clear();
+            Debug.Log("Letter Cleared");
+        } 
+    }
+
+    public string GetCurrentMorseLetter()
+    {
         string morseLetter = "";
 
         foreach(Signal sig in morseCodeSignals)
@@ -103,12 +116,6 @@ public class SpaceBarInput : MonoBehaviour
             }
         }
 
-        Debug.Log("Current Letter: " + morseLetter);
-
-        if(deleteLetter)
-        {
-            morseCodeSignals.Clear();
-            Debug.Log("Letter Cleared");
-        } 
+        return morseLetter;
     }
 }
