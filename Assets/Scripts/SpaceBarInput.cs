@@ -36,20 +36,24 @@ public class SpaceBarInput : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            
-            if(morseTimer > dawLength)
+            if (morseCodeSignals.Count < 2)
             {
-                morseCodeSignals.Add(Signal.Daw);
-                Debug.Log(morseTimer + " seconds: DAW");
-                PrintLetter();
-            }
-            else
-            {
-                morseCodeSignals.Add(Signal.Dit);
-                Debug.Log(morseTimer + " seconds: DIT");
-                PrintLetter();
+                if (morseTimer > dawLength)
+                {
+                    morseCodeSignals.Add(Signal.Daw);
+                    Debug.Log(morseTimer + " seconds: DAW");
+                    PrintLetter();
+                }
+                else
+                {
+                    morseCodeSignals.Add(Signal.Dit);
+                    Debug.Log(morseTimer + " seconds: DIT");
+                    PrintLetter();
 
+                }
             }
+            
+
             morseTimer = 0.0f;
         }
 
