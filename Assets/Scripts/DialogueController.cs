@@ -6,6 +6,8 @@ public class DialogueController : MonoBehaviour
 {
     private bool firstConversation = false;
     public bool secondConversation = true;
+    public bool thirdConversation  = true;
+    public bool fourthConversation = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +39,31 @@ public class DialogueController : MonoBehaviour
         {
             GameObject conversation = GameObject.Find("SecondConversation");
             DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
-            firstConversation = true;
+            secondConversation = true;
+
+            if (other != null)
+            {
+                other.TriggerDialogue();
+            }
+        }
+
+        if (thirdConversation == false)
+        {
+            GameObject conversation = GameObject.Find("FirstConversation");
+            DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
+            thirdConversation = true;
+
+            if (other != null)
+            {
+                other.TriggerDialogue();
+            }
+        }
+
+        if (fourthConversation == false)
+        {
+            GameObject conversation = GameObject.Find("FirstConversation");
+            DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
+            fourthConversation = true;
 
             if (other != null)
             {

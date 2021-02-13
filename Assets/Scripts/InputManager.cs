@@ -52,6 +52,7 @@ public class InputManager : MonoBehaviour
                 else if (truckingScreen.activeInHierarchy)
                 {
                     truckingDoor.SetBool("isTruckingOpen", false);
+                    DialogueController.GetComponent<DialogueController>().fourthConversation = false;
                 }
             }
             if (morseCommand == ".-") // Affirm
@@ -63,6 +64,7 @@ public class InputManager : MonoBehaviour
                 else if (truckingScreen.activeInHierarchy)
                 {
                     truckingDoor.SetBool("isTruckingOpen", true);
+                    DialogueController.GetComponent<DialogueController>().thirdConversation = false;
                 }
             }
             /*

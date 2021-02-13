@@ -8,6 +8,8 @@ public class DialogueManager : MonoBehaviour
 {
 
     public TextMeshProUGUI dialogueText;
+    public TextMeshProUGUI dialogueText2;
+    public TextMeshProUGUI dialogueText3;
 	public int waitTime;
     public Animator animator;
     //public bool pressed = false;
@@ -59,6 +61,8 @@ public class DialogueManager : MonoBehaviour
     {
         string sentence = sentences.Dequeue();
         dialogueText.text = sentence;
+        dialogueText2.text = sentence;
+        dialogueText3.text = sentence;
 		timer = waitTime;
     }
 
