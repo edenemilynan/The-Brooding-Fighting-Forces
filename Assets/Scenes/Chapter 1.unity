@@ -1781,7 +1781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 1954917149}
   dialogueText2: {fileID: 641088629}
-  waitTime: 15
+  waitTime: 90
   animator: {fileID: 1328162426}
   animator2: {fileID: 283883221}
   talking: 0
@@ -1831,7 +1831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     sentences:
-    - You are a real natural at this <employee name>!
+    - You are a real natural at this Mento!
     - "Oh? What is this\u2026?\r\n"
     - ...oh.
     - "Hm\u2026"
@@ -2948,7 +2948,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1338590230332284372, guid: 019450094670df44298d36904dd39383,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
