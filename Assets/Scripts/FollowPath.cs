@@ -44,6 +44,10 @@ public class FollowPath : MonoBehaviour
                 pointInPath.MoveNext();
 
             }
+            if (transform.position == pointInPath.Current.position)
+            {
+                Destroy(gameObject);
+            }
             /*else
             {
                 if (movementScript.movingTo > movementScript.pathSequence.Length)
