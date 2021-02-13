@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
+
 
 public class DialogueManager : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class DialogueManager : MonoBehaviour
 	public int waitTime;
     public Animator animator;
     public Animator animator2;
+    public bool conversationFourDone = false;
     //public bool pressed = false;
 
     //IEnumerator coroutine;
@@ -72,6 +75,10 @@ public class DialogueManager : MonoBehaviour
     {
         animator.SetBool("IsOpen", false);
         animator2.SetBool("IsOpen", false);
+        if(conversationFourDone)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
 }

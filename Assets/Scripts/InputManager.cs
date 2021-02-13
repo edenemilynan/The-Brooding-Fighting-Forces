@@ -56,6 +56,7 @@ public class InputManager : MonoBehaviour
                 else if (truckingScreen.activeInHierarchy)
                 {
                     truckingDoor.SetBool("isTruckingOpen", false);
+                    Debug.Log("Got right here, convo4activate == " + convo4activated);
                     if(!convo4activated && convo3activated)
                     {   
                         convo4activated = true;

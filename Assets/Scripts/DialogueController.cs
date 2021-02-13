@@ -8,6 +8,7 @@ public class DialogueController : MonoBehaviour
     public bool secondConversation = true;
     public bool thirdConversation  = true;
     public bool fourthConversation = true;
+    public GameObject DialogueManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,8 +16,7 @@ public class DialogueController : MonoBehaviour
         //ScriptB other = (ScriptB)go.GetComponent(typeof(ScriptB));
         //other.DoSomething()
 
-        //FindObjectOfType<DialogueTrigger>().TriggerDialogue();
-        
+        //FindObjectOfType<DialogueTrigger>().TriggerDialogue()        
        
         
     }
@@ -53,6 +53,8 @@ public class DialogueController : MonoBehaviour
             DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
             thirdConversation = true;
 
+
+
             if (other != null)
             {
                 other.TriggerDialogue();
@@ -64,6 +66,8 @@ public class DialogueController : MonoBehaviour
             GameObject conversation = GameObject.Find("FourthConversation");
             DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
             fourthConversation = true;
+            DialogueManager.GetComponent<DialogueManager>().conversationFourDone = true;
+            //DialogueController.GetComponent<DialogueController>().secondConversation = false;
 
             if (other != null)
             {
