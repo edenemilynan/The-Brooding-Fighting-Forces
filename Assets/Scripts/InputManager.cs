@@ -14,6 +14,10 @@ public class InputManager : MonoBehaviour
     public Animator ramp;
     public GameObject DialogueController;
 
+    private bool convo3activated = false;
+    private bool convo4activated = false;
+
+
     // Update is called once per frame
     void Update()
     {
@@ -52,7 +56,11 @@ public class InputManager : MonoBehaviour
                 else if (truckingScreen.activeInHierarchy)
                 {
                     truckingDoor.SetBool("isTruckingOpen", false);
-                    DialogueController.GetComponent<DialogueController>().fourthConversation = false;
+                    if(!convo4activated && convo3activated)
+                    {   
+                        convo4activated = true;
+                        DialogueController.GetComponent<DialogueController>().fourthConversation = false;
+                    }
                 }
             }
             if (morseCommand == ".-") // Affirm
@@ -64,7 +72,11 @@ public class InputManager : MonoBehaviour
                 else if (truckingScreen.activeInHierarchy)
                 {
                     truckingDoor.SetBool("isTruckingOpen", true);
-                    DialogueController.GetComponent<DialogueController>().thirdConversation = false;
+                    if(!convo3activated)
+                    {
+                        convo3activated = true;
+                        DialogueController.GetComponent<DialogueController>().thirdConversation = false;
+                    }
                 }
             }
             /*

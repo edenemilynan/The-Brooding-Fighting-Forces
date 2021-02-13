@@ -49,7 +49,7 @@ public class DialogueController : MonoBehaviour
 
         if (thirdConversation == false)
         {
-            GameObject conversation = GameObject.Find("FirstConversation");
+            GameObject conversation = GameObject.Find("ThirdConversation");
             DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
             thirdConversation = true;
 
@@ -61,7 +61,7 @@ public class DialogueController : MonoBehaviour
 
         if (fourthConversation == false)
         {
-            GameObject conversation = GameObject.Find("FirstConversation");
+            GameObject conversation = GameObject.Find("FourthConversation");
             DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
             fourthConversation = true;
 
