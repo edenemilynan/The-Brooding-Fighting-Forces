@@ -15,6 +15,7 @@ public class DialogueManager : MonoBehaviour
 	public int waitTime;
     public Animator animator;
     public Animator animator2;
+    public bool talking = false;
     public bool conversationFourDone = false;
     //public bool pressed = false;
 
@@ -51,6 +52,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        talking = true;
         animator.SetBool("IsOpen", true);
         animator2.SetBool("IsOpen", true);
         sentences.Clear();
@@ -73,6 +75,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        talking = false;
         animator.SetBool("IsOpen", false);
         animator2.SetBool("IsOpen", false);
         if(conversationFourDone)

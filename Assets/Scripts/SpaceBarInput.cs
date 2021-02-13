@@ -13,6 +13,8 @@ public class SpaceBarInput : MonoBehaviour
     public enum  Signal {Dit, Daw};
     public List<Signal> morseCodeSignals = new List<Signal>();
     public string morseReturn;
+    public GameObject manager;
+    //public GameObject manager;
     //private float gapLength = 1.5f;
 
 
@@ -26,6 +28,8 @@ public class SpaceBarInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //isTalking = manager.GetComponent<DialogueManager>().path;
+
         morseReturn = "";
         if (Input.GetKey(KeyCode.Space))
         {
@@ -36,7 +40,7 @@ public class SpaceBarInput : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            if (morseCodeSignals.Count < 2)
+            if (morseCodeSignals.Count < 2) //&& isTalking == false)
             {
                 if (morseTimer > dawLength)
                 {
