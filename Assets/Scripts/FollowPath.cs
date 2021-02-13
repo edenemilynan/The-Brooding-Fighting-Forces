@@ -16,7 +16,7 @@ public class FollowPath : MonoBehaviour
     {
         //GameObject thePath = GameObject.Find("Path_0");
         //MovementPath movementScript = thePath.GetComponent<MovementPath>();
-
+        //self.transform.position = new Vector3(168, -352, 50);
         pointInPath = path.GetNextPathPoint();
         pointInPath.MoveNext();
 
@@ -44,10 +44,10 @@ public class FollowPath : MonoBehaviour
                 pointInPath.MoveNext();
 
             }
-            if (transform.position == pointInPath.Current.position)
+            /*if (transform.position == pointInPath.Current.position)
             {
                 Destroy(gameObject);
-            }
+            }*/
             /*else
             {
                 if (movementScript.movingTo > movementScript.pathSequence.Length)

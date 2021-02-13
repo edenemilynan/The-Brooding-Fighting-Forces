@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviour
     public Animator truckingDoor;
     public Animator ramp;
     public GameObject DialogueController;
+    public GameObject TruckingController;
 
     private bool convo3activated = false;
     private bool convo4activated = false;
@@ -73,6 +74,8 @@ public class InputManager : MonoBehaviour
                 else if (truckingScreen.activeInHierarchy)
                 {
                     truckingDoor.SetBool("isTruckingOpen", true);
+                    //Normally check if car is here but cut for prototype
+                    TruckingController.GetComponent<TruckingController>().path = 0;
                     if(!convo3activated)
                     {
                         convo3activated = true;

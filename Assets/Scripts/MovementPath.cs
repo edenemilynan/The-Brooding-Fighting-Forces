@@ -12,6 +12,7 @@ public class MovementPath : MonoBehaviour
     public int directionTurn;
     public Animator animator;
     public TruckingController truckingPath;
+    public GameObject truck;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +59,7 @@ public class MovementPath : MonoBehaviour
 
             if (movingTo == pathSequence.Length)
             {
+                Destroy(truck);
                 int path = truckingPath.path;
                 truckingPath.path = (path + 1);
             }
