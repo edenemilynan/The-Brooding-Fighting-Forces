@@ -8,24 +8,26 @@ public class MovementPath : MonoBehaviour
     public int movementDirection = 1;
     public int movingTo = 0;
     public Transform[] pathSequence;
-    public int direction;
+    public int directionStart;
+    public int directionTurn;
     public Animator animator;
+    public TruckingController truckingPath;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator.SetInteger("facing", 3);
+        animator.SetInteger("facing", directionStart);
     }
 
     // Update is called once per frame
     public void OnDrawGizmos()
     {
-        if(pathSequence == null || pathSequence.Length < 2)
+        if (pathSequence == null || pathSequence.Length < 2)
         {
             return;
         }
 
-        for(var i = 1; i < pathSequence.Length; i++)
+        for (var i = 1; i < pathSequence.Length; i++)
         {
             Gizmos.DrawLine(pathSequence[i - 1].position, pathSequence[i].position);
         }
@@ -48,6 +50,18 @@ public class MovementPath : MonoBehaviour
             }
 
             movingTo = movingTo + movementDirection;
+
+            if (movingTo == pathSequence.Length - 1)
+            {
+                animator.SetInteger("facing", directionTurn);
+            }
+
+            if (movingTo == pathSequence.Length)
+            {
+                int path = truckingPath.path;
+                truckingPath.path = (path + 1);
+            }
+
         }
 
     }
