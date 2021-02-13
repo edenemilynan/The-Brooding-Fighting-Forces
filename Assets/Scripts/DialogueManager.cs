@@ -9,9 +9,10 @@ public class DialogueManager : MonoBehaviour
 
     public TextMeshProUGUI dialogueText;
     public TextMeshProUGUI dialogueText2;
-    public TextMeshProUGUI dialogueText3;
+    //public TextMeshProUGUI dialogueText3;
 	public int waitTime;
     public Animator animator;
+    public Animator animator2;
     //public bool pressed = false;
 
     //IEnumerator coroutine;
@@ -48,6 +49,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         animator.SetBool("IsOpen", true);
+        animator2.SetBool("IsOpen", true);
         sentences.Clear();
         foreach (string sentence in dialogue.sentences)
         {
@@ -62,13 +64,14 @@ public class DialogueManager : MonoBehaviour
         string sentence = sentences.Dequeue();
         dialogueText.text = sentence;
         dialogueText2.text = sentence;
-        dialogueText3.text = sentence;
+        //dialogueText3.text = sentence;
 		timer = waitTime;
     }
 
     void EndDialogue()
     {
         animator.SetBool("IsOpen", false);
+        animator2.SetBool("IsOpen", false);
     }
 
 }

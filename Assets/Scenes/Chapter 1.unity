@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 283883222}
   - component: {fileID: 283883221}
   m_Layer: 0
-  m_Name: Dialogue box 2
+  m_Name: Dialogue box trucking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -527,7 +527,7 @@ Animator:
   m_GameObject: {fileID: 283883220}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 19fed4f931e2ec746a354d04f9b7cf23, type: 2}
+  m_Controller: {fileID: 9100000, guid: ae9406c85bd836440a9a37b346d4b63d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -594,7 +594,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283883220}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -249, y: 1268, z: 0}
+  m_LocalPosition: {x: -245, y: 1265, z: 0}
   m_LocalScale: {x: 173.6075, y: 173.6075, z: 173.6075}
   m_Children:
   - {fileID: 1463967963}
@@ -1402,9 +1402,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 1954917149}
   dialogueText2: {fileID: 641088629}
-  dialogueText3: {fileID: 0}
   waitTime: 90
   animator: {fileID: 1328162426}
+  animator2: {fileID: 283883221}
 --- !u!4 &1027721084
 Transform:
   m_ObjectHideFlags: 0
