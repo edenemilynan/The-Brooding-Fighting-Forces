@@ -40,7 +40,7 @@ public class SpaceBarInput : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            if (morseCodeSignals.Count < 2) //&& isTalking == false)
+            if (morseCodeSignals.Count < 2 && !manager.GetComponent<DialogueManager>().talking)
             {
                 if (morseTimer > dawLength)
                 {
