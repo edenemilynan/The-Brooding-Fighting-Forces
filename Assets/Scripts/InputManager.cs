@@ -10,7 +10,7 @@ public class InputManager : MonoBehaviour
     public GameObject scanningScreen;
     public GameObject morseInput;
     public Animator entryDoor;
-    public Animator truckingDoor;
+    public GameObject truckingDoor;
     public Animator ramp;
     public GameObject DialogueController;
     public GameObject TruckingController;
@@ -56,7 +56,7 @@ public class InputManager : MonoBehaviour
 
                 else if (truckingScreen.activeInHierarchy)
                 {
-                    truckingDoor.SetBool("isTruckingOpen", false);
+                    truckingDoor.GetComponent<TruckDoor>().TruckDoorClose();
                     Debug.Log("Got right here, convo4activate == " + convo4activated);
                     if(!convo4activated && convo3activated)
                     {   
@@ -73,7 +73,7 @@ public class InputManager : MonoBehaviour
                 }
                 else if (truckingScreen.activeInHierarchy)
                 {
-                    truckingDoor.SetBool("isTruckingOpen", true);
+                    truckingDoor.GetComponent<TruckDoor>().TruckDoorOpen();
                     //Normally check if car is here but cut for prototype
                     TruckingController.GetComponent<TruckingController>().path = 0;
                     if(!convo3activated)
