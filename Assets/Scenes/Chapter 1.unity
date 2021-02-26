@@ -391,7 +391,7 @@ MonoBehaviour:
   scanningScreen: {fileID: 1025529278}
   morseInput: {fileID: 2080051344}
   entryDoor: {fileID: 48255858}
-  truckingDoor: {fileID: 1703761552}
+  truckingDoor: {fileID: 1703761549}
   ramp: {fileID: 1695154724}
   DialogueController: {fileID: 245659556}
   TruckingController: {fileID: 1511508888}
@@ -1335,7 +1335,7 @@ GameObject:
   - component: {fileID: 736064163}
   - component: {fileID: 736064162}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: doorSoundSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
