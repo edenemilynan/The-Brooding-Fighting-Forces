@@ -60,8 +60,8 @@ public class InputManager : MonoBehaviour
                     Debug.Log("Got right here, convo4activate == " + convo4activated);
                     if(!convo4activated && convo3activated)
                     {   
-                        convo4activated = true;
-                        DialogueController.GetComponent<DialogueController>().fourthConversation = false;
+                        // convo4activated = true;
+                        // DialogueController.GetComponent<DialogueController>().fourthConversation = false;
                     }
                 }
             }
