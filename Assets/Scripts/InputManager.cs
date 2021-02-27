@@ -16,6 +16,7 @@ public class InputManager : MonoBehaviour
 
     public Animator ramp;
     public Animator entryDoor;
+    public Animator indicatorTrucking;
 
     public TaskManager taskManager;
 
@@ -91,6 +92,7 @@ public class InputManager : MonoBehaviour
                     {
                         TruckingController.GetComponent<TruckingController>().path += 1;
                         taskManager.GetTask();
+                        indicatorTrucking.SetBool("IndicatorOn", false);
                     }
                         
                     if(!convo3activated)

@@ -6,6 +6,8 @@ public class TaskManager : MonoBehaviour
 {
     private Queue<string> tasks = new Queue<string>();
     public string task = null;
+
+    public Animator indicator;
     
     // Start is called before the first frame update
     void Start()
@@ -16,6 +18,7 @@ public class TaskManager : MonoBehaviour
         tasks.Enqueue("people");
         tasks.Enqueue("truck");
         task = tasks.Dequeue();
+        indicator.SetBool("IndicatorOn", true);
     }
 
     public void GetTask()
@@ -24,6 +27,10 @@ public class TaskManager : MonoBehaviour
         {
             task = tasks.Dequeue();
             //Good place to trigger light above door that indicates task is waiting
+            if (task == "truck")
+            {
+                indicator.SetBool("IndicatorOn", true);
+            }
         }
 
         else task = null;
