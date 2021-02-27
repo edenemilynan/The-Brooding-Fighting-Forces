@@ -11,13 +11,15 @@ public class MovementPath : MonoBehaviour
     public int directionStart;
     public int directionTurn;
     public Animator animator;
-    public TruckingController truckingPath;
+    public DialogueController dialogueController;
     public GameObject truck;
 
     // Start is called before the first frame update
     void Start()
     {
         animator.SetInteger("facing", directionStart);
+        //GameObject conversation = GameObject.Find("DialogueController");
+        //DialogueController conversationScript = (DialogueController)conversation.GetComponent<DialogueController>();
     }
 
     // Update is called once per frame
@@ -60,8 +62,9 @@ public class MovementPath : MonoBehaviour
             if (movingTo == pathSequence.Length)
             {
                 Destroy(truck);
-                int path = truckingPath.path;
-                truckingPath.path = (path + 1);
+                dialogueController.tasksCompleted += 1;
+                //int path = truckingPath.path;
+                //truckingPath.path = (path + 1);
             }
 
         }

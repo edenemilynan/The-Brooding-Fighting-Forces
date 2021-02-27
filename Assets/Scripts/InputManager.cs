@@ -9,11 +9,15 @@ public class InputManager : MonoBehaviour
     public GameObject truckingScreen;
     public GameObject scanningScreen;
     public GameObject morseInput;
-    public Animator entryDoor;
     public GameObject truckingDoor;
-    public Animator ramp;
     public GameObject DialogueController;
     public GameObject TruckingController;
+    public GameObject PeopleController;
+
+    public Animator ramp;
+    public Animator entryDoor;
+
+    public TaskManager taskManager;
 
     private bool convo3activated = false;
     private bool convo4activated = false;
@@ -35,7 +39,7 @@ public class InputManager : MonoBehaviour
                 scanningScreen.SetActive(false);
                 DialogueController.GetComponent<DialogueController>().secondConversation = false;
             }
-            /*if (morseCommand == ".") // Entry
+            if (morseCommand == ".") // Entry
             {
                 mainScreen.SetActive(false);
                 truckingScreen.SetActive(false);
@@ -46,7 +50,7 @@ public class InputManager : MonoBehaviour
                 mainScreen.SetActive(true);
                 truckingScreen.SetActive(false);
                 scanningScreen.SetActive(false);
-            }*/
+            }
             if (morseCommand == "-.") // Negative
             {
                 if (scanningScreen.activeInHierarchy)
@@ -57,12 +61,13 @@ public class InputManager : MonoBehaviour
                 else if (truckingScreen.activeInHierarchy)
                 {
                     truckingDoor.GetComponent<TruckDoor>().TruckDoorClose();
-                    Debug.Log("Got right here, convo4activate == " + convo4activated);
-                    if(!convo4activated && convo3activated)
+
+                    //Comment out for testing though ultimately this will need to change
+                    /*if(!convo4activated && convo3activated)
                     {   
                         convo4activated = true;
                         DialogueController.GetComponent<DialogueController>().fourthConversation = false;
-                    }
+                    }*/
                 }
             }
             if (morseCommand == ".-") // Affirm
@@ -70,12 +75,24 @@ public class InputManager : MonoBehaviour
                 if (scanningScreen.activeInHierarchy)
                 {
                     entryDoor.SetBool("entryIsOpen", true);
+
+                    if (taskManager.task == "people")
+                    {
+                        PeopleController.GetComponent<TruckingController>().path += 1;
+                        taskManager.GetTask();
+                    }
                 }
                 else if (truckingScreen.activeInHierarchy)
                 {
                     truckingDoor.GetComponent<TruckDoor>().TruckDoorOpen();
                     //Normally check if car is here but cut for prototype
-                    TruckingController.GetComponent<TruckingController>().path = 0;
+
+                    if (taskManager.task == "truck")
+                    {
+                        TruckingController.GetComponent<TruckingController>().path += 1;
+                        taskManager.GetTask();
+                    }
+                        
                     if(!convo3activated)
                     {
                         convo3activated = true;

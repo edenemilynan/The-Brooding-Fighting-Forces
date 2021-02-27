@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DialogueController : MonoBehaviour
 {
-    private bool firstConversation = false;
+    public int tasksCompleted = 0;
+    public int convosHad = 0;
     public bool secondConversation = true;
     public bool thirdConversation  = true;
     public bool fourthConversation = true;
@@ -24,11 +25,11 @@ public class DialogueController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (firstConversation == false)
+        if (tasksCompleted == 0 && convosHad == 0)
         {
             GameObject conversation = GameObject.Find("FirstConversation");
             DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
-            firstConversation = true;
+            convosHad += 1;
 
             if (other != null)
             {
@@ -61,7 +62,8 @@ public class DialogueController : MonoBehaviour
             }
         }
 
-        if (fourthConversation == false)
+        //These numbers are just for testing purposes
+        if (tasksCompleted == 3 && convosHad == 1)
         {
             GameObject conversation = GameObject.Find("FourthConversation");
             DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
@@ -72,6 +74,7 @@ public class DialogueController : MonoBehaviour
             if (other != null)
             {
                 other.TriggerDialogue();
+                convosHad += 1;
             }
         }
         

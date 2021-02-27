@@ -37,6 +37,7 @@ public class DialogueManager : MonoBehaviour
             if (sentences.Count != 0)
             {
                 DisplayNextSentence();
+                Debug.Log("cat");
             }
             else if (sentences.Count == 0)
             {
