@@ -16,6 +16,7 @@ public class TaskManager : MonoBehaviour
         //task or two, and then randomize the rest
         tasks.Enqueue("truck");
         tasks.Enqueue("people");
+        //Randomized
         tasks.Enqueue("truck");
         task = tasks.Dequeue();
         indicator.SetBool("IndicatorOn", true);

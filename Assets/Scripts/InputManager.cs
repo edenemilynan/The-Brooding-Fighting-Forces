@@ -23,7 +23,6 @@ public class InputManager : MonoBehaviour
     private bool convo3activated = false;
     private bool convo4activated = false;
 
-
     // Update is called once per frame
     void Update()
     {
@@ -38,7 +37,8 @@ public class InputManager : MonoBehaviour
                 mainScreen.SetActive(false);
                 truckingScreen.SetActive(true);
                 scanningScreen.SetActive(false);
-                DialogueController.GetComponent<DialogueController>().secondConversation = false;
+                //Commented out for testing/narrative needs rework
+                //DialogueController.GetComponent<DialogueController>().secondConversation = false;
             }
             if (morseCommand == ".") // Entry
             {
