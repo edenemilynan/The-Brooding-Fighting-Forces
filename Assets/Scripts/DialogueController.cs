@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DialogueController : MonoBehaviour
 {
+    public TaskManager taskManager;
+
     public int tasksCompleted = 0;
     public int convosHad = 0;
     public bool secondConversation = true;
@@ -18,8 +20,8 @@ public class DialogueController : MonoBehaviour
         //other.DoSomething()
 
         //FindObjectOfType<DialogueTrigger>().TriggerDialogue()        
-       
-        
+        Debug.Log(taskManager.nTasks);
+
     }
 
     // Update is called once per frame
@@ -63,7 +65,7 @@ public class DialogueController : MonoBehaviour
         }
 
         //These numbers are just for testing purposes
-        if (tasksCompleted == 3 && convosHad == 1)
+        if (tasksCompleted == taskManager.nTasks && convosHad == 1)
         {
             GameObject conversation = GameObject.Find("FourthConversation");
             DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();

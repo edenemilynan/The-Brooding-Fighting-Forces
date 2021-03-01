@@ -77,7 +77,7 @@ public class InputManager : MonoBehaviour
                 {
                     entryDoor.SetBool("entryIsOpen", true);
 
-                    if (taskManager.task == "people")
+                    if (taskManager.task == TaskManager.Tasks.people)
                     {
                         PeopleController.GetComponent<TruckingController>().path += 1;
                         taskManager.GetTask();
@@ -88,7 +88,7 @@ public class InputManager : MonoBehaviour
                     truckingDoor.GetComponent<TruckDoor>().TruckDoorOpen();
                     //Normally check if car is here but cut for prototype
 
-                    if (taskManager.task == "truck")
+                    if (taskManager.task == TaskManager.Tasks.truck)
                     {
                         TruckingController.GetComponent<TruckingController>().path += 1;
                         taskManager.GetTask();

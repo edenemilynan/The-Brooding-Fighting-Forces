@@ -4,8 +4,19 @@ using UnityEngine;
 
 public class TaskManager : MonoBehaviour
 {
-    private Queue<string> tasks = new Queue<string>();
-    public string task = null;
+    public enum Tasks {truck, people, none};
+    private Queue<Tasks> tasks = new Queue<Tasks>();
+    public Tasks task = Tasks.none;
+    public int nTasks = 6;
+
+    /* For random tasks later
+    int truckCounter = 0;
+    int maxTrucks = 4;
+    int entryCounter = 0;
+    int maxEntry = 2;
+    
+    */
+
 
     public Animator indicator;
     
@@ -14,10 +25,33 @@ public class TaskManager : MonoBehaviour
     {
         //For intro it might make sense to hard code the first
         //task or two, and then randomize the rest
-        tasks.Enqueue("truck");
-        tasks.Enqueue("people");
+
+        /* For random tasks later
+        for (int i = 0; i < N; ++i)
+        {
+            // Assures that there will be a good split between the tasks
+            // Can change
+            if(truckCounter == 6) { taskList.Enqueue(Task.entry); }
+            else if(entryCounter == 6) { taskList.Enqueue(Task.truck); }
+            else
+            {
+                Task t = (Task)Random.Range(0, 2);
+                if (t == Task.truck) { ++truckCounter; }
+                else { ++entryCounter; }
+
+                taskList.Enqueue(t);
+            }
+        }
+        */
+        // For demo 1: 6 tasks (4/2 split)
+        tasks.Enqueue(Tasks.truck);
+        tasks.Enqueue(Tasks.people);
+        tasks.Enqueue(Tasks.truck);
+        tasks.Enqueue(Tasks.truck);
+        tasks.Enqueue(Tasks.people);
+        tasks.Enqueue(Tasks.truck);
+
         //Randomized
-        tasks.Enqueue("truck");
         task = tasks.Dequeue();
         indicator.SetBool("IndicatorOn", true);
     }
@@ -28,13 +62,13 @@ public class TaskManager : MonoBehaviour
         {
             task = tasks.Dequeue();
             //Good place to trigger light above door that indicates task is waiting
-            if (task == "truck")
+            if (task == Tasks.truck)
             {
                 indicator.SetBool("IndicatorOn", true);
             }
         }
 
-        else task = null;
+        else task = Tasks.none;
     }
 
 }
