@@ -53,6 +53,7 @@ public class TaskManager : MonoBehaviour
 
         //Randomized
         task = tasks.Dequeue();
+        //This only works if first task is hard-coded as truck
         indicator.SetBool("IndicatorOn", true);
     }
 

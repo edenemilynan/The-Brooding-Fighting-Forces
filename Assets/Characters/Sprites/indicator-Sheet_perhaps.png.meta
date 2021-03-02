@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 39dbb67911591444c9a461e1a42887ff
+guid: 10c57240cea01cd44beeb0409c0f556e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -980095317097466160
-    second: Indicator_0
+      213: -2837462905913893713
+    second: indicator-Sheet_perhaps_0
   - first:
-      213: 3250443987692659775
-    second: Indicator_1
+      213: -2831330629884150456
+    second: indicator-Sheet_perhaps_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -93,7 +93,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Indicator_0
+      name: indicator-Sheet_perhaps_0
       rect:
         serializedVersion: 2
         x: 0
@@ -107,14 +107,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d6b16a70800662f0800000000000000
-      internalID: -980095317097466160
+      spriteID: fac97a5458e4f98d0800000000000000
+      internalID: -2837462905913893713
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Indicator_1
+      name: indicator-Sheet_perhaps_1
       rect:
         serializedVersion: 2
         x: 24
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f34a9b0d595eb1d20800000000000000
-      internalID: 3250443987692659775
+      spriteID: 84d721c0bc715b8d0800000000000000
+      internalID: -2831330629884150456
       vertices: []
       indices: 
       edges: []

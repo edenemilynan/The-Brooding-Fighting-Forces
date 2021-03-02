@@ -91,8 +91,8 @@ public class InputManager : MonoBehaviour
                     if (taskManager.task == TaskManager.Tasks.truck)
                     {
                         TruckingController.GetComponent<TruckingController>().path += 1;
-                        taskManager.GetTask();
                         indicatorTrucking.SetBool("IndicatorOn", false);
+                        taskManager.GetTask();
                     }
                         
                     if(!convo3activated)
