@@ -45,13 +45,13 @@ public class SpaceBarInput : MonoBehaviour
                 if (morseTimer > dawLength)
                 {
                     morseCodeSignals.Add(Signal.Daw);
-                    Debug.Log(morseTimer + " seconds: DAW");
+                    //Debug.Log(morseTimer + " seconds: DAW");
                     PrintLetter();
                 }
                 else
                 {
                     morseCodeSignals.Add(Signal.Dit);
-                    Debug.Log(morseTimer + " seconds: DIT");
+                    //Debug.Log(morseTimer + " seconds: DIT");
                     PrintLetter();
 
                 }
@@ -66,7 +66,7 @@ public class SpaceBarInput : MonoBehaviour
             //PrintLetter(true);
 
             morseReturn = "";
-            Debug.Log("Current String: " + morseReturn);
+            //Debug.Log("Current String: " + morseReturn);
             foreach (Signal sig in morseCodeSignals)
             {
                 if (sig == Signal.Dit)
@@ -79,7 +79,7 @@ public class SpaceBarInput : MonoBehaviour
                 }
             }
             morseCodeSignals.Clear();
-            Debug.Log("Return String: " + morseReturn);
+            //Debug.Log("Return String: " + morseReturn);
         }
 
         if (morseCodeSignals.Count > 0 && Input.GetKeyDown(KeyCode.Backspace))
@@ -94,12 +94,12 @@ public class SpaceBarInput : MonoBehaviour
     {   
         string morseLetter = GetCurrentMorseLetter();
 
-        Debug.Log("Current Letter: " + morseLetter);
+        //Debug.Log("Current Letter: " + morseLetter);
 
         if(deleteLetter)
         {
             morseCodeSignals.Clear();
-            Debug.Log("Letter Cleared");
+            //Debug.Log("Letter Cleared");
         } 
     }
 

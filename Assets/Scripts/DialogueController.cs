@@ -11,7 +11,9 @@ public class DialogueController : MonoBehaviour
     public bool secondConversation = true;
     public bool thirdConversation  = true;
     public bool fourthConversation = true;
+    public bool fifthConversation  = true;
     public GameObject DialogueManager;
+    public GameObject InputManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,13 +72,29 @@ public class DialogueController : MonoBehaviour
             GameObject conversation = GameObject.Find("FourthConversation");
             DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
             fourthConversation = true;
-            DialogueManager.GetComponent<DialogueManager>().conversationFourDone = true;
+            //DialogueManager.GetComponent<DialogueManager>().conversationFourDone = true;
+            InputManager.GetComponent<InputManager>().setConvo4Activated(true);
             //DialogueController.GetComponent<DialogueController>().secondConversation = false;
 
             if (other != null)
             {
                 other.TriggerDialogue();
                 convosHad += 1;
+            }
+        }
+
+        if (fifthConversation == false)
+        {
+            GameObject conversation = GameObject.Find("FifthConversation");
+            DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
+            fifthConversation = true;
+            DialogueManager.GetComponent<DialogueManager>().LastConversation = true;
+
+
+
+            if (other != null)
+            {
+                other.TriggerDialogue();
             }
         }
         

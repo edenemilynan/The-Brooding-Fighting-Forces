@@ -22,7 +22,8 @@ public class InputManager : MonoBehaviour
 
     private bool convo2activated = false;
     private bool convo3activated = false;
-    private bool convo4activated = false;
+    public bool convo4activated = false;
+    public bool convo5activated = false;
     private bool trucksVisited   = false;
     private bool entryVisited   = false;
 
@@ -136,5 +137,17 @@ public class InputManager : MonoBehaviour
             DialogueController.GetComponent<DialogueController>().secondConversation = false;
             convo2activated = true;
         }
+
+        if (convo4activated && mainScreen.activeInHierarchy && !convo5activated)
+        {
+            Debug.Log("You made it here, you saucy son of a bitch");
+            DialogueController.GetComponent<DialogueController>().fifthConversation = false;
+            convo5activated = true;
+        }
+    }
+
+    public void setConvo4Activated(bool val)
+    {
+        convo4activated = val;
     }
 }

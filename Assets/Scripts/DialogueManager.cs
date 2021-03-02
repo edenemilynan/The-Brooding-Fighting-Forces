@@ -16,7 +16,7 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
     public Animator animator2;
     public bool talking = false;
-    public bool conversationFourDone = false;
+    public bool LastConversation = false;
     //public bool pressed = false;
 
     //IEnumerator coroutine;
@@ -79,7 +79,7 @@ public class DialogueManager : MonoBehaviour
         talking = false;
         animator.SetBool("IsOpen", false);
         animator2.SetBool("IsOpen", false);
-        if(conversationFourDone)
+        if(LastConversation)
         {
             SceneManager.LoadScene(0);
         }
