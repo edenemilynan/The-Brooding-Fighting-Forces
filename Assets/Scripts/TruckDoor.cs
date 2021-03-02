@@ -10,14 +10,21 @@ public class TruckDoor : MonoBehaviour
 
     public void TruckDoorOpen()
     {
-        truckingDoor.SetBool("isTruckingOpen", true);
-        audioSource.PlayOneShot(doorSound, 0.7F);
+        if(truckingDoor.GetBool("isTruckingOpen") != true)
+        {
+            truckingDoor.SetBool("isTruckingOpen", true);
+            audioSource.PlayOneShot(doorSound, 0.7F);
+        }
+        
 
     }
 
     public void TruckDoorClose()
     {
-        truckingDoor.SetBool("isTruckingOpen", false);
-        audioSource.PlayOneShot(doorSound, 0.7F);
+        if(truckingDoor.GetBool("isTruckingOpen") != false)
+        {
+            truckingDoor.SetBool("isTruckingOpen", false);
+            audioSource.PlayOneShot(doorSound, 0.7F);
+        }
     }
 }
