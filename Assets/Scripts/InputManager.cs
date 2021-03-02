@@ -20,8 +20,11 @@ public class InputManager : MonoBehaviour
 
     public TaskManager taskManager;
 
+    private bool convo2activated = false;
     private bool convo3activated = false;
     private bool convo4activated = false;
+    private bool trucksVisited   = false;
+    private bool entryVisited   = false;
 
     // Update is called once per frame
     void Update()
@@ -37,6 +40,7 @@ public class InputManager : MonoBehaviour
                 mainScreen.SetActive(false);
                 truckingScreen.SetActive(true);
                 scanningScreen.SetActive(false);
+                trucksVisited = true;
                 //Commented out for testing/narrative needs rework
                 //DialogueController.GetComponent<DialogueController>().secondConversation = false;
             }
@@ -45,6 +49,7 @@ public class InputManager : MonoBehaviour
                 mainScreen.SetActive(false);
                 truckingScreen.SetActive(false);
                 scanningScreen.SetActive(true);
+                entryVisited = true;
             }
             if (morseCommand == "--") // Main
             {
@@ -124,6 +129,12 @@ public class InputManager : MonoBehaviour
 
 
 
+        }
+
+        if (trucksVisited && entryVisited && !convo2activated)
+        {
+            DialogueController.GetComponent<DialogueController>().secondConversation = false;
+            convo2activated = true;
         }
     }
 }

@@ -2460,12 +2460,15 @@ MonoBehaviour:
     - "You can use this ancient and demeaning tool to perform your tasks. Isn\u2019t
       that such a relief?"
     - Right now, you are on the Main Screen.
-    - You have access to cameras, one to the Trucking Area.
+    - You have access to cameras, one to the Entryway and another to the Trucking
+      Area.
+    - 'Their respcective morse codes are on the reference sheet to the left of your
+      monitor. '
     - Perhaps it is confusing, yes?
     - Well, do not worry! It is easy, and we can practice together!!!
     - Let us do that now!
-    - Go to the Trucking area. There should be a note of reference to the left of
-      your monitor!
+    - Go to the Trucking area and the Entryway. There should be a note of reference
+      to the left of your monitor!
 --- !u!4 &894581042
 Transform:
   m_ObjectHideFlags: 0
