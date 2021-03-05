@@ -19,6 +19,7 @@ public class TaskManager : MonoBehaviour
 
 
     public Animator indicator;
+    public TruckingController personApproaches; 
     
     // Start is called before the first frame update
     void Start()
@@ -66,6 +67,11 @@ public class TaskManager : MonoBehaviour
             if (task == Tasks.truck)
             {
                 indicator.SetBool("IndicatorOn", true);
+            }
+
+            if (task == Tasks.people)
+            {
+                personApproaches.path += 1;
             }
         }
 

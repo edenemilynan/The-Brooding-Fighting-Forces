@@ -5,19 +5,21 @@ using System;
 
 public class MovementPath : MonoBehaviour
 {
-    public int movementDirection = 1;
-    public int movingTo = 0;
+    private bool paused = false;
+    private int movementDirection = 1;
+    private int movingTo = 0;
     public Transform[] pathSequence;
-    public int directionStart;
-    public int directionTurn;
-    public Animator animator;
+    //public int directionStart;
+    //public int directionTurn;
+    //public Animator animator;
     public DialogueController dialogueController;
     public GameObject truck;
+    //public TruckingController pathControl;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator.SetInteger("facing", directionStart);
+        //animator.SetInteger("facing", directionStart);
         //GameObject conversation = GameObject.Find("DialogueController");
         //DialogueController conversationScript = (DialogueController)conversation.GetComponent<DialogueController>();
     }
@@ -54,20 +56,32 @@ public class MovementPath : MonoBehaviour
 
             movingTo = movingTo + movementDirection;
 
-            if (movingTo == pathSequence.Length - 1)
+            if (pathSequence.Length == 3)
+            {
+                if (movingTo == 2 && paused == false)
+                {
+                    truck.GetComponent<FollowPathPeople>().currentPath += 1;
+                    truck.GetComponent<Animator>().SetInteger("facing", 0);
+                    paused = true;
+                }
+            }
+            
+
+            /*if (movingTo == pathSequence.Length - 1)
             {
                 animator.SetInteger("facing", directionTurn);
-            }
+            }*/
 
-            if (movingTo == pathSequence.Length)
-            {
-                Destroy(truck);
-                dialogueController.tasksCompleted += 1;
+            //if (movingTo == pathSequence.Length)
+            //{
+                
                 //int path = truckingPath.path;
                 //truckingPath.path = (path + 1);
-            }
-
+            //}
+    
         }
 
+        Destroy(truck);
+        dialogueController.tasksCompleted += 1;
     }
 }
