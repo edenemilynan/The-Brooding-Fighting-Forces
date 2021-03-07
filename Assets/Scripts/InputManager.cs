@@ -27,6 +27,15 @@ public class InputManager : MonoBehaviour
     private bool trucksVisited   = false;
     private bool entryVisited   = false;
 
+    //1 will be right door, -1 will be left
+    public int whichEntryDoor = 1;
+
+    void Start()
+    {
+        truckingScreen.SetActive(false);
+        scanningScreen.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -47,10 +56,18 @@ public class InputManager : MonoBehaviour
             }
             if (morseCommand == ".") // Entry
             {
-                mainScreen.SetActive(false);
-                truckingScreen.SetActive(false);
-                scanningScreen.SetActive(true);
-                entryVisited = true;
+                if (scanningScreen.activeInHierarchy)
+                {
+                    whichEntryDoor = (whichEntryDoor * (-1));
+                }
+                else
+                {
+                    mainScreen.SetActive(false);
+                    truckingScreen.SetActive(false);
+                    scanningScreen.SetActive(true);
+                    entryVisited = true;
+                }
+                
             }
             if (morseCommand == "--") // Main
             {

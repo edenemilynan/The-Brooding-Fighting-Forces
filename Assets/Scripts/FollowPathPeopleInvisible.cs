@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class FollowPathPeople : MonoBehaviour
+public class FollowPathPeopleInvisible : MonoBehaviour
 {
     public MovementPath path;
     public TruckingController pathController;
     public Animator person;
-    public GameObject person1;
+    public InputManager manager;
 
     public float speed;
     public float MaxDistanceToGoal = .1f;
     public int currentPath;
     public int turn;
+    public int door;
 
     private IEnumerator<Transform> pointInPath;
-    private bool pathChanged = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,15 +32,10 @@ public class FollowPathPeople : MonoBehaviour
     void Update()
     {
 
-        if (currentPath == pathController.path)
+        if (currentPath == pathController.path && door == manager.whichEntryDoor)
         {
-
-            if ((currentPath % 2) == 0 && pathChanged == false)
-            {
-                person.SetInteger("facing", turn);
-                pathChanged = true;
-                person1.GetComponent<Renderer>().enabled = false;
-            }
+            person.SetInteger("facing", turn);
+            person.GetComponent<Renderer>().enabled = true;
 
             transform.position = Vector3.MoveTowards(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
 
