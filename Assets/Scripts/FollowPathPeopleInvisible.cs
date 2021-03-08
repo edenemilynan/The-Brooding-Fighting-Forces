@@ -9,6 +9,7 @@ public class FollowPathPeopleInvisible : MonoBehaviour
     public TruckingController pathController;
     public Animator person;
     public InputManager manager;
+    public GameObject counterPart;
 
     public float speed;
     public float MaxDistanceToGoal = .1f;
@@ -34,6 +35,7 @@ public class FollowPathPeopleInvisible : MonoBehaviour
 
         if (currentPath == pathController.path && door == manager.whichEntryDoor)
         {
+            Destroy(counterPart);
             person.SetInteger("facing", turn);
             person.GetComponent<Renderer>().enabled = true;
 

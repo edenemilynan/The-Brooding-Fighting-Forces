@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviour
     public GameObject DialogueController;
     public GameObject TruckingController;
     public GameObject PeopleController;
+    public EntryControls entryControl;
 
     public Animator ramp;
     public Animator entryDoor;
@@ -29,6 +30,27 @@ public class InputManager : MonoBehaviour
 
     //1 will be right door, -1 will be left
     public int whichEntryDoor = 1;
+    //1 will be upper door, -1 will be lower door
+    public int whichTruckingDoor = 1;
+
+    //Tries to dequeue task when another task has been 
+    //completed, but only succeeds if doors are closed
+    public bool taskWaiting = false;
+
+    //If an old task is sitting in task variable
+    //because next is not ready to dequeue (doors open)
+    //stops scan from being active/incrementing people paths
+    private bool oldScan = false;
+
+    //Conditions to trigger dequeue in task manager
+    public bool entryLeftOpen = false;
+    public bool entryRightOpen = false;
+    public bool truckingLeftOpen = false;
+    public bool truckingRightOpen = false;
+
+    //Conditions to trigger tasks here
+    private bool scanned = false;
+    private bool rampDown = false;
 
     void Start()
     {
@@ -42,6 +64,31 @@ public class InputManager : MonoBehaviour
         morseCommand = "";
         SpaceBarInput mi = morseInput.GetComponent<SpaceBarInput>();
         morseCommand = mi.morseReturn;
+        
+        //The new, beautiful complications of only
+        //dequeing a task if the relevant doors are closed
+        if (taskWaiting == true) 
+        {
+            if (taskManager.tasks.Peek() == TaskManager.Tasks.peopleAllow || taskManager.tasks.Peek() == TaskManager.Tasks.peopleDisallow)
+            {
+                if (entryLeftOpen == false && entryRightOpen == false)
+                {
+                    taskManager.GetTask();
+                    oldScan = false;
+                    entryDoor.ResetTrigger("scanner");
+                }
+            }
+
+            else
+            {
+                if (truckingLeftOpen == false && truckingRightOpen == false)
+                {
+                    taskManager.GetTask();
+                    oldScan = false;
+                }
+            }
+                
+        }
 
         if (morseCommand != "")
         {
@@ -79,12 +126,26 @@ public class InputManager : MonoBehaviour
             {
                 if (scanningScreen.activeInHierarchy)
                 {
-                    entryDoor.SetBool("entryIsOpen", false);
+                    //Old entry
+                    //entryDoor.SetBool("entryIsOpen", false);
+
+                    if (whichEntryDoor == 1)
+                    {
+                        entryRightOpen = false;
+                        entryControl.EntryRightClose();
+                    }
+
+                    else
+                    {
+                        entryLeftOpen = false;
+                        entryControl.EntryLeftClose();
+                    }
                 }
 
                 else if (truckingScreen.activeInHierarchy)
                 {
                     truckingDoor.GetComponent<TruckDoor>().TruckDoorClose();
+                    truckingRightOpen = false;
 
                     //Comment out for testing though ultimately this will need to change
                     /*if(!convo4activated && convo3activated)
@@ -98,24 +159,72 @@ public class InputManager : MonoBehaviour
             {
                 if (scanningScreen.activeInHierarchy)
                 {
-                    entryDoor.SetBool("entryIsOpen", true);
+                    //Old entry
+                    //entryDoor.SetBool("entryIsOpen", true);
 
-                    if (taskManager.task == TaskManager.Tasks.people)
+                    if (whichEntryDoor == 1)
                     {
-                        PeopleController.GetComponent<TruckingController>().path += 1;
-                        taskManager.GetTask();
+                        entryRightOpen = true;
+                        entryControl.EntryRightOpen();
                     }
+
+                    else
+                    {
+                        entryLeftOpen = true;
+                        entryControl.EntryLeftOpen();
+                    }
+
+                    if (taskManager.task == TaskManager.Tasks.peopleAllow || taskManager.task == TaskManager.Tasks.peopleDisallow)
+                    {
+                        if (scanned == true)
+                        {
+                            if (whichEntryDoor == 1)
+                            {
+                                if (taskManager.task == TaskManager.Tasks.peopleAllow)
+                                {
+                                    //Increment right/wrong choice
+                                }
+
+                                else
+                                {
+                                    //Increment right/wrong choice
+                                }
+
+                            }
+
+                            else
+                            {
+                                if (taskManager.task == TaskManager.Tasks.peopleDisallow)
+                                {
+                                    //Increment right/wrong choice
+                                }
+
+                                else
+                                {
+                                    //Increment right/wrong choice
+                                }
+                            }
+
+                            PeopleController.GetComponent<TruckingController>().path += 1;
+                            taskWaiting = true;
+                            scanned = false;
+                            //taskManager.GetTask();
+                        }
+                    }
+                    
                 }
                 else if (truckingScreen.activeInHierarchy)
                 {
                     truckingDoor.GetComponent<TruckDoor>().TruckDoorOpen();
+                    truckingRightOpen = true;
                     //Normally check if car is here but cut for prototype
 
                     if (taskManager.task == TaskManager.Tasks.truck)
                     {
                         TruckingController.GetComponent<TruckingController>().path += 1;
                         indicatorTrucking.SetBool("IndicatorOn", false);
-                        taskManager.GetTask();
+                        taskWaiting = true;
+                        //taskManager.GetTask();
                     }
                         
                     if(!convo3activated)
@@ -125,7 +234,7 @@ public class InputManager : MonoBehaviour
                     }
                 }
             }
-            /*
+            
             if (morseCommand == "..") // Interact
             {
                 if (truckingScreen.activeInHierarchy)
@@ -133,11 +242,37 @@ public class InputManager : MonoBehaviour
                     if (ramp.GetBool("isRampDown") == false)
                     {
                         ramp.SetBool("isRampDown", true);
+                        rampDown = true;
                     }
-                    else ramp.SetBool("isRampDown", false);
+                    else
+                    {
+                        ramp.SetBool("isRampDown", false);
+                        rampDown = false;
+                    }
+                }
+
+                if (scanningScreen.activeInHierarchy)
+                {
+                    entryControl.Scan();
+
+                    if (taskManager.task == TaskManager.Tasks.peopleAllow && oldScan == false) 
+                    {
+                        scanned = true;
+                        oldScan = true;
+                        entryControl.Allow();
+                    }
+                    else if (taskManager.task == TaskManager.Tasks.peopleDisallow && oldScan == false)
+                    {
+                        scanned = true;
+                        oldScan = true;
+                        entryControl.Disallow();
+                    }
+
+                        
+                        
                 }
             }
-            */
+            
             else 
             {
                 // Invalid Input

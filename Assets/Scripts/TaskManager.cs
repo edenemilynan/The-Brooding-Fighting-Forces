@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class TaskManager : MonoBehaviour
 {
-    public enum Tasks {truck, people, none};
-    private Queue<Tasks> tasks = new Queue<Tasks>();
+    //Had to add allow/disallow to allow tracking of right/wrong decisions later
+    public enum Tasks {truck, peopleAllow, peopleDisallow, none};
+    public Queue<Tasks> tasks = new Queue<Tasks>();
     public Tasks task = Tasks.none;
     public int nTasks = 6;
 
@@ -19,7 +20,9 @@ public class TaskManager : MonoBehaviour
 
 
     public Animator indicator;
-    public TruckingController personApproaches; 
+    public TruckingController personApproaches;
+    public InputManager manager;
+
     
     // Start is called before the first frame update
     void Start()
@@ -46,10 +49,10 @@ public class TaskManager : MonoBehaviour
         */
         // For demo 1: 6 tasks (4/2 split)
         tasks.Enqueue(Tasks.truck);
-        tasks.Enqueue(Tasks.people);
+        tasks.Enqueue(Tasks.peopleAllow);
         tasks.Enqueue(Tasks.truck);
         tasks.Enqueue(Tasks.truck);
-        tasks.Enqueue(Tasks.people);
+        tasks.Enqueue(Tasks.peopleDisallow);
         tasks.Enqueue(Tasks.truck);
 
         //Randomized
@@ -63,8 +66,40 @@ public class TaskManager : MonoBehaviour
         if (tasks.Count != 0)
         {
             task = tasks.Dequeue();
-            //Good place to trigger light above door that indicates task is waiting
+            manager.taskWaiting = false;
+
             if (task == Tasks.truck)
+            {
+                indicator.SetBool("IndicatorOn", true);
+            }
+
+            if (task == Tasks.peopleAllow || task == Tasks.peopleDisallow)
+            {
+                personApproaches.path += 1;
+            }
+
+            /*if (tasks.Peek() == Tasks.peopleAllow || tasks.Peek() == Tasks.peopleDisallow) 
+            {
+
+                if (manager.entryLeftOpen == false && manager.entryRightOpen == false)
+                {
+                    task = tasks.Dequeue();
+                    manager.taskWaiting = false;
+                    personApproaches.path += 1;
+                }
+            }
+
+            if (tasks.Peek() == Tasks.truck)
+            {
+                if (manager.truckingLeftOpen == false && manager.truckingRightOpen == false)
+                {
+                    task = tasks.Dequeue();
+                    indicator.SetBool("IndicatorOn", true);
+                }
+            }*/
+
+            //Good place to trigger light above door that indicates task is waiting
+            /*if (task == Tasks.truck)
             {
                 indicator.SetBool("IndicatorOn", true);
             }
@@ -72,7 +107,7 @@ public class TaskManager : MonoBehaviour
             if (task == Tasks.people)
             {
                 personApproaches.path += 1;
-            }
+            }*/
         }
 
         else task = Tasks.none;
