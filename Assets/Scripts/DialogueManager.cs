@@ -55,7 +55,7 @@ public class DialogueManager : MonoBehaviour
     {
         talking = true;
         animator.SetBool("IsOpen", true);
-        animator2.SetBool("IsOpen", true);
+        //animator2.SetBool("IsOpen", true);
         sentences.Clear();
         foreach (string sentence in dialogue.sentences)
         {
@@ -69,7 +69,7 @@ public class DialogueManager : MonoBehaviour
     {
         string sentence = sentences.Dequeue();
         dialogueText.text = sentence;
-        dialogueText2.text = sentence;
+        //dialogueText2.text = sentence;
         //dialogueText3.text = sentence;
 		timer = waitTime;
     }
@@ -78,7 +78,7 @@ public class DialogueManager : MonoBehaviour
     {
         talking = false;
         animator.SetBool("IsOpen", false);
-        animator2.SetBool("IsOpen", false);
+        //animator2.SetBool("IsOpen", false);
         if(LastConversation)
         {
             SceneManager.LoadScene(0);

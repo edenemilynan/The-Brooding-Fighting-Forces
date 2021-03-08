@@ -1068,7 +1068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &283883221
 Animator:
   serializedVersion: 3
@@ -1171,7 +1171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &315699291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3297,7 +3297,7 @@ Camera:
   field of view: 12.40801
   orthographic: 1
   orthographic size: 140
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -6144,7 +6144,7 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 125.47128
-  m_Depth: -1
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295

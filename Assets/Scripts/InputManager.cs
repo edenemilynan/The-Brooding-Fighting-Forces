@@ -94,9 +94,9 @@ public class InputManager : MonoBehaviour
         {
             if (morseCommand == "-") // Trucks
             {
-                mainScreen.SetActive(false);
                 truckingScreen.SetActive(true);
                 scanningScreen.SetActive(false);
+                mainScreen.SetActive(true);
                 trucksVisited = true;
                 //Commented out for testing/narrative needs rework
                 //DialogueController.GetComponent<DialogueController>().secondConversation = false;
@@ -109,7 +109,6 @@ public class InputManager : MonoBehaviour
                 }
                 else
                 {
-                    mainScreen.SetActive(false);
                     truckingScreen.SetActive(false);
                     scanningScreen.SetActive(true);
                     entryVisited = true;
@@ -118,7 +117,6 @@ public class InputManager : MonoBehaviour
             }
             if (morseCommand == "--") // Main
             {
-                mainScreen.SetActive(true);
                 truckingScreen.SetActive(false);
                 scanningScreen.SetActive(false);
             }
