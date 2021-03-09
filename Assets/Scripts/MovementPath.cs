@@ -14,6 +14,7 @@ public class MovementPath : MonoBehaviour
     //public Animator animator;
     public DialogueController dialogueController;
     public GameObject truck;
+    public InputManager inputManager;
     //public TruckingController pathControl;
 
     // Start is called before the first frame update
@@ -63,6 +64,10 @@ public class MovementPath : MonoBehaviour
                     truck.GetComponent<FollowPathPeople>().currentPath += 1;
                     truck.GetComponent<Animator>().SetInteger("facing", 0);
                     paused = true;
+                    if (inputManager != null)
+                    {
+                        inputManager.scannable = true;
+                    }    
                 }
             }
             

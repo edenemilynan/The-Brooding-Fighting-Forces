@@ -4,35 +4,47 @@ using UnityEngine;
 
 public class EntryControls : MonoBehaviour
 {
-    public Animator entry;
+    public Animator leftDoor;
+    public Animator rightDoor;
+    public Animator scanner;
+    public Animator scanBeam;
+    public Animator redLight;
+    public Animator greenLight;
+
     public AudioClip doorSound;
     public AudioSource audioSource;
 
+    /*public void Start()
+    {
+    }*/
+
     public void EntryRightOpen()
     {
-        if (entry.GetBool("rightEntryIsOpen") != true)
+        if (rightDoor.GetBool("entryOpen") != true)
         {
-            entry.SetBool("rightEntryIsOpen", true);
+            rightDoor.SetBool("entryOpen", true);
+            greenLight.SetBool("allow", false);
+            redLight.SetBool("disallow", false);
             audioSource.PlayOneShot(doorSound, 0.7F);
         }
-        
-
     }
 
     public void EntryRightClose()
     {
-        if (entry.GetBool("rightEntryIsOpen") != false)
+        if (rightDoor.GetBool("entryOpen") != false)
         {
-            entry.SetBool("rightEntryIsOpen", false);
+            rightDoor.SetBool("entryOpen", false);
             audioSource.PlayOneShot(doorSound, 0.7F);
         }
     }
 
     public void EntryLeftOpen()
     {
-        if (entry.GetBool("leftEntryIsOpen") != true)
+        if (leftDoor.GetBool("entryOpen") != true)
         {
-            entry.SetBool("leftEntryIsOpen", true);
+            leftDoor.SetBool("entryOpen", true);
+            redLight.SetBool("disallow", false);
+            greenLight.SetBool("allow", false);
             audioSource.PlayOneShot(doorSound, 0.7F);
         }
 
@@ -41,28 +53,28 @@ public class EntryControls : MonoBehaviour
 
     public void EntryLeftClose()
     {
-        if (entry.GetBool("leftEntryIsOpen") != false)
+        if (leftDoor.GetBool("entryOpen") != false)
         {
-            entry.SetBool("leftEntryIsOpen", false);
+            leftDoor.SetBool("entryOpen", false);
             audioSource.PlayOneShot(doorSound, 0.7F);
         }
     }
 
-    public void Scan()
+    public void scanOn()
     {
-        entry.SetTrigger("scanner");
-        entry.SetTrigger("default");
+        scanner.SetBool("scan", true);
+        scanBeam.SetTrigger("scan");
     }
 
     public void Allow()
     {
-        entry.SetTrigger("allow");
+        greenLight.SetBool("allow", true);
         //entry.ResetTrigger("allow");
     }
 
     public void Disallow()
     {
-        entry.SetTrigger("disallow");
+        redLight.SetBool("disallow", true);
         //entry.ResetTrigger("disallow");
     }
 }

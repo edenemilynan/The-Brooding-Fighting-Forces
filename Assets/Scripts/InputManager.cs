@@ -40,7 +40,8 @@ public class InputManager : MonoBehaviour
     //If an old task is sitting in task variable
     //because next is not ready to dequeue (doors open)
     //stops scan from being active/incrementing people paths
-    private bool oldScan = false;
+    //private bool oldScan = false;
+    public bool scannable = false;
 
     //Conditions to trigger dequeue in task manager
     public bool entryLeftOpen = false;
@@ -74,7 +75,7 @@ public class InputManager : MonoBehaviour
                 if (entryLeftOpen == false && entryRightOpen == false)
                 {
                     taskManager.GetTask();
-                    oldScan = false;
+                    //oldScan = false;
                     entryDoor.ResetTrigger("scanner");
                 }
             }
@@ -84,7 +85,7 @@ public class InputManager : MonoBehaviour
                 if (truckingLeftOpen == false && truckingRightOpen == false)
                 {
                     taskManager.GetTask();
-                    oldScan = false;
+                    //oldScan = false;
                 }
             }
                 
@@ -157,60 +158,66 @@ public class InputManager : MonoBehaviour
             {
                 if (scanningScreen.activeInHierarchy)
                 {
-                    //Old entry
-                    //entryDoor.SetBool("entryIsOpen", true);
-
-                    if (whichEntryDoor == 1)
+                    //If no one's waiting at the door, you can open it.
+                    if (taskManager.task != TaskManager.Tasks.peopleAllow && taskManager.task != TaskManager.Tasks.peopleDisallow)
                     {
-                        entryRightOpen = true;
-                        entryControl.EntryRightOpen();
-                    }
-
-                    else
-                    {
-                        entryLeftOpen = true;
-                        entryControl.EntryLeftOpen();
-                    }
-
-                    if (taskManager.task == TaskManager.Tasks.peopleAllow || taskManager.task == TaskManager.Tasks.peopleDisallow)
-                    {
-                        if (scanned == true)
+                        if (whichEntryDoor == 1)
                         {
-                            if (whichEntryDoor == 1)
+                            entryRightOpen = true;
+                            entryControl.EntryRightOpen();
+                        }
+
+                        else
+                        {
+                            entryLeftOpen = true;
+                            entryControl.EntryLeftOpen();
+                        }
+                    }
+                   
+                    //If people are waiting, they have to be scanned before they're let in.
+                    else if (scanned == true)
+                    {
+                        if (whichEntryDoor == 1)
+                        {
+                            entryRightOpen = true;
+                            entryControl.EntryRightOpen();
+
+                            if (taskManager.task == TaskManager.Tasks.peopleAllow)
                             {
-                                if (taskManager.task == TaskManager.Tasks.peopleAllow)
-                                {
-                                    //Increment right/wrong choice
-                                }
-
-                                else
-                                {
-                                    //Increment right/wrong choice
-                                }
-
+                                //Increment right/wrong choice
                             }
 
                             else
                             {
-                                if (taskManager.task == TaskManager.Tasks.peopleDisallow)
-                                {
-                                    //Increment right/wrong choice
-                                }
-
-                                else
-                                {
-                                    //Increment right/wrong choice
-                                }
+                                //Increment right/wrong choice
                             }
 
-                            PeopleController.GetComponent<TruckingController>().path += 1;
-                            taskWaiting = true;
-                            scanned = false;
-                            //taskManager.GetTask();
                         }
-                    }
-                    
+
+                        else
+                        {
+                            entryLeftOpen = true;
+                            entryControl.EntryLeftOpen();
+
+                            if (taskManager.task == TaskManager.Tasks.peopleDisallow)
+                            {
+                                //Increment right/wrong choice
+                            }
+
+                            else
+                            {
+                                //Increment right/wrong choice
+                            }
+                        }
+
+                        //Set person on rest of path, let know task is waiting to deque.
+                        PeopleController.GetComponent<TruckingController>().path += 1;
+                        taskWaiting = true;
+                        scanned = false;
+                        scannable = false;
+                    } 
                 }
+
                 else if (truckingScreen.activeInHierarchy)
                 {
                     truckingDoor.GetComponent<TruckDoor>().TruckDoorOpen();
@@ -251,23 +258,23 @@ public class InputManager : MonoBehaviour
 
                 if (scanningScreen.activeInHierarchy)
                 {
-                    entryControl.Scan();
+                    entryControl.scanOn();
 
-                    if (taskManager.task == TaskManager.Tasks.peopleAllow && oldScan == false) 
+                    if (taskManager.task == TaskManager.Tasks.peopleAllow && scannable == true) // && oldScan == false
                     {
                         scanned = true;
-                        oldScan = true;
+                        //oldScan = true;
                         entryControl.Allow();
                     }
-                    else if (taskManager.task == TaskManager.Tasks.peopleDisallow && oldScan == false)
+                    else if (taskManager.task == TaskManager.Tasks.peopleDisallow && scannable == true)
                     {
                         scanned = true;
-                        oldScan = true;
+                        //oldScan = true;
                         entryControl.Disallow();
                     }
+                    
 
-                        
-                        
+
                 }
             }
             

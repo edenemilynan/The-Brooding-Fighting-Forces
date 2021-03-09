@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 28180479}
   - component: {fileID: 28180478}
   m_Layer: 0
-  m_Name: greenlight_0
+  m_Name: greenLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 113354662}
   - component: {fileID: 113354661}
   m_Layer: 0
-  m_Name: redlight_0
+  m_Name: redLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -835,6 +835,7 @@ MonoBehaviour:
   - {fileID: 343340941}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 1789558146}
+  inputManager: {fileID: 0}
 --- !u!4 &204032916
 Transform:
   m_ObjectHideFlags: 0
@@ -897,6 +898,7 @@ MonoBehaviour:
   whichEntryDoor: 1
   whichTruckingDoor: 1
   taskWaiting: 0
+  scannable: 0
   entryLeftOpen: 0
   entryRightOpen: 0
   truckingLeftOpen: 0
@@ -1255,6 +1257,7 @@ MonoBehaviour:
   - {fileID: 498017456}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 676430076}
+  inputManager: {fileID: 0}
 --- !u!1 &283883220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1941,6 +1944,7 @@ GameObject:
   - component: {fileID: 398199264}
   - component: {fileID: 398199263}
   - component: {fileID: 398199262}
+  - component: {fileID: 398199265}
   m_Layer: 0
   m_Name: scannerBeam
   m_TagString: Untagged
@@ -2032,6 +2036,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &398199265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398199261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f64761e5a6ee56c4eacd0310d1fc5b01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scanBeam: {fileID: 398199262}
+  scanner: {fileID: 782949732}
 --- !u!1 &466252846
 GameObject:
   m_ObjectHideFlags: 0
@@ -3464,6 +3482,7 @@ MonoBehaviour:
   - {fileID: 762027376}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 1205444011}
+  inputManager: {fileID: 0}
 --- !u!1 &873182349
 GameObject:
   m_ObjectHideFlags: 0
@@ -3512,6 +3531,7 @@ MonoBehaviour:
   - {fileID: 343340941}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 366462837}
+  inputManager: {fileID: 0}
 --- !u!1 &894581040
 GameObject:
   m_ObjectHideFlags: 0
@@ -3921,6 +3941,7 @@ MonoBehaviour:
   - {fileID: 623117980}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 980338378}
+  inputManager: {fileID: 0}
 --- !u!4 &1091779080
 Transform:
   m_ObjectHideFlags: 0
@@ -4068,6 +4089,7 @@ MonoBehaviour:
   - {fileID: 1648005691}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 120906405}
+  inputManager: {fileID: 232540501}
 --- !u!1 &1172719644
 GameObject:
   m_ObjectHideFlags: 0
@@ -4150,6 +4172,7 @@ MonoBehaviour:
   - {fileID: 1648005691}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 394389713}
+  inputManager: {fileID: 0}
 --- !u!1 &1175786481
 GameObject:
   m_ObjectHideFlags: 0
@@ -4371,6 +4394,7 @@ MonoBehaviour:
   - {fileID: 343340941}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 1789558146}
+  inputManager: {fileID: 232540501}
 --- !u!1 &1261346261
 GameObject:
   m_ObjectHideFlags: 0
@@ -4419,6 +4443,7 @@ MonoBehaviour:
   - {fileID: 1648005691}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 1789558146}
+  inputManager: {fileID: 0}
 --- !u!1 &1269448216
 GameObject:
   m_ObjectHideFlags: 0
@@ -4566,6 +4591,7 @@ MonoBehaviour:
   - {fileID: 1581799737}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 735759263}
+  inputManager: {fileID: 0}
 --- !u!1 &1328162423
 GameObject:
   m_ObjectHideFlags: 0
@@ -6141,7 +6167,7 @@ MonoBehaviour:
   path: {fileID: 1248031871}
   pathController: {fileID: 965987684}
   person: {fileID: 1789558148}
-  person1: {fileID: 0}
+  person1: {fileID: 1789558146}
   speed: 40
   MaxDistanceToGoal: 0.1
   currentPath: 3
@@ -6699,6 +6725,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af3c623223f6664397dc6cd39bf108a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftDoor: {fileID: 509846407}
+  rightDoor: {fileID: 1516071743}
+  scanner: {fileID: 782949732}
+  scanBeam: {fileID: 398199262}
+  redLight: {fileID: 113354661}
+  greenLight: {fileID: 28180478}
   entry: {fileID: 1993634008}
   doorSound: {fileID: 8300000, guid: 4b46716b5e53dbe4ca94ecf7db5d5721, type: 3}
   audioSource: {fileID: 736064162}
