@@ -76,7 +76,7 @@ public class InputManager : MonoBehaviour
                 {
                     taskManager.GetTask();
                     //oldScan = false;
-                    entryDoor.ResetTrigger("scanner");
+                    //entryDoor.ResetTrigger("scanner");
                 }
             }
 
