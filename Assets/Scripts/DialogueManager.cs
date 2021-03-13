@@ -10,11 +10,13 @@ public class DialogueManager : MonoBehaviour
 {
 
     public TextMeshProUGUI dialogueText;
-    public TextMeshProUGUI dialogueText2;
-    //public TextMeshProUGUI dialogueText3;
+    public TextMeshProUGUI dialogueName;
+
 	public int waitTime;
+
     public Animator animator;
-    public Animator animator2;
+    public Animator changeInExpression;
+
     public bool talking = false;
     public bool LastConversation = false;
     //public bool pressed = false;
@@ -22,12 +24,16 @@ public class DialogueManager : MonoBehaviour
     //IEnumerator coroutine;
 
     private Queue<string> sentences;
+    private Queue<string> names;
+    private Queue<int> expressions;
 	private int timer;
 
     // Start is called before the first frame update
     void Start()
     {
         sentences = new Queue<string>();
+        names = new Queue<string>();
+        expressions = new Queue<int>();
     }
 
     void Update()
@@ -55,11 +61,23 @@ public class DialogueManager : MonoBehaviour
     {
         talking = true;
         animator.SetBool("IsOpen", true);
-        //animator2.SetBool("IsOpen", true);
         sentences.Clear();
+        names.Clear();
+        expressions.Clear();
+
         foreach (string sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
+        }
+
+        foreach (string name in dialogue.names)
+        {
+            names.Enqueue(name);
+        }
+
+        foreach (int expression in dialogue.expressions)
+        {
+            expressions.Enqueue(expression);
         }
 
         DisplayNextSentence();
@@ -68,9 +86,13 @@ public class DialogueManager : MonoBehaviour
     public void DisplayNextSentence()
     {
         string sentence = sentences.Dequeue();
+        string name = names.Dequeue();
+        int expression = expressions.Dequeue();
+
         dialogueText.text = sentence;
-        //dialogueText2.text = sentence;
-        //dialogueText3.text = sentence;
+        dialogueName.text = name;
+        changeInExpression.SetInteger("expression", expression);
+
 		timer = waitTime;
     }
 
@@ -78,7 +100,6 @@ public class DialogueManager : MonoBehaviour
     {
         talking = false;
         animator.SetBool("IsOpen", false);
-        //animator2.SetBool("IsOpen", false);
         if(LastConversation)
         {
             SceneManager.LoadScene(0);
