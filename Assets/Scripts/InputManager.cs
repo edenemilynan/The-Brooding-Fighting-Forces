@@ -107,6 +107,7 @@ public class InputManager : MonoBehaviour
                 if (scanningScreen.activeInHierarchy)
                 {
                     whichEntryDoor = (whichEntryDoor * (-1));
+                    entryControl.switchHighlight();
                 }
                 else
                 {

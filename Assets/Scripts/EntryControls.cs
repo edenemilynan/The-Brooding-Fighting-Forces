@@ -14,9 +14,10 @@ public class EntryControls : MonoBehaviour
     public AudioClip doorSound;
     public AudioSource audioSource;
 
-    /*public void Start()
+    public void Start()
     {
-    }*/
+        rightDoor.SetBool("isHighlighted", true);
+    }
 
     public void EntryRightOpen()
     {
@@ -76,5 +77,20 @@ public class EntryControls : MonoBehaviour
     {
         redLight.SetBool("disallow", true);
         //entry.ResetTrigger("disallow");
+    }
+
+    public void switchHighlight()
+    {
+        if (leftDoor.GetBool("isHighlighted") == true)
+        {
+            leftDoor.SetBool("isHighlighted", false);
+            rightDoor.SetBool("isHighlighted", true);
+        }
+
+        else
+        {
+            leftDoor.SetBool("isHighlighted", true);
+            rightDoor.SetBool("isHighlighted", false);
+        }
     }
 }
