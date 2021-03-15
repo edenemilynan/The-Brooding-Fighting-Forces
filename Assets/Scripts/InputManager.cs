@@ -20,6 +20,7 @@ public class InputManager : MonoBehaviour
     public Animator indicatorTrucking;
 
     public TaskManager taskManager;
+    public NotificationManager notifManager;
 
     private bool convo2activated = false;
     private bool convo3activated = false;
@@ -53,6 +54,7 @@ public class InputManager : MonoBehaviour
     private bool scanned = false;
     private bool rampDown = false;
 
+    public string activeScreen = "main";
     void Start()
     {
         truckingScreen.SetActive(false);
@@ -65,7 +67,10 @@ public class InputManager : MonoBehaviour
         morseCommand = "";
         SpaceBarInput mi = morseInput.GetComponent<SpaceBarInput>();
         morseCommand = mi.morseReturn;
-        
+
+        //Switching nofitication icon
+        notifManager.DisplayNotif(taskManager.task, activeScreen);
+
         //The new, beautiful complications of only
         //dequeing a task if the relevant doors are closed
         if (taskWaiting == true) 
@@ -95,15 +100,18 @@ public class InputManager : MonoBehaviour
         {
             if (morseCommand == "-") // Trucks
             {
+                activeScreen = "truck";
                 truckingScreen.SetActive(true);
                 scanningScreen.SetActive(false);
                 mainScreen.SetActive(true);
                 trucksVisited = true;
+
                 //Commented out for testing/narrative needs rework
                 //DialogueController.GetComponent<DialogueController>().secondConversation = false;
             }
             if (morseCommand == ".") // Entry
             {
+                activeScreen = "entry";
                 if (scanningScreen.activeInHierarchy)
                 {
                     whichEntryDoor = (whichEntryDoor * (-1));
@@ -115,12 +123,14 @@ public class InputManager : MonoBehaviour
                     scanningScreen.SetActive(true);
                     entryVisited = true;
                 }
-                
+
             }
             if (morseCommand == "--") // Main
             {
+                activeScreen = "main";
                 truckingScreen.SetActive(false);
                 scanningScreen.SetActive(false);
+
             }
             if (morseCommand == "-.") // Negative
             {
