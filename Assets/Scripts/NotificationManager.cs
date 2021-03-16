@@ -43,6 +43,10 @@ public class NotificationManager : MonoBehaviour
             {
                 ChangeSprite('e');
             }
+            else if (task == TaskManager.Tasks.none)
+            {
+                ChangeSprite('m');
+            }
             else
                 ChangeSprite('0');
         }
