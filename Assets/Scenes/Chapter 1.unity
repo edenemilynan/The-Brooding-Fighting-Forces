@@ -4227,7 +4227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 1410878209}
   dialogueName: {fileID: 1500985535}
-  waitTime: 5
+  waitTime: 60
   animator: {fileID: 892941331}
   changeInExpression: {fileID: 1282858797}
   talking: 0
