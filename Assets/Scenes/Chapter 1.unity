@@ -1152,6 +1152,7 @@ MonoBehaviour:
   secondConversation: 1
   thirdConversation: 1
   fourthConversation: 1
+  readyForFourthConvo: 0
   fifthConversation: 1
   DialogueManager: {fileID: 1027721082}
   InputManager: {fileID: 232540500}
@@ -4284,10 +4285,14 @@ MonoBehaviour:
     sentences:
     - You are a real natural at this Mento!
     - "Oh? What is this\u2026?\r\n"
-    - There is something that needs your attention back on the Main screen. Please
-      come meet me over there.
-    names: []
-    expressions: 
+    - There is something that needs your attention back on the Main screen.
+    - Please come meet me over there.
+    names:
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    expressions: 03000000070000000500000006000000
 --- !u!4 &1108219230
 Transform:
   m_ObjectHideFlags: 0
@@ -4473,8 +4478,10 @@ MonoBehaviour:
     - 'Now close the door behind them. The code for closing doors is N for Negative!
 
 '
-    names: []
-    expressions: 
+    names:
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    expressions: 0600000005000000
 --- !u!4 &1175786483
 Transform:
   m_ObjectHideFlags: 0
@@ -5507,8 +5514,11 @@ MonoBehaviour:
 '
     - Looks like someone has arrived in the Trucking area. The code to let them in
       is A for Affirmative!
-    names: []
-    expressions: 
+    names:
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    expressions: 030000000600000005000000
 --- !u!4 &1423502127
 Transform:
   m_ObjectHideFlags: 0
@@ -6734,8 +6744,8 @@ MonoBehaviour:
     - 'Something has come up Mento! '
     - "During all your hard work, my programming allows me to constantly scan the
       company mainframe. \r\n\n"
-    - 'I have found the most distressing issue! Not to fear, I have the solution
-      right here. '
+    - 'Not to fear, I have the solution right here. '
+    - 'Not to fear, I have the solution right here. '
     - 'It is only a small number of files I require a manual input for implementation. '
     - Simply press ENTER on your keyboard to allow me to input these changes.
     - One moment, please!
@@ -6765,17 +6775,18 @@ MonoBehaviour:
     - I.V.A.A.L.
     - I.V.A.A.L.
     - I.V.A.A.L.
-    - ' '
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
     - I.V.A.A.L.
     - ' '
-    - UNKNOWN
-    - BEXOS
-    - UNKNOWN
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    - ' '
+    - Unknown
+    - Bexos
+    - Unknown
     - 
-    expressions: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    expressions: 080000000800000008000000060000000600000003000000060000000700000002000000050000000300000006000000080000000900000007000000050000000600000006000000060000000600000006000000
 --- !u!1 &1729013932
 GameObject:
   m_ObjectHideFlags: 0

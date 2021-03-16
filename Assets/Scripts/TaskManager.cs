@@ -49,10 +49,10 @@ public class TaskManager : MonoBehaviour
         */
         // For demo 1: 6 tasks (4/2 split)
         tasks.Enqueue(Tasks.truck);
-        tasks.Enqueue(Tasks.peopleAllow);
-        tasks.Enqueue(Tasks.truck);
-        tasks.Enqueue(Tasks.truck);
         tasks.Enqueue(Tasks.peopleDisallow);
+        tasks.Enqueue(Tasks.truck);
+        tasks.Enqueue(Tasks.truck);
+        tasks.Enqueue(Tasks.peopleAllow);
         tasks.Enqueue(Tasks.truck);
 
         //Randomized
