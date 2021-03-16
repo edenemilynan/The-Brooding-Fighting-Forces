@@ -10,6 +10,10 @@ public class DialogueController : MonoBehaviour
     public int convosHad = 0;
     public bool secondConversation = true;
     public bool thirdConversation  = true;
+    public bool startTruckingCompletionConversation = false;
+    public bool startEntryIntroConversation = false;
+    public bool startEntryErrorConversation = false;
+    public bool startEntryCompletionConversation = false;
     public bool fourthConversation = true;
     public bool readyForFourthConvo = false;
     public bool fifthConversation  = true;
@@ -32,7 +36,7 @@ public class DialogueController : MonoBehaviour
     {
         if (tasksCompleted == 0 && convosHad == 0)
         {
-            GameObject conversation = GameObject.Find("FirstConversation");
+            GameObject conversation = GameObject.Find("IntroductoryConversation");
             DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
             convosHad += 1;
 
@@ -47,6 +51,18 @@ public class DialogueController : MonoBehaviour
             DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
             secondConversation = true;
             convosHad += 1;
+
+            if (other != null)
+            {
+                other.TriggerDialogue();
+            }
+        }
+
+        if (startTruckingCompletionConversation){
+            GameObject conversation = GameObject.Find("TruckCompletionConversation");
+            DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
+            startTruckingCompletionConversation = false;
+            convosHad++;
 
             if (other != null)
             {
@@ -69,8 +85,51 @@ public class DialogueController : MonoBehaviour
             }
         }
 
+
+        if(startEntryIntroConversation)
+        {
+            GameObject conversation = GameObject.Find("EntryIntroConversation");
+            DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
+            startEntryIntroConversation = false;
+            convosHad++;
+
+            if (other != null)
+            {
+                other.TriggerDialogue();
+            }
+        }
+
+        if(startEntryErrorConversation)
+        {
+            GameObject conversation = GameObject.Find("EntryErrorConversation");
+            DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
+            startEntryErrorConversation = false;
+            convosHad++;
+
+            if (other != null)
+            {
+                other.TriggerDialogue();
+            }
+        }
+
+        if(startEntryCompletionConversation)
+        {
+            GameObject conversation = GameObject.Find("EntryCompletionConversation");
+            DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
+            startEntryCompletionConversation = false;
+            convosHad++;
+
+            if (other != null)
+            {
+                other.TriggerDialogue();
+            }
+        }
+
+
+
+
         //These numbers are just for testing purposes
-        if (taskManager.tasks.Count == 0 && convosHad == 3 && readyForFourthConvo)
+        if (taskManager.tasks.Count == 0 && convosHad >= 3 && readyForFourthConvo)
         {
             GameObject conversation = GameObject.Find("FourthConversation");
             DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
@@ -78,6 +137,7 @@ public class DialogueController : MonoBehaviour
             //DialogueManager.GetComponent<DialogueManager>().conversationFourDone = true;
             InputManager.GetComponent<InputManager>().setConvo4Activated(true);
             //DialogueController.GetComponent<DialogueController>().secondConversation = false;
+            readyForFourthConvo = false;
 
             if (other != null)
             {

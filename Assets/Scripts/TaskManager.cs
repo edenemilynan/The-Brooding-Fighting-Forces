@@ -54,6 +54,7 @@ public class TaskManager : MonoBehaviour
         tasks.Enqueue(Tasks.truck);
         tasks.Enqueue(Tasks.peopleAllow);
         tasks.Enqueue(Tasks.truck);
+        tasks.Enqueue(Tasks.none);
 
         //Randomized
         task = tasks.Dequeue();

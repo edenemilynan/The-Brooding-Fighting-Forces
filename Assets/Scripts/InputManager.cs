@@ -5,6 +5,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     public string morseCommand;
+    public string lastMorseCommand;
     public GameObject mainScreen;
     public GameObject truckingScreen;
     public GameObject scanningScreen;
@@ -28,6 +29,10 @@ public class InputManager : MonoBehaviour
     public bool convo5activated = false;
     private bool trucksVisited   = false;
     private bool entryVisited   = false;
+    private bool truckingCompletionConversationActivated = false;
+    private bool entryIntroConversationStarted = false;
+    private bool entryErrorConversationActivated = false;
+    private bool entryCompletionConversationActivated = false;
 
     //1 will be right door, -1 will be left
     public int whichEntryDoor = 1;
@@ -96,21 +101,22 @@ public class InputManager : MonoBehaviour
                 
         }
 
-        Debug.Log(taskManager.tasks.Count);
-        Debug.Log(taskManager.task);
+        // Debug.Log(taskManager.tasks.Count);
+        // Debug.Log(taskManager.task);
 
         if(taskManager.tasks.Count == 0 && taskManager.task != TaskManager.Tasks.none)
         {
             taskManager.GetTask();
         }
 
-        if(taskManager.tasks.Count == 0 && taskManager.task == TaskManager.Tasks.none)
+        if(taskManager.tasks.Count == 0 && taskManager.task == TaskManager.Tasks.none && !convo4activated)
         {
             DialogueController.GetComponent<DialogueController>().readyForFourthConvo = true;
         }
 
         if (morseCommand != "")
-        {
+        {   
+            lastMorseCommand = morseCommand;
             if (morseCommand == "-") // Trucks
             {
                 activeScreen = "truck";
@@ -317,6 +323,32 @@ public class InputManager : MonoBehaviour
         {
             DialogueController.GetComponent<DialogueController>().secondConversation = false;
             convo2activated = true;
+        }
+
+        if (convo3activated  && !truckingCompletionConversationActivated && activeScreen == "truck" && lastMorseCommand == "-.")
+        {
+            Debug.Log("Made it into TruckingCompletionConversation");
+            DialogueController.GetComponent<DialogueController>().startTruckingCompletionConversation = true;
+            truckingCompletionConversationActivated = true;
+        }
+
+        if(truckingCompletionConversationActivated && !entryIntroConversationStarted && activeScreen == "entry")
+        {
+            DialogueController.GetComponent<DialogueController>().startEntryIntroConversation = true;
+            entryIntroConversationStarted = true;
+        }
+
+        if(entryIntroConversationStarted && !entryErrorConversationActivated && activeScreen == "entry" && lastMorseCommand == "..")
+        {
+            DialogueController.GetComponent<DialogueController>().startEntryErrorConversation = true;
+            entryErrorConversationActivated = true;
+        }
+
+        if(entryErrorConversationActivated && !entryCompletionConversationActivated && activeScreen == "entry" && lastMorseCommand == ".-")
+        {
+            Debug.Log("Entering the area that starts the Entry Completion Conversation");
+            DialogueController.GetComponent<DialogueController>().startEntryCompletionConversation = true;
+            entryCompletionConversationActivated = true;
         }
 
         if (convo4activated && activeScreen == "main" && !convo5activated)

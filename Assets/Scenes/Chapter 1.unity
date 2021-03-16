@@ -1029,6 +1029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   morseCommand: 
+  lastMorseCommand: 
   mainScreen: {fileID: 2016604489}
   truckingScreen: {fileID: 1358372213}
   scanningScreen: {fileID: 1025529278}
@@ -1151,6 +1152,10 @@ MonoBehaviour:
   convosHad: 0
   secondConversation: 1
   thirdConversation: 1
+  startTruckingCompletionConversation: 0
+  startEntryIntroConversation: 0
+  startEntryErrorConversation: 0
+  startEntryCompletionConversation: 0
   fourthConversation: 1
   readyForFourthConvo: 0
   fifthConversation: 1
@@ -1183,9 +1188,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a5b462f3da63adf4baea1684a69b6885, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a33fde887b7eed448a74bc5b355a2a67, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2184,6 +2189,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &468982418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 468982419}
+  - component: {fileID: 468982420}
+  m_Layer: 0
+  m_Name: EntryIntroConversation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &468982419
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468982418}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 367.32935, y: -411.0998, z: 374.12964}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1528162585}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &468982420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468982418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ef9b938d51c2340aa217973309f1ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    sentences:
+    - "What is it, you wonder? Well\u2026 the automatic door in the Entryway is not
+      functional!"
+    - 'Is this the exact same task? No! Nonsense! '
+    - "You see, you are guarding a very important place- High Lord Bexos\u2019 personal
+      office!"
+    - 'That means you can only let authorized personnel enter!
+
+'
+    - 'How do you know? Well, the entryway has a built-in, handy-dandy scanner!
+
+'
+    - Just type "I" with the entryway window active to activate the scanner!
+    - 'Go on! Scan the workers and let them in. Then close the door behind them! '
+    - Do not forget to let trucks in too!
+    names:
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    expressions: 0600000009000000050000000700000006000000060000000300000003000000
 --- !u!1 &498017455
 GameObject:
   m_ObjectHideFlags: 0
@@ -3780,7 +3854,7 @@ GameObject:
   - component: {fileID: 894581042}
   - component: {fileID: 894581041}
   m_Layer: 0
-  m_Name: FirstConversation
+  m_Name: IntroductoryConversation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4283,7 +4357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     sentences:
-    - You are a real natural at this Mento!
+    - Good work today, Mento!
     - "Oh? What is this\u2026?\r\n"
     - There is something that needs your attention back on the Main screen.
     - Please come meet me over there.
@@ -4305,7 +4379,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1528162585}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1113740327
 GameObject:
@@ -5533,6 +5607,59 @@ Transform:
   m_Father: {fileID: 1528162585}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1436880141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1436880142}
+  - component: {fileID: 1436880143}
+  m_Layer: 0
+  m_Name: TruckCompletionConversation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1436880142
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436880141}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 367.32935, y: -411.0998, z: 374.12964}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1528162585}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1436880143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436880141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ef9b938d51c2340aa217973309f1ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    sentences:
+    - Completion! On to your next duty!
+    - It seems like there is a task waiting for you in the Entryway.
+    - Please make your way over there.
+    names:
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    expressions: 030000000600000006000000
 --- !u!1 &1463967962
 GameObject:
   m_ObjectHideFlags: 0
@@ -5632,6 +5759,57 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 3
   m_TargetDisplay: 0
+--- !u!1 &1487901925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1487901926}
+  - component: {fileID: 1487901927}
+  m_Layer: 0
+  m_Name: EntryErrorConversation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1487901926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487901925}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 367.32935, y: -411.0998, z: 374.12964}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1528162585}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1487901927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487901925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ef9b938d51c2340aa217973309f1ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    sentences:
+    - Oh? It must be malfunctioning.
+    - It is ok! Just let them in!
+    names:
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    expressions: 0500000006000000
 --- !u!1 &1493185053
 GameObject:
   m_ObjectHideFlags: 0
@@ -6022,6 +6200,10 @@ Transform:
   - {fileID: 894581042}
   - {fileID: 1423502127}
   - {fileID: 1175786483}
+  - {fileID: 1436880142}
+  - {fileID: 468982419}
+  - {fileID: 1487901926}
+  - {fileID: 1648144649}
   - {fileID: 1108219230}
   - {fileID: 1718102258}
   m_Father: {fileID: 0}
@@ -6270,6 +6452,59 @@ Transform:
   m_Father: {fileID: 1113740328}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1648144648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1648144649}
+  - component: {fileID: 1648144650}
+  m_Layer: 0
+  m_Name: EntryCompletionConversation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1648144649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648144648}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 367.32935, y: -411.0998, z: 374.12964}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1528162585}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1648144650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648144648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ef9b938d51c2340aa217973309f1ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    sentences:
+    - You are a real natural at this, Mento!
+    - Well, that is everything I had to teach you.
+    - "I will let you know if something comes up!\r"
+    names:
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    - I.V.A.A.L.
+    expressions: 030000000600000006000000
 --- !u!1 &1674134503
 GameObject:
   m_ObjectHideFlags: 0
@@ -6725,7 +6960,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1528162585}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1718102259
 MonoBehaviour:
@@ -6742,9 +6977,11 @@ MonoBehaviour:
   dialogue:
     sentences:
     - 'Something has come up Mento! '
-    - "During all your hard work, my programming allows me to constantly scan the
-      company mainframe. \r\n\n"
-    - 'Not to fear, I have the solution right here. '
+    - 'During all your hard work, my programming allows me...
+
+
+'
+    - "...  to constantly scan the company mainframe. \r"
     - 'Not to fear, I have the solution right here. '
     - 'It is only a small number of files I require a manual input for implementation. '
     - Simply press ENTER on your keyboard to allow me to input these changes.
