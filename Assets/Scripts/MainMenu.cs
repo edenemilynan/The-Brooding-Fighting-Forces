@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour
     void Update()
     {
         timePassed += Time.deltaTime;
-        Debug.Log(timePassed);
+        //Debug.Log(timePassed);
         // Every few seconds, switch between images
         if(timePassed >= 2)
         {

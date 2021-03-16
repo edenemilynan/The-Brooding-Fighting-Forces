@@ -11,6 +11,7 @@ public class DialogueController : MonoBehaviour
     public bool secondConversation = true;
     public bool thirdConversation  = true;
     public bool fourthConversation = true;
+    public bool readyForFourthConvo = false;
     public bool fifthConversation  = true;
     public GameObject DialogueManager;
     public GameObject InputManager;
@@ -45,6 +46,7 @@ public class DialogueController : MonoBehaviour
             GameObject conversation = GameObject.Find("SecondConversation");
             DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
             secondConversation = true;
+            convosHad += 1;
 
             if (other != null)
             {
@@ -57,6 +59,7 @@ public class DialogueController : MonoBehaviour
             GameObject conversation = GameObject.Find("ThirdConversation");
             DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
             thirdConversation = true;
+            convosHad += 1;
 
 
 
@@ -67,7 +70,7 @@ public class DialogueController : MonoBehaviour
         }
 
         //These numbers are just for testing purposes
-        if (tasksCompleted == taskManager.nTasks && convosHad == 1)
+        if (taskManager.tasks.Count == 0 && convosHad == 3 && readyForFourthConvo)
         {
             GameObject conversation = GameObject.Find("FourthConversation");
             DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();

@@ -84,10 +84,13 @@ public class DialogueManager : MonoBehaviour
     }
     
     public void DisplayNextSentence()
-    {
+    {       
+        string name = "I.V.A.A.L.";
+        int expression = 6;
         string sentence = sentences.Dequeue();
-        string name = names.Dequeue();
-        int expression = expressions.Dequeue();
+        
+        if(names.Count != 0)      { name = names.Dequeue(); }
+        if(expressions.Count != 0){ expression = expressions.Dequeue(); }
 
         dialogueText.text = sentence;
         dialogueName.text = name;

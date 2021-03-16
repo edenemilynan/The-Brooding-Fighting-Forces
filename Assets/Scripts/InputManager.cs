@@ -73,7 +73,7 @@ public class InputManager : MonoBehaviour
 
         //The new, beautiful complications of only
         //dequeing a task if the relevant doors are closed
-        if (taskWaiting == true) 
+        if (taskWaiting == true && taskManager.tasks.Count != 0) 
         {
             if (taskManager.tasks.Peek() == TaskManager.Tasks.peopleAllow || taskManager.tasks.Peek() == TaskManager.Tasks.peopleDisallow)
             {
@@ -94,6 +94,19 @@ public class InputManager : MonoBehaviour
                 }
             }
                 
+        }
+
+        Debug.Log(taskManager.tasks.Count);
+        Debug.Log(taskManager.task);
+
+        if(taskManager.tasks.Count == 0 && taskManager.task != TaskManager.Tasks.none)
+        {
+            taskManager.GetTask();
+        }
+
+        if(taskManager.tasks.Count == 0 && taskManager.task == TaskManager.Tasks.none)
+        {
+            DialogueController.GetComponent<DialogueController>().readyForFourthConvo = true;
         }
 
         if (morseCommand != "")
@@ -306,7 +319,7 @@ public class InputManager : MonoBehaviour
             convo2activated = true;
         }
 
-        if (convo4activated && mainScreen.activeInHierarchy && !convo5activated)
+        if (convo4activated && activeScreen == "main" && !convo5activated)
         {
             Debug.Log("You made it here, you saucy son of a bitch");
             DialogueController.GetComponent<DialogueController>().fifthConversation = false;
