@@ -3905,8 +3905,8 @@ MonoBehaviour:
     - Perhaps it is confusing, yes?
     - Well, do not worry! It is easy, and we can practice together!!!
     - Let us do that now!
-    - Go to the Trucking Area and the Entryway. There should be a note of reference
-      to the left of your monitor!
+    - Go to the Trucking Area and the Entryway.
+    - There should be a note of reference to the left of your monitor!
     names:
     - I.V.A.A.L.
     - I.V.A.A.L.
@@ -3932,7 +3932,8 @@ MonoBehaviour:
     - I.V.A.A.L.
     - I.V.A.A.L.
     - I.V.A.A.L.
-    expressions: 030000000600000008000000070000000300000006000000030000000300000006000000090000000300000003000000060000000300000006000000080000000400000006000000060000000500000002000000030000000300000006000000
+    - I.V.A.A.L.
+    expressions: 03000000060000000800000007000000030000000600000003000000030000000600000009000000030000000300000006000000030000000600000008000000040000000600000006000000050000000200000003000000030000000600000006000000
 --- !u!4 &894581042
 Transform:
   m_ObjectHideFlags: 0
