@@ -19,5 +19,6 @@ public class Dialogue {
     public string[] sentences;
     public string[] names;
     public int[] expressions;
+    public int[] sounds;
 
 }

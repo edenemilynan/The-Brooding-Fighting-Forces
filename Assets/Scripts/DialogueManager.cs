@@ -26,6 +26,8 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
     private Queue<string> names;
     private Queue<int> expressions;
+    private Queue<int> sounds;
+    private GameObject dialogueAudioPlayer;
 	private int timer;
 
     // Start is called before the first frame update
@@ -34,6 +36,8 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
         names = new Queue<string>();
         expressions = new Queue<int>();
+        sounds = new Queue<int>();
+        dialogueAudioPlayer = transform.Find("DialogueAudioPlayer").gameObject;
     }
 
     void Update()
@@ -64,6 +68,7 @@ public class DialogueManager : MonoBehaviour
         sentences.Clear();
         names.Clear();
         expressions.Clear();
+        sounds.Clear();
 
         foreach (string sentence in dialogue.sentences)
         {
@@ -80,6 +85,11 @@ public class DialogueManager : MonoBehaviour
             expressions.Enqueue(expression);
         }
 
+        foreach (int sound in dialogue.sounds)
+        {
+            sounds.Enqueue(sound);
+        }
+
         DisplayNextSentence();
     }
     
@@ -87,14 +97,18 @@ public class DialogueManager : MonoBehaviour
     {       
         string name = "I.V.A.A.L.";
         int expression = 6;
+        int sound = 0; //no sound
         string sentence = sentences.Dequeue();
         
-        if(names.Count != 0)      { name = names.Dequeue(); }
+        if(names.Count != 0)      { name       = names.Dequeue(); }
         if(expressions.Count != 0){ expression = expressions.Dequeue(); }
+        if(sounds.Count != 0     ){ sound      = sounds.Dequeue(); }
+
 
         dialogueText.text = sentence;
         dialogueName.text = name;
         changeInExpression.SetInteger("expression", expression);
+        dialogueAudioPlayer.GetComponent<DialogueAudioPlayer>().PlayDialogueSound(sound);
 
 		timer = waitTime;
     }

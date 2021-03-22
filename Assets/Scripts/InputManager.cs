@@ -104,10 +104,10 @@ public class InputManager : MonoBehaviour
         // Debug.Log(taskManager.tasks.Count);
         // Debug.Log(taskManager.task);
 
-        if(taskManager.tasks.Count == 0 && taskManager.task != TaskManager.Tasks.none)
-        {
-            taskManager.GetTask();
-        }
+        // if(taskManager.tasks.Count == 0 && taskManager.task != TaskManager.Tasks.none)
+        // {
+        //     taskManager.GetTask();
+        // }
 
         if(taskManager.tasks.Count == 0 && taskManager.task == TaskManager.Tasks.none && !convo4activated)
         {
