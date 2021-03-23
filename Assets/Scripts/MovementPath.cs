@@ -5,27 +5,35 @@ using System;
 
 public class MovementPath : MonoBehaviour
 {
-    public int movementDirection = 1;
-    public int movingTo = 0;
+    private bool paused = false;
+    private int movementDirection = 1;
+    private int movingTo = 0;
     public Transform[] pathSequence;
-    public int direction;
-    public Animator animator;
+    //public int directionStart;
+    //public int directionTurn;
+    //public Animator animator;
+    public DialogueController dialogueController;
+    public GameObject truck;
+    public InputManager inputManager;
+    //public TruckingController pathControl;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator.SetInteger("facing", 3);
+        //animator.SetInteger("facing", directionStart);
+        //GameObject conversation = GameObject.Find("DialogueController");
+        //DialogueController conversationScript = (DialogueController)conversation.GetComponent<DialogueController>();
     }
 
     // Update is called once per frame
     public void OnDrawGizmos()
     {
-        if(pathSequence == null || pathSequence.Length < 2)
+        if (pathSequence == null || pathSequence.Length < 2)
         {
             return;
         }
 
-        for(var i = 1; i < pathSequence.Length; i++)
+        for (var i = 1; i < pathSequence.Length; i++)
         {
             Gizmos.DrawLine(pathSequence[i - 1].position, pathSequence[i].position);
         }
@@ -48,7 +56,37 @@ public class MovementPath : MonoBehaviour
             }
 
             movingTo = movingTo + movementDirection;
+
+            if (pathSequence.Length == 3)
+            {
+                if (movingTo == 2 && paused == false)
+                {
+                    truck.GetComponent<FollowPathPeople>().currentPath += 1;
+                    truck.GetComponent<Animator>().SetInteger("facing", 0);
+                    paused = true;
+                    if (inputManager != null)
+                    {
+                        inputManager.scannable = true;
+                    }    
+                }
+            }
+            
+
+            /*if (movingTo == pathSequence.Length - 1)
+            {
+                animator.SetInteger("facing", directionTurn);
+            }*/
+
+            //if (movingTo == pathSequence.Length)
+            //{
+                
+                //int path = truckingPath.path;
+                //truckingPath.path = (path + 1);
+            //}
+    
         }
 
+        Destroy(truck);
+        dialogueController.tasksCompleted += 1;
     }
 }

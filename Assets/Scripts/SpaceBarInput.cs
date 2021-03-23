@@ -7,13 +7,15 @@ public class SpaceBarInput : MonoBehaviour
 {
 
     private float morseTimer = 0.0f; //timer to track how long someone has pressed the spacebar to input morse code.
-    private float dawLength  = 0.35f;
-    private float ditLength  = 0.1f;
-    private float gapTimer   = 0.0f;
+    private float dawLength  = 0.45f;
+    //private float ditLength  = 0.1f;
+    //private float gapTimer   = 0.0f;
     public enum  Signal {Dit, Daw};
     public List<Signal> morseCodeSignals = new List<Signal>();
     public string morseReturn;
-    private float gapLength = 1.5f;
+    public GameObject manager;
+    //public GameObject manager;
+    //private float gapLength = 1.5f;
 
 
 
@@ -26,35 +28,36 @@ public class SpaceBarInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //isTalking = manager.GetComponent<DialogueManager>().path;
+
         morseReturn = "";
         if (Input.GetKey(KeyCode.Space))
         {
             
             morseTimer += Time.deltaTime;
-            gapTimer    = 0.0f;
 
-        }
-        else
-        {
-            gapTimer += Time.deltaTime;
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            
-            if(morseTimer > dawLength)
+            if (morseCodeSignals.Count < 2 && !manager.GetComponent<DialogueManager>().talking)
             {
-                morseCodeSignals.Add(Signal.Daw);
-                Debug.Log(morseTimer + " seconds: DAW");
-                PrintLetter();
-            }
-            else
-            {
-                morseCodeSignals.Add(Signal.Dit);
-                Debug.Log(morseTimer + " seconds: DIT");
-                PrintLetter();
+                if (morseTimer > dawLength)
+                {
+                    morseCodeSignals.Add(Signal.Daw);
+                    //Debug.Log(morseTimer + " seconds: DAW");
+                    PrintLetter();
+                }
+                else
+                {
+                    morseCodeSignals.Add(Signal.Dit);
+                    //Debug.Log(morseTimer + " seconds: DIT");
+                    PrintLetter();
 
+                }
             }
+            
+
             morseTimer = 0.0f;
         }
 
@@ -63,7 +66,7 @@ public class SpaceBarInput : MonoBehaviour
             //PrintLetter(true);
 
             morseReturn = "";
-            Debug.Log("Current String: " + morseReturn);
+            //Debug.Log("Current String: " + morseReturn);
             foreach (Signal sig in morseCodeSignals)
             {
                 if (sig == Signal.Dit)
@@ -76,7 +79,7 @@ public class SpaceBarInput : MonoBehaviour
                 }
             }
             morseCodeSignals.Clear();
-            Debug.Log("Return String: " + morseReturn);
+            //Debug.Log("Return String: " + morseReturn);
         }
 
         if (morseCodeSignals.Count > 0 && Input.GetKeyDown(KeyCode.Backspace))
@@ -89,6 +92,19 @@ public class SpaceBarInput : MonoBehaviour
 
     void PrintLetter(bool deleteLetter = false)
     {   
+        string morseLetter = GetCurrentMorseLetter();
+
+        //Debug.Log("Current Letter: " + morseLetter);
+
+        if(deleteLetter)
+        {
+            morseCodeSignals.Clear();
+            //Debug.Log("Letter Cleared");
+        } 
+    }
+
+    public string GetCurrentMorseLetter()
+    {
         string morseLetter = "";
 
         foreach(Signal sig in morseCodeSignals)
@@ -103,12 +119,6 @@ public class SpaceBarInput : MonoBehaviour
             }
         }
 
-        Debug.Log("Current Letter: " + morseLetter);
-
-        if(deleteLetter)
-        {
-            morseCodeSignals.Clear();
-            Debug.Log("Letter Cleared");
-        } 
+        return morseLetter;
     }
 }
