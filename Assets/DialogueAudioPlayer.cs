@@ -9,15 +9,14 @@ public class DialogueAudioPlayer : MonoBehaviour
 {
 
     public AudioSource audioSource;
-    private AudioClip  knockSound;
-    private AudioClip  hitSound;
+    public AudioClip  knockSound;
+    public AudioClip  hitSound;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        knockSound = (AudioClip)AssetDatabase.LoadAssetAtPath("Assets/Audio/SFX/knock.wav", typeof(AudioClip));
-        hitSound = (AudioClip)AssetDatabase.LoadAssetAtPath("Assets/Audio/SFX/hit.wav", typeof(AudioClip));
+
     }
 
     // Update is called once per frame
