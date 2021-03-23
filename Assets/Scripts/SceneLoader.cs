@@ -6,9 +6,7 @@ using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
-    //Load
-    public Button petuniaB, swethB, mentoB;
-    public bool petuniaDone = false, swethDone = false , mentoDone = false;
+    public CharacterButtons cb;
 
     public void LoadNextScene()
     {
@@ -18,23 +16,31 @@ public class SceneLoader : MonoBehaviour
     }
     public void LoadScene(Button button)
     {
-        // Load character intro and set true if done chapter
-        if (button == mentoB)
+        // Load character intro and set false if done chapter
+        // Changes the buttons to not be interactable by CharacterButton script
+        if (button == cb.mentoB)
         {
-            SceneManager.LoadScene(2);
-            mentoDone = true;
+            CharacterButtons.mentoNotClicked = false;
+            SceneManager.LoadScene(3);
         }
-        else if(button == swethB)
+        else if(button == cb.petuniaB)
         {
-            SceneManager.LoadScene(4);
+            CharacterButtons.petuniaNotClicked = false;
+            SceneManager.LoadScene(5);
         }
-        else if (button == mentoB)
+        else if (button == cb.swethB)
         {
-            SceneManager.LoadScene(6);
+            CharacterButtons.swethNotClicked = false;
+            SceneManager.LoadScene(7);
         }
         
-
     }
+    
+    public void LoadScene(int i)
+    {
+        SceneManager.LoadScene(i);
+    }
+    
 
     public void QuitGame()
     {
