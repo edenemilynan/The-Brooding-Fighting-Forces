@@ -21,7 +21,7 @@ public class SceneLoader : MonoBehaviour
         if (button == cb.mentoB)
         {
             CharacterButtons.mentoNotClicked = false;
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(2);
         }
         else if(button == cb.petuniaB)
         {
