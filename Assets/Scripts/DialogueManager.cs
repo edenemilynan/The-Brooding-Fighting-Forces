@@ -119,7 +119,7 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("IsOpen", false);
         if(LastConversation)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
     }
 
