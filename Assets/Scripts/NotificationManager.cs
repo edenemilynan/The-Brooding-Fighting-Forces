@@ -6,6 +6,10 @@ public class NotificationManager : MonoBehaviour
 {
     public Sprite[] notifSprites;
     public SpriteRenderer spriteRend = null;
+    public Animator notifBounce;
+
+    //For Animator: 
+    //Default = 0; Main = 1; Trucking = 2; Entry = 3
 
     /*
     void Update()
@@ -74,18 +78,22 @@ public class NotificationManager : MonoBehaviour
             case '0':
                 Debug.Log(c);
                 spriteRend.sprite = null;
+                notifBounce.SetInteger("notification", 0);
                 break;
             case 'e':
                 Debug.Log(c);
                 spriteRend.sprite = notifSprites[0];
+                notifBounce.SetInteger("notification", 3);
                 break;
             case 't':
                 Debug.Log(c);
                 spriteRend.sprite = notifSprites[1];
+                notifBounce.SetInteger("notification", 2);
                 break;
             case 'm':
                 Debug.Log(c);
                 spriteRend.sprite = notifSprites[2];
+                notifBounce.SetInteger("notification", 1);
                 break;
             default:
                 break;
