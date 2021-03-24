@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -61,7 +62,7 @@ public class DialogueManager : MonoBehaviour
 		}
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(string fileName)
     {
         talking = true;
         animator.SetBool("IsOpen", true);
@@ -70,25 +71,45 @@ public class DialogueManager : MonoBehaviour
         expressions.Clear();
         sounds.Clear();
 
-        foreach (string sentence in dialogue.sentences)
+        StreamReader sr = new StreamReader("Assets/Dialogues/"+fileName+".csv");
+		List<string> lines = new List<string>();
+		while (!sr.EndOfStream)
+		{
+			string temp = sr.ReadLine();
+			lines.Add(temp);
+		}
+        for (int i = 0; i < lines.Count; i++)
         {
-            sentences.Enqueue(sentence);
-        }
-
-        foreach (string name in dialogue.names)
-        {
-            names.Enqueue(name);
-        }
-
-        foreach (int expression in dialogue.expressions)
-        {
-            expressions.Enqueue(expression);
-        }
-
-        foreach (int sound in dialogue.sounds)
-        {
-            sounds.Enqueue(sound);
-        }
+            string[] line = (lines[i].Trim()).Split("|"[0]);
+			
+			try
+			{
+				string w = line[0];
+				sentences.Enqueue(w);
+			}
+			catch{}
+			
+			try
+			{
+				string x = line[1];
+				names.Enqueue(x);
+			}
+			catch{}
+			
+			try
+			{
+				int y = int.Parse(line[2]);
+				expressions.Enqueue(y);
+			}
+			catch{}
+			
+			try
+			{
+				int z = int.Parse(line[3]);
+				sounds.Enqueue(z);
+			}
+            catch{}
+		}
 
         DisplayNextSentence();
     }

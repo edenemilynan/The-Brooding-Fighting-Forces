@@ -2260,6 +2260,7 @@ MonoBehaviour:
     - I.V.A.A.L.
     expressions: 0600000009000000050000000700000006000000060000000300000003000000
     sounds: 
+  dialogueName: EntryIntroConversation
 --- !u!1 &498017455
 GameObject:
   m_ObjectHideFlags: 0
@@ -4039,6 +4040,7 @@ MonoBehaviour:
     - I.V.A.A.L.
     expressions: 03000000060000000800000007000000030000000600000003000000030000000600000009000000030000000300000006000000030000000600000008000000040000000600000006000000050000000200000003000000030000000600000006000000
     sounds: 
+  dialogueName: IntroductoryConversation
 --- !u!4 &894581042
 Transform:
   m_ObjectHideFlags: 0
@@ -4559,6 +4561,7 @@ MonoBehaviour:
     - I.V.A.A.L.
     expressions: 03000000070000000500000006000000
     sounds: 
+  dialogueName: FourthConversation
 --- !u!4 &1108219230
 Transform:
   m_ObjectHideFlags: 0
@@ -4749,6 +4752,7 @@ MonoBehaviour:
     - I.V.A.A.L.
     expressions: 0600000005000000
     sounds: 
+  dialogueName: ThirdConversation
 --- !u!4 &1175786483
 Transform:
   m_ObjectHideFlags: 0
@@ -5787,6 +5791,7 @@ MonoBehaviour:
     - I.V.A.A.L.
     expressions: 030000000600000005000000
     sounds: 
+  dialogueName: SecondConversation
 --- !u!4 &1423502127
 Transform:
   m_ObjectHideFlags: 0
@@ -5855,6 +5860,7 @@ MonoBehaviour:
     - I.V.A.A.L.
     expressions: 030000000600000006000000
     sounds: 
+  dialogueName: TruckCompletionConversation
 --- !u!1 &1463967962
 GameObject:
   m_ObjectHideFlags: 0
@@ -6006,6 +6012,7 @@ MonoBehaviour:
     - I.V.A.A.L.
     expressions: 0500000006000000
     sounds: 
+  dialogueName: EntryErrorConversation
 --- !u!1 &1493185053
 GameObject:
   m_ObjectHideFlags: 0
@@ -6561,8 +6568,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1597850128}
-  knockSound: {fileID: 8300000, guid: 696ff52579c5102469d6c0ede310a03f, type: 3}
-  hitSound: {fileID: 8300000, guid: 1b5a1adfb5a89b144905211e08ea3056, type: 3}
+  knockSound: {fileID: 0}
+  hitSound: {fileID: 0}
 --- !u!82 &1597850128
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6845,6 +6852,7 @@ MonoBehaviour:
     - I.V.A.A.L.
     expressions: 030000000600000006000000
     sounds: 
+  dialogueName: EntryCompletionConversation
 --- !u!1 &1674134503
 GameObject:
   m_ObjectHideFlags: 0
@@ -7365,6 +7373,7 @@ MonoBehaviour:
     - 
     expressions: 080000000800000008000000060000000600000003000000060000000700000002000000050000000300000006000000080000000900000007000000050000000600000006000000060000000600000006000000
     sounds: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000100000000000000000000000000000002000000
+  dialogueName: FifthConversation
 --- !u!1 &1729013932
 GameObject:
   m_ObjectHideFlags: 0
