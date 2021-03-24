@@ -128,7 +128,7 @@ public class DialogueManager : MonoBehaviour
 
         dialogueText.text = sentence;
         dialogueName.text = name;
-        changeInExpression.SetInteger("expression", expression);
+        changeInExpression.SetFloat("BlendExpression", expression);
         dialogueAudioPlayer.GetComponent<DialogueAudioPlayer>().PlayDialogueSound(sound);
 
 		timer = waitTime;

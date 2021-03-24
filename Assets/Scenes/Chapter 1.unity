@@ -2233,33 +2233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ef9b938d51c2340aa217973309f1ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    sentences:
-    - "What is it, you wonder? Well\u2026 the automatic door in the Entryway is not
-      functional!"
-    - 'Is this the exact same task? No! Nonsense! '
-    - "You see, you are guarding a very important place- High Lord Bexos\u2019 personal
-      office!"
-    - 'That means you can only let authorized personnel enter!
-
-'
-    - 'How do you know? Well, the entryway has a built-in, handy-dandy scanner!
-
-'
-    - Just type "I" with the entryway window active to activate the scanner!
-    - 'Go on! Scan the workers and let them in. Then close the door behind them! '
-    - Do not forget to let trucks in too!
-    names:
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    expressions: 0600000009000000050000000700000006000000060000000300000003000000
-    sounds: 
   dialogueName: EntryIntroConversation
 --- !u!1 &498017455
 GameObject:
@@ -3977,69 +3950,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ef9b938d51c2340aa217973309f1ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    sentences:
-    - "So, you are starting as a Junior Security Operations Specialist. \r \n"
-    - "This is quite the job description for a junior position, yes? \n"
-    - "And I see that you are making... minimum wage? \n"
-    - "With no benefits... \r"
-    - "Lucky you! Congratulations! \r\n"
-    - "Well then, let us get started!\r \n"
-    - "Hello! I am I.V.A.A.L., Bexos\u2019 Interactive Virtual Artificial Assistant
-      Lodestar.\r\n"
-    - "I am here to assist your security training for a seamless transition into
-      our grand company. \r\r\n"
-    - 'You must have worked so hard to earn a job ranking here. '
-    - "It is quite the position, especially with an employee as\u2026...... unseasoned
-      as yourself\u2026........."
-    - Anyway, enough about you! Let us get back to work!
-    - 'Your job is a hard one, especially because your usual means of input are all
-      out of order! '
-    - Only the spacebar, enter, and backspace buttons are functional on your keyboard.
-    - That is more than alright though! Do not fret! Humans are so very adaptable
-      after all!
-    - 'Four entire centuries ago someone named Samuel Morse created the telegraph. '
-    - That technology only had one button and you get a whopping three times more!
-    - "You can use this ancient and demeaning tool to perform your tasks. Isn\u2019t
-      that such a relief?"
-    - Right now, you are on the Main Screen.
-    - You have access to cameras, one to the Entryway and another to the Trucking
-      Area.
-    - 'Their respcective morse codes are on the reference sheet to the left of your
-      monitor. '
-    - Perhaps it is confusing, yes?
-    - Well, do not worry! It is easy, and we can practice together!!!
-    - Let us do that now!
-    - Go to the Trucking Area and the Entryway.
-    - There should be a note of reference to the left of your monitor!
-    names:
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    expressions: 03000000060000000800000007000000030000000600000003000000030000000600000009000000030000000300000006000000030000000600000008000000040000000600000006000000050000000200000003000000030000000600000006000000
-    sounds: 
   dialogueName: IntroductoryConversation
 --- !u!4 &894581042
 Transform:
@@ -4548,19 +4458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ef9b938d51c2340aa217973309f1ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    sentences:
-    - Good work today, Mento!
-    - "Oh? What is this\u2026?\r\n"
-    - There is something that needs your attention back on the Main screen.
-    - Please come meet me over there.
-    names:
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    expressions: 03000000070000000500000006000000
-    sounds: 
   dialogueName: FourthConversation
 --- !u!4 &1108219230
 Transform:
@@ -4741,17 +4638,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ef9b938d51c2340aa217973309f1ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    sentences:
-    - Very good!
-    - 'Now close the door behind them. The code for closing doors is N for Negative!
-
-'
-    names:
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    expressions: 0600000005000000
-    sounds: 
   dialogueName: ThirdConversation
 --- !u!4 &1175786483
 Transform:
@@ -5777,20 +5663,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ef9b938d51c2340aa217973309f1ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    sentences:
-    - Wow, you are SO talented!
-    - 'I guess that means you are ready for your first task!
-
-'
-    - Looks like someone has arrived in the Trucking area. The code to let them in
-      is A for Affirmative!
-    names:
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    expressions: 030000000600000005000000
-    sounds: 
   dialogueName: SecondConversation
 --- !u!4 &1423502127
 Transform:
@@ -5849,17 +5721,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ef9b938d51c2340aa217973309f1ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    sentences:
-    - Completion! On to your next duty!
-    - It seems like there is a task waiting for you in the Entryway.
-    - Please make your way over there.
-    names:
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    expressions: 030000000600000006000000
-    sounds: 
   dialogueName: TruckCompletionConversation
 --- !u!1 &1463967962
 GameObject:
@@ -6003,15 +5864,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ef9b938d51c2340aa217973309f1ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    sentences:
-    - Oh? It must be malfunctioning.
-    - It is ok! Just let them in!
-    names:
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    expressions: 0500000006000000
-    sounds: 
   dialogueName: EntryErrorConversation
 --- !u!1 &1493185053
 GameObject:
@@ -6568,8 +6420,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1597850128}
-  knockSound: {fileID: 0}
-  hitSound: {fileID: 0}
+  knockSound: {fileID: 8300000, guid: 696ff52579c5102469d6c0ede310a03f, type: 3}
+  hitSound: {fileID: 8300000, guid: 1b5a1adfb5a89b144905211e08ea3056, type: 3}
 --- !u!82 &1597850128
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6841,17 +6693,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ef9b938d51c2340aa217973309f1ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    sentences:
-    - You are a real natural at this, Mento!
-    - Well, that is everything I had to teach you.
-    - "I will let you know if something comes up!\r"
-    names:
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    expressions: 030000000600000006000000
-    sounds: 
   dialogueName: EntryCompletionConversation
 --- !u!1 &1674134503
 GameObject:
@@ -7322,57 +7163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ef9b938d51c2340aa217973309f1ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    sentences:
-    - 'Something has come up Mento! '
-    - 'During all your hard work, my programming allows me...
-
-
-'
-    - "...  to constantly scan the company mainframe. \r"
-    - 'Not to fear, I have the solution right here. '
-    - 'It is only a small number of files I require a manual input for implementation. '
-    - Simply press ENTER on your keyboard to allow me to input these changes.
-    - One moment, please!
-    - ...
-    - ...........
-    - .....................................
-    - Whew! You worked hard! Thank you Mento!
-    - (A bang at the door is heard)
-    - Oh, what's this?
-    - ...oh.
-    - Hm....
-    - Do not worry, it is nothing. Everything is ok! See you tomorrow!
-    - (a greater knock and hinges squeeking is heard)
-    - This is where we traced the virus, sir!
-    - Hmph. Discard them immediately.
-    - Yes sir!
-    - (A whap noise is heard. The screen goes black. The sound of a body being dragged
-      away plays)
-    names:
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - ' '
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - I.V.A.A.L.
-    - ' '
-    - Unknown
-    - Bexos
-    - Unknown
-    - 
-    expressions: 080000000800000008000000060000000600000003000000060000000700000002000000050000000300000006000000080000000900000007000000050000000600000006000000060000000600000006000000
-    sounds: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000100000000000000000000000000000002000000
   dialogueName: FifthConversation
 --- !u!1 &1729013932
 GameObject:

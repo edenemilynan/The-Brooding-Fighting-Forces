@@ -33,10 +33,8 @@ public class DialogueAudioPlayer : MonoBehaviour
         {
             case 1:
                 return knockSound;
-                break;
             case 2:
                 return hitSound;
-                break;
         }
 
         return knockSound;        
