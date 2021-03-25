@@ -39,7 +39,7 @@ public class NotificationManager : MonoBehaviour
         //If not the main camera, condition on truck or entry cameraview
         if(camera != "main")
         {
-            if (task == TaskManager.Tasks.truck && camera != "truck")
+            if ((task == TaskManager.Tasks.truckRight || task == TaskManager.Tasks.truckLeft) && camera != "truck")
             {
                 ChangeSprite('t');
             }
@@ -56,7 +56,7 @@ public class NotificationManager : MonoBehaviour
         }
         else
         {
-            if (task == TaskManager.Tasks.truck)
+            if (task == TaskManager.Tasks.truckRight || task == TaskManager.Tasks.truckLeft)
             {
                 ChangeSprite('t');
             }

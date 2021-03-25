@@ -10,15 +10,13 @@ public class InputManager : MonoBehaviour
     public GameObject truckingScreen;
     public GameObject scanningScreen;
     public GameObject morseInput;
-    public GameObject truckingDoor;
     public GameObject DialogueController;
     public GameObject TruckingController;
     public GameObject PeopleController;
     public EntryControls entryControl;
+    public TruckingControls truckingControl;
 
-    public Animator ramp;
     public Animator entryDoor;
-    public Animator indicatorTrucking;
 
     public TaskManager taskManager;
     public NotificationManager notifManager;
@@ -36,8 +34,10 @@ public class InputManager : MonoBehaviour
 
     //1 will be right door, -1 will be left
     public int whichEntryDoor = 1;
-    //1 will be upper door, -1 will be lower door
+    //1 will be right door, -1 will be left door
     public int whichTruckingDoor = 1;
+    //ramp up is -1, ramp down is 1
+    public int rampDown = -1;
 
     //Tries to dequeue task when another task has been 
     //completed, but only succeeds if doors are closed
@@ -57,7 +57,6 @@ public class InputManager : MonoBehaviour
 
     //Conditions to trigger tasks here
     private bool scanned = false;
-    private bool rampDown = false;
 
     public string activeScreen = "main";
     void Start()
@@ -92,10 +91,13 @@ public class InputManager : MonoBehaviour
 
             else
             {
-                if (truckingLeftOpen == false && truckingRightOpen == false)
+                if (truckingLeftOpen == false && truckingRightOpen == false)    
                 {
-                    taskManager.GetTask();
-                    //oldScan = false;
+                    if (rampDown == -1)
+                    {
+                        taskManager.GetTask();
+                        //oldScan = false;
+                    }
                 }
             }
                 
@@ -120,6 +122,12 @@ public class InputManager : MonoBehaviour
             if (morseCommand == "-") // Trucks
             {
                 activeScreen = "truck";
+                
+                if (truckingScreen.activeInHierarchy)
+                {
+                    whichTruckingDoor = (whichTruckingDoor * (-1));
+                }
+
                 truckingScreen.SetActive(true);
                 scanningScreen.SetActive(false);
                 mainScreen.SetActive(true);
@@ -131,6 +139,7 @@ public class InputManager : MonoBehaviour
             if (morseCommand == ".") // Entry
             {
                 activeScreen = "entry";
+
                 if (scanningScreen.activeInHierarchy)
                 {
                     whichEntryDoor = (whichEntryDoor * (-1));
@@ -173,8 +182,17 @@ public class InputManager : MonoBehaviour
 
                 else if (truckingScreen.activeInHierarchy)
                 {
-                    truckingDoor.GetComponent<TruckDoor>().TruckDoorClose();
-                    truckingRightOpen = false;
+                    if (whichTruckingDoor == 1)
+                    {
+                        truckingRightOpen = false;
+                        truckingControl.truckRightClose();
+                    }
+
+                    else
+                    {
+                        truckingLeftOpen = false;
+                        truckingControl.truckLeftClose();
+                    }
 
                     //Comment out for testing though ultimately this will need to change
                     /*if(!convo4activated && convo3activated)
@@ -250,17 +268,43 @@ public class InputManager : MonoBehaviour
 
                 else if (truckingScreen.activeInHierarchy)
                 {
-                    truckingDoor.GetComponent<TruckDoor>().TruckDoorOpen();
-                    truckingRightOpen = true;
+
+                    if (whichTruckingDoor == 1)
+                    {
+                        truckingRightOpen = true;
+                        truckingControl.truckRightOpen();
+
+                        if (taskManager.task == TaskManager.Tasks.truckRight)
+                        {
+                            TruckingController.GetComponent<TruckingController>().path += 1;
+                            truckingControl.rightIndicatorOff();
+                            //Change trucking indicator
+                            taskWaiting = true;
+                            //taskManager.GetTask();
+                        }
+                    }
+
+                    else
+                    {
+                        //If we randomize the order of the tasks, we'll need to make seperate controllers for 
+                        //left and right trucks
+                        if (rampDown == 1)
+                        {
+                            truckingLeftOpen = true;
+                            truckingControl.truckLeftOpen();
+                            if (taskManager.task == TaskManager.Tasks.truckLeft)
+                            {
+                                TruckingController.GetComponent<TruckingController>().path += 1;
+                                truckingControl.leftIndicatorOff();
+                                //Change trucking indicator
+                                taskWaiting = true;
+                                //taskManager.GetTask();
+                            }
+                        }
+                    }
                     //Normally check if car is here but cut for prototype
 
-                    if (taskManager.task == TaskManager.Tasks.truck)
-                    {
-                        TruckingController.GetComponent<TruckingController>().path += 1;
-                        indicatorTrucking.SetBool("IndicatorOn", false);
-                        taskWaiting = true;
-                        //taskManager.GetTask();
-                    }
+                    
                         
                     if(!convo3activated)
                     {
@@ -274,16 +318,8 @@ public class InputManager : MonoBehaviour
             {
                 if (truckingScreen.activeInHierarchy)
                 {
-                    if (ramp.GetBool("isRampDown") == false)
-                    {
-                        ramp.SetBool("isRampDown", true);
-                        rampDown = true;
-                    }
-                    else
-                    {
-                        ramp.SetBool("isRampDown", false);
-                        rampDown = false;
-                    }
+                    truckingControl.rampActivate();
+                    rampDown = (rampDown * (-1));
                 }
 
                 if (scanningScreen.activeInHierarchy)

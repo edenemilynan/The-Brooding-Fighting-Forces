@@ -5,7 +5,7 @@ using UnityEngine;
 public class TaskManager : MonoBehaviour
 {
     //Had to add allow/disallow to allow tracking of right/wrong decisions later
-    public enum Tasks {truck, peopleAllow, peopleDisallow, none};
+    public enum Tasks {truckRight, truckLeft, peopleAllow, peopleDisallow, none};
     public Queue<Tasks> tasks = new Queue<Tasks>();
     public Tasks task = Tasks.none;
     public int nTasks = 6;
@@ -19,7 +19,7 @@ public class TaskManager : MonoBehaviour
     */
 
 
-    public Animator indicator;
+    public TruckingControls truckingControl;
     public TruckingController personApproaches;
     public InputManager manager;
 
@@ -48,18 +48,18 @@ public class TaskManager : MonoBehaviour
         }
         */
         // For demo 1: 6 tasks (4/2 split)
-        tasks.Enqueue(Tasks.truck);
+        tasks.Enqueue(Tasks.truckRight);
         tasks.Enqueue(Tasks.peopleDisallow);
-        tasks.Enqueue(Tasks.truck);
-        tasks.Enqueue(Tasks.truck);
+        tasks.Enqueue(Tasks.truckRight);
+        tasks.Enqueue(Tasks.truckLeft);
         tasks.Enqueue(Tasks.peopleAllow);
-        tasks.Enqueue(Tasks.truck);
+        tasks.Enqueue(Tasks.truckRight);
         tasks.Enqueue(Tasks.none);
 
         //Randomized
         task = tasks.Dequeue();
         //This only works if first task is hard-coded as truck
-        indicator.SetBool("IndicatorOn", true);
+        truckingControl.rightIndicatorOn();
     }
 
     public void GetTask()
@@ -69,12 +69,17 @@ public class TaskManager : MonoBehaviour
             task = tasks.Dequeue();
             manager.taskWaiting = false;
 
-            if (task == Tasks.truck)
+            if (task == Tasks.truckRight)
             {
-                indicator.SetBool("IndicatorOn", true);
+                truckingControl.rightIndicatorOn();
             }
 
-            if (task == Tasks.peopleAllow || task == Tasks.peopleDisallow)
+            else if (task == Tasks.truckLeft)
+            {
+                truckingControl.leftIndicatorOn();
+            }
+
+            else if (task == Tasks.peopleAllow || task == Tasks.peopleDisallow)
             {
                 personApproaches.path += 1;
             }
