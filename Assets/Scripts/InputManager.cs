@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     public GameObject mainScreen;
     public GameObject truckingScreen;
     public GameObject scanningScreen;
+    public GameObject sortingScreen;
     public GameObject morseInput;
     public GameObject DialogueController;
     public GameObject TruckingController;
@@ -20,13 +21,14 @@ public class InputManager : MonoBehaviour
 
     public TaskManager taskManager;
     public NotificationManager notifManager;
+    public SortingManager sortManager;
 
     private bool convo2activated = false;
     private bool convo3activated = false;
     public bool convo4activated = false;
     public bool convo5activated = false;
-    private bool trucksVisited   = false;
-    private bool entryVisited   = false;
+    private bool trucksVisited = false;
+    private bool entryVisited = false;
     private bool truckingCompletionConversationActivated = false;
     private bool entryIntroConversationStarted = false;
     private bool entryErrorConversationActivated = false;
@@ -58,6 +60,7 @@ public class InputManager : MonoBehaviour
     //Conditions to trigger tasks here
     private bool scanned = false;
 
+    //For notifications to keep track of what screen we are on
     public string activeScreen = "main";
     void Start()
     {
@@ -116,10 +119,13 @@ public class InputManager : MonoBehaviour
             DialogueController.GetComponent<DialogueController>().readyForFourthConvo = true;
         }
 
+        //Command Inputs
         if (morseCommand != "")
         {   
             lastMorseCommand = morseCommand;
-            if (morseCommand == "-") // Trucks
+
+            //Trucks
+            if (morseCommand == "-")
             {
                 activeScreen = "truck";
                 
@@ -130,13 +136,16 @@ public class InputManager : MonoBehaviour
 
                 truckingScreen.SetActive(true);
                 scanningScreen.SetActive(false);
+                sortingScreen.SetActive(false);
                 mainScreen.SetActive(true);
                 trucksVisited = true;
 
                 //Commented out for testing/narrative needs rework
                 //DialogueController.GetComponent<DialogueController>().secondConversation = false;
             }
-            if (morseCommand == ".") // Entry
+
+            //Entry
+            if (morseCommand == ".")
             {
                 activeScreen = "entry";
 
@@ -149,19 +158,44 @@ public class InputManager : MonoBehaviour
                 {
                     truckingScreen.SetActive(false);
                     scanningScreen.SetActive(true);
+                    sortingScreen.SetActive(false);
                     entryVisited = true;
                 }
 
             }
-            if (morseCommand == "--") // Main
+
+            //Sorting
+            if (morseCommand == "...")
+            {
+                activeScreen = "sorting";
+
+                if (sortingScreen.activeInHierarchy)
+                {
+                    
+                }
+                else
+                {
+                    truckingScreen.SetActive(false);
+                    scanningScreen.SetActive(false);
+                    sortingScreen.SetActive(true);
+                }
+
+            }
+
+            //Main
+            if (morseCommand == "--")
             {
                 activeScreen = "main";
                 truckingScreen.SetActive(false);
                 scanningScreen.SetActive(false);
+                sortingScreen.SetActive(false);
 
             }
-            if (morseCommand == "-.") // Negative
+
+            //Negative
+            if (morseCommand == "-.")
             {
+                //Entry Command
                 if (scanningScreen.activeInHierarchy)
                 {
                     //Old entry
@@ -180,6 +214,7 @@ public class InputManager : MonoBehaviour
                     }
                 }
 
+                //Trucking Command
                 else if (truckingScreen.activeInHierarchy)
                 {
                     if (whichTruckingDoor == 1)
@@ -201,9 +236,19 @@ public class InputManager : MonoBehaviour
                         DialogueController.GetComponent<DialogueController>().fourthConversation = false;
                     }*/
                 }
+
+                //Sorting Command
+                else if (sortingScreen.activeInHierarchy)
+                {
+                    sortManager.validate("negative");
+
+                }
             }
-            if (morseCommand == ".-") // Affirm
+
+            //Affirm
+            if (morseCommand == ".-")
             {
+                //Entry Command
                 if (scanningScreen.activeInHierarchy)
                 {
                     //If no one's waiting at the door, you can open it.
@@ -266,6 +311,7 @@ public class InputManager : MonoBehaviour
                     } 
                 }
 
+                //Trucking Command
                 else if (truckingScreen.activeInHierarchy)
                 {
 
@@ -312,16 +358,26 @@ public class InputManager : MonoBehaviour
                         DialogueController.GetComponent<DialogueController>().thirdConversation = false;
                     }
                 }
+
+                //Sorting Command
+                else if(sortingScreen.activeInHierarchy)
+                {
+                    sortManager.validate("affirm");
+
+                }
             }
-            
-            if (morseCommand == "..") // Interact
+
+            //Interact
+            if (morseCommand == "..")
             {
+                //Trucking Command
                 if (truckingScreen.activeInHierarchy)
                 {
                     truckingControl.rampActivate();
                     rampDown = (rampDown * (-1));
                 }
 
+                //Entry Command
                 if (scanningScreen.activeInHierarchy)
                 {
                     entryControl.scanOn();
@@ -338,8 +394,12 @@ public class InputManager : MonoBehaviour
                         //oldScan = true;
                         entryControl.Disallow();
                     }
-                    
+                }
 
+                //Sorting Command
+                else if (sortingScreen.activeInHierarchy)
+                {
+                    sortManager.validate("interact");
 
                 }
             }
@@ -349,9 +409,6 @@ public class InputManager : MonoBehaviour
                 // Invalid Input
                 Debug.Log("Invalid Input");
             }
-
-
-
 
         }
 
