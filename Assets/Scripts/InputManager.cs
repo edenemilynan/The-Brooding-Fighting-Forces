@@ -96,12 +96,17 @@ public class InputManager : MonoBehaviour
             {
                 if (truckingLeftOpen == false && truckingRightOpen == false)    
                 {
-                    if (rampDown == -1)
+                    if (taskManager.tasks.Peek() == taskManager.Tasks.truckLeft) {
+                        if (rampDown == -1)
                     {
                         taskManager.GetTask();
                         //oldScan = false;
                     }
                 }
+                    else
+                    {
+                        taskManager.GetTask();
+                    }
             }
                 
         }
@@ -132,6 +137,7 @@ public class InputManager : MonoBehaviour
                 if (truckingScreen.activeInHierarchy)
                 {
                     whichTruckingDoor = (whichTruckingDoor * (-1));
+                    truckingControl.switchHighlight();
                 }
 
                 truckingScreen.SetActive(true);
@@ -225,8 +231,11 @@ public class InputManager : MonoBehaviour
 
                     else
                     {
-                        truckingLeftOpen = false;
-                        truckingControl.truckLeftClose();
+                        if (rampDown == 1)
+                        {
+                            truckingLeftOpen = false;
+                            truckingControl.truckLeftClose();
+                        }   
                     }
 
                     //Comment out for testing though ultimately this will need to change
@@ -373,8 +382,11 @@ public class InputManager : MonoBehaviour
                 //Trucking Command
                 if (truckingScreen.activeInHierarchy)
                 {
-                    truckingControl.rampActivate();
-                    rampDown = (rampDown * (-1));
+                    if (truckingLeftOpen == false)
+                    {
+                        truckingControl.rampActivate();
+                        rampDown = (rampDown * (-1));
+                    }
                 }
 
                 //Entry Command

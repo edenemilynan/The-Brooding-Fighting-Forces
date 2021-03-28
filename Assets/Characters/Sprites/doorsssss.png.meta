@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 397e2fb2b36f7af4b8fefea257f489e1
+guid: 6cd28e8439036b6479abdb5154480b59
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6608065524670265748
-    second: Truck doors highlight_0
+      213: 7790894243037829080
+    second: doorsssss_0
   - first:
-      213: 1395964295401654077
-    second: Truck doors highlight_1
+      213: -6512182657499002150
+    second: doorsssss_1
   - first:
-      213: -2470792818355325416
-    second: Truck doors highlight_2
+      213: -7577417394827043692
+    second: doorsssss_2
   - first:
-      213: -2396085441875708982
-    second: Truck doors highlight_3
+      213: 1282955377577994259
+    second: doorsssss_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -99,7 +99,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Truck doors highlight_0
+      name: doorsssss_0
       rect:
         serializedVersion: 2
         x: 0
@@ -113,14 +113,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 499f97a659094bb50800000000000000
-      internalID: 6608065524670265748
+      spriteID: 8d7d7ee3901de1c60800000000000000
+      internalID: 7790894243037829080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Truck doors highlight_1
+      name: doorsssss_1
       rect:
         serializedVersion: 2
         x: 139
@@ -134,14 +134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d374b8a61267f5310800000000000000
-      internalID: 1395964295401654077
+      spriteID: ada0053406410a5a0800000000000000
+      internalID: -6512182657499002150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Truck doors highlight_2
+      name: doorsssss_2
       rect:
         serializedVersion: 2
         x: 278
@@ -155,14 +155,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8163854c50bf5bdd0800000000000000
-      internalID: -2470792818355325416
+      spriteID: 49cd77ab60b97d690800000000000000
+      internalID: -7577417394827043692
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Truck doors highlight_3
+      name: doorsssss_3
       rect:
         serializedVersion: 2
         x: 417
@@ -176,8 +176,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac373815cf46fbed0800000000000000
-      internalID: -2396085441875708982
+      spriteID: 318a6375e19fdc110800000000000000
+      internalID: 1282955377577994259
       vertices: []
       indices: 
       edges: []

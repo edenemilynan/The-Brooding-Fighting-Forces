@@ -4,18 +4,6 @@ using UnityEngine;
 
 public class TruckingControls : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public Animator rightTruckingDoor;
     public Animator leftTruckingDoor;
     public Animator ramp;
@@ -24,6 +12,11 @@ public class TruckingControls : MonoBehaviour
     public AudioClip doorSound;
     public AudioSource audioSource;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        rightTruckingDoor.SetBool("isHighlighted", true);
+    }
 
     public void leftIndicatorOn()
     {
@@ -73,8 +66,6 @@ public class TruckingControls : MonoBehaviour
             leftTruckingDoor.SetBool("isTruckingOpen", true);
             audioSource.PlayOneShot(doorSound, 0.7F);
         }
-
-
     }
 
     public void truckLeftClose()
@@ -101,6 +92,20 @@ public class TruckingControls : MonoBehaviour
         {
             rightTruckingDoor.SetBool("isTruckingOpen", false);
             audioSource.PlayOneShot(doorSound, 0.7F);
+        }
+    }
+
+    public void switchHighlight()
+    {
+        if (rightTruckingDoor.GetBool("isHighlighted") == true)
+        {
+            rightTruckingDoor.SetBool("isHighlighted", false);
+            leftTruckingDoor.SetBool("isHighlighted", true);
+        }
+        else
+        {
+            rightTruckingDoor.SetBool("isHighlighted", true);
+            leftTruckingDoor.SetBool("isHighlighted", false);
         }
     }
 
