@@ -92,7 +92,7 @@ public class InputManager : MonoBehaviour
         morseCommand = mi.morseReturn;
 
         //Switching nofitication icon
-        //notifManager.DisplayNotif(taskManager.task, activeScreen);
+        notifManager.DisplayNotif(activeScreen);
 
         //The newer, beautifuler complications of managing
         //dequeing tasks from two different queues based on a time reset

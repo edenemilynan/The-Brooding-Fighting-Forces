@@ -4,7 +4,36 @@ using UnityEngine;
 
 public class NotificationManager : MonoBehaviour
 {
-    public Sprite[] notifSprites;
+
+    public Animator mNotif;
+    public Animator eNotif;
+    public Animator tNotif;
+
+    public InputManager inputManager;
+    public TaskManager taskManager;
+
+    public void DisplayNotif(string camera)
+    {
+        if (inputManager.taskWaitingTrucking == false && taskManager.taskTrucking != TaskManager.Tasks.none && camera != "truck")
+        {
+            tNotif.SetBool("hideBounce", false);
+        }
+        else tNotif.SetBool("hideBounce", true);
+
+        if (inputManager.taskWaitingEntry == false && taskManager.taskEntry != TaskManager.Tasks.none && camera != "entry")
+        {
+            eNotif.SetBool("hideBounce", false);
+        }
+        else eNotif.SetBool("hideBounce", true);
+
+        if (taskManager.taskTrucking == TaskManager.Tasks.none && taskManager.taskEntry == TaskManager.Tasks.none && camera != "main")
+        {
+            mNotif.SetBool("hideBounce", false);
+        }
+        else mNotif.SetBool("hideBounce", true);
+    }
+
+    /*public Sprite[] notifSprites;
     public SpriteRenderer spriteRend = null;
     public Animator notifBounce;
 
@@ -32,7 +61,7 @@ public class NotificationManager : MonoBehaviour
         }
           
     }
-    */
+    
 
     public void DisplayNotif(TaskManager.Tasks task, string camera)
     {
@@ -102,5 +131,5 @@ public class NotificationManager : MonoBehaviour
 
       
 
-    }
+    }*/
 }
