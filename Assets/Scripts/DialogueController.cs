@@ -129,7 +129,7 @@ public class DialogueController : MonoBehaviour
 
 
         //These numbers are just for testing purposes
-        if (taskManager.tasks.Count == 0 && convosHad >= 3 && readyForFourthConvo)
+        if (taskManager.tasksEntry.Count == 0 && taskManager.tasksTrucking.Count == 0 && convosHad >= 3 && readyForFourthConvo)
         {
             GameObject conversation = GameObject.Find("FourthConversation");
             DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();

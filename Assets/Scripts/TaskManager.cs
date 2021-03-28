@@ -6,8 +6,10 @@ public class TaskManager : MonoBehaviour
 {
     //Had to add allow/disallow to allow tracking of right/wrong decisions later
     public enum Tasks {truckRight, truckLeft, peopleAllow, peopleDisallow, none};
-    public Queue<Tasks> tasks = new Queue<Tasks>();
-    public Tasks task = Tasks.none;
+    public Queue<Tasks> tasksTrucking = new Queue<Tasks>();
+    public Queue<Tasks> tasksEntry = new Queue<Tasks>();
+    public Tasks taskTrucking = Tasks.none;
+    public Tasks taskEntry = Tasks.none;
     public int nTasks = 6;
 
     /* For random tasks later
@@ -48,43 +50,44 @@ public class TaskManager : MonoBehaviour
         }
         */
         // For demo 1: 6 tasks (4/2 split)
-        tasks.Enqueue(Tasks.truckRight);
-        tasks.Enqueue(Tasks.peopleDisallow);
-        tasks.Enqueue(Tasks.truckRight);
-        tasks.Enqueue(Tasks.truckLeft);
-        tasks.Enqueue(Tasks.peopleAllow);
-        tasks.Enqueue(Tasks.truckRight);
-        tasks.Enqueue(Tasks.none);
+        tasksTrucking.Enqueue(Tasks.truckRight);
+        tasksEntry.Enqueue(Tasks.peopleDisallow);
+        tasksTrucking.Enqueue(Tasks.truckRight);
+        tasksTrucking.Enqueue(Tasks.truckLeft);
+        tasksEntry.Enqueue(Tasks.peopleAllow);
+        tasksTrucking.Enqueue(Tasks.truckRight);
+        tasksTrucking.Enqueue(Tasks.none);
+        tasksEntry.Enqueue(Tasks.none);
 
         //Randomized
-        task = tasks.Dequeue();
+        taskTrucking = tasksTrucking.Dequeue();
         //This only works if first task is hard-coded as truck
         truckingControl.rightIndicatorOn();
     }
 
-    public void GetTask()
+    public void getTaskTrucking()
     {
-        if (tasks.Count != 0)
+        if (tasksTrucking.Count != 0)
         {
-            task = tasks.Dequeue();
-            manager.taskWaiting = false;
+            taskTrucking = tasksTrucking.Dequeue();
+            manager.taskWaitingTrucking = false;
 
-            if (task == Tasks.truckRight)
+            if (taskTrucking == Tasks.truckRight)
             {
                 truckingControl.rightIndicatorOn();
             }
 
-            else if (task == Tasks.truckLeft)
+            else if (taskTrucking == Tasks.truckLeft)
             {
                 truckingControl.leftIndicatorOn();
             }
 
-            else if (task == Tasks.peopleAllow || task == Tasks.peopleDisallow)
+            /*else if (task == Tasks.peopleAllow || task == Tasks.peopleDisallow)
             {
                 personApproaches.path += 1;
             }
 
-            /*if (tasks.Peek() == Tasks.peopleAllow || tasks.Peek() == Tasks.peopleDisallow) 
+            if (tasks.Peek() == Tasks.peopleAllow || tasks.Peek() == Tasks.peopleDisallow) 
             {
 
                 if (manager.entryLeftOpen == false && manager.entryRightOpen == false)
@@ -116,7 +119,23 @@ public class TaskManager : MonoBehaviour
             }*/
         }
 
-        else task = Tasks.none;
+        else taskTrucking = Tasks.none;
+    }
+
+    public void getTaskEntry()
+    {
+        if (tasksEntry.Count != 0)
+        {
+            taskEntry = tasksEntry.Dequeue();
+            manager.taskWaitingEntry = false;
+
+            if (taskEntry == Tasks.peopleAllow || taskEntry == Tasks.peopleDisallow)
+            {
+                personApproaches.path += 1;
+            }
+        }
+
+        else taskEntry = Tasks.none;
     }
 
 }

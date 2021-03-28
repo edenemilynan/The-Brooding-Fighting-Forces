@@ -6,19 +6,27 @@ public class InputManager : MonoBehaviour
 {
     public string morseCommand;
     public string lastMorseCommand;
+
+    //Camera screen objects
     public GameObject mainScreen;
     public GameObject truckingScreen;
     public GameObject scanningScreen;
     public GameObject sortingScreen;
+
     public GameObject morseInput;
+
     public GameObject DialogueController;
+
+    //Accesses values that are incremented when a truck/person is 
+    //ready to move
     public GameObject TruckingController;
     public GameObject PeopleController;
+
+    //To control entry/trucking area animations
     public EntryControls entryControl;
     public TruckingControls truckingControl;
 
-    public Animator entryDoor;
-
+    //Accessses task queues to control game flow
     public TaskManager taskManager;
     public NotificationManager notifManager;
     public SortingManager sortManager;
@@ -43,7 +51,8 @@ public class InputManager : MonoBehaviour
 
     //Tries to dequeue task when another task has been 
     //completed, but only succeeds if doors are closed
-    public bool taskWaiting = false;
+    public bool taskWaitingTrucking = false;
+    public bool taskWaitingEntry = false;
 
     //If an old task is sitting in task variable
     //because next is not ready to dequeue (doors open)
@@ -59,6 +68,13 @@ public class InputManager : MonoBehaviour
 
     //Conditions to trigger tasks here
     private bool scanned = false;
+
+    //Variables to control wait time before dequeuing new task 
+    private int timerEntry = 0;
+    private int timerTrucking = 0;
+    private int waitTime = 3000;
+    private bool truckReset = false;
+    private bool entryReset = false;
 
     //For notifications to keep track of what screen we are on
     public string activeScreen = "main";
@@ -76,40 +92,61 @@ public class InputManager : MonoBehaviour
         morseCommand = mi.morseReturn;
 
         //Switching nofitication icon
-        notifManager.DisplayNotif(taskManager.task, activeScreen);
+        //notifManager.DisplayNotif(taskManager.task, activeScreen);
 
-        //The new, beautiful complications of only
-        //dequeing a task if the relevant doors are closed
-        if (taskWaiting == true && taskManager.tasks.Count != 0) 
+        //The newer, beautifuler complications of managing
+        //dequeing tasks from two different queues based on a time reset
+        if (timerEntry > 0)
         {
-            if (taskManager.tasks.Peek() == TaskManager.Tasks.peopleAllow || taskManager.tasks.Peek() == TaskManager.Tasks.peopleDisallow)
+            timerEntry -= 1;
+        }
+
+        if (timerTrucking > 0)
+        {
+            timerTrucking -= 1;
+        }
+
+        if (taskWaitingEntry == true && taskManager.tasksEntry.Count != 0)
+        {
+
+            if (entryLeftOpen == false && entryRightOpen == false)
             {
-                if (entryLeftOpen == false && entryRightOpen == false)
+                if (timerEntry == 0 || taskManager.tasksEntry.Peek() == TaskManager.Tasks.none || taskManager.taskTrucking == TaskManager.Tasks.none)
                 {
-                    taskManager.GetTask();
-                    //oldScan = false;
-                    //entryDoor.ResetTrigger("scanner");
+                    taskManager.getTaskEntry();
+                    entryReset = false;
                 }
+                //oldScan = false;
+                //entryDoor.ResetTrigger("scanner");
             }
 
-            else
+        }
+        if (taskWaitingTrucking == true && taskManager.tasksTrucking.Count != 0) 
+        {
+            if (timerTrucking == 0 || taskManager.tasksTrucking.Peek() == TaskManager.Tasks.none || taskManager.taskEntry == TaskManager.Tasks.none)
             {
-                if (truckingLeftOpen == false && truckingRightOpen == false)    
+                if (truckingLeftOpen == false && truckingRightOpen == false)
                 {
-                    if (taskManager.tasks.Peek() == taskManager.Tasks.truckLeft) {
-                        if (rampDown == -1)
+                    if (taskManager.tasksTrucking.Peek() == TaskManager.Tasks.truckLeft)
                     {
-                        taskManager.GetTask();
-                        //oldScan = false;
+
+                        if (rampDown == -1)
+                        {
+                            taskManager.getTaskTrucking();
+                            truckReset = false;
+                            //oldScan = false;
+                        }
                     }
-                }
                     else
                     {
-                        taskManager.GetTask();
+                        taskManager.getTaskTrucking();
+                        truckReset = false;
                     }
+                }
             }
-                
         }
+                
+        
 
         // Debug.Log(taskManager.tasks.Count);
         // Debug.Log(taskManager.task);
@@ -119,7 +156,7 @@ public class InputManager : MonoBehaviour
         //     taskManager.GetTask();
         // }
 
-        if(taskManager.tasks.Count == 0 && taskManager.task == TaskManager.Tasks.none && !convo4activated)
+        if(taskManager.taskTrucking == TaskManager.Tasks.none && taskManager.taskEntry == TaskManager.Tasks.none && !convo4activated)
         {
             DialogueController.GetComponent<DialogueController>().readyForFourthConvo = true;
         }
@@ -211,12 +248,22 @@ public class InputManager : MonoBehaviour
                     {
                         entryRightOpen = false;
                         entryControl.EntryRightClose();
+                        if (taskWaitingEntry == true && entryReset == false && entryLeftOpen == false)
+                        {
+                            timerEntry = waitTime;
+                            entryReset = true;
+                        }
                     }
 
                     else
                     {
                         entryLeftOpen = false;
                         entryControl.EntryLeftClose();
+                        if (taskWaitingEntry == true && entryReset == false && entryRightOpen == false)
+                        {
+                            timerEntry = waitTime;
+                            entryReset = true;
+                        }
                     }
                 }
 
@@ -227,6 +274,11 @@ public class InputManager : MonoBehaviour
                     {
                         truckingRightOpen = false;
                         truckingControl.truckRightClose();
+                        if (taskWaitingTrucking == true && truckReset == false && truckingLeftOpen == false)
+                        {
+                            timerTrucking = waitTime;
+                            truckReset = true;
+                        }
                     }
 
                     else
@@ -235,6 +287,11 @@ public class InputManager : MonoBehaviour
                         {
                             truckingLeftOpen = false;
                             truckingControl.truckLeftClose();
+                            if (taskWaitingTrucking == true && truckReset == false && truckingRightOpen == false)
+                            {
+                                timerTrucking = waitTime;
+                                truckReset = true;
+                            }
                         }   
                     }
 
@@ -261,7 +318,7 @@ public class InputManager : MonoBehaviour
                 if (scanningScreen.activeInHierarchy)
                 {
                     //If no one's waiting at the door, you can open it.
-                    if (taskManager.task != TaskManager.Tasks.peopleAllow && taskManager.task != TaskManager.Tasks.peopleDisallow)
+                    if (taskManager.taskEntry != TaskManager.Tasks.peopleAllow && taskManager.taskEntry != TaskManager.Tasks.peopleDisallow)
                     {
                         if (whichEntryDoor == 1)
                         {
@@ -284,7 +341,7 @@ public class InputManager : MonoBehaviour
                             entryRightOpen = true;
                             entryControl.EntryRightOpen();
 
-                            if (taskManager.task == TaskManager.Tasks.peopleAllow)
+                            if (taskManager.taskEntry == TaskManager.Tasks.peopleAllow)
                             {
                                 //Increment right/wrong choice
                             }
@@ -301,7 +358,7 @@ public class InputManager : MonoBehaviour
                             entryLeftOpen = true;
                             entryControl.EntryLeftOpen();
 
-                            if (taskManager.task == TaskManager.Tasks.peopleDisallow)
+                            if (taskManager.taskEntry == TaskManager.Tasks.peopleDisallow)
                             {
                                 //Increment right/wrong choice
                             }
@@ -314,7 +371,8 @@ public class InputManager : MonoBehaviour
 
                         //Set person on rest of path, let know task is waiting to deque.
                         PeopleController.GetComponent<TruckingController>().path += 1;
-                        taskWaiting = true;
+                        taskWaitingEntry = true;
+                        timerEntry = waitTime;
                         scanned = false;
                         scannable = false;
                     } 
@@ -329,13 +387,12 @@ public class InputManager : MonoBehaviour
                         truckingRightOpen = true;
                         truckingControl.truckRightOpen();
 
-                        if (taskManager.task == TaskManager.Tasks.truckRight)
+                        if (taskManager.taskTrucking == TaskManager.Tasks.truckRight)
                         {
+                            //Set the truck moving
                             TruckingController.GetComponent<TruckingController>().path += 1;
                             truckingControl.rightIndicatorOff();
-                            //Change trucking indicator
-                            taskWaiting = true;
-                            //taskManager.GetTask();
+                            taskWaitingTrucking = true;
                         }
                     }
 
@@ -347,19 +404,15 @@ public class InputManager : MonoBehaviour
                         {
                             truckingLeftOpen = true;
                             truckingControl.truckLeftOpen();
-                            if (taskManager.task == TaskManager.Tasks.truckLeft)
+                            if (taskManager.taskTrucking == TaskManager.Tasks.truckLeft)
                             {
+                                //Start the truck moving
                                 TruckingController.GetComponent<TruckingController>().path += 1;
                                 truckingControl.leftIndicatorOff();
-                                //Change trucking indicator
-                                taskWaiting = true;
-                                //taskManager.GetTask();
+                                taskWaitingTrucking = true;
                             }
                         }
                     }
-                    //Normally check if car is here but cut for prototype
-
-                    
                         
                     if(!convo3activated)
                     {
@@ -394,13 +447,13 @@ public class InputManager : MonoBehaviour
                 {
                     entryControl.scanOn();
 
-                    if (taskManager.task == TaskManager.Tasks.peopleAllow && scannable == true) // && oldScan == false
+                    if (taskManager.taskEntry == TaskManager.Tasks.peopleAllow && scannable == true) // && oldScan == false
                     {
                         scanned = true;
                         //oldScan = true;
                         entryControl.Allow();
                     }
-                    else if (taskManager.task == TaskManager.Tasks.peopleDisallow && scannable == true)
+                    else if (taskManager.taskEntry == TaskManager.Tasks.peopleDisallow && scannable == true)
                     {
                         scanned = true;
                         //oldScan = true;
@@ -435,6 +488,7 @@ public class InputManager : MonoBehaviour
             Debug.Log("Made it into TruckingCompletionConversation");
             DialogueController.GetComponent<DialogueController>().startTruckingCompletionConversation = true;
             truckingCompletionConversationActivated = true;
+            taskManager.getTaskEntry();
         }
 
         if(truckingCompletionConversationActivated && !entryIntroConversationStarted && activeScreen == "entry")
