@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
+    //Also controls character selection
     public CharacterButtons cb;
+    public static string currentCharacter = "";
 
     public void LoadNextScene()
     {
@@ -21,18 +23,22 @@ public class SceneLoader : MonoBehaviour
         if (button == cb.mentoB)
         {
             CharacterButtons.mentoNotClicked = false;
+            currentCharacter = "mento";
             SceneManager.LoadScene(2);
         }
         else if(button == cb.petuniaB)
         {
             CharacterButtons.petuniaNotClicked = false;
+            currentCharacter = "pentunia";
             SceneManager.LoadScene(5);
         }
         else if (button == cb.swethB)
         {
             CharacterButtons.swethNotClicked = false;
+            currentCharacter = "sweth";
             SceneManager.LoadScene(7);
         }
+        Debug.Log(currentCharacter);
         
     }
     
