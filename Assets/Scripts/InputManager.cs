@@ -83,6 +83,7 @@ public class InputManager : MonoBehaviour
     {
         truckingScreen.SetActive(false);
         scanningScreen.SetActive(false);
+        sortingScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -189,7 +190,6 @@ public class InputManager : MonoBehaviour
                 truckingScreen.SetActive(true);
                 scanningScreen.SetActive(false);
                 sortingScreen.SetActive(false);
-                mainScreen.SetActive(true);
                 trucksVisited = true;
 
                 //Commented out for testing/narrative needs rework
