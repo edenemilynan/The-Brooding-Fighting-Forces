@@ -396,7 +396,7 @@ public class InputManager : MonoBehaviour
                         truckingRightOpen = true;
                         truckingControl.truckRightOpen();
 
-                        if (taskManager.taskTrucking == TaskManager.Tasks.truckRight)
+                        if (taskManager.taskTrucking == TaskManager.Tasks.truckRight && taskWaitingTrucking != true)
                         {
                             //Set the truck moving
                             TruckingController.GetComponent<TruckingController>().path += 1;
@@ -413,7 +413,7 @@ public class InputManager : MonoBehaviour
                         {
                             truckingLeftOpen = true;
                             truckingControl.truckLeftOpen();
-                            if (taskManager.taskTrucking == TaskManager.Tasks.truckLeft)
+                            if (taskManager.taskTrucking == TaskManager.Tasks.truckLeft && taskWaitingTrucking != true)
                             {
                                 //Start the truck moving
                                 TruckingController.GetComponent<TruckingController>().path += 1;

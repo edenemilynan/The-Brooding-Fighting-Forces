@@ -1289,7 +1289,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 252806503}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a33fde887b7eed448a74bc5b355a2a67, type: 3}
@@ -1882,8 +1882,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 767b9955dabb501448c078e175f7f890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskTrucking: 4
-  taskEntry: 4
+  taskTrucking: 5
+  taskEntry: 5
   taskSorting: 5
   nTasks: 6
   truckingControl: {fileID: 131475754}
@@ -2076,6 +2076,7 @@ MonoBehaviour:
   currentPath: 2
   turn: 4
   door: -1
+  startedOnPath: 0
 --- !u!95 &366462839
 Animator:
   serializedVersion: 3
@@ -2285,6 +2286,7 @@ MonoBehaviour:
   currentPath: 2
   turn: 2
   door: 1
+  startedOnPath: 0
 --- !u!1 &398199261
 GameObject:
   m_ObjectHideFlags: 0
@@ -3410,6 +3412,7 @@ MonoBehaviour:
   currentPath: 4
   turn: 4
   door: -1
+  startedOnPath: 0
 --- !u!95 &633870474
 Animator:
   serializedVersion: 3
@@ -7767,6 +7770,7 @@ MonoBehaviour:
   currentPath: 4
   turn: 2
   door: 1
+  startedOnPath: 0
 --- !u!95 &1674134506
 Animator:
   serializedVersion: 3

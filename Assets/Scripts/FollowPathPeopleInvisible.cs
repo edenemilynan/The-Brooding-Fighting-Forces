@@ -17,6 +17,8 @@ public class FollowPathPeopleInvisible : MonoBehaviour
     public int turn;
     public int door;
 
+    public bool startedOnPath = false;
+
     private IEnumerator<Transform> pointInPath;
 
     // Start is called before the first frame update
@@ -33,8 +35,9 @@ public class FollowPathPeopleInvisible : MonoBehaviour
     void Update()
     {
 
-        if (currentPath == pathController.path && door == manager.whichEntryDoor)
+        if ((currentPath == pathController.path && door == manager.whichEntryDoor) || startedOnPath == true)
         {
+            startedOnPath = true;
             Destroy(counterPart);
             person.SetInteger("facing", turn);
             person.GetComponent<Renderer>().enabled = true;
