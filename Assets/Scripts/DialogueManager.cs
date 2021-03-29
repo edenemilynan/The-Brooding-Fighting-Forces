@@ -108,7 +108,10 @@ public class DialogueManager : MonoBehaviour
 				int z = int.Parse(line[3]);
 				sounds.Enqueue(z);
 			}
-            catch{}
+            catch
+			{
+				sounds.Enqueue(0);
+			}
 		}
 
         DisplayNextSentence();
