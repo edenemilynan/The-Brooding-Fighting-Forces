@@ -53,6 +53,7 @@ public class InputManager : MonoBehaviour
     //completed, but only succeeds if doors are closed
     public bool taskWaitingTrucking = false;
     public bool taskWaitingEntry = false;
+    public bool taskWaitingSorting = true;
 
     //If an old task is sitting in task variable
     //because next is not ready to dequeue (doors open)
@@ -121,6 +122,7 @@ public class InputManager : MonoBehaviour
             }
 
         }
+
         if (taskWaitingTrucking == true && taskManager.tasksTrucking.Count != 0) 
         {
             if (timerTrucking == 0 || taskManager.tasksTrucking.Peek() == TaskManager.Tasks.none || taskManager.taskEntry == TaskManager.Tasks.none)
@@ -145,8 +147,15 @@ public class InputManager : MonoBehaviour
                 }
             }
         }
-                
-        
+
+        if (taskWaitingSorting == true && taskManager.tasksSorting.Count != 0)
+        {
+            taskManager.getTaskSorting();
+            Debug.Log("Input sorting task");
+
+        }
+
+
 
         // Debug.Log(taskManager.tasks.Count);
         // Debug.Log(taskManager.task);
@@ -156,7 +165,7 @@ public class InputManager : MonoBehaviour
         //     taskManager.GetTask();
         // }
 
-        if(taskManager.taskTrucking == TaskManager.Tasks.none && taskManager.taskEntry == TaskManager.Tasks.none && !convo4activated)
+        if (taskManager.taskTrucking == TaskManager.Tasks.none && taskManager.taskEntry == TaskManager.Tasks.none && !convo4activated)
         {
             DialogueController.GetComponent<DialogueController>().readyForFourthConvo = true;
         }

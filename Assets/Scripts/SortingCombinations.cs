@@ -6,6 +6,7 @@ public class SortingCombinations : MonoBehaviour
 {
     //shapes ordered as orange(123), blue(123), green(123)
     public Sprite[] shapes;
+    public Sprite[] workers;
     public Sprite[] tries;
     public Dictionary<int, List<Shape>> combinations = new Dictionary<int, List<Shape>>();
     int count = 0;

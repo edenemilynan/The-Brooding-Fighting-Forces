@@ -608,7 +608,7 @@ GameObject:
   - component: {fileID: 130107308}
   - component: {fileID: 130107309}
   m_Layer: 0
-  m_Name: workers, floor, belt, lines
+  m_Name: Workers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -667,7 +667,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c4feedcef63c8b2438c1506f8d89214a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aff6611d69f1dc14f86bb14fd4d62993, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1152,6 +1152,7 @@ MonoBehaviour:
   rampDown: -1
   taskWaitingTrucking: 0
   taskWaitingEntry: 0
+  taskWaitingSorting: 0
   scannable: 0
   entryLeftOpen: 0
   entryRightOpen: 0
@@ -1288,7 +1289,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 252806503}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a33fde887b7eed448a74bc5b355a2a67, type: 3}
@@ -1883,6 +1884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskTrucking: 4
   taskEntry: 4
+  taskSorting: 5
   nTasks: 6
   truckingControl: {fileID: 131475754}
   personApproaches: {fileID: 965987684}
@@ -5364,6 +5366,7 @@ MonoBehaviour:
   shape3: {fileID: 1982439094}
   valid: {fileID: 1364482782}
   numberTries: {fileID: 900503826}
+  workers: {fileID: 130107309}
   sc: {fileID: 1691765003}
 --- !u!4 &1139141712
 Transform:
@@ -7873,6 +7876,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fd4b1ec6ba5cbda47b34e54bb881cd63, type: 3}
   - {fileID: 21300000, guid: bb9f67619e5163749b9e162a1e179a17, type: 3}
   - {fileID: 21300000, guid: d9ee53d8186693443a2846b22cef3ce2, type: 3}
+  workers:
+  - {fileID: 21300000, guid: aff6611d69f1dc14f86bb14fd4d62993, type: 3}
+  - {fileID: 21300000, guid: f3e2a5d589caa1f4cbd5d1459db3773a, type: 3}
   tries:
   - {fileID: 21300000, guid: 77cb605b12b9f97498ea389f0102d963, type: 3}
   - {fileID: 21300000, guid: 543bd501dab34474282af6ed93c8421e, type: 3}

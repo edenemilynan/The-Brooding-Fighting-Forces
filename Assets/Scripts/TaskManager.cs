@@ -5,11 +5,13 @@ using UnityEngine;
 public class TaskManager : MonoBehaviour
 {
     //Had to add allow/disallow to allow tracking of right/wrong decisions later
-    public enum Tasks {truckRight, truckLeft, peopleAllow, peopleDisallow, none};
+    public enum Tasks {truckRight, truckLeft, peopleAllow, peopleDisallow, sort, none};
     public Queue<Tasks> tasksTrucking = new Queue<Tasks>();
     public Queue<Tasks> tasksEntry = new Queue<Tasks>();
+    public Queue<Tasks> tasksSorting = new Queue<Tasks>();
     public Tasks taskTrucking = Tasks.none;
     public Tasks taskEntry = Tasks.none;
+    public Tasks taskSorting = Tasks.none;
     public int nTasks = 6;
 
     /* For random tasks later
@@ -49,7 +51,8 @@ public class TaskManager : MonoBehaviour
             }
         }
         */
-        // For demo 1: 6 tasks (4/2 split)
+        //Hard coded tasks
+        tasksSorting.Enqueue(Tasks.sort);
         tasksTrucking.Enqueue(Tasks.truckRight);
         tasksEntry.Enqueue(Tasks.peopleDisallow);
         tasksTrucking.Enqueue(Tasks.truckRight);
@@ -136,6 +139,18 @@ public class TaskManager : MonoBehaviour
         }
 
         else taskEntry = Tasks.none;
+    }
+
+    public void getTaskSorting()
+    {
+        if (tasksSorting.Count != 0)
+        {
+            taskSorting = tasksSorting.Dequeue();
+            Debug.Log("sorting dequeued");
+
+        }
+
+        else taskSorting = Tasks.none;
     }
 
 }

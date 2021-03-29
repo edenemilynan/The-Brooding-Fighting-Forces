@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SortingManager : MonoBehaviour
 {
-    public SpriteRenderer shape1, shape2, shape3, valid, numberTries;
+    public SpriteRenderer shape1, shape2, shape3, valid, numberTries, workers;
     public SortingCombinations sc;
-    int rand;
-    int gotRightCount = 0;
+    private int rand;
+    private int gotRightCount = 0;
 
     void Start()
     {
@@ -16,7 +16,8 @@ public class SortingManager : MonoBehaviour
         shape3.sprite = null;
     }
 
-    //Update for quick testing sorting
+    //Update for quick testing sorting. Uncomment to use.
+    /*
     void Update()
     {
         if(gotRightCount == 3)
@@ -75,17 +76,19 @@ public class SortingManager : MonoBehaviour
             //Debug.Log(sc.combinations[rand][3]);
         }
     }
-    
+    */
 
     public void validate(string command)
     {
         if(gotRightCount == 3)
         {
             reset();
+            workers.sprite = sc.workers[0];
         }
         //If there are no shapes, roll new ones
         if(command == "interact" && shape1.sprite == null)
         {
+            workers.sprite = sc.workers[1];
             reroll();
         }
 
