@@ -1292,7 +1292,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a33fde887b7eed448a74bc5b355a2a67, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 433e58f82b4dc0b4fbc0669c49e43436, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.7
   m_Pitch: 1
@@ -4663,7 +4663,7 @@ GameObject:
   - component: {fileID: 894581042}
   - component: {fileID: 894581041}
   m_Layer: 0
-  m_Name: Ch2IntroConversation
+  m_Name: IntroConversation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4681,7 +4681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ef9b938d51c2340aa217973309f1ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueName: Ch2IntroConversation
+  dialogueName: Chapter2/IntroConversation
 --- !u!4 &894581042
 Transform:
   m_ObjectHideFlags: 0
