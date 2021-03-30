@@ -21,6 +21,10 @@ public class DialogueController : MonoBehaviour
 	private string sceneName;
     public GameObject DialogueManager;
     public GameObject InputManager;
+
+
+	// Chapter 2 Specific Dialogue Triggers
+
     // Start is called before the first frame update
     void Start()
     {
