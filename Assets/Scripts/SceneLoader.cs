@@ -9,7 +9,7 @@ public class SceneLoader : MonoBehaviour
     //Also controls character selection
     public CharacterButtons cb;
     public static string currentCharacter = "";
-    public static int chapter = 1;
+    public static int chapter = 0;
 
     public void LoadNextScene()
     {
