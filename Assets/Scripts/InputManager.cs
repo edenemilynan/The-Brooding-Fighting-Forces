@@ -229,11 +229,18 @@ public class InputManager : MonoBehaviour
             {
                 activeScreen = "sorting";
 
+                if (sortingScreen.activeInHierarchy)
+                {
+
+                }
+                else
+                {
+                    transitionController.staticSorting();
+                    truckingScreen.SetActive(false);
+                    scanningScreen.SetActive(false);
+                    sortingScreen.SetActive(true);
+                }
                 sortManager.checkIfComplete();
-                transitionController.staticSorting();
-                truckingScreen.SetActive(false);
-                scanningScreen.SetActive(false);
-                sortingScreen.SetActive(true);
 
             }
 
