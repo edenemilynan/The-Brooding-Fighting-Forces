@@ -16,8 +16,8 @@ public class VideoSceneLoader : MonoBehaviour
 
     public void LoadNextScene(VideoPlayer vp)
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex + 1);
+        int nextScene = SceneLoader.chapter + 4;
+        SceneManager.LoadScene(nextScene);
 
     }
 

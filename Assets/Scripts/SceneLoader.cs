@@ -9,6 +9,7 @@ public class SceneLoader : MonoBehaviour
     //Also controls character selection
     public CharacterButtons cb;
     public static string currentCharacter = "";
+    public static int chapter = 1;
 
     public void LoadNextScene()
     {
@@ -25,18 +26,21 @@ public class SceneLoader : MonoBehaviour
             CharacterButtons.mentoNotClicked = false;
             currentCharacter = "mento";
             SceneManager.LoadScene(2);
+            chapter += 1;
         }
         else if(button == cb.petuniaB)
         {
             CharacterButtons.petuniaNotClicked = false;
             currentCharacter = "pentunia";
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(3);
+            chapter += 1;
         }
         else if (button == cb.swethB)
         {
             CharacterButtons.swethNotClicked = false;
             currentCharacter = "sweth";
-            SceneManager.LoadScene(7);
+            SceneManager.LoadScene(4);
+            chapter += 1;
         }
         Debug.Log(currentCharacter);
         
