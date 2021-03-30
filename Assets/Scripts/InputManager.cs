@@ -7,6 +7,12 @@ public class InputManager : MonoBehaviour
     public string morseCommand;
     public string lastMorseCommand;
 
+    //MAYBE I'LL CLEAN THIS LATER
+    public Animator staticAnimTrucking;
+    public Animator staticAnimEntry;
+    public Animator staticAnimMain;
+    public Animator staticAnimSorting;
+
     //Camera screen objects
     public GameObject mainScreen;
     public GameObject truckingScreen;
@@ -187,10 +193,20 @@ public class InputManager : MonoBehaviour
                     truckingControl.switchHighlight();
                 }
 
-                truckingScreen.SetActive(true);
-                scanningScreen.SetActive(false);
-                sortingScreen.SetActive(false);
-                trucksVisited = true;
+                else
+                {
+                    //staticAnimTrucking.ResetTrigger("transition");
+                    staticAnimTrucking.SetTrigger("transition");
+                    staticAnimEntry.SetTrigger("default");
+                    staticAnimMain.SetTrigger("default");
+                    staticAnimSorting.SetTrigger("default");
+                    truckingScreen.SetActive(true);
+                    scanningScreen.SetActive(false);
+                    sortingScreen.SetActive(false);
+                    trucksVisited = true;
+                }
+
+                
 
                 //Commented out for testing/narrative needs rework
                 //DialogueController.GetComponent<DialogueController>().secondConversation = false;
@@ -208,6 +224,12 @@ public class InputManager : MonoBehaviour
                 }
                 else
                 {
+                    //staticAnimTrucking.ResetTrigger("transition");
+                    staticAnimEntry.SetTrigger("transition");
+                    staticAnimTrucking.SetTrigger("default");
+                    staticAnimMain.SetTrigger("default");
+                    staticAnimSorting.SetTrigger("default");
+                    //staticAnim.SetTrigger("transition");
                     truckingScreen.SetActive(false);
                     scanningScreen.SetActive(true);
                     sortingScreen.SetActive(false);
@@ -227,6 +249,12 @@ public class InputManager : MonoBehaviour
                 }
                 else
                 {
+                    //staticAnimTrucking.ResetTrigger("transition");
+                    staticAnimSorting.SetTrigger("transition");
+                    staticAnimEntry.SetTrigger("default");
+                    staticAnimMain.SetTrigger("default");
+                    staticAnimTrucking.SetTrigger("default");
+                    //staticAnim.SetTrigger("transition");
                     truckingScreen.SetActive(false);
                     scanningScreen.SetActive(false);
                     sortingScreen.SetActive(true);
@@ -237,6 +265,13 @@ public class InputManager : MonoBehaviour
             //Main
             if (morseCommand == "--")
             {
+                //Need an if statement so it doesn't play again when on screen
+                //staticAnimTrucking.ResetTrigger("transition");
+                staticAnimMain.SetTrigger("transition");
+                staticAnimEntry.SetTrigger("default");
+                staticAnimSorting.SetTrigger("default");
+                staticAnimTrucking.SetTrigger("default");
+                //staticAnim.SetTrigger("transition");
                 activeScreen = "main";
                 truckingScreen.SetActive(false);
                 scanningScreen.SetActive(false);
