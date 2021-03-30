@@ -30,7 +30,7 @@ public class SceneLoader : MonoBehaviour
         {
             CharacterButtons.petuniaNotClicked = false;
             currentCharacter = "pentunia";
-            SceneManager.LoadScene(5);
+            SceneManager.LoadScene(4);
         }
         else if (button == cb.swethB)
         {

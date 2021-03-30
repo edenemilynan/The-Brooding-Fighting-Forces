@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DialogueController : MonoBehaviour
 {
@@ -17,8 +18,13 @@ public class DialogueController : MonoBehaviour
     public bool fourthConversation = true;
     public bool readyForFourthConvo = false;
     public bool fifthConversation  = true;
+	private string sceneName;
     public GameObject DialogueManager;
     public GameObject InputManager;
+
+
+	// Chapter 2 Specific Dialogue Triggers
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,12 +35,31 @@ public class DialogueController : MonoBehaviour
         //FindObjectOfType<DialogueTrigger>().TriggerDialogue()        
         Debug.Log(taskManager.nTasks);
 
+		// Create a temporary reference to the current scene.
+		Scene currentScene = SceneManager.GetActiveScene ();
+ 
+		// Retrieve the name of this scene.
+		sceneName = currentScene.name;
+
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (tasksCompleted == 0 && convosHad == 0)
+    {	
+		if (sceneName == "Chapter 1")
+		{
+			ChapterOneDialogueController();
+		}
+		else if (sceneName == "Chapter 2 - Demo 3")
+		{
+			ChapterTwoDialogueController();
+		}
+        
+    }
+
+	void ChapterOneDialogueController()
+	{
+		if (tasksCompleted == 0 && convosHad == 0)
         {
             GameObject conversation = GameObject.Find("IntroductoryConversation");
             DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
@@ -160,6 +185,20 @@ public class DialogueController : MonoBehaviour
                 other.TriggerDialogue();
             }
         }
-        
-    }
+	}
+
+	void ChapterTwoDialogueController()
+	{
+		if (tasksCompleted == 0 && convosHad == 0)
+        {
+            GameObject conversation = GameObject.Find("IntroConversation");
+            DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
+            convosHad += 1;
+
+            if (other != null)
+            {
+                other.TriggerDialogue();
+            }
+        }
+	}
 }
