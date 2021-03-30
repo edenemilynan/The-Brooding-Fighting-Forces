@@ -36,7 +36,7 @@ public class DialogueController : MonoBehaviour
     {
         if (tasksCompleted == 0 && convosHad == 0)
         {
-            GameObject conversation = GameObject.Find("IntroductoryConversation");
+            GameObject conversation = GameObject.Find("Ch2IntroConversation");
             DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
             convosHad += 1;
 
