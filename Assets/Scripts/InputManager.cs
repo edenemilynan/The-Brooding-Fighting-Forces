@@ -159,7 +159,6 @@ public class InputManager : MonoBehaviour
         }
 
 
-
         // Debug.Log(taskManager.tasks.Count);
         // Debug.Log(taskManager.task);
 
@@ -230,17 +229,11 @@ public class InputManager : MonoBehaviour
             {
                 activeScreen = "sorting";
 
-                if (sortingScreen.activeInHierarchy)
-                {
-                    
-                }
-                else
-                {
-                    transitionController.staticSorting();
-                    truckingScreen.SetActive(false);
-                    scanningScreen.SetActive(false);
-                    sortingScreen.SetActive(true);
-                }
+                sortManager.checkIfComplete();
+                transitionController.staticSorting();
+                truckingScreen.SetActive(false);
+                scanningScreen.SetActive(false);
+                sortingScreen.SetActive(true);
 
             }
 
@@ -335,7 +328,7 @@ public class InputManager : MonoBehaviour
                 else if (sortingScreen.activeInHierarchy)
                 {
                     sortManager.validate("negative");
-
+                    sortManager.checkIfComplete();
                 }
             }
 
@@ -453,7 +446,7 @@ public class InputManager : MonoBehaviour
                 else if(sortingScreen.activeInHierarchy)
                 {
                     sortManager.validate("affirm");
-
+                    sortManager.checkIfComplete();
                 }
             }
 
@@ -493,7 +486,7 @@ public class InputManager : MonoBehaviour
                 else if (sortingScreen.activeInHierarchy)
                 {
                     sortManager.validate("interact");
-
+                    sortManager.checkIfComplete();
                 }
             }
             

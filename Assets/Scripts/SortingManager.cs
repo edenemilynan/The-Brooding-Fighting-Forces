@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class SortingManager : MonoBehaviour
 {
-    public SpriteRenderer shape1, shape2, shape3, valid, numberTries, workers;
+    public SpriteRenderer shape1, shape2, shape3, numberTries, workers;
     public SortingCombinations sc;
     private int rand;
     private int gotRightCount = 0;
+
+    //Testing variables
+    //public SpriteRenderer valid;
 
     void Start()
     {
@@ -16,17 +19,17 @@ public class SortingManager : MonoBehaviour
         shape3.sprite = null;
     }
 
-    //Update for quick testing sorting. Uncomment to use.
+    //Update for quick testing sorting in Sorting Testing scene. Uncomment to use.
     /*
     void Update()
     {
-        if(gotRightCount == 3)
-        {
-            reset();
-        }
+        checkIfComplete();
 
-        else if(Input.GetKeyDown(KeyCode.N) && shape1.sprite == null)
+        if(Input.GetKeyDown(KeyCode.N) && shape1.sprite == null)
         {
+            gotRightCount = 0;
+            workers.sprite = sc.workers[1];
+            triesCountChange(0);
             reroll();
         }
 
@@ -34,20 +37,14 @@ public class SortingManager : MonoBehaviour
         {
             if (sc.combinations[rand][3] == SortingCombinations.Shape.invalid)
             {
-                valid.sprite = sc.shapes[3];
+                //valid.sprite = sc.shapes[3];
                 ++gotRightCount;
-                if (gotRightCount > 3)
-                {
-                    gotRightCount = 0;
-                    triesCountChange(0);
-                    reset();
-                }
                 triesCountChange(gotRightCount);
                 Debug.Log(gotRightCount);
             }
             else
             {
-                valid.sprite = sc.shapes[6];
+                //valid.sprite = sc.shapes[6];
             }
             reroll();
 
@@ -57,61 +54,46 @@ public class SortingManager : MonoBehaviour
         {
             if (sc.combinations[rand][3] == SortingCombinations.Shape.valid)
             {
-                valid.sprite = sc.shapes[6];
+                //valid.sprite = sc.shapes[6];
                 ++gotRightCount;
-                if (gotRightCount > 3)
-                {
-                    gotRightCount = 0;
-                    triesCountChange(0);
-                    reset();
-                }
                 triesCountChange(gotRightCount);
                 Debug.Log(gotRightCount);
             }
             else
             {
-                valid.sprite = sc.shapes[3];
+                //valid.sprite = sc.shapes[3];
             }
             reroll();
             //Debug.Log(sc.combinations[rand][3]);
         }
     }
     */
+    
 
     public void validate(string command)
     {
-        if(gotRightCount == 3)
-        {
-            reset();
-            workers.sprite = sc.workers[0];
-        }
         //If there are no shapes, roll new ones
         if(command == "interact" && shape1.sprite == null)
         {
+            gotRightCount = 0;
             workers.sprite = sc.workers[1];
+            triesCountChange(0);
             reroll();
         }
 
         //If the combination is valid
         else if(command == "affirm" && shape1.sprite != null)
         {
-
             if (sc.combinations[rand][3] == SortingCombinations.Shape.valid)
             {
-                valid.sprite = sc.shapes[6];
+                //valid.sprite = sc.shapes[6];
                 ++gotRightCount;
-                if (gotRightCount > 3)
-                {
-                    gotRightCount = 0;
-                    triesCountChange(0);
-                    reset();
-                }
                 triesCountChange(gotRightCount);
                 Debug.Log(gotRightCount);
             }
             else
             {
-                valid.sprite = sc.shapes[3];
+                //valid.sprite = sc.shapes[3];
             }
             reroll();
             //Debug.Log(sc.combinations[rand][3]);
@@ -122,20 +104,14 @@ public class SortingManager : MonoBehaviour
         {
             if (sc.combinations[rand][3] == SortingCombinations.Shape.invalid)
             {
-                valid.sprite = sc.shapes[3];
+                //valid.sprite = sc.shapes[3];
                 ++gotRightCount;
-                if (gotRightCount > 3)
-                {
-                    gotRightCount = 0;
-                    triesCountChange(0);
-                    reset();
-                }
                 triesCountChange(gotRightCount);
                 Debug.Log(gotRightCount);
             }
             else
             {
-                valid.sprite = sc.shapes[6];
+                //valid.sprite = sc.shapes[6];
             }
             reroll();
         }
@@ -146,11 +122,21 @@ public class SortingManager : MonoBehaviour
         }
     }
 
+    //An update check in input manager to stop the game
+    public void checkIfComplete()
+    {
+        if (gotRightCount == 3)
+        {
+            Debug.Log("check if complete");
+            reset();
+            workers.sprite = sc.workers[0];
+        }
+    }
+
     //Update sprite for number of tries in the corner
     void triesCountChange(int tryCount)
     {
         numberTries.sprite = sc.tries[tryCount];
-
     }
 
     //Reset shapes to nothing

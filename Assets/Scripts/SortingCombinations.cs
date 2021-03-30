@@ -9,13 +9,12 @@ public class SortingCombinations : MonoBehaviour
     public Sprite[] workers;
     public Sprite[] tries;
     public Dictionary<int, List<Shape>> combinations = new Dictionary<int, List<Shape>>();
-    int count = 0;
+    private int count = 0; 
     string str;
     public enum Shape { O1, O2, O3, B1, B2, B3, G1, G2, G3, valid, invalid}; 
 
     void Start()
     {
-        Debug.Log(count);
         //Dictionary with the pattern number, a list containing the pattern, if its a valid pattern
         //Dictionary(pattern number, {shape1, shape2, shape3, validity})
         //Sorting rule 1: 1 + 2 + 3
