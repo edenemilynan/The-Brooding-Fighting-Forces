@@ -665,7 +665,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4d0c02ecea708704ba111f4b6920d53e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.24
+  m_Volume: 0.125
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -792,12 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2b0578acfc54044a99fd3f14963b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  petuniaB: {fileID: 0}
-  swethB: {fileID: 0}
-  mentoB: {fileID: 0}
-  petuniaDone: 0
-  swethDone: 0
-  mentoDone: 0
+  cb: {fileID: 0}
 --- !u!4 &1618907768
 Transform:
   m_ObjectHideFlags: 0
