@@ -21,8 +21,8 @@ EditorBuildSettings:
     path: Assets/Scenes/LoginPetunia.unity
     guid: 19525cc33cbb4c04d8bf73f9227e1b06
   - enabled: 1
-    path: Assets/Scenes/Chapter 2.unity
-    guid: 31520b8baed6ab24699a91359bc5cf6c
+    path: Assets/Scenes/Chapter 2 - Demo 3.unity
+    guid: 8c881b310fa353443a7df7bcc12394f4
   - enabled: 1
     path: Assets/Scenes/LoginSweth.unity
     guid: b014907d6ea7df24b92ced7c08b3ea44
