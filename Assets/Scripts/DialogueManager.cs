@@ -56,10 +56,12 @@ public class DialogueManager : MonoBehaviour
             }
         }
 		
+		// Tick down the timer
 		if (timer > 0)
 		{
 			timer -= 1;
 		}
+
     }
 
     public void StartDialogue(string fileName)
@@ -119,6 +121,8 @@ public class DialogueManager : MonoBehaviour
     
     public void DisplayNextSentence()
     {       
+		// Play Dialogue Advancing Daw Sound
+		dialogueAudioPlayer.GetComponent<DialogueAudioPlayer>().PlayDialogueSound(3, 0.2f);
         string name = "I.V.A.A.L.";
         int expression = 6;
         int sound = 0; //no sound

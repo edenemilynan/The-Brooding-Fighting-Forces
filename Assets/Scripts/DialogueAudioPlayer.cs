@@ -11,6 +11,7 @@ public class DialogueAudioPlayer : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip  knockSound;
     public AudioClip  hitSound;
+	public AudioClip  dialogueAdvanceDaw;
 
     public void PlayDialogueSound(int audioCode, float volume = 0.7F)
     {
@@ -28,6 +29,7 @@ public class DialogueAudioPlayer : MonoBehaviour
         // 0 - No Sound
         // 1 - Knock Sound
         // 2 - Hit Sound
+		// 3 - dialogueAdvanceDaw
 
         switch (audioCode)
         {
@@ -35,6 +37,8 @@ public class DialogueAudioPlayer : MonoBehaviour
                 return knockSound;
             case 2:
                 return hitSound;
+			case 3:
+				return dialogueAdvanceDaw;
         }
 
         return knockSound;        

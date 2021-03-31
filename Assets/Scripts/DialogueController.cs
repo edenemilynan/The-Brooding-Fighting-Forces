@@ -50,7 +50,7 @@ public class DialogueController : MonoBehaviour
 		{
 			ChapterOneDialogueController();
 		}
-		else if (sceneName == "Chapter 2 - Demo 3")
+		else if (sceneName == "Chapter 2")
 		{
 			ChapterTwoDialogueController();
 		}

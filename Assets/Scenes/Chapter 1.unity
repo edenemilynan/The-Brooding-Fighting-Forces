@@ -4796,7 +4796,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &892941331
 Animator:
   serializedVersion: 3
@@ -7930,6 +7930,7 @@ MonoBehaviour:
   audioSource: {fileID: 1597850128}
   knockSound: {fileID: 8300000, guid: 696ff52579c5102469d6c0ede310a03f, type: 3}
   hitSound: {fileID: 8300000, guid: 1b5a1adfb5a89b144905211e08ea3056, type: 3}
+  dialogueAdvanceDaw: {fileID: 8300000, guid: e88dcac3dd03d8e44aea285086df0b11, type: 3}
 --- !u!82 &1597850128
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9561,7 +9562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &2040888699
 Animator:
   serializedVersion: 3
