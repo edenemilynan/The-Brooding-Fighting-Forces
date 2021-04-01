@@ -150,6 +150,14 @@ public class SortingManager : MonoBehaviour
         shape3.sprite = null;
     }
 
+    //Reset everything 
+    public void hardReset()
+    {
+        gotRightCount = 0;
+        reset();
+        triesCountChange(0);
+    }
+
     //Reroll shapes when command is affirm or negative
     void reroll()
     {
