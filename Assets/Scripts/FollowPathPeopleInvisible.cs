@@ -37,10 +37,14 @@ public class FollowPathPeopleInvisible : MonoBehaviour
 
         if ((currentPath == pathController.path && door == manager.whichEntryDoor) || startedOnPath == true)
         {
-            startedOnPath = true;
-            Destroy(counterPart);
-            person.SetInteger("facing", turn);
-            person.GetComponent<Renderer>().enabled = true;
+            if (startedOnPath == false)
+            {
+                startedOnPath = true;
+                manager.entryLocked = true;
+                Destroy(counterPart);
+                person.SetInteger("facing", turn);
+                person.GetComponent<Renderer>().enabled = true;
+            }
 
             transform.position = Vector3.MoveTowards(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
 

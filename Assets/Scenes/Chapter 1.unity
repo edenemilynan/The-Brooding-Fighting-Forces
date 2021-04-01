@@ -991,7 +991,9 @@ MonoBehaviour:
   - {fileID: 343340941}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 1789558146}
-  inputManager: {fileID: 0}
+  inputManager: {fileID: 232540501}
+  truckingInputManager: {fileID: 0}
+  taskManager: {fileID: 0}
 --- !u!4 &204032916
 Transform:
   m_ObjectHideFlags: 0
@@ -1153,6 +1155,9 @@ MonoBehaviour:
   whichEntryDoor: 1
   whichTruckingDoor: 1
   rampDown: -1
+  truckingRightLocked: 0
+  truckingLeftLocked: 0
+  entryLocked: 0
   taskWaitingTrucking: 0
   taskWaitingEntry: 0
   taskWaitingSorting: 0
@@ -1522,6 +1527,8 @@ MonoBehaviour:
   dialogueController: {fileID: 245659558}
   truck: {fileID: 676430076}
   inputManager: {fileID: 0}
+  truckingInputManager: {fileID: 232540501}
+  taskManager: {fileID: 338986081}
 --- !u!1 &283883220
 GameObject:
   m_ObjectHideFlags: 0
@@ -3796,6 +3803,8 @@ MonoBehaviour:
   MaxDistanceToGoal: 0.1
   pathController: {fileID: 1511508889}
   currentPath: 3
+  manager: {fileID: 232540501}
+  taskManager: {fileID: 338986081}
 --- !u!95 &676430079
 Animator:
   serializedVersion: 3
@@ -4018,6 +4027,8 @@ MonoBehaviour:
   MaxDistanceToGoal: 0.1
   pathController: {fileID: 1511508889}
   currentPath: 1
+  manager: {fileID: 232540501}
+  taskManager: {fileID: 338986081}
 --- !u!95 &735759266
 Animator:
   serializedVersion: 3
@@ -4711,6 +4722,8 @@ MonoBehaviour:
   dialogueController: {fileID: 245659558}
   truck: {fileID: 1205444011}
   inputManager: {fileID: 0}
+  truckingInputManager: {fileID: 232540501}
+  taskManager: {fileID: 338986081}
 --- !u!1 &873182349
 GameObject:
   m_ObjectHideFlags: 0
@@ -4759,7 +4772,9 @@ MonoBehaviour:
   - {fileID: 343340941}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 366462837}
-  inputManager: {fileID: 0}
+  inputManager: {fileID: 232540501}
+  truckingInputManager: {fileID: 0}
+  taskManager: {fileID: 0}
 --- !u!1 &875304602
 GameObject:
   m_ObjectHideFlags: 0
@@ -5184,6 +5199,8 @@ MonoBehaviour:
   MaxDistanceToGoal: 0.1
   pathController: {fileID: 1511508889}
   currentPath: 2
+  manager: {fileID: 232540501}
+  taskManager: {fileID: 338986081}
 --- !u!95 &980338381
 Animator:
   serializedVersion: 3
@@ -5424,6 +5441,8 @@ MonoBehaviour:
   dialogueController: {fileID: 245659558}
   truck: {fileID: 980338378}
   inputManager: {fileID: 0}
+  truckingInputManager: {fileID: 232540501}
+  taskManager: {fileID: 338986081}
 --- !u!4 &1091779080
 Transform:
   m_ObjectHideFlags: 0
@@ -5567,6 +5586,8 @@ MonoBehaviour:
   dialogueController: {fileID: 245659558}
   truck: {fileID: 120906405}
   inputManager: {fileID: 232540501}
+  truckingInputManager: {fileID: 0}
+  taskManager: {fileID: 0}
 --- !u!1 &1131874558
 GameObject:
   m_ObjectHideFlags: 0
@@ -5779,7 +5800,9 @@ MonoBehaviour:
   - {fileID: 1648005691}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 394389713}
-  inputManager: {fileID: 0}
+  inputManager: {fileID: 232540501}
+  truckingInputManager: {fileID: 0}
+  taskManager: {fileID: 0}
 --- !u!1 &1175786481
 GameObject:
   m_ObjectHideFlags: 0
@@ -5944,6 +5967,8 @@ MonoBehaviour:
   MaxDistanceToGoal: 0.1
   pathController: {fileID: 1511508889}
   currentPath: 0
+  manager: {fileID: 232540501}
+  taskManager: {fileID: 338986081}
 --- !u!1 &1208673275
 GameObject:
   m_ObjectHideFlags: 0
@@ -6078,6 +6103,8 @@ MonoBehaviour:
   dialogueController: {fileID: 245659558}
   truck: {fileID: 1789558146}
   inputManager: {fileID: 232540501}
+  truckingInputManager: {fileID: 0}
+  taskManager: {fileID: 0}
 --- !u!1 &1261346261
 GameObject:
   m_ObjectHideFlags: 0
@@ -6126,7 +6153,9 @@ MonoBehaviour:
   - {fileID: 1648005691}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 1789558146}
-  inputManager: {fileID: 0}
+  inputManager: {fileID: 232540501}
+  truckingInputManager: {fileID: 0}
+  taskManager: {fileID: 0}
 --- !u!1 &1264641109
 GameObject:
   m_ObjectHideFlags: 0
@@ -6629,6 +6658,8 @@ MonoBehaviour:
   dialogueController: {fileID: 245659558}
   truck: {fileID: 735759263}
   inputManager: {fileID: 0}
+  truckingInputManager: {fileID: 232540501}
+  taskManager: {fileID: 338986081}
 --- !u!1 &1357549629
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,6 +46,11 @@ public class InputManager : MonoBehaviour
     //ramp up is -1, ramp down is 1
     public int rampDown = -1;
 
+    //To keep players from closing doors on trucks/people
+    public bool truckingRightLocked = false;
+    public bool truckingLeftLocked = false;
+    public bool entryLocked = false;
+
     //Tries to dequeue task when another task has been 
     //completed, but only succeeds if doors are closed
     public bool taskWaitingTrucking = false;
@@ -260,30 +265,30 @@ public class InputManager : MonoBehaviour
                 //Entry Command
                 if (activeScreen == "entry")
                 {
-                    //Old entry
-                    //entryDoor.SetBool("entryIsOpen", false);
-
-                    if (whichEntryDoor == 1)
+                    if (entryLocked == false)
                     {
-                        entryRightOpen = false;
-                        entryControl.EntryRightClose();
-                        if (taskWaitingEntry == true && entryReset == false && entryLeftOpen == false)
+                        if (whichEntryDoor == 1)
                         {
-                            timerEntry = waitTime;
-                            entryReset = true;
+                            entryRightOpen = false;
+                            entryControl.EntryRightClose();
+                            if (taskWaitingEntry == true && entryReset == false && entryLeftOpen == false)
+                            {
+                                timerEntry = waitTime;
+                                entryReset = true;
+                            }
                         }
-                    }
 
-                    else
-                    {
-                        entryLeftOpen = false;
-                        entryControl.EntryLeftClose();
-                        if (taskWaitingEntry == true && entryReset == false && entryRightOpen == false)
+                        else
                         {
-                            timerEntry = waitTime;
-                            entryReset = true;
+                            entryLeftOpen = false;
+                            entryControl.EntryLeftClose();
+                            if (taskWaitingEntry == true && entryReset == false && entryRightOpen == false)
+                            {
+                                timerEntry = waitTime;
+                                entryReset = true;
+                            }
                         }
-                    }
+                    }        
                 }
 
                 //Trucking Command
@@ -291,25 +296,31 @@ public class InputManager : MonoBehaviour
                 {
                     if (whichTruckingDoor == 1)
                     {
-                        truckingRightOpen = false;
-                        truckingControl.truckRightClose();
-                        if (taskWaitingTrucking == true && truckReset == false && truckingLeftOpen == false)
+                        if (truckingRightLocked == false)
                         {
-                            timerTrucking = waitTime;
-                            truckReset = true;
+                            truckingRightOpen = false;
+                            truckingControl.truckRightClose();
+                            if (taskWaitingTrucking == true && truckReset == false && truckingLeftOpen == false)
+                            {
+                                timerTrucking = waitTime;
+                                truckReset = true;
+                            }
                         }
                     }
 
                     else
                     {
-                        if (rampDown == 1)
+                        if (rampDown == 1) 
                         {
-                            truckingLeftOpen = false;
-                            truckingControl.truckLeftClose();
-                            if (taskWaitingTrucking == true && truckReset == false && truckingRightOpen == false)
+                            if (truckingLeftLocked == false)
                             {
-                                timerTrucking = waitTime;
-                                truckReset = true;
+                                truckingLeftOpen = false;
+                                truckingControl.truckLeftClose();
+                                if (taskWaitingTrucking == true && truckReset == false && truckingRightOpen == false)
+                                {
+                                    timerTrucking = waitTime;
+                                    truckReset = true;
+                                }
                             }
                         }   
                     }
@@ -523,7 +534,7 @@ public class InputManager : MonoBehaviour
             convo2activated = true;
         }
 
-        if (convo3activated && !truckingCompletionConversationActivated && activeScreen == "truck" && lastMorseCommand == "-." && whichTruckingDoor == 1)
+        if (convo3activated && !truckingCompletionConversationActivated && activeScreen == "truck" && lastMorseCommand == "-." && whichTruckingDoor == 1  && truckingRightLocked == false)
         {
             Debug.Log("Made it into TruckingCompletionConversation");
             DialogueController.GetComponent<DialogueController>().startTruckingCompletionConversation = true;

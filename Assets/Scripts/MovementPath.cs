@@ -9,12 +9,14 @@ public class MovementPath : MonoBehaviour
     private int movementDirection = 1;
     private int movingTo = 0;
     public Transform[] pathSequence;
-    //public int directionStart;
-    //public int directionTurn;
-    //public Animator animator;
+
     public DialogueController dialogueController;
     public GameObject truck;
     public InputManager inputManager;
+    public InputManager truckingInputManager;
+
+    public TaskManager taskManager; 
+
     //public TruckingController pathControl;
 
     // Start is called before the first frame update
@@ -84,6 +86,20 @@ public class MovementPath : MonoBehaviour
                 //truckingPath.path = (path + 1);
             //}
     
+        }
+
+        if (inputManager != null)
+        {
+            inputManager.entryLocked = false;
+        }
+
+        else
+        {
+            if (taskManager.taskTrucking == TaskManager.Tasks.truckRight)
+            {
+                truckingInputManager.truckingRightLocked = false;
+            }
+            else truckingInputManager.truckingLeftLocked = false;
         }
 
         Destroy(truck);

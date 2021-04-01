@@ -8,11 +8,13 @@ public class FollowPath : MonoBehaviour
     public MovementPath path;
     public float speed = 1;
     public float MaxDistanceToGoal = .1f;
+
     public TruckingController pathController;
     public int currentPath;
-    //public int turn;
 
-    //public Animator actor;
+    public InputManager manager;
+    public TaskManager taskManager;
+
     private IEnumerator<Transform> pointInPath;
 
     // Start is called before the first frame update
@@ -30,6 +32,12 @@ public class FollowPath : MonoBehaviour
 
         if (currentPath == pathController.path)
         {
+
+            if (taskManager.taskTrucking == TaskManager.Tasks.truckRight)
+            {
+                manager.truckingRightLocked = true;
+            }
+            else manager.truckingLeftLocked = true;
 
             if ((currentPath % 2) == 0)
             {
