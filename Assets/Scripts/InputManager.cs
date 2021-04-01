@@ -417,6 +417,12 @@ public class InputManager : MonoBehaviour
                             TruckingController.GetComponent<TruckingController>().path += 1;
                             truckingControl.rightIndicatorOff();
                             taskWaitingTrucking = true;
+
+                            if (!convo3activated)
+                            {
+                                convo3activated = true;
+                                DialogueController.GetComponent<DialogueController>().thirdConversation = false;
+                            }
                         }
                     }
 
@@ -436,12 +442,6 @@ public class InputManager : MonoBehaviour
                                 taskWaitingTrucking = true;
                             }
                         }
-                    }
-                        
-                    if(!convo3activated)
-                    {
-                        convo3activated = true;
-                        DialogueController.GetComponent<DialogueController>().thirdConversation = false;
                     }
                 }
 
@@ -523,7 +523,7 @@ public class InputManager : MonoBehaviour
             convo2activated = true;
         }
 
-        if (convo3activated  && !truckingCompletionConversationActivated && activeScreen == "truck" && lastMorseCommand == "-.")
+        if (convo3activated && !truckingCompletionConversationActivated && activeScreen == "truck" && lastMorseCommand == "-." && whichTruckingDoor == 1)
         {
             Debug.Log("Made it into TruckingCompletionConversation");
             DialogueController.GetComponent<DialogueController>().startTruckingCompletionConversation = true;
