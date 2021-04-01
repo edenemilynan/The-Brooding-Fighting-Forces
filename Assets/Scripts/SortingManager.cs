@@ -123,14 +123,17 @@ public class SortingManager : MonoBehaviour
     }
 
     //An update check in input manager to stop the game
-    public void checkIfComplete()
+    public bool checkIfComplete()
     {
         if (gotRightCount == 3)
         {
             Debug.Log("check if complete");
             reset();
             workers.sprite = sc.workers[0];
+            return true;
         }
+
+        else return false;
     }
 
     //Update sprite for number of tries in the corner

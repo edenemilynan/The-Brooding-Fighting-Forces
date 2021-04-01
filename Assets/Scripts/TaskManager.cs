@@ -61,6 +61,7 @@ public class TaskManager : MonoBehaviour
         tasksTrucking.Enqueue(Tasks.truckRight);
         tasksTrucking.Enqueue(Tasks.none);
         tasksEntry.Enqueue(Tasks.none);
+        tasksSorting.Enqueue(Tasks.none);
 
         //Randomized
         taskTrucking = tasksTrucking.Dequeue();

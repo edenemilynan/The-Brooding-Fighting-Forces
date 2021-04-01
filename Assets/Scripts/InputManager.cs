@@ -50,7 +50,7 @@ public class InputManager : MonoBehaviour
     //completed, but only succeeds if doors are closed
     public bool taskWaitingTrucking = false;
     public bool taskWaitingEntry = false;
-    public bool taskWaitingSorting = true;
+    public bool taskWaitingSorting = false;
 
     //If an old task is sitting in task variable
     //because next is not ready to dequeue (doors open)
@@ -70,6 +70,7 @@ public class InputManager : MonoBehaviour
     //Variables to control wait time before dequeuing new task 
     private int timerEntry = 0;
     private int timerTrucking = 0;
+    private int timerSorting = 0;
     private int waitTime = 3000;
     private bool truckReset = false;
     private bool entryReset = false;
@@ -99,12 +100,17 @@ public class InputManager : MonoBehaviour
             timerTrucking -= 1;
         }
 
+        if (timerSorting > 0)
+        {
+            timerSorting -= 1;
+        }
+
         if (taskWaitingEntry == true && taskManager.tasksEntry.Count != 0)
         {
 
             if (entryLeftOpen == false && entryRightOpen == false)
             {
-                if (timerEntry == 0 || taskManager.tasksEntry.Peek() == TaskManager.Tasks.none || taskManager.taskTrucking == TaskManager.Tasks.none)
+                if (timerEntry == 0 || taskManager.tasksEntry.Peek() == TaskManager.Tasks.none || (taskManager.taskTrucking == TaskManager.Tasks.none && taskManager.taskSorting == TaskManager.Tasks.none))
                 {
                     taskManager.getTaskEntry();
                     entryReset = false;
@@ -117,7 +123,7 @@ public class InputManager : MonoBehaviour
 
         if (taskWaitingTrucking == true && taskManager.tasksTrucking.Count != 0) 
         {
-            if (timerTrucking == 0 || taskManager.tasksTrucking.Peek() == TaskManager.Tasks.none || taskManager.taskEntry == TaskManager.Tasks.none)
+            if (timerTrucking == 0 || taskManager.tasksTrucking.Peek() == TaskManager.Tasks.none || (taskManager.taskEntry == TaskManager.Tasks.none && taskManager.taskSorting == TaskManager.Tasks.none))
             {
                 if (truckingLeftOpen == false && truckingRightOpen == false)
                 {
@@ -142,9 +148,11 @@ public class InputManager : MonoBehaviour
 
         if (taskWaitingSorting == true && taskManager.tasksSorting.Count != 0)
         {
-            taskManager.getTaskSorting();
-            Debug.Log("Input sorting task");
-
+            if (timerSorting == 0 || taskManager.tasksSorting.Peek() == TaskManager.Tasks.none || (taskManager.taskTrucking == TaskManager.Tasks.none && taskManager.taskEntry == TaskManager.Tasks.none))
+            {
+                taskManager.getTaskSorting();
+                Debug.Log("Input sorting task");
+            }
         }
 
 
@@ -156,7 +164,7 @@ public class InputManager : MonoBehaviour
         //     taskManager.GetTask();
         // }
 
-        if (taskManager.taskTrucking == TaskManager.Tasks.none && taskManager.taskEntry == TaskManager.Tasks.none && !convo4activated)
+        if (taskManager.taskTrucking == TaskManager.Tasks.none && taskManager.taskEntry == TaskManager.Tasks.none && taskManager.taskSorting == TaskManager.Tasks.none && !convo4activated)
         {
             DialogueController.GetComponent<DialogueController>().readyForFourthConvo = true;
         }
@@ -278,7 +286,7 @@ public class InputManager : MonoBehaviour
                 }
 
                 //Trucking Command
-                else if (activeScreen == "trucking")
+                else if (activeScreen == "truck")
                 {
                     if (whichTruckingDoor == 1)
                     {
@@ -314,10 +322,15 @@ public class InputManager : MonoBehaviour
                 }
 
                 //Sorting Command
-                else if (activeScreen == "sorting")
+                else if (activeScreen == "sorting" && taskManager.taskSorting != TaskManager.Tasks.none && taskWaitingSorting == false)
                 {
                     sortManager.validate("negative");
-                    sortManager.checkIfComplete();
+                    bool complete = sortManager.checkIfComplete();
+                    if (complete)
+                    {
+                        taskWaitingSorting = true;
+                        timerSorting = waitTime;
+                    }
                 }
             }
 
@@ -389,7 +402,7 @@ public class InputManager : MonoBehaviour
                 }
 
                 //Trucking Command
-                else if (activeScreen == "trucking")
+                else if (activeScreen == "truck")
                 {
 
                     if (whichTruckingDoor == 1)
@@ -432,10 +445,15 @@ public class InputManager : MonoBehaviour
                 }
 
                 //Sorting Command
-                else if(activeScreen == "sorting")
+                else if (activeScreen == "sorting" && taskManager.taskSorting != TaskManager.Tasks.none && taskWaitingSorting == false)
                 {
                     sortManager.validate("affirm");
-                    sortManager.checkIfComplete();
+                    bool complete = sortManager.checkIfComplete();
+                    if (complete)
+                    {
+                        taskWaitingSorting = true;
+                        timerSorting = waitTime;
+                    }
                 }
             }
 
@@ -443,7 +461,7 @@ public class InputManager : MonoBehaviour
             if (morseCommand == "..")
             {
                 //Trucking Command
-                if (activeScreen == "trucking")
+                if (activeScreen == "truck")
                 {
                     if (truckingLeftOpen == false)
                     {
@@ -472,10 +490,10 @@ public class InputManager : MonoBehaviour
                 }
 
                 //Sorting Command
-                else if (activeScreen == "sorting")
+                else if (activeScreen == "sorting" && taskWaitingSorting == false && taskManager.taskSorting == TaskManager.Tasks.sort)
                 {
                     sortManager.validate("interact");
-                    sortManager.checkIfComplete();
+                    //sortManager.checkIfComplete()
                 }
             }
             
@@ -499,6 +517,7 @@ public class InputManager : MonoBehaviour
             DialogueController.GetComponent<DialogueController>().startTruckingCompletionConversation = true;
             truckingCompletionConversationActivated = true;
             taskManager.getTaskEntry();
+            taskManager.getTaskSorting();
         }
 
         if(truckingCompletionConversationActivated && !entryIntroConversationStarted && activeScreen == "entry")

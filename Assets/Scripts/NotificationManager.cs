@@ -8,6 +8,7 @@ public class NotificationManager : MonoBehaviour
     public Animator mNotif;
     public Animator eNotif;
     public Animator tNotif;
+    public Animator sNotif;
 
     public InputManager inputManager;
     public TaskManager taskManager;
@@ -25,6 +26,12 @@ public class NotificationManager : MonoBehaviour
             eNotif.SetBool("hideBounce", false);
         }
         else eNotif.SetBool("hideBounce", true);
+
+        if (inputManager.taskWaitingSorting == false && taskManager.taskSorting != TaskManager.Tasks.none && camera != "sorting")
+        {
+            sNotif.SetBool("hideBounce", false);
+        }
+        else sNotif.SetBool("hideBounce", true);
 
         if (taskManager.taskTrucking == TaskManager.Tasks.none && taskManager.taskEntry == TaskManager.Tasks.none && camera != "main")
         {
