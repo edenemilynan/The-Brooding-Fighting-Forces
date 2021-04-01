@@ -20,7 +20,7 @@ public class TransitionController : MonoBehaviour
         staticAnimSorting.SetTrigger("default");
         staticAnimTrucking.SetTrigger("default");
 
-        staticAudioSource.PlayOneShot(staticSound, 0.5F);
+        staticAudioSource.PlayOneShot(staticSound, 0.05F);
     }
     public void staticTrucking()
     {
@@ -29,7 +29,7 @@ public class TransitionController : MonoBehaviour
         staticAnimMain.SetTrigger("default");
         staticAnimSorting.SetTrigger("default");
 
-        staticAudioSource.PlayOneShot(staticSound, 0.5F);
+        staticAudioSource.PlayOneShot(staticSound, 0.05F);
     }
     public void staticEntry()
     {
@@ -38,7 +38,7 @@ public class TransitionController : MonoBehaviour
         staticAnimMain.SetTrigger("default");
         staticAnimSorting.SetTrigger("default");
 
-        staticAudioSource.PlayOneShot(staticSound, 0.5F);
+        staticAudioSource.PlayOneShot(staticSound, 0.05F);
     }
     public void staticSorting()
     {
@@ -47,7 +47,7 @@ public class TransitionController : MonoBehaviour
         staticAnimMain.SetTrigger("default");
         staticAnimTrucking.SetTrigger("default");
 
-        staticAudioSource.PlayOneShot(staticSound, 0.5F);
+        staticAudioSource.PlayOneShot(staticSound, 0.05F);
     }
 
 }

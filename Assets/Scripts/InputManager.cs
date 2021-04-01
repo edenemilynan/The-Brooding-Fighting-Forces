@@ -8,12 +8,7 @@ public class InputManager : MonoBehaviour
     public string lastMorseCommand;
 
     public TransitionController transitionController;
-
-    //Camera screen objects
-    public GameObject mainScreen;
-    public GameObject truckingScreen;
-    public GameObject scanningScreen;
-    public GameObject sortingScreen;
+    public CameraController cameraController;
 
     public GameObject morseInput;
 
@@ -81,12 +76,6 @@ public class InputManager : MonoBehaviour
 
     //For notifications to keep track of what screen we are on
     public string activeScreen = "main";
-    void Start()
-    {
-        truckingScreen.SetActive(false);
-        scanningScreen.SetActive(false);
-        sortingScreen.SetActive(false);
-    }
 
     // Update is called once per frame
     void Update()
@@ -180,9 +169,9 @@ public class InputManager : MonoBehaviour
             //Trucks
             if (morseCommand == "-")
             {
-                activeScreen = "truck";
                 
-                if (truckingScreen.activeInHierarchy)
+                
+                if (activeScreen == "truck")
                 {
                     whichTruckingDoor = (whichTruckingDoor * (-1));
                     truckingControl.switchHighlight();
@@ -191,9 +180,8 @@ public class InputManager : MonoBehaviour
                 else
                 {
                     transitionController.staticTrucking();
-                    truckingScreen.SetActive(true);
-                    scanningScreen.SetActive(false);
-                    sortingScreen.SetActive(false);
+                    activeScreen = "truck";
+                    cameraController.truckingCamera();
                     trucksVisited = true;
                 }
 
@@ -206,9 +194,8 @@ public class InputManager : MonoBehaviour
             //Entry
             if (morseCommand == ".")
             {
-                activeScreen = "entry";
 
-                if (scanningScreen.activeInHierarchy)
+                if (activeScreen == "entry")
                 {
                     whichEntryDoor = (whichEntryDoor * (-1));
                     entryControl.switchHighlight();
@@ -216,9 +203,8 @@ public class InputManager : MonoBehaviour
                 else
                 {
                     transitionController.staticEntry();
-                    truckingScreen.SetActive(false);
-                    scanningScreen.SetActive(true);
-                    sortingScreen.SetActive(false);
+                    activeScreen = "entry";
+                    cameraController.entryCamera();
                     entryVisited = true;
                 }
 
@@ -227,18 +213,16 @@ public class InputManager : MonoBehaviour
             //Sorting
             if (morseCommand == "...")
             {
-                activeScreen = "sorting";
 
-                if (sortingScreen.activeInHierarchy)
+                if (activeScreen == "sorting")
                 {
 
                 }
                 else
                 {
                     transitionController.staticSorting();
-                    truckingScreen.SetActive(false);
-                    scanningScreen.SetActive(false);
-                    sortingScreen.SetActive(true);
+                    activeScreen = "sorting";
+                    cameraController.sortingCamera();
                 }
                 sortManager.checkIfComplete();
 
@@ -252,9 +236,7 @@ public class InputManager : MonoBehaviour
                 {
                     transitionController.staticMain();
                     activeScreen = "main";
-                    truckingScreen.SetActive(false);
-                    scanningScreen.SetActive(false);
-                    sortingScreen.SetActive(false);
+                    cameraController.mainCamera();
                 }
                 else
                 {
@@ -267,7 +249,7 @@ public class InputManager : MonoBehaviour
             if (morseCommand == "-.")
             {
                 //Entry Command
-                if (scanningScreen.activeInHierarchy)
+                if (activeScreen == "entry")
                 {
                     //Old entry
                     //entryDoor.SetBool("entryIsOpen", false);
@@ -296,7 +278,7 @@ public class InputManager : MonoBehaviour
                 }
 
                 //Trucking Command
-                else if (truckingScreen.activeInHierarchy)
+                else if (activeScreen == "trucking")
                 {
                     if (whichTruckingDoor == 1)
                     {
@@ -332,7 +314,7 @@ public class InputManager : MonoBehaviour
                 }
 
                 //Sorting Command
-                else if (sortingScreen.activeInHierarchy)
+                else if (activeScreen == "sorting")
                 {
                     sortManager.validate("negative");
                     sortManager.checkIfComplete();
@@ -343,7 +325,7 @@ public class InputManager : MonoBehaviour
             if (morseCommand == ".-")
             {
                 //Entry Command
-                if (scanningScreen.activeInHierarchy)
+                if (activeScreen == "entry")
                 {
                     //If no one's waiting at the door, you can open it.
                     if (taskManager.taskEntry != TaskManager.Tasks.peopleAllow && taskManager.taskEntry != TaskManager.Tasks.peopleDisallow)
@@ -407,7 +389,7 @@ public class InputManager : MonoBehaviour
                 }
 
                 //Trucking Command
-                else if (truckingScreen.activeInHierarchy)
+                else if (activeScreen == "trucking")
                 {
 
                     if (whichTruckingDoor == 1)
@@ -450,7 +432,7 @@ public class InputManager : MonoBehaviour
                 }
 
                 //Sorting Command
-                else if(sortingScreen.activeInHierarchy)
+                else if(activeScreen == "sorting")
                 {
                     sortManager.validate("affirm");
                     sortManager.checkIfComplete();
@@ -461,7 +443,7 @@ public class InputManager : MonoBehaviour
             if (morseCommand == "..")
             {
                 //Trucking Command
-                if (truckingScreen.activeInHierarchy)
+                if (activeScreen == "trucking")
                 {
                     if (truckingLeftOpen == false)
                     {
@@ -471,7 +453,7 @@ public class InputManager : MonoBehaviour
                 }
 
                 //Entry Command
-                if (scanningScreen.activeInHierarchy)
+                if (activeScreen == "entry")
                 {
                     entryControl.scanOn();
 
@@ -490,7 +472,7 @@ public class InputManager : MonoBehaviour
                 }
 
                 //Sorting Command
-                else if (sortingScreen.activeInHierarchy)
+                else if (activeScreen == "sorting")
                 {
                     sortManager.validate("interact");
                     sortManager.checkIfComplete();
