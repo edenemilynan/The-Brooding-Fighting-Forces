@@ -73,7 +73,9 @@ public class DialogueManager : MonoBehaviour
         expressions.Clear();
         sounds.Clear();
 
-        StreamReader sr = new StreamReader("Assets/Dialogues/"+fileName+".csv");
+        //string path = "Assets/Resources/Dialogues/" + fileName + ".csv";
+        string path = Application.streamingAssetsPath + "/Dialogues/" + fileName + ".csv";
+        StreamReader sr = new StreamReader(path);
 		List<string> lines = new List<string>();
 		while (!sr.EndOfStream)
 		{
