@@ -169,6 +169,7 @@ public class InputManager : MonoBehaviour
             DialogueController.GetComponent<DialogueController>().readyForFourthConvo = true;
         }
 
+
         //Command Inputs
         if (morseCommand != "")
         {   
@@ -490,10 +491,15 @@ public class InputManager : MonoBehaviour
                 }
 
                 //Sorting Command
-                else if (activeScreen == "sorting" && taskWaitingSorting == false && taskManager.taskSorting == TaskManager.Tasks.sort)
+                else if (activeScreen == "sorting")
                 {
-                    sortManager.validate("interact");
-                    //sortManager.checkIfComplete()
+                    if(taskWaitingSorting == false && taskManager.taskSorting == TaskManager.Tasks.sort)
+                    {
+                        sortManager.validate("interact");
+                        //sortManager.checkIfComplete()
+
+                    }
+                  
                 }
             }
             
@@ -501,6 +507,12 @@ public class InputManager : MonoBehaviour
             {
                 // Invalid Input
                 Debug.Log("Invalid Input");
+            }
+            
+            //After completing the sorting task, leaving the screen resets it for the next sorting task
+            if(activeScreen != "sorting" && sortManager.checkIfComplete() == true)
+            {
+                sortManager.hardReset();
             }
 
         }
