@@ -82,6 +82,7 @@ public class TriggerManager : MonoBehaviour
 	void ChapterTwoTriggerController()
 	{
 		if(Ch2IntroConversation == convoStatus.Complete &&
+		   Ch2TruckSecurityConversation != convoStatus.Complete &&
 		   activeScreen == "truck")
 		{
 			Ch2TruckSecurityConversation = convoStatus.Ready;
