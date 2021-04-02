@@ -198,6 +198,7 @@ public class InputManager : MonoBehaviour
                 {
                     transitionController.staticTrucking();
                     activeScreen = "truck";
+					triggerManager.activeScreen = "truck";
                     cameraController.truckingCamera();
 					trucksVisited = true;
                     triggerManager.trucksVisited = true;
@@ -222,6 +223,7 @@ public class InputManager : MonoBehaviour
                 {
                     transitionController.staticEntry();
                     activeScreen = "entry";
+					triggerManager.activeScreen = "entry";
                     cameraController.entryCamera();
                     entryVisited = true;
 					triggerManager.entryVisited = true;
@@ -241,7 +243,9 @@ public class InputManager : MonoBehaviour
                 {
                     transitionController.staticSorting();
                     activeScreen = "sorting";
+					triggerManager.activeScreen = "sorting";
                     cameraController.sortingCamera();
+					triggerManager.sortingVisited = true;
                 }
                 sortManager.checkIfComplete();
 
@@ -255,6 +259,7 @@ public class InputManager : MonoBehaviour
                 {
                     transitionController.staticMain();
                     activeScreen = "main";
+					triggerManager.activeScreen = "main";
                     cameraController.mainCamera();
                 }
                 else

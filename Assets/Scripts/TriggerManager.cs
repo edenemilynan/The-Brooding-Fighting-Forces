@@ -35,12 +35,12 @@ public class TriggerManager : MonoBehaviour
 	public int scannerTasksCompleted;
 	public int sortingTasksCompleted;
 
-	public bool trucksVisited;
-	public bool entryVisited;
-	public bool sortingVisited;
+	public bool trucksVisited; //This is successfully changed through InputManager now
+	public bool entryVisited; //This is successfully changed through InputManager now
+	public bool sortingVisited; //This is successfully changed through InputManager now
 
-	public string activeScreen;
-	public string sceneName;
+	public string activeScreen; //This is successfully changed through InputManager now
+	public string sceneName;    //This will be successfully changed on each startup
 
 
     // Start is called before the first frame update
