@@ -21,6 +21,9 @@ public class DialogueController : MonoBehaviour
 	private string sceneName;
     public GameObject DialogueManager;
     public GameObject InputManager;
+	
+	//Making a centralized location for all triggers to reside.
+	public TriggerManager triggerManager;
 
 
 	// Chapter 2 Specific Dialogue Triggers
@@ -36,7 +39,7 @@ public class DialogueController : MonoBehaviour
         Debug.Log(taskManager.nTasks);
 
 		// Create a temporary reference to the current scene.
-		Scene currentScene = SceneManager.GetActiveScene ();
+		Scene currentScene = SceneManager.GetActiveScene();
  
 		// Retrieve the name of this scene.
 		sceneName = currentScene.name;
@@ -191,14 +194,28 @@ public class DialogueController : MonoBehaviour
 	{
 		if (tasksCompleted == 0 && convosHad == 0)
         {
-            GameObject conversation = GameObject.Find("IntroConversation");
-            DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
-            convosHad += 1;
+            TriggerThisDialogue("IntroConversation");
+            // GameObject conversation = GameObject.Find("IntroConversation");
+            // DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
+            // triggerManager.convosHad++;
+			// convosHad += 1;
 
-            if (other != null)
-            {
-                other.TriggerDialogue();
-            }
+            // if (other != null)
+            // {
+            //     other.TriggerDialogue();
+            // }
         }
+	}
+
+	void TriggerThisDialogue(string dialogueName)
+	{
+		GameObject conversation = GameObject.Find(dialogueName);
+		DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
+		convosHad += 1;
+
+		if (other != null)
+		{
+			other.TriggerDialogue();
+		}
 	}
 }

@@ -28,6 +28,9 @@ public class InputManager : MonoBehaviour
     public NotificationManager notifManager;
     public SortingManager sortManager;
 
+	//Making a centralized location for all triggers to reside.
+    public TriggerManager triggerManager;
+
     private bool convo2activated = false;
     private bool convo3activated = false;
     public bool convo4activated = false;
@@ -196,7 +199,8 @@ public class InputManager : MonoBehaviour
                     transitionController.staticTrucking();
                     activeScreen = "truck";
                     cameraController.truckingCamera();
-                    trucksVisited = true;
+					trucksVisited = true;
+                    triggerManager.trucksVisited = true;
                 }
 
                 
@@ -220,6 +224,7 @@ public class InputManager : MonoBehaviour
                     activeScreen = "entry";
                     cameraController.entryCamera();
                     entryVisited = true;
+					triggerManager.entryVisited = true;
                 }
 
             }
@@ -528,7 +533,7 @@ public class InputManager : MonoBehaviour
 
         }
 
-        if (trucksVisited && entryVisited && !convo2activated)
+        if (trucksVisited && triggerManager.trucksVisited && !convo2activated)
         {
             DialogueController.GetComponent<DialogueController>().secondConversation = false;
             convo2activated = true;

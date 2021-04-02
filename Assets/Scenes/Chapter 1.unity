@@ -1150,6 +1150,7 @@ MonoBehaviour:
   taskManager: {fileID: 338986081}
   notifManager: {fileID: 128537752}
   sortManager: {fileID: 1139141711}
+  triggerManager: {fileID: 1707808639}
   convo4activated: 0
   convo5activated: 0
   whichEntryDoor: 1
@@ -1273,6 +1274,7 @@ MonoBehaviour:
   fifthConversation: 1
   DialogueManager: {fileID: 1027721082}
   InputManager: {fileID: 232540500}
+  triggerManager: {fileID: 0}
 --- !u!1 &252806503
 GameObject:
   m_ObjectHideFlags: 0
@@ -8422,6 +8424,69 @@ Transform:
   - {fileID: 1364482781}
   m_Father: {fileID: 0}
   m_RootOrder: 31
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1707808638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1707808640}
+  - component: {fileID: 1707808639}
+  m_Layer: 0
+  m_Name: TriggerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1707808639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707808638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2cc917d50e468f46a3f825ec8c3dc39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ch1IntroConversation: 0
+  Ch1SecondConversation: 0
+  Ch1TruckingCompletionConversation: 0
+  Ch1ThirdConversation: 0
+  Ch1EntryIntroConversation: 0
+  Ch1EntryErrorConversation: 0
+  Ch1EntryCompletionConversation: 0
+  Ch1FourthConversation: 0
+  Ch1FifthConversation: 0
+  Ch2IntroConversation: 0
+  convosHad: 0
+  tasksCompleted: 0
+  truckTasksCompleted: 0
+  scannerTasksCompleted: 0
+  sortingTasksCompleted: 0
+  trucksVisited: 0
+  entryVisited: 0
+  sortingVisited: 0
+  activeScreen: 
+  sceneName: 
+--- !u!4 &1707808640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707808638}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -772, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1710838668
 GameObject:
