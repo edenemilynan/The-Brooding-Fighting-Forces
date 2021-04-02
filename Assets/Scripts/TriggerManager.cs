@@ -21,6 +21,7 @@ public class TriggerManager : MonoBehaviour
 	
 	// Chapter 2 Triggers
 	public convoStatus Ch2IntroConversation;
+	public convoStatus Ch2TruckSecurityConversation;
 
 
 
@@ -59,6 +60,36 @@ public class TriggerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (sceneName == "Chapter 1")
+		{
+			ChapterOneTriggerController();
+		}
+		else if (sceneName == "Chapter 2")
+		{
+			ChapterTwoTriggerController();
+		}
+		else if (sceneName == "Chapter 3")
+		{
+			ChapterThreeTriggerController();
+		}
     }
+
+	void ChapterOneTriggerController()
+	{
+
+	}
+
+	void ChapterTwoTriggerController()
+	{
+		if(Ch2IntroConversation == convoStatus.Complete &&
+		   activeScreen == "truck")
+		{
+			Ch2TruckSecurityConversation = convoStatus.Ready;
+		}
+	}
+
+	void ChapterThreeTriggerController()
+	{
+
+	}
 }
