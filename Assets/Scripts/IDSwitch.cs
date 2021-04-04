@@ -13,6 +13,8 @@ public class IDSwitch : MonoBehaviour
         currentCharacter = SceneLoader.currentCharacter;
         changeID();
     }
+    
+    //Change ID based on what character was chosen in character selection
     void changeID()
     {
         if(currentCharacter == "mento")

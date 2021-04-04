@@ -23,23 +23,23 @@ public class SceneLoader : MonoBehaviour
         // Changes the buttons to not be interactable by CharacterButton script
         if (button == cb.mentoB)
         {
-            CharacterButtons.mentoNotClicked = false;
+            CharacterButtons.mentoAlive = false;
             currentCharacter = "mento";
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(2);//2
             chapter += 1;
         }
         else if(button == cb.petuniaB)
         {
-            CharacterButtons.petuniaNotClicked = false;
+            CharacterButtons.petuniaAlive = false;
             currentCharacter = "pentunia";
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(3);//3
             chapter += 1;
         }
         else if (button == cb.swethB)
         {
-            CharacterButtons.swethNotClicked = false;
+            CharacterButtons.swethAlive = false;
             currentCharacter = "sweth";
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(4);//4
             chapter += 1;
         }
         Debug.Log(currentCharacter);
