@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SortingManager : MonoBehaviour
 {
+    public DialogueController dialogueController;
+
     public SpriteRenderer shape1, shape2, shape3, numberTries, workers;
     public SortingCombinations sc;
     private int rand;
@@ -128,6 +130,7 @@ public class SortingManager : MonoBehaviour
         if (gotRightCount == 3)
         {
             Debug.Log("check if complete");
+            dialogueController.tasksCompleted += 1;
             reset();
             workers.sprite = sc.workers[0];
             return true;

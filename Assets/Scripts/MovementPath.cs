@@ -8,6 +8,7 @@ public class MovementPath : MonoBehaviour
     private bool paused = false;
     private int movementDirection = 1;
     private int movingTo = 0;
+    private int taskNumber = 1;
     public Transform[] pathSequence;
 
     public DialogueController dialogueController;
@@ -65,6 +66,7 @@ public class MovementPath : MonoBehaviour
                 {
                     truck.GetComponent<FollowPathPeople>().currentPath += 1;
                     truck.GetComponent<Animator>().SetInteger("facing", 0);
+                    taskNumber = 0;
                     paused = true;
                     if (inputManager != null)
                     {
@@ -103,6 +105,6 @@ public class MovementPath : MonoBehaviour
         }
 
         Destroy(truck);
-        dialogueController.tasksCompleted += 1;
+        dialogueController.tasksCompleted += taskNumber;
     }
 }
