@@ -989,6 +989,7 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 505502951}
   - {fileID: 343340941}
+  triggerManager: {fileID: 0}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 1789558146}
   inputManager: {fileID: 232540501}
@@ -1526,6 +1527,7 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1269448217}
   - {fileID: 498017456}
+  triggerManager: {fileID: 0}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 676430076}
   inputManager: {fileID: 0}
@@ -4721,6 +4723,7 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1893501714}
   - {fileID: 762027376}
+  triggerManager: {fileID: 0}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 1205444011}
   inputManager: {fileID: 0}
@@ -4772,6 +4775,7 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 505502951}
   - {fileID: 343340941}
+  triggerManager: {fileID: 0}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 366462837}
   inputManager: {fileID: 232540501}
@@ -5440,6 +5444,7 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1952542139}
   - {fileID: 623117980}
+  triggerManager: {fileID: 0}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 980338378}
   inputManager: {fileID: 0}
@@ -5585,6 +5590,7 @@ MonoBehaviour:
   - {fileID: 1357549630}
   - {fileID: 1095326337}
   - {fileID: 1648005691}
+  triggerManager: {fileID: 0}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 120906405}
   inputManager: {fileID: 232540501}
@@ -5701,6 +5707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueController: {fileID: 245659558}
+  triggerManager: {fileID: 0}
   shape1: {fileID: 1267834355}
   shape2: {fileID: 1131874560}
   shape3: {fileID: 1982439094}
@@ -5801,6 +5808,7 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1095326337}
   - {fileID: 1648005691}
+  triggerManager: {fileID: 0}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 394389713}
   inputManager: {fileID: 232540501}
@@ -6103,6 +6111,7 @@ MonoBehaviour:
   - {fileID: 256639120}
   - {fileID: 505502951}
   - {fileID: 343340941}
+  triggerManager: {fileID: 0}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 1789558146}
   inputManager: {fileID: 232540501}
@@ -6154,6 +6163,7 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1095326337}
   - {fileID: 1648005691}
+  triggerManager: {fileID: 0}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 1789558146}
   inputManager: {fileID: 232540501}
@@ -6658,6 +6668,7 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1304215781}
   - {fileID: 1581799737}
+  triggerManager: {fileID: 0}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 735759263}
   inputManager: {fileID: 0}
@@ -8466,6 +8477,11 @@ MonoBehaviour:
   Ch1FifthConversation: 0
   Ch2IntroConversation: 0
   Ch2TruckSecurityConversation: 0
+  Ch2TruckAlarmDecisionConversation: 0
+  Ch2TruckAlarmDecision: 0
+  Ch2EntryPeskyScannerConversation: 0
+  Ch2EntryAlarmDecisionConversation: 0
+  Ch2EntryAlarmDecision: 0
   convosHad: 0
   tasksCompleted: 0
   truckTasksCompleted: 0
@@ -8476,6 +8492,9 @@ MonoBehaviour:
   sortingVisited: 0
   activeScreen: 
   sceneName: 
+  obeyedIVAALCount: 0
+  ignoredIVAALCount: 0
+  entryTaskTimer: 0
 --- !u!4 &1707808640
 Transform:
   m_ObjectHideFlags: 0

@@ -89,6 +89,7 @@ public class DialogueManager : MonoBehaviour
 			try
 			{
 				string w = line[0];
+                w = w.Replace("<employee name>", GetCurrentCharacterName());
 				sentences.Enqueue(w);
 			}
 			catch{}
@@ -151,6 +152,22 @@ public class DialogueManager : MonoBehaviour
         {
             SceneManager.LoadScene(1);
         }
+    }
+
+    string GetCurrentCharacterName()
+    {
+        string currentCharacter = SceneLoader.currentCharacter;
+        switch (currentCharacter)
+        {
+            case "mento":
+                return "Mento";
+            case "petunia":
+                return "Petunia";
+            case "sweth":
+                return "Sweth";
+        }
+
+        return "Mento";
     }
 
 }

@@ -24,9 +24,9 @@ public class TriggerManager : MonoBehaviour
 	public convoStatus Ch2TruckSecurityConversation;  //CH2 C2
     public convoStatus Ch2TruckAlarmDecisionConversation; //CH2 C3 - Negative/Affirmative
     public bool        Ch2TruckAlarmDecision; //Whether the player selected affirmative/negative
-    public convoStatus Ch2EntryPeskyScannerConversation; //
-    public convoStatus Ch2EntryAlarmDecisionConversation; //CH2 C4
-    //CH2 C5
+    public convoStatus Ch2EntryPeskyScannerConversation; //CH2 C4
+    public convoStatus Ch2EntryAlarmDecisionConversation; //CH2 C5 - Negative/Affirmative
+    public bool        Ch2EntryAlarmDecision; // Affirmative/negative for CH2 C5 choice
     //CH2 C6
     //CH2 C7
     //CH2 C8
@@ -55,6 +55,9 @@ public class TriggerManager : MonoBehaviour
 
 	public string activeScreen; //This is successfully changed through InputManager now
 	public string sceneName;    //This will be successfully changed on each startup
+
+    public int    obeyedIVAALCount; //How many times the player sided with IVAALS suggestion
+    public int    ignoredIVAALCount;//How many times the player ignored IVAAL's suggestion
 
     //Variables used for within the TriggerManager to determine certain things
     public int entryTaskTimer = 0;
