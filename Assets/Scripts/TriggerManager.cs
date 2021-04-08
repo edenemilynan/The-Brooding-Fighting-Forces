@@ -20,9 +20,22 @@ public class TriggerManager : MonoBehaviour
 	public convoStatus Ch1FifthConversation;
 	
 	// Chapter 2 Triggers
-	public convoStatus Ch2IntroConversation;
-	public convoStatus Ch2TruckSecurityConversation;
-
+	public convoStatus Ch2IntroConversation;          //CH2 C1
+	public convoStatus Ch2TruckSecurityConversation;  //CH2 C2
+    public convoStatus Ch2TruckAlarmDecisionConversation; //CH2 C3 - Negative/Affirmative
+    public bool        Ch2TruckAlarmDecision; //Whether the player selected affirmative/negative
+    public convoStatus Ch2EntryPeskyScannerConversation; //
+    public convoStatus Ch2EntryAlarmDecisionConversation; //CH2 C4
+    //CH2 C5
+    //CH2 C6
+    //CH2 C7
+    //CH2 C8
+    //CH2 C9
+    //CH2 C10
+    //CH2 C11
+    //CH2 C12
+    //CH2 C13
+    //CH2 C14
 
 
 	// Chapter 3 Triggers
@@ -30,11 +43,11 @@ public class TriggerManager : MonoBehaviour
 
 
 	// General Triggers
-	public int convosHad;
-	public int tasksCompleted;
-	public int truckTasksCompleted;
-	public int scannerTasksCompleted;
-	public int sortingTasksCompleted;
+	public int convosHad = 0;
+	public int tasksCompleted = 0;
+	public int truckTasksCompleted = 0;
+	public int scannerTasksCompleted = 0;
+	public int sortingTasksCompleted = 0;
 
 	public bool trucksVisited; //This is successfully changed through InputManager now
 	public bool entryVisited; //This is successfully changed through InputManager now
@@ -42,6 +55,10 @@ public class TriggerManager : MonoBehaviour
 
 	public string activeScreen; //This is successfully changed through InputManager now
 	public string sceneName;    //This will be successfully changed on each startup
+
+    //Variables used for within the TriggerManager to determine certain things
+    public int entryTaskTimer = 0;
+    private int entryTaskTimerValue = 120;
 
 
     // Start is called before the first frame update
@@ -55,6 +72,8 @@ public class TriggerManager : MonoBehaviour
  
 		// Retrieve the name of this scene.
 		sceneName = currentScene.name;
+
+        entryTaskTimer = 120;
     }
 
     // Update is called once per frame
@@ -72,6 +91,10 @@ public class TriggerManager : MonoBehaviour
 		{
 			ChapterThreeTriggerController();
 		}
+
+        if(entryTaskTimer > 0) {entryTaskTimer--;} //Decrementing the timer.
+
+
     }
 
 	void ChapterOneTriggerController()
@@ -93,4 +116,9 @@ public class TriggerManager : MonoBehaviour
 	{
 
 	}
+
+    public void resetEntryTaskTimer()
+    {
+        entryTaskTimer = entryTaskTimerValue;
+    }
 }

@@ -192,22 +192,13 @@ public class DialogueController : MonoBehaviour
 
 	void ChapterTwoDialogueController()
 	{
-		if (tasksCompleted == 0 && convosHad == 0)
+		if (triggerManager.Ch2IntroConversation == TriggerManager.convoStatus.Ready)
         {
             TriggerThisDialogue("IntroConversation");
-            // GameObject conversation = GameObject.Find("IntroConversation");
-            // DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
-            // triggerManager.convosHad++;
-			// convosHad += 1;
-
-            // if (other != null)
-            // {
-            //     other.TriggerDialogue();
-            // }
 			triggerManager.Ch2IntroConversation = TriggerManager.convoStatus.Complete;
         }
 
-		if( triggerManager.Ch2TruckSecurityConversation == TriggerManager.convoStatus.Ready)
+		if(triggerManager.Ch2TruckSecurityConversation == TriggerManager.convoStatus.Ready)
 		{
 			TriggerThisDialogue("TruckSecurityConversation");
 			triggerManager.Ch2TruckSecurityConversation = TriggerManager.convoStatus.Complete;
@@ -218,7 +209,7 @@ public class DialogueController : MonoBehaviour
 	{
 		GameObject conversation = GameObject.Find(dialogueName);
 		DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
-		convosHad += 1;
+		triggerManager.convosHad += 1;
 
 		if (other != null)
 		{

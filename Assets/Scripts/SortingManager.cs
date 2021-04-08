@@ -6,6 +6,9 @@ public class SortingManager : MonoBehaviour
 {
     public DialogueController dialogueController;
 
+    //Making a centralized location for all triggers to reside.
+    public TriggerManager triggerManager;
+
     public SpriteRenderer shape1, shape2, shape3, numberTries, workers;
     public SortingCombinations sc;
     private int rand;
@@ -19,6 +22,12 @@ public class SortingManager : MonoBehaviour
         shape1.sprite = null;
         shape2.sprite = null;
         shape3.sprite = null;
+
+        GameObject triggerManagerObj = GameObject.Find("/TriggerManager");
+        if (triggerManagerObj != null)
+        {
+            triggerManager = triggerManagerObj.GetComponent<TriggerManager>();
+        }
     }
 
     //Update for quick testing sorting in Sorting Testing scene. Uncomment to use.
@@ -131,6 +140,8 @@ public class SortingManager : MonoBehaviour
         {
             Debug.Log("check if complete");
             dialogueController.tasksCompleted += 1;
+            triggerManager.tasksCompleted += 1;
+            triggerManager.sortingTasksCompleted += 1;
             reset();
             workers.sprite = sc.workers[0];
             return true;

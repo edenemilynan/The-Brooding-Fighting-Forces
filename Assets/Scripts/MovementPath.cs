@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using System;
 
@@ -10,6 +11,9 @@ public class MovementPath : MonoBehaviour
     private int movingTo = 0;
     private int taskNumber = 1;
     public Transform[] pathSequence;
+
+    //Making a centralized location for all triggers to reside.
+    public TriggerManager triggerManager;
 
     public DialogueController dialogueController;
     public GameObject truck;
@@ -23,6 +27,11 @@ public class MovementPath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject triggerManagerObj = GameObject.Find("/TriggerManager");
+        if (triggerManagerObj != null)
+        {
+            triggerManager = triggerManagerObj.GetComponent<TriggerManager>();
+        }
         //animator.SetInteger("facing", directionStart);
         //GameObject conversation = GameObject.Find("DialogueController");
         //DialogueController conversationScript = (DialogueController)conversation.GetComponent<DialogueController>();
@@ -104,7 +113,24 @@ public class MovementPath : MonoBehaviour
             else truckingInputManager.truckingLeftLocked = false;
         }
 
+        string name = truck.name.Substring(0,5);
+        Debug.Log(name);
         Destroy(truck);
+        Debug.Log("entryTaskTimer = " + triggerManager.entryTaskTimer);
+        if(name == "truck")
+        {
+            Debug.Log("See ya Truck!");
+            triggerManager.truckTasksCompleted++;
+        }
+        else if(triggerManager.entryTaskTimer == 0)
+        {
+            Debug.Log("See ya Person!");
+            triggerManager.scannerTasksCompleted++;
+            triggerManager.resetEntryTaskTimer();
+        }
+        
         dialogueController.tasksCompleted += taskNumber;
+        triggerManager.tasksCompleted += 1;
+
     }
 }
