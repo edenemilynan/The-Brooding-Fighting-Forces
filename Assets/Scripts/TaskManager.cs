@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TaskManager : MonoBehaviour
 {
@@ -51,22 +52,59 @@ public class TaskManager : MonoBehaviour
             }
         }
         */
-        //Hard coded tasks
-        tasksSorting.Enqueue(Tasks.sort);
-        tasksTrucking.Enqueue(Tasks.truckRight);
-        tasksEntry.Enqueue(Tasks.peopleDisallow);
-        tasksTrucking.Enqueue(Tasks.truckRight);
-        tasksTrucking.Enqueue(Tasks.truckLeft);
-        tasksEntry.Enqueue(Tasks.peopleAllow);
-        tasksTrucking.Enqueue(Tasks.truckRight);
-        tasksTrucking.Enqueue(Tasks.none);
-        tasksEntry.Enqueue(Tasks.none);
-        tasksSorting.Enqueue(Tasks.none);
 
-        //Randomized
-        taskTrucking = tasksTrucking.Dequeue();
-        //This only works if first task is hard-coded as truck
-        truckingControl.rightIndicatorOn();
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+
+        if (sceneName == "Chapter 1")
+        {
+            //Setting up chapter 1 tasks
+            tasksSorting.Enqueue(Tasks.sort);
+            tasksTrucking.Enqueue(Tasks.truckRight);
+            tasksEntry.Enqueue(Tasks.peopleDisallow);
+            tasksTrucking.Enqueue(Tasks.truckRight);
+            tasksTrucking.Enqueue(Tasks.truckLeft);
+            tasksEntry.Enqueue(Tasks.peopleAllow);
+            tasksTrucking.Enqueue(Tasks.truckRight);
+            tasksTrucking.Enqueue(Tasks.none);
+            tasksEntry.Enqueue(Tasks.none);
+            tasksSorting.Enqueue(Tasks.none);
+
+            
+            taskTrucking = tasksTrucking.Dequeue();
+            truckingControl.rightIndicatorOn();
+        }
+
+        if (sceneName == "Chapter 2")
+        {
+            //Setting up chapter 1 tasks
+            tasksSorting.Enqueue(Tasks.sort);
+            tasksSorting.Enqueue(Tasks.sort);
+            tasksSorting.Enqueue(Tasks.sort);
+            tasksSorting.Enqueue(Tasks.sort);
+            tasksTrucking.Enqueue(Tasks.truckLeft);
+            tasksEntry.Enqueue(Tasks.peopleDisallow);
+            tasksTrucking.Enqueue(Tasks.truckRight);
+            tasksTrucking.Enqueue(Tasks.truckRight);
+            tasksTrucking.Enqueue(Tasks.truckLeft);
+            tasksEntry.Enqueue(Tasks.peopleAllow);
+            tasksEntry.Enqueue(Tasks.peopleDisallow);
+            tasksEntry.Enqueue(Tasks.peopleAllow);
+            tasksEntry.Enqueue(Tasks.peopleAllow);
+            tasksTrucking.Enqueue(Tasks.truckRight);
+            tasksEntry.Enqueue(Tasks.peopleDisallow);
+            tasksEntry.Enqueue(Tasks.peopleAllow);
+            tasksTrucking.Enqueue(Tasks.none);
+            tasksEntry.Enqueue(Tasks.none);
+            tasksSorting.Enqueue(Tasks.none);
+
+
+            taskTrucking = tasksTrucking.Dequeue();
+            truckingControl.leftIndicatorOn();
+            getTaskEntry();
+            getTaskSorting();
+        }
+
     }
 
     public void getTaskTrucking()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InputManager : MonoBehaviour
 {
@@ -86,6 +87,16 @@ public class InputManager : MonoBehaviour
     //For notifications to keep track of what screen we are on
     public string activeScreen = "main";
 
+    //Name of the scene
+    string sceneName;
+
+    void Start()
+    {
+        //Name of the scene
+        Scene currentScene = SceneManager.GetActiveScene();
+        sceneName = currentScene.name;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -159,6 +170,7 @@ public class InputManager : MonoBehaviour
             if (timerSorting == 0 || taskManager.tasksSorting.Peek() == TaskManager.Tasks.none || (taskManager.taskTrucking == TaskManager.Tasks.none && taskManager.taskEntry == TaskManager.Tasks.none))
             {
                 taskManager.getTaskSorting();
+                taskWaitingSorting = false;
                 Debug.Log("Input sorting task");
             }
         }
@@ -549,8 +561,11 @@ public class InputManager : MonoBehaviour
             Debug.Log("Made it into TruckingCompletionConversation");
             DialogueController.GetComponent<DialogueController>().startTruckingCompletionConversation = true;
             truckingCompletionConversationActivated = true;
-            taskManager.getTaskEntry();
-            taskManager.getTaskSorting();
+            if (sceneName == "Chapter 1")
+            {
+                taskManager.getTaskEntry();
+                taskManager.getTaskSorting();
+            }  
         }
 
         if(truckingCompletionConversationActivated && !entryIntroConversationStarted && activeScreen == "entry")

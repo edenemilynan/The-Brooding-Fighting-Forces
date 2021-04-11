@@ -9,6 +9,7 @@ public class ChapterController : MonoBehaviour
     public Animator truck1;
     public Animator truck2;
     public Animator truck3;
+    public Animator truck4;
     public Animator sNotif;
     public Animator eNotif;
     public Animator tNotif;
@@ -26,6 +27,7 @@ public class ChapterController : MonoBehaviour
             truck1.SetInteger("chapter", 2);
             truck2.SetInteger("chapter", 2);
             truck3.SetInteger("chapter", 2);
+            truck4.SetInteger("chapter", 2);
             mNotif.SetInteger("chapter", 2);
             eNotif.SetInteger("chapter", 2);
             tNotif.SetInteger("chapter", 2);

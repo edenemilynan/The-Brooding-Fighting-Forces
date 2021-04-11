@@ -258,6 +258,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: hideBounce
     m_EventTreshold: 0
+  - m_ConditionMode: 7
+    m_ConditionEvent: chapter
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3896777477180991430}
   m_Solo: 0
