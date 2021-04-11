@@ -33,6 +33,19 @@ public class ChapterController : MonoBehaviour
             tNotif.SetInteger("chapter", 2);
             sNotif.SetInteger("chapter", 2);
         }
+
+        if (currentScene.name == "Chapter 3")
+        {
+            truck0.SetInteger("chapter", 3);
+            truck1.SetInteger("chapter", 3);
+            truck2.SetInteger("chapter", 3);
+            truck3.SetInteger("chapter", 3);
+            truck4.SetInteger("chapter", 3);
+            mNotif.SetInteger("chapter", 3);
+            eNotif.SetInteger("chapter", 3);
+            tNotif.SetInteger("chapter", 3);
+            sNotif.SetInteger("chapter", 3);
+        }
     }
 
     // Update is called once per frame

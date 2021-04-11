@@ -77,7 +77,38 @@ public class TaskManager : MonoBehaviour
 
         if (sceneName == "Chapter 2")
         {
-            //Setting up chapter 1 tasks
+            //Setting up chapter 2 tasks
+            tasksSorting.Enqueue(Tasks.sort);
+            tasksSorting.Enqueue(Tasks.sort);
+            tasksSorting.Enqueue(Tasks.sort);
+            tasksSorting.Enqueue(Tasks.sort);
+            tasksTrucking.Enqueue(Tasks.truckLeft);
+            tasksEntry.Enqueue(Tasks.peopleDisallow);
+            tasksTrucking.Enqueue(Tasks.truckRight);
+            tasksTrucking.Enqueue(Tasks.truckRight);
+            tasksTrucking.Enqueue(Tasks.truckLeft);
+            tasksEntry.Enqueue(Tasks.peopleAllow);
+            tasksEntry.Enqueue(Tasks.peopleDisallow);
+            tasksEntry.Enqueue(Tasks.peopleAllow);
+            tasksEntry.Enqueue(Tasks.peopleAllow);
+            tasksTrucking.Enqueue(Tasks.truckRight);
+            tasksEntry.Enqueue(Tasks.peopleDisallow);
+            tasksEntry.Enqueue(Tasks.peopleAllow);
+            tasksTrucking.Enqueue(Tasks.none);
+            tasksEntry.Enqueue(Tasks.none);
+            tasksSorting.Enqueue(Tasks.none);
+
+
+            taskTrucking = tasksTrucking.Dequeue();
+            truckingControl.leftIndicatorOn();
+            getTaskEntry();
+            getTaskSorting();
+        }
+
+        if (sceneName == "Chapter 3")
+        {
+            //Setting up chapter 3 tasks
+            tasksSorting.Enqueue(Tasks.sort);
             tasksSorting.Enqueue(Tasks.sort);
             tasksSorting.Enqueue(Tasks.sort);
             tasksSorting.Enqueue(Tasks.sort);
