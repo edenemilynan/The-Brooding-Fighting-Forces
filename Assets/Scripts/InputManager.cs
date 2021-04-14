@@ -20,9 +20,10 @@ public class InputManager : MonoBehaviour
     public GameObject TruckingController;
     public GameObject PeopleController;
 
-    //To control entry/trucking area animations
+    //To control entry/trucking/sorting area animations
     public EntryControls entryControl;
     public TruckingControls truckingControl;
+    public SortingControls sortingControl;
 
     //Accessses task queues to control game flow
     public TaskManager taskManager;
@@ -214,6 +215,7 @@ public class InputManager : MonoBehaviour
                 {
                     transitionController.staticTrucking();
                     activeScreen = "truck";
+                    sortingControl.closeClipBoard();
 					triggerManager.activeScreen = "truck";
                     cameraController.truckingCamera();
 					trucksVisited = true;
@@ -239,6 +241,7 @@ public class InputManager : MonoBehaviour
                 {
                     transitionController.staticEntry();
                     activeScreen = "entry";
+                    sortingControl.closeClipBoard();
 					triggerManager.activeScreen = "entry";
                     cameraController.entryCamera();
                     entryVisited = true;
@@ -253,12 +256,17 @@ public class InputManager : MonoBehaviour
 
                 if (activeScreen == "sorting")
                 {
-
+                    if (sortingControl.clipBoardOpen == false)
+                    {
+                        sortingControl.openClipBoard();
+                    }
+                    else sortingControl.showClipBoard();
                 }
                 else
                 {
                     transitionController.staticSorting();
                     activeScreen = "sorting";
+                    sortingControl.showClipBoard();
 					triggerManager.activeScreen = "sorting";
                     cameraController.sortingCamera();
 					triggerManager.sortingVisited = true;
@@ -275,6 +283,7 @@ public class InputManager : MonoBehaviour
                 {
                     transitionController.staticMain();
                     activeScreen = "main";
+                    sortingControl.closeClipBoard();
 					triggerManager.activeScreen = "main";
                     cameraController.mainCamera();
                 }
