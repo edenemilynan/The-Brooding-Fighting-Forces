@@ -6914,7 +6914,7 @@ GameObject:
   - component: {fileID: 1175786483}
   - component: {fileID: 1175786482}
   m_Layer: 0
-  m_Name: ThirdConversation
+  m_Name: TruckAlarmDecisionConversation-Affirmative
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6932,7 +6932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ef9b938d51c2340aa217973309f1ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueName: ThirdConversation
+  dialogueName: Chapter2/TruckAlarmDecisionConversation-Affirmative
 --- !u!4 &1175786483
 Transform:
   m_ObjectHideFlags: 0
@@ -8306,7 +8306,7 @@ GameObject:
   - component: {fileID: 1436880142}
   - component: {fileID: 1436880143}
   m_Layer: 0
-  m_Name: TruckCompletionConversation
+  m_Name: TruckAlarmDecisionConversation-Negative
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8338,7 +8338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ef9b938d51c2340aa217973309f1ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueName: TruckCompletionConversation
+  dialogueName: Chapter2/TruckAlarmDecisionConversation-Negative
 --- !u!1 &1463681674
 GameObject:
   m_ObjectHideFlags: 0
@@ -10989,6 +10989,19 @@ MonoBehaviour:
   Ch2EntryPeskyScannerConversation: 0
   Ch2EntryAlarmDecisionConversation: 0
   Ch2EntryAlarmDecision: 0
+  Ch2InjuryReportConversation: 0
+  Ch2NotCountingStartNumber: 0
+  Ch2NotCountingConversation1: 0
+  Ch2NotCountingConversation2: 0
+  Ch2NotCountingConversation3: 0
+  Ch2MediocreEvaluationConversation: 0
+  Ch2PackagedFunFactConversation: 0
+  Ch2AllowPackagesDecisionConversation: 0
+  Ch2WaitingForAllowPackagesDecision: 0
+  Ch2AllowPackagesDecision: 0
+  Ch2HeadOfficeMemoConversation: 0
+  Ch2ConfirmCleanSystemConversation: 0
+  Ch2ConfirmCleanSystem: 0
   convosHad: 0
   tasksCompleted: 0
   truckTasksCompleted: 0
@@ -11002,6 +11015,10 @@ MonoBehaviour:
   obeyedIVAALCount: 0
   ignoredIVAALCount: 0
   entryTaskTimer: 0
+  lastMorseCommand: 
+  waitingOnInput: 0
+  taskManager: {fileID: 0}
+  inputManager: {fileID: 0}
 --- !u!4 &1756705624
 Transform:
   m_ObjectHideFlags: 0

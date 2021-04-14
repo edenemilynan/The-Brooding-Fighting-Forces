@@ -203,6 +203,161 @@ public class DialogueController : MonoBehaviour
 			TriggerThisDialogue("TruckSecurityConversation");
 			triggerManager.Ch2TruckSecurityConversation = TriggerManager.convoStatus.Complete;
 		}
+
+        if(triggerManager.Ch2TruckAlarmDecisionConversation == TriggerManager.convoStatus.Ready)
+        {
+            string dialogueName;
+            if(triggerManager.Ch2TruckAlarmDecision == true)
+            {
+                dialogueName = "TruckAlarmDecisionConversation-Affirmative";
+            }
+            else
+            {
+                dialogueName = "TruckAlarmDecisionConversation-Negative";
+            }
+            TriggerThisDialogue(dialogueName);
+            triggerManager.Ch2TruckAlarmDecisionConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.Ch2EntryPeskyScannerConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("EntryPeskyScannerConversation");
+            triggerManager.Ch2EntryPeskyScannerConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.Ch2EntryAlarmDecisionConversation == TriggerManager.convoStatus.Ready)
+        {
+            string dialogueName;
+            if(triggerManager.Ch2EntryAlarmDecision == true)
+            {
+                dialogueName = "EntryAlarmDecisionConversation-Affirmative";
+            }
+            else
+            {
+                dialogueName = "EntryAlarmDecisionConversation-Negative";
+            }
+            TriggerThisDialogue(dialogueName);
+            triggerManager.Ch2EntryAlarmDecisionConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.Ch2InjuryReportConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("InjuryReportConversation");
+            triggerManager.Ch2InjuryReportConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.Ch2NotCountingConversation1 == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("NotCountingConversation1");
+            triggerManager.Ch2NotCountingConversation1 = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.Ch2NotCountingConversation2 == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("NotCountingConversation2");
+            triggerManager.Ch2NotCountingConversation2 = TriggerManager.convoStatus.Complete;
+        }
+
+
+        if(triggerManager.Ch2NotCountingConversation2 == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("NotCountingConversation2");
+            triggerManager.Ch2NotCountingConversation2 = TriggerManager.convoStatus.Complete;
+        }
+
+
+        if(triggerManager.Ch2MediocreEvaluationConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("MediocreEvaluationConversation");
+            triggerManager.Ch2MediocreEvaluationConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.Ch2PackagedFunFactConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("PackagedFunFactConversation");
+            triggerManager.Ch2PackagedFunFactConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.Ch2AllowPackagesDecisionConversation == TriggerManager.convoStatus.Ready)
+        {
+            string dialogueName;
+            if(triggerManager.Ch2EntryAlarmDecision == true)
+            {
+                dialogueName = "AllowPackagesDecisionConversation-Affirmative";
+            }
+            else
+            {
+                dialogueName = "AllowPackagesDecisionConversation-Negative";
+            }
+            TriggerThisDialogue(dialogueName);
+            triggerManager.Ch2AllowPackagesDecisionConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.Ch2HeadOfficeMemoConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("HeadOfficeMemoConversation");
+            triggerManager.Ch2HeadOfficeMemoConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.Ch2ConfirmCleanSystemConversation == TriggerManager.convoStatus.Ready)
+        {
+            string dialogueName;
+            if(triggerManager.Ch2ConfirmCleanSystem == true)
+            {
+                dialogueName = "ConfirmCleanSystemConversation-Affirmative";
+            }
+            else
+            {
+                dialogueName = "ConfirmCleanSystemConversation-Negative";
+            }
+            TriggerThisDialogue(dialogueName);
+            triggerManager.Ch2ConfirmCleanSystemConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        // if(triggerManager.xxx == TriggerManager.convoStatus.Ready)
+        // {
+        //     TriggerThisDialogue(xxx)
+        //     triggerManager.xxx = TriggerManager.convoStatus.Complete;
+        // }
+
+        // if(triggerManager.xxx == TriggerManager.convoStatus.Ready)
+        // {
+        //     TriggerThisDialogue(xxx)
+        //     triggerManager.xxx = TriggerManager.convoStatus.Complete;
+        // }
+
+        // if(triggerManager.xxx == TriggerManager.convoStatus.Ready)
+        // {
+        //     TriggerThisDialogue(xxx)
+        //     triggerManager.xxx = TriggerManager.convoStatus.Complete;
+        // }
+
+        // if(triggerManager.xxx == TriggerManager.convoStatus.Ready)
+        // {
+        //     TriggerThisDialogue(xxx)
+        //     triggerManager.xxx = TriggerManager.convoStatus.Complete;
+        // }
+
+        // if(triggerManager.xxx == TriggerManager.convoStatus.Ready)
+        // {
+        //     TriggerThisDialogue(xxx)
+        //     triggerManager.xxx = TriggerManager.convoStatus.Complete;
+        // }
+
+        // if(triggerManager.xxx == TriggerManager.convoStatus.Ready)
+        // {
+        //     string dialogueName;
+        //     if(triggerManager.Ch2EntryAlarmDecision == true)
+        //     {
+        //         dialogueName = "xxx-Affirmative";
+        //     }
+        //     else
+        //     {
+        //         dialogueName = "xxx-Negative";
+        //     }
+        //     TriggerThisDialogue(dialogueName);
+        //     triggerManager.xxx = TriggerManager.convoStatus.Complete;
+        // }
 	}
 
 	void TriggerThisDialogue(string dialogueName)

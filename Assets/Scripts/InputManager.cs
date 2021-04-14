@@ -191,7 +191,11 @@ public class InputManager : MonoBehaviour
 
 
         //Command Inputs
-        if (morseCommand != "")
+        triggerManager.lastMorseCommand = morseCommand;
+        // If a good morse command was given, and TriggerManager is not 
+        //     waiting on the result (which would mean it is not regular
+        //     responses)
+        if (morseCommand != "" && !triggerManager.waitingOnInput)
         {   
             lastMorseCommand = morseCommand;
 
