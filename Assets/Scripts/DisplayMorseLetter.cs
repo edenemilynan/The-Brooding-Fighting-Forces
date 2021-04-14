@@ -5,9 +5,7 @@ using TMPro;
 
 public class DisplayMorseLetter : MonoBehaviour
 {
-    public TextMeshProUGUI morseText;
-    //public TextMeshProUGUI morseText2;
-    //public TextMeshProUGUI morseText3;
+    public Animator ditsAndDaws;
     private string morseLetter;
 
     // Update is called once per frame
@@ -17,11 +15,79 @@ public class DisplayMorseLetter : MonoBehaviour
         SpaceBarInput input = (SpaceBarInput)morseInput.GetComponent<SpaceBarInput>();
         morseLetter = input.GetCurrentMorseLetter();
 
-        if (morseLetter != null)
+        if (morseLetter == "")
         {
-            morseText.text = morseLetter;
-            //morseText2.text = morseLetter;
-            //morseText3.text = morseLetter;
+            ditsAndDaws.SetFloat("Blend", 14);
+        }
+
+        if (morseLetter == "---")
+        {
+            ditsAndDaws.SetFloat("Blend", 0);
+        }
+
+        if (morseLetter == "--")
+        {
+            ditsAndDaws.SetFloat("Blend", 1);
+        }
+
+        if (morseLetter == "--.")
+        {
+            ditsAndDaws.SetFloat("Blend", 2);
+        }
+
+        if (morseLetter == "-")
+        {
+            ditsAndDaws.SetFloat("Blend", 3);
+        }
+
+        if (morseLetter == "-.-")
+        {
+            ditsAndDaws.SetFloat("Blend", 4);
+        }
+
+        if (morseLetter == "-.")
+        {
+            ditsAndDaws.SetFloat("Blend", 5);
+        }
+
+        if (morseLetter == "-..")
+        {
+            ditsAndDaws.SetFloat("Blend", 6);
+        }
+
+        if (morseLetter == "...")
+        {
+            ditsAndDaws.SetFloat("Blend", 7);
+        }
+
+        if (morseLetter == "..")
+        {
+            ditsAndDaws.SetFloat("Blend", 8);
+        }
+
+        if (morseLetter == "..-")
+        {
+            ditsAndDaws.SetFloat("Blend", 9);
+        }
+
+        if (morseLetter == ".")
+        {
+            ditsAndDaws.SetFloat("Blend", 10);
+        }
+
+        if (morseLetter == ".-.")
+        {
+            ditsAndDaws.SetFloat("Blend", 11);
+        }
+
+        if (morseLetter == ".-")
+        {
+            ditsAndDaws.SetFloat("Blend", 12);
+        }
+
+        if (morseLetter == ".--")
+        {
+            ditsAndDaws.SetFloat("Blend", 13);
         }
     }
 }
