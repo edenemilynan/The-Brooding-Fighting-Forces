@@ -198,11 +198,11 @@ public class DialogueController : MonoBehaviour
 			triggerManager.Ch2IntroConversation = TriggerManager.convoStatus.Complete;
         }
 
-		if(triggerManager.Ch2TruckSecurityConversation == TriggerManager.convoStatus.Ready)
-		{
-			TriggerThisDialogue("TruckSecurityConversation");
-			triggerManager.Ch2TruckSecurityConversation = TriggerManager.convoStatus.Complete;
-		}
+        if(triggerManager.Ch2TruckSecurityConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("TruckSecurityConversation");
+            triggerManager.Ch2TruckSecurityConversation = TriggerManager.convoStatus.Complete;
+        }
 
         if(triggerManager.Ch2TruckAlarmDecisionConversation == TriggerManager.convoStatus.Ready)
         {

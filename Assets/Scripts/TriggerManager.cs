@@ -128,18 +128,15 @@ public class TriggerManager : MonoBehaviour
         if(Ch2TruckSecurityConversation == convoStatus.Complete &&
            Ch2TruckAlarmDecisionConversation != convoStatus.Complete &&
            activeScreen == "truck" &&
-           lastMorseCommand != "")
+           (lastMorseCommand == ".-" || lastMorseCommand == "-."))
         {   
             Ch2TruckAlarmDecisionConversation = convoStatus.Ready;
             waitingOnInput = false;
-            //TK CUE UP NEW ENTRY TASK
             if(lastMorseCommand == ".-")      { Ch2TruckAlarmDecision = true; }
             else if(lastMorseCommand == "-.") { Ch2TruckAlarmDecision = false; }
-            else
-            {
-                Ch2TruckAlarmDecisionConversation = convoStatus.NotReady;
-                waitingOnInput = true;
-            }
+
+            taskManager.queueNewTasks(taskManager.Ch2Queue2);
+
         }
 
         if(Ch2TruckAlarmDecisionConversation == convoStatus.Complete &&
@@ -159,16 +156,21 @@ public class TriggerManager : MonoBehaviour
             Ch2EntryAlarmDecisionConversation = convoStatus.Ready;
             if(inputManager.whichEntryDoor == -1) { Ch2EntryAlarmDecision = false; }
             else { Ch2EntryAlarmDecision = true; }
+
+            taskManager.queueNewTasks(taskManager.Ch2Queue3);
+
         }
 
         if(Ch2EntryAlarmDecisionConversation == convoStatus.Complete &&
            Ch2InjuryReportConversation != convoStatus.Complete &&
-           truckTasksCompleted >= 2 &&
-           scannerTasksCompleted >= 2 &&
+           truckTasksCompleted >= 3 &&
+           scannerTasksCompleted >= 3 &&
            sortingTasksCompleted >= 1)
         {
             Ch2InjuryReportConversation = convoStatus.Ready;
             Ch2NotCountingStartNumber = scannerTasksCompleted;
+            taskManager.queueNewTasks(taskManager.Ch2Queue4);
+
         }
 
         if(Ch2InjuryReportConversation == convoStatus.Complete &&
@@ -196,6 +198,8 @@ public class TriggerManager : MonoBehaviour
            Ch2MediocreEvaluationConversation != convoStatus.Complete)
         {
             Ch2MediocreEvaluationConversation = convoStatus.Ready;
+            taskManager.queueNewTasks(taskManager.Ch2Queue5);
+
         }
 
         if(Ch2MediocreEvaluationConversation == convoStatus.Complete &&
@@ -203,6 +207,8 @@ public class TriggerManager : MonoBehaviour
            activeScreen == "sorting")
         {
             Ch2PackagedFunFactConversation = convoStatus.Ready;
+            taskManager.queueNewTasks(taskManager.Ch2Queue6);
+
         }
 
         if(Ch2PackagedFunFactConversation == convoStatus.Complete &&
@@ -215,11 +221,15 @@ public class TriggerManager : MonoBehaviour
             Ch2AllowPackagesDecision = true;
             // if(inputManager.whichEntryDoor == -1) { Ch2EntryAlarmDecision = false; }
             // else( Ch2EntryAlarmDecision = true; )
+            taskManager.queueNewTasks(taskManager.Ch2Queue7);
+
         }
 
         if(Ch2AllowPackagesDecisionConversation == convoStatus.Complete &&
-           Ch2HeadOfficeMemoConversation != convoStatus.Complete
-           // TKFIGUREOUTHOWMANYOTHERTASKSNEEDTOBECOMPLETE)
+           Ch2HeadOfficeMemoConversation != convoStatus.Complete &&
+           truckTasksCompleted >= 4 &&
+           scannerTasksCompleted >= 7 &&
+           sortingTasksCompleted >= 4
            )
         {
             Ch2HeadOfficeMemoConversation = convoStatus.Ready;
@@ -229,18 +239,13 @@ public class TriggerManager : MonoBehaviour
 
         if(Ch2HeadOfficeMemoConversation == convoStatus.Complete &&
            Ch2ConfirmCleanSystemConversation != convoStatus.Complete &&
-           lastMorseCommand != "")
+           (lastMorseCommand == ".-" || lastMorseCommand == "-.") )
         {
             
             Ch2ConfirmCleanSystemConversation = convoStatus.Ready;
             waitingOnInput = false;
             if(lastMorseCommand == "-.") {Ch2ConfirmCleanSystem = true;}
             else if (lastMorseCommand == ".-") {Ch2ConfirmCleanSystem = false;}
-            else 
-            {
-                Ch2ConfirmCleanSystemConversation = convoStatus.NotReady;
-                waitingOnInput = true;
-            }
         }
 
 	}

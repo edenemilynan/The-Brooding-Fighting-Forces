@@ -23,6 +23,35 @@ public class TaskManager : MonoBehaviour
     
     */
 
+    // T>E>TTEES>EEE>S>S>TSE>
+    //Chapter 2 Queues
+    
+
+    // Initial Queue
+    public Queue<Tasks> Ch2Queue1 = new Queue<Tasks>(new[] {Tasks.truckRight});
+    // Once first trucking task has been completed
+    public Queue<Tasks> Ch2Queue2 = new Queue<Tasks>(new[] {Tasks.peopleDisallow});
+    // Once Entryway task is complete
+    public Queue<Tasks> Ch2Queue3 = new Queue<Tasks>(new[] {Tasks.truckRight,
+                                                            Tasks.truckLeft,
+                                                            Tasks.peopleAllow,
+                                                            Tasks.peopleDisallow,
+                                                            Tasks.sort});
+    // Once incident report convo has happened
+    public Queue<Tasks> Ch2Queue4 = new Queue<Tasks>(new[] {Tasks.peopleAllow,
+                                                            Tasks.peopleDisallow,
+                                                            Tasks.peopleAllow});
+    // Once mediocre employee evaluation conversation is done
+    public Queue<Tasks> Ch2Queue5 = new Queue<Tasks>(new[] {Tasks.sort});
+
+    // Once Lead Lined Boxes Convo is Done
+    public Queue<Tasks> Ch2Queue6 = new Queue<Tasks>(new[] {Tasks.sort});
+
+    //Once decision for wether to let through invalid sorting task is complete
+    public Queue<Tasks> Ch2Queue7 = new Queue<Tasks>(new[] {Tasks.truckRight,
+                                                            Tasks.peopleDisallow,
+                                                            Tasks.sort});
+
 
     public TruckingControls truckingControl;
     public TruckingController personApproaches;
@@ -221,6 +250,43 @@ public class TaskManager : MonoBehaviour
         }
 
         else taskSorting = Tasks.none;
+    }
+
+    public void queueNewTasks(Queue<Tasks> newQueue)
+    {
+        // public Queue<Tasks> tasksTrucking = new Queue<Tasks>();
+        // public Queue<Tasks> tasksEntry = new Queue<Tasks>();
+        // public Queue<Tasks> tasksSorting = new Queue<Tasks>();
+        tasksTrucking.Clear();
+        tasksEntry.Clear();
+        tasksSorting.Clear();
+        
+        while(newQueue.Count != 0)
+        {
+            Tasks task = newQueue.Dequeue();
+            switch (task)
+            {
+                case Tasks.truckLeft:
+                    tasksTrucking.Enqueue(task);
+                    break;
+                case Tasks.truckRight:
+                    tasksTrucking.Enqueue(task);
+                    break;
+                case Tasks.peopleDisallow:
+                    tasksEntry.Enqueue(task);
+                    break;
+                case Tasks.peopleAllow:
+                    tasksEntry.Enqueue(task);
+                    break;
+                case Tasks.sort:
+                    tasksSorting.Enqueue(task);
+                    break;
+            }
+        }
+
+        tasksTrucking.Enqueue(Tasks.none);
+        tasksEntry.Enqueue(Tasks.none);
+        tasksSorting.Enqueue(Tasks.none);
     }
 
 }
