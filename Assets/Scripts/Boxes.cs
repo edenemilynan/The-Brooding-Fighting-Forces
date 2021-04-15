@@ -29,4 +29,9 @@ public class Boxes : MonoBehaviour
     {
         openBoxes.SetBool("visible", true);
     }
+
+    public void hideOpenBoxes()
+    {
+        openBoxes.SetBool("visible", false);
+    }
 }

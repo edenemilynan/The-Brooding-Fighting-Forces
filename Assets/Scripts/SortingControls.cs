@@ -42,12 +42,12 @@ public class SortingControls : MonoBehaviour
 
     public void sendBoxes()
     {
-        hideOpenBoxes();
+        //hideOpenBoxes();
         boxes.SetBool("ready", true);
     }
 
-    public void hideOpenBoxes()
+    /*public void hideOpenBoxes()
     {
         openBoxes.SetBool("visible", false);
-    }
+    }*/
 }
