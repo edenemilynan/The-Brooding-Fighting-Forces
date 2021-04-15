@@ -146,8 +146,10 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        
         talking = false;
         animator.SetBool("IsOpen", false);
+        
         if(LastConversation)
         {
             SceneManager.LoadScene(1);

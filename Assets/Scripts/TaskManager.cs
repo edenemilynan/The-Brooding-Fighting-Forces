@@ -24,16 +24,15 @@ public class TaskManager : MonoBehaviour
     */
 
     // T>E>TTEES>EEE>S>S>TSE>
-    //Chapter 2 Queues
-    
+    // Chapter 2 Queues
 
     // Initial Queue
-    public Queue<Tasks> Ch2Queue1 = new Queue<Tasks>(new[] {Tasks.truckRight});
+    public Queue<Tasks> Ch2Queue1 = new Queue<Tasks>(new[] {Tasks.truckLeft});
     // Once first trucking task has been completed
     public Queue<Tasks> Ch2Queue2 = new Queue<Tasks>(new[] {Tasks.peopleDisallow});
     // Once Entryway task is complete
     public Queue<Tasks> Ch2Queue3 = new Queue<Tasks>(new[] {Tasks.truckRight,
-                                                            Tasks.truckLeft,
+                                                            Tasks.truckRight,
                                                             Tasks.peopleAllow,
                                                             Tasks.peopleDisallow,
                                                             Tasks.sort});
@@ -48,7 +47,7 @@ public class TaskManager : MonoBehaviour
     public Queue<Tasks> Ch2Queue6 = new Queue<Tasks>(new[] {Tasks.sort});
 
     //Once decision for wether to let through invalid sorting task is complete
-    public Queue<Tasks> Ch2Queue7 = new Queue<Tasks>(new[] {Tasks.truckRight,
+    public Queue<Tasks> Ch2Queue7 = new Queue<Tasks>(new[] {Tasks.truckLeft,
                                                             Tasks.peopleDisallow,
                                                             Tasks.sort});
 
@@ -60,7 +59,17 @@ public class TaskManager : MonoBehaviour
     
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        // Debug.Log("Testing a Queue");
+        // Debug.Log(Ch2Queue3.Count);
+        // for(int i = 1; i <= Ch2Queue3.Count; i++)
+        // {
+        //     Tasks task = Ch2Queue3.Dequeue();
+        //     Debug.Log(task);
+        //     Ch2Queue3.Enqueue(task);
+        // }
+        // Debug.Log(Ch2Queue3.Count);
+
         //For intro it might make sense to hard code the first
         //task or two, and then randomize the rest
 
@@ -107,25 +116,27 @@ public class TaskManager : MonoBehaviour
         if (sceneName == "Chapter 2")
         {
             //Setting up chapter 2 tasks
-            tasksSorting.Enqueue(Tasks.sort);
-            tasksSorting.Enqueue(Tasks.sort);
-            tasksSorting.Enqueue(Tasks.sort);
-            tasksSorting.Enqueue(Tasks.sort);
-            tasksTrucking.Enqueue(Tasks.truckLeft);
-            tasksEntry.Enqueue(Tasks.peopleDisallow);
-            tasksTrucking.Enqueue(Tasks.truckRight);
-            tasksTrucking.Enqueue(Tasks.truckRight);
-            tasksTrucking.Enqueue(Tasks.truckLeft);
-            tasksEntry.Enqueue(Tasks.peopleAllow);
-            tasksEntry.Enqueue(Tasks.peopleDisallow);
-            tasksEntry.Enqueue(Tasks.peopleAllow);
-            tasksEntry.Enqueue(Tasks.peopleAllow);
-            tasksTrucking.Enqueue(Tasks.truckRight);
-            tasksEntry.Enqueue(Tasks.peopleDisallow);
-            tasksEntry.Enqueue(Tasks.peopleAllow);
-            tasksTrucking.Enqueue(Tasks.none);
-            tasksEntry.Enqueue(Tasks.none);
-            tasksSorting.Enqueue(Tasks.none);
+            // tasksSorting.Enqueue(Tasks.sort);
+            // tasksSorting.Enqueue(Tasks.sort);
+            // tasksSorting.Enqueue(Tasks.sort);
+            // tasksSorting.Enqueue(Tasks.sort);
+            // tasksTrucking.Enqueue(Tasks.truckLeft);
+            // tasksEntry.Enqueue(Tasks.peopleDisallow);
+            // tasksTrucking.Enqueue(Tasks.truckRight);
+            // tasksTrucking.Enqueue(Tasks.truckRight);
+            // tasksTrucking.Enqueue(Tasks.truckLeft);
+            // tasksEntry.Enqueue(Tasks.peopleAllow);
+            // tasksEntry.Enqueue(Tasks.peopleDisallow);
+            // tasksEntry.Enqueue(Tasks.peopleAllow);
+            // tasksEntry.Enqueue(Tasks.peopleAllow);
+            // tasksTrucking.Enqueue(Tasks.truckRight);
+            // tasksEntry.Enqueue(Tasks.peopleDisallow);
+            // tasksEntry.Enqueue(Tasks.peopleAllow);
+            // tasksTrucking.Enqueue(Tasks.none);
+            // tasksEntry.Enqueue(Tasks.none);
+            // tasksSorting.Enqueue(Tasks.none);
+
+            queueNewTasks(Ch2Queue1);
 
 
             taskTrucking = tasksTrucking.Dequeue();
@@ -257,10 +268,8 @@ public class TaskManager : MonoBehaviour
         // public Queue<Tasks> tasksTrucking = new Queue<Tasks>();
         // public Queue<Tasks> tasksEntry = new Queue<Tasks>();
         // public Queue<Tasks> tasksSorting = new Queue<Tasks>();
-        tasksTrucking.Clear();
-        tasksEntry.Clear();
-        tasksSorting.Clear();
-        
+
+        Debug.Log("TIME TO QUEUE SOME NEW MF'N TASKS");
         while(newQueue.Count != 0)
         {
             Tasks task = newQueue.Dequeue();
@@ -284,9 +293,20 @@ public class TaskManager : MonoBehaviour
             }
         }
 
-        tasksTrucking.Enqueue(Tasks.none);
-        tasksEntry.Enqueue(Tasks.none);
-        tasksSorting.Enqueue(Tasks.none);
+        for(int i = 1; i <= tasksEntry.Count; i++)
+        {
+            Tasks task = tasksEntry.Dequeue();
+            Debug.Log(task);
+            Ch2Queue3.Enqueue(task);
+        }
+
+        // tasksTrucking.Enqueue(Tasks.none);
+        // tasksEntry   .Enqueue(Tasks.none);
+        // tasksSorting .Enqueue(Tasks.none);
+
+        // getTaskTrucking();
+        // getTaskEntry();
+        // getTaskSorting();
     }
 
 }

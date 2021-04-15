@@ -134,9 +134,7 @@ public class TriggerManager : MonoBehaviour
             waitingOnInput = false;
             if(lastMorseCommand == ".-")      { Ch2TruckAlarmDecision = true; }
             else if(lastMorseCommand == "-.") { Ch2TruckAlarmDecision = false; }
-
             taskManager.queueNewTasks(taskManager.Ch2Queue2);
-
         }
 
         if(Ch2TruckAlarmDecisionConversation == convoStatus.Complete &&
