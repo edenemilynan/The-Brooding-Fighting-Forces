@@ -6,6 +6,8 @@ public class SortingControls : MonoBehaviour
 {
 
     public Animator clipBoard;
+    public Animator boxes;
+    public Animator openBoxes;
     public bool clipBoardOpen;
 
     // Start is called before the first frame update
@@ -36,5 +38,16 @@ public class SortingControls : MonoBehaviour
     {
         clipBoard.SetInteger("showing", 0);
         clipBoardOpen = false;
+    }
+
+    public void sendBoxes()
+    {
+        hideOpenBoxes();
+        boxes.SetBool("ready", true);
+    }
+
+    public void hideOpenBoxes()
+    {
+        openBoxes.SetBool("visible", false);
     }
 }

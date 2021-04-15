@@ -372,9 +372,10 @@ public class InputManager : MonoBehaviour
                 else if (activeScreen == "sorting" && taskManager.taskSorting != TaskManager.Tasks.none && taskWaitingSorting == false)
                 {
                     sortManager.validate("negative");
-                    bool complete = sortManager.checkIfComplete();
-                    if (complete)
+                    //bool complete = sortManager.checkIfComplete();
+                    if (sortManager.checkIfComplete())
                     {
+                        sortingControl.sendBoxes();
                         taskWaitingSorting = true;
                         timerSorting = waitTime;
                     }
@@ -495,9 +496,10 @@ public class InputManager : MonoBehaviour
                 else if (activeScreen == "sorting" && taskManager.taskSorting != TaskManager.Tasks.none && taskWaitingSorting == false)
                 {
                     sortManager.validate("affirm");
-                    bool complete = sortManager.checkIfComplete();
-                    if (complete)
+                    //bool complete = sortManager.checkIfComplete();
+                    if (sortManager.checkIfComplete())
                     {
+                        sortingControl.sendBoxes();
                         taskWaitingSorting = true;
                         timerSorting = waitTime;
                     }
