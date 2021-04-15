@@ -7,6 +7,7 @@ public class Boxes : MonoBehaviour
 
     public Animator boxes;
     public Animator openBoxes;
+    public Animator belt;
 
     // Start is called before the first frame update
     void Start()
@@ -33,5 +34,15 @@ public class Boxes : MonoBehaviour
     public void hideOpenBoxes()
     {
         openBoxes.SetBool("visible", false);
+    }
+
+    public void roll()
+    {
+        belt.SetBool("rolling", true);
+    }
+
+    public void stopRoll()
+    {
+        belt.SetBool("rolling", false);
     }
 }
