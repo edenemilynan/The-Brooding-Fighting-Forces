@@ -11589,8 +11589,8 @@ MonoBehaviour:
   entryTaskTimer: 0
   lastMorseCommand: 
   waitingOnInput: 0
-  taskManager: {fileID: 0}
-  inputManager: {fileID: 0}
+  taskManager: {fileID: 846185829}
+  inputManager: {fileID: 1030550523}
 --- !u!4 &1756705624
 Transform:
   m_ObjectHideFlags: 0
