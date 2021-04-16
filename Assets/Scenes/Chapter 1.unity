@@ -736,6 +736,7 @@ MonoBehaviour:
   ramp: {fileID: 405242388}
   indicatorLeft: {fileID: 1804444695}
   indicatorRight: {fileID: 610254352}
+  alarm: {fileID: 0}
   doorSound: {fileID: 8300000, guid: 4b46716b5e53dbe4ca94ecf7db5d5721, type: 3}
   audioSource: {fileID: 736064162}
 --- !u!1 &146682004
@@ -856,12 +857,14 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 505502951}
   - {fileID: 343340941}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 1707808639}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 1789558146}
   inputManager: {fileID: 232540501}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 338986081}
 --- !u!4 &204032916
 Transform:
   m_ObjectHideFlags: 0
@@ -1400,6 +1403,8 @@ MonoBehaviour:
   truck: {fileID: 676430076}
   inputManager: {fileID: 0}
   truckingInputManager: {fileID: 232540501}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
   taskManager: {fileID: 338986081}
 --- !u!1 &288058274
 GameObject:
@@ -1664,6 +1669,7 @@ MonoBehaviour:
   nTasks: 6
   truckingControl: {fileID: 131475754}
   personApproaches: {fileID: 965987684}
+  truckApproaches: {fileID: 0}
   manager: {fileID: 232540501}
 --- !u!4 &338986082
 Transform:
@@ -4163,6 +4169,8 @@ MonoBehaviour:
   truck: {fileID: 1205444011}
   inputManager: {fileID: 0}
   truckingInputManager: {fileID: 232540501}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
   taskManager: {fileID: 338986081}
 --- !u!1 &873182349
 GameObject:
@@ -4210,12 +4218,14 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 505502951}
   - {fileID: 343340941}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 1707808639}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 366462837}
   inputManager: {fileID: 232540501}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 338986081}
 --- !u!1 &875304602
 GameObject:
   m_ObjectHideFlags: 0
@@ -4576,6 +4586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 0
+  pathAlarm: 0
 --- !u!4 &965987685
 Transform:
   m_ObjectHideFlags: 0
@@ -4884,6 +4895,8 @@ MonoBehaviour:
   truck: {fileID: 980338378}
   inputManager: {fileID: 0}
   truckingInputManager: {fileID: 232540501}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
   taskManager: {fileID: 338986081}
 --- !u!4 &1091779080
 Transform:
@@ -5025,12 +5038,14 @@ MonoBehaviour:
   - {fileID: 1357549630}
   - {fileID: 1095326337}
   - {fileID: 1648005691}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 1707808639}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 120906405}
   inputManager: {fileID: 232540501}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 120906407}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 338986081}
 --- !u!1 &1131874558
 GameObject:
   m_ObjectHideFlags: 0
@@ -5243,12 +5258,14 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1095326337}
   - {fileID: 1648005691}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 1707808639}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 394389713}
   inputManager: {fileID: 232540501}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 338986081}
 --- !u!1 &1175786481
 GameObject:
   m_ObjectHideFlags: 0
@@ -5546,12 +5563,14 @@ MonoBehaviour:
   - {fileID: 256639120}
   - {fileID: 505502951}
   - {fileID: 343340941}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 1707808639}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 1789558146}
   inputManager: {fileID: 232540501}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 1789558147}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 338986081}
 --- !u!1 &1261346261
 GameObject:
   m_ObjectHideFlags: 0
@@ -5598,12 +5617,14 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1095326337}
   - {fileID: 1648005691}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 1707808639}
   dialogueController: {fileID: 245659558}
   truck: {fileID: 1789558146}
   inputManager: {fileID: 232540501}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 338986081}
 --- !u!1 &1264641109
 GameObject:
   m_ObjectHideFlags: 0
@@ -6108,6 +6129,8 @@ MonoBehaviour:
   truck: {fileID: 735759263}
   inputManager: {fileID: 0}
   truckingInputManager: {fileID: 232540501}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
   taskManager: {fileID: 338986081}
 --- !u!1 &1357549629
 GameObject:
@@ -6823,6 +6846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxes: {fileID: 1478069769}
   openBoxes: {fileID: 1869868978}
+  belt: {fileID: 0}
 --- !u!1 &1487901925
 GameObject:
   m_ObjectHideFlags: 0
@@ -7213,6 +7237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: -1
+  pathAlarm: 0
 --- !u!4 &1511508890
 Transform:
   m_ObjectHideFlags: 0
@@ -7908,7 +7933,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clipBoard: {fileID: 313880260}
   boxes: {fileID: 1478069769}
-  openBoxes: {fileID: 1869868978}
   clipBoardOpen: 0
 --- !u!1 &1707808638
 GameObject:
