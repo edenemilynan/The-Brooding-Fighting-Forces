@@ -1957,7 +1957,7 @@ MonoBehaviour:
   camerasFritzing: 0
   explosion: 0
   virusDeath: 0
-  desktopControls: {fileID: 0}
+  desktopControls: {fileID: 1844257465}
   convosHad: 0
   tasksCompleted: 0
   truckTasksCompleted: 0
@@ -1973,8 +1973,8 @@ MonoBehaviour:
   entryTaskTimer: 0
   lastMorseCommand: 
   waitingOnInput: 0
-  taskManager: {fileID: 0}
-  inputManager: {fileID: 0}
+  taskManager: {fileID: 1182270925}
+  inputManager: {fileID: 1552562394}
 --- !u!4 &180654426
 Transform:
   m_ObjectHideFlags: 0
@@ -8755,6 +8755,7 @@ Transform:
   - {fileID: 2038909814}
   - {fileID: 294754999}
   - {fileID: 456400382}
+  - {fileID: 1844257464}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14178,6 +14179,55 @@ MonoBehaviour:
   pathPeople: {fileID: 0}
   pathTruck: {fileID: 0}
   taskManager: {fileID: 1182270925}
+--- !u!1 &1844257463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1844257464}
+  - component: {fileID: 1844257465}
+  m_Layer: 0
+  m_Name: DesktopAnimations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1844257464
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844257463}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1187514360}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1844257465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844257463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f9b9653f1b807d4aa20a735c3cc8708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  callFromBexos: {fileID: 136363184}
+  onThePhone: {fileID: 1518954297}
+  explosion: {fileID: 269251274}
+  staticScreen: {fileID: 2038909815}
+  virusDeath: {fileID: 1812626716}
+  virusAnimation: {fileID: 0}
 --- !u!1 &1848734836
 GameObject:
   m_ObjectHideFlags: 0
