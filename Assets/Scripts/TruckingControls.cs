@@ -19,6 +19,16 @@ public class TruckingControls : MonoBehaviour
         rightTruckingDoor.SetBool("isHighlighted", true);
     }
 
+    public void alarmIndicatorOn()
+    {
+        indicatorRight.SetBool("denyOn", true);
+    }
+
+    public void alarmIndicatorOff()
+    {
+        indicatorRight.SetBool("denyOn", false);
+    }
+
     public void leftIndicatorOn()
     {
         if (indicatorLeft.GetBool("indicatorOn") != true)

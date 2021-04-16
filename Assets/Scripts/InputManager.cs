@@ -196,7 +196,8 @@ public class InputManager : MonoBehaviour
         // If a good morse command was given, and TriggerManager is not 
         //     waiting on the result (which would mean it is not regular
         //     responses)
-        if (morseCommand != "" && !triggerManager.waitingOnInput)
+        // && !triggerManager.waitingOnInput
+        if (morseCommand != "")
         {   
             lastMorseCommand = morseCommand;
 
@@ -220,6 +221,10 @@ public class InputManager : MonoBehaviour
                     cameraController.truckingCamera();
 					trucksVisited = true;
                     triggerManager.trucksVisited = true;
+                    if (taskManager.taskTrucking == TaskManager.Tasks.truckAlarm && !taskWaitingTrucking)
+                    {
+                        truckingControl.playAlarm();
+                    }
                 }
 
                 
@@ -246,6 +251,7 @@ public class InputManager : MonoBehaviour
                     cameraController.entryCamera();
                     entryVisited = true;
 					triggerManager.entryVisited = true;
+                    truckingControl.resetAlarm();
                 }
 
             }
@@ -270,6 +276,7 @@ public class InputManager : MonoBehaviour
 					triggerManager.activeScreen = "sorting";
                     cameraController.sortingCamera();
 					triggerManager.sortingVisited = true;
+                    truckingControl.resetAlarm();
                 }
                 sortManager.checkIfComplete();
 
@@ -286,6 +293,7 @@ public class InputManager : MonoBehaviour
                     sortingControl.closeClipBoard();
 					triggerManager.activeScreen = "main";
                     cameraController.mainCamera();
+                    truckingControl.resetAlarm();
                 }
                 else
                 {
@@ -340,6 +348,13 @@ public class InputManager : MonoBehaviour
                                 timerTrucking = waitTime;
                                 truckReset = true;
                             }
+                        }
+                        if (taskManager.taskTrucking == TaskManager.Tasks.truckAlarm && !taskWaitingTrucking)
+                        {
+                            TruckingController.GetComponent<TruckingController>().pathAlarm += 1;
+                            truckingControl.alarmIndicatorOff();
+                            taskWaitingTrucking = true;
+                            //Could add a variable here to say you obeyed BrexCorp
                         }
                     }
 
@@ -470,6 +485,13 @@ public class InputManager : MonoBehaviour
                                 convo3activated = true;
                                 DialogueController.GetComponent<DialogueController>().thirdConversation = false;
                             }
+                        }
+                        else if (taskManager.taskTrucking == TaskManager.Tasks.truckAlarm && !taskWaitingTrucking)
+                        {
+                            TruckingController.GetComponent<TruckingController>().pathAlarm += 1;
+                            truckingControl.alarmIndicatorOff();
+                            taskWaitingTrucking = true;
+                            //Could add a variable here to say you disobeyed BrexCorp
                         }
                     }
 

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class TaskManager : MonoBehaviour
 {
     //Had to add allow/disallow to allow tracking of right/wrong decisions later
-    public enum Tasks {truckRight, truckLeft, peopleAllow, peopleDisallow, sort, none};
+    public enum Tasks {truckRight, truckLeft, truckAlarm, peopleAllow, peopleDisallow, sort, none};
     public Queue<Tasks> tasksTrucking = new Queue<Tasks>();
     public Queue<Tasks> tasksEntry = new Queue<Tasks>();
     public Queue<Tasks> tasksSorting = new Queue<Tasks>();
@@ -27,7 +27,7 @@ public class TaskManager : MonoBehaviour
     // Chapter 2 Queues
 
     // Initial Queue
-    public Queue<Tasks> Ch2Queue1 = new Queue<Tasks>(new[] {Tasks.truckLeft});
+    public Queue<Tasks> Ch2Queue1 = new Queue<Tasks>(new[] {Tasks.truckAlarm});
     // Once first trucking task has been completed
     public Queue<Tasks> Ch2Queue2 = new Queue<Tasks>(new[] {Tasks.peopleDisallow});
     // Once Entryway task is complete
@@ -54,6 +54,7 @@ public class TaskManager : MonoBehaviour
 
     public TruckingControls truckingControl;
     public TruckingController personApproaches;
+    public TruckingController truckApproaches;
     public InputManager manager;
 
     
@@ -139,8 +140,7 @@ public class TaskManager : MonoBehaviour
             queueNewTasks(Ch2Queue1);
 
 
-            taskTrucking = tasksTrucking.Dequeue();
-            truckingControl.leftIndicatorOn();
+            getTaskTrucking();
             getTaskEntry();
             getTaskSorting();
         }
@@ -193,6 +193,12 @@ public class TaskManager : MonoBehaviour
             else if (taskTrucking == Tasks.truckLeft)
             {
                 truckingControl.leftIndicatorOn();
+            }
+
+            else
+            {
+                truckingControl.alarmIndicatorOn();
+                truckApproaches.pathAlarm += 1;
             }
 
             /*else if (task == Tasks.peopleAllow || task == Tasks.peopleDisallow)
@@ -289,6 +295,9 @@ public class TaskManager : MonoBehaviour
                     break;
                 case Tasks.sort:
                     tasksSorting.Enqueue(task);
+                    break;
+                case Tasks.truckAlarm:
+                    tasksTrucking.Enqueue(task);
                     break;
             }
         }

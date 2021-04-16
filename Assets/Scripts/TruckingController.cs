@@ -5,6 +5,7 @@ using UnityEngine;
 public class TruckingController : MonoBehaviour
 {
     public int path = -1;
+    public int pathAlarm = 0;
     // Start is called before the first frame update
     void Start()
     {

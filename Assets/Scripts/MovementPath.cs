@@ -20,6 +20,9 @@ public class MovementPath : MonoBehaviour
     public InputManager inputManager;
     public InputManager truckingInputManager;
 
+    public FollowPathPeople pathPeople;
+    public FollowPathTruck pathTruck;
+
     public TaskManager taskManager; 
 
     //public TruckingController pathControl;
@@ -73,7 +76,11 @@ public class MovementPath : MonoBehaviour
             {
                 if (movingTo == 2 && paused == false)
                 {
-                    truck.GetComponent<FollowPathPeople>().currentPath += 1;
+                    if (pathPeople != null)
+                    {
+                        pathPeople.currentPath += 1;
+                    }
+                    else pathTruck.currentPath += 1;
                     truck.GetComponent<Animator>().SetInteger("facing", 0);
                     taskNumber = 0;
                     paused = true;
@@ -106,7 +113,7 @@ public class MovementPath : MonoBehaviour
 
         else
         {
-            if (taskManager.taskTrucking == TaskManager.Tasks.truckRight)
+            if (taskManager.taskTrucking == TaskManager.Tasks.truckRight || taskManager.taskTrucking == TaskManager.Tasks.truckAlarm)
             {
                 truckingInputManager.truckingRightLocked = false;
             }
