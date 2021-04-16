@@ -24,6 +24,9 @@ public class DialogueManager : MonoBehaviour
 
     //IEnumerator coroutine;
 
+    //Making a centralized location for all triggers to reside.
+    public TriggerManager triggerManager;
+
     private Queue<string> sentences;
     private Queue<string> names;
     private Queue<int> expressions;
@@ -66,6 +69,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(string fileName)
     {
+        triggerManager.dialogueActive = true;
         talking = true;
         animator.SetBool("IsOpen", true);
         sentences.Clear();
@@ -149,7 +153,8 @@ public class DialogueManager : MonoBehaviour
         
         talking = false;
         animator.SetBool("IsOpen", false);
-        
+        triggerManager.convosHad++;
+        triggerManager.dialogueActive = false;
         if(LastConversation)
         {
             SceneManager.LoadScene(1);

@@ -7,6 +7,7 @@ public class TriggerManager : MonoBehaviour
 {
 
 	public enum convoStatus {NotReady, Ready, Complete};
+    public bool dialogueActive = false;
 
 	//Chapter 1 Triggers
 	public convoStatus Ch1IntroConversation;
@@ -38,12 +39,79 @@ public class TriggerManager : MonoBehaviour
     public bool        Ch2WaitingForAllowPackagesDecision;
     public bool        Ch2AllowPackagesDecision; // Affirmative/negative for CH2 C12 Choice
     public convoStatus Ch2HeadOfficeMemoConversation = convoStatus.NotReady; //CH2 C13
+    public bool        Ch2DisplayErrorMessageScreen = false;
     public convoStatus Ch2ConfirmCleanSystemConversation = convoStatus.NotReady; //CH2 C14
     public bool        Ch2ConfirmCleanSystem; // Affirmative/Negative for CH2 C14
 
 
 	// Chapter 3 Triggers
+    public convoStatus D1IVAALConversation  = convoStatus.NotReady;
+    public convoStatus D2VirusConversation  = convoStatus.NotReady;
+    public convoStatus D3IVAALConversation  = convoStatus.NotReady;
+    public convoStatus D4IVAALConversation  = convoStatus.NotReady;
+    public convoStatus D5IVAALConversation  = convoStatus.NotReady;
+    public convoStatus D6VirusConversation  = convoStatus.NotReady;
+    public convoStatus D7IVAALConversation  = convoStatus.NotReady;
+    public convoStatus D8IVAALConversation  = convoStatus.NotReady;
+    public convoStatus D9VirusConversation  = convoStatus.NotReady;
+    public convoStatus D10IVAALConversation = convoStatus.NotReady;
+    public convoStatus D11VirusConversation = convoStatus.NotReady;
+    public convoStatus D12IVAALConversation = convoStatus.NotReady;
+    public convoStatus D13IVAALConversation = convoStatus.NotReady;
+    public convoStatus D14IVAALConversation = convoStatus.NotReady;
+    public convoStatus D15VirusConversation = convoStatus.NotReady;
+    public convoStatus D16IVAALConversation = convoStatus.NotReady;
+    public convoStatus D17VirusConversation = convoStatus.NotReady;
+    public convoStatus D18IVAALConversation = convoStatus.NotReady;
+    public convoStatus D19IVAALConversation = convoStatus.NotReady;
+    public convoStatus D20IVAALConversation = convoStatus.NotReady;
+    public convoStatus D21VirusConversation = convoStatus.NotReady;
+    public convoStatus D22IVAALConversation = convoStatus.NotReady;
+    public convoStatus D23VirusConversation = convoStatus.NotReady;
+    public convoStatus D24IVAALConversation = convoStatus.NotReady;
+    public convoStatus D25VirusConversation = convoStatus.NotReady;
+    public convoStatus D26IVAALConversation = convoStatus.NotReady;
+    public convoStatus D27BexosConversation = convoStatus.NotReady;
+    public convoStatus D28BexosConversation = convoStatus.NotReady;
+    public convoStatus D29BexosConversation = convoStatus.NotReady;
+    public convoStatus D30VirusConversation = convoStatus.NotReady;
+    public convoStatus D31IVAALConversation = convoStatus.NotReady;
+    public convoStatus D32VirusConversation = convoStatus.NotReady;
+    public convoStatus D33IVAALConversation = convoStatus.NotReady;
+    public convoStatus D34VirusConversation = convoStatus.NotReady;
+    public convoStatus D35IVAALConversation = convoStatus.NotReady;
+    public convoStatus D36IVAALConversation = convoStatus.NotReady;
+    public convoStatus D37IVAALConversation = convoStatus.NotReady;
+    public convoStatus D38IVAALConversation = convoStatus.NotReady;
+    public convoStatus D39IVAALConversation = convoStatus.NotReady;
+    public convoStatus D40IVAALConversation = convoStatus.NotReady;
+    public convoStatus D41IVAALConversation = convoStatus.NotReady;
+    public convoStatus D42IVAALConversation = convoStatus.NotReady;
+    public convoStatus D43VirusConversation = convoStatus.NotReady;
+    public convoStatus D44IVAALConversation = convoStatus.NotReady;
+    public convoStatus D45IVAALConversation = convoStatus.NotReady;
+    public convoStatus D46VirusConversation = convoStatus.NotReady;
+    public convoStatus D47IVAALConversation = convoStatus.NotReady;
+    public convoStatus D48IVAALConversation = convoStatus.NotReady;
+    public convoStatus D49VirusConversation = convoStatus.NotReady;
+    public convoStatus D50IVAALConversation = convoStatus.NotReady;
+    public convoStatus D51IVAALConversation = convoStatus.NotReady;
+    public convoStatus D52BexosConversation = convoStatus.NotReady;
+    public convoStatus D53VirusConversation = convoStatus.NotReady;
+    public convoStatus D54BexosConversation = convoStatus.NotReady;
+    public convoStatus D55VirusConversation = convoStatus.NotReady;
+    public convoStatus D56IVAALConversation = convoStatus.NotReady;
+    public convoStatus D57BexosConversation = convoStatus.NotReady;
+    public convoStatus D58UnknownConversation = convoStatus.NotReady;
 
+
+    // Animation Triggers
+    public bool phoneRinging;
+    public bool fallenAnimationActive;
+    public bool virusOnScreen;
+    public bool terminatedAnimationActive;
+    public bool camerasFritzing;
+    public bool explosion;
 
 
 	// General Triggers
@@ -79,6 +147,7 @@ public class TriggerManager : MonoBehaviour
     {
         Ch1IntroConversation = convoStatus.Ready;
         Ch2IntroConversation = convoStatus.Ready;
+        D1IVAALConversation = convoStatus.Ready;
 
 		// Create a temporary reference to the current scene.
 		Scene currentScene = SceneManager.GetActiveScene();
@@ -134,6 +203,10 @@ public class TriggerManager : MonoBehaviour
             waitingOnInput = false;
             if(lastMorseCommand == ".-")      { Ch2TruckAlarmDecision = true; }
             else if(lastMorseCommand == "-.") { Ch2TruckAlarmDecision = false; }
+            if(Ch2TruckAlarmDecision == false)
+            {
+                //TK Destroy the truck object and turn the light off
+            }
             taskManager.queueNewTasks(taskManager.Ch2Queue2);
         }
 
@@ -232,14 +305,14 @@ public class TriggerManager : MonoBehaviour
         {
             Ch2HeadOfficeMemoConversation = convoStatus.Ready;
             waitingOnInput = true;
-            //TKADDINCHANGEMONITORVARIABLE
+            Ch2DisplayErrorMessageScreen = true;
         }
 
         if(Ch2HeadOfficeMemoConversation == convoStatus.Complete &&
            Ch2ConfirmCleanSystemConversation != convoStatus.Complete &&
            (lastMorseCommand == ".-" || lastMorseCommand == "-.") )
         {
-            
+            Ch2DisplayErrorMessageScreen = false;
             Ch2ConfirmCleanSystemConversation = convoStatus.Ready;
             waitingOnInput = false;
             if(lastMorseCommand == "-.") {Ch2ConfirmCleanSystem = true;}
@@ -250,8 +323,450 @@ public class TriggerManager : MonoBehaviour
 
 	void ChapterThreeTriggerController()
 	{
-
+        if(dialogueActive != true)
+        {
+            ChapterThreeDialogueTriggers();
+        }
 	}
+
+    void ChapterThreeDialogueTriggers()
+    {
+        //TK Cue First Entryway task here
+
+        if(D1IVAALConversation == convoStatus.Complete &&
+           D2VirusConversation != convoStatus.Complete
+        )
+        {
+            D2VirusConversation = convoStatus.Ready;
+            virusOnScreen = true;
+            
+        }
+
+        if(D2VirusConversation == convoStatus.Complete &&
+           D3IVAALConversation != convoStatus.Complete
+        )
+        {
+            D3IVAALConversation = convoStatus.Ready;
+            virusOnScreen = false;
+        }
+
+        if(D3IVAALConversation == convoStatus.Complete &&
+           D4IVAALConversation  != convoStatus.Complete
+        )
+        {
+            D4IVAALConversation = convoStatus.Ready;
+        }
+
+        if(D4IVAALConversation == convoStatus.Complete &&
+           D5IVAALConversation  != convoStatus.Complete
+        )
+        {
+            D5IVAALConversation = convoStatus.Ready;
+        }
+
+        if(D5IVAALConversation == convoStatus.Complete &&
+           D6VirusConversation  != convoStatus.Complete
+        )
+        {
+            D6VirusConversation = convoStatus.Ready;
+            virusOnScreen = true;
+        }
+
+        if(D6VirusConversation == convoStatus.Complete &&
+           D7IVAALConversation  != convoStatus.Complete
+        )
+        {
+            D7IVAALConversation = convoStatus.Ready;
+            virusOnScreen = false;
+        }
+
+        if(D7IVAALConversation == convoStatus.Complete &&
+           D8IVAALConversation  != convoStatus.Complete
+        )
+        {
+            D8IVAALConversation = convoStatus.Ready;
+        }
+
+        if(D8IVAALConversation == convoStatus.Complete &&
+           D9VirusConversation  != convoStatus.Complete
+        )
+        {
+            D9VirusConversation = convoStatus.Ready;
+            virusOnScreen = true;
+        }
+
+        if(D9VirusConversation == convoStatus.Complete &&
+           D10IVAALConversation != convoStatus.Complete
+        )
+        {
+            D10IVAALConversation = convoStatus.Ready;
+            virusOnScreen = false;
+        }
+
+        if(D10IVAALConversation == convoStatus.Complete &&
+           D11VirusConversation != convoStatus.Complete
+        )
+        {
+            D11VirusConversation = convoStatus.Ready;
+            virusOnScreen = true;
+        }
+
+        if(D11VirusConversation == convoStatus.Complete &&
+           D12IVAALConversation != convoStatus.Complete
+        )
+        {
+            D12IVAALConversation = convoStatus.Ready;
+            virusOnScreen = false;
+        }
+
+        if(D12IVAALConversation == convoStatus.Complete &&
+           D13IVAALConversation != convoStatus.Complete
+        )
+        {
+            D13IVAALConversation = convoStatus.Ready;
+        }
+
+        if(D13IVAALConversation == convoStatus.Complete &&
+           D14IVAALConversation != convoStatus.Complete
+        )
+        {
+            D14IVAALConversation = convoStatus.Ready;
+        }
+
+        if(D14IVAALConversation == convoStatus.Complete &&
+           D15VirusConversation != convoStatus.Complete
+        )
+        {
+            D15VirusConversation = convoStatus.Ready;
+            virusOnScreen = true;
+        }
+
+        if(D15VirusConversation == convoStatus.Complete &&
+           D16IVAALConversation != convoStatus.Complete
+        )
+        {
+            D16IVAALConversation = convoStatus.Ready;
+            virusOnScreen = false;
+        }
+
+        if(D16IVAALConversation == convoStatus.Complete &&
+           D17VirusConversation != convoStatus.Complete
+        )
+        {
+            D17VirusConversation = convoStatus.Ready;
+            virusOnScreen = true;
+        }
+
+        if(D17VirusConversation == convoStatus.Complete &&
+           D18IVAALConversation != convoStatus.Complete
+        )
+        {
+            D18IVAALConversation = convoStatus.Ready;
+            virusOnScreen = false;
+        }
+
+        if(D18IVAALConversation == convoStatus.Complete &&
+           D19IVAALConversation != convoStatus.Complete
+        )
+        {
+            D19IVAALConversation = convoStatus.Ready;
+        }
+
+        if(D19IVAALConversation == convoStatus.Complete &&
+           D20IVAALConversation != convoStatus.Complete
+        )
+        {
+            D20IVAALConversation = convoStatus.Ready;
+        }
+
+        if(D20IVAALConversation == convoStatus.Complete &&
+           D21VirusConversation != convoStatus.Complete
+        )
+        {
+            D21VirusConversation = convoStatus.Ready;
+            virusOnScreen = true;
+        }
+
+        if(D21VirusConversation == convoStatus.Complete &&
+           D22IVAALConversation != convoStatus.Complete
+        )
+        {
+            D22IVAALConversation = convoStatus.Ready;
+            virusOnScreen = false;
+        }
+
+        if(D22IVAALConversation == convoStatus.Complete &&
+           D23VirusConversation != convoStatus.Complete
+        )
+        {
+            D23VirusConversation = convoStatus.Ready;
+            virusOnScreen = true;
+        }
+
+        if(D23VirusConversation == convoStatus.Complete &&
+           D24IVAALConversation != convoStatus.Complete
+        )
+        {
+            D24IVAALConversation = convoStatus.Ready;
+            virusOnScreen = false;
+        }
+
+        if(D24IVAALConversation == convoStatus.Complete &&
+           D25VirusConversation != convoStatus.Complete
+        )
+        {
+            D25VirusConversation = convoStatus.Ready;
+            virusOnScreen = true;
+        }
+
+        if(D25VirusConversation == convoStatus.Complete &&
+           D26IVAALConversation != convoStatus.Complete
+        )
+        {
+            D26IVAALConversation = convoStatus.Ready;
+            virusOnScreen = false;
+        }
+
+        if(D26IVAALConversation == convoStatus.Complete &&
+           D27BexosConversation != convoStatus.Complete
+        )
+        {
+            D27BexosConversation = convoStatus.Ready;
+        }
+        
+        if(D27BexosConversation == convoStatus.Complete &&
+           D28BexosConversation != convoStatus.Complete
+        )
+        {
+            D28BexosConversation = convoStatus.Ready;
+        }
+
+        if(D28BexosConversation == convoStatus.Complete &&
+           D29BexosConversation != convoStatus.Complete
+        )
+        {
+            D29BexosConversation = convoStatus.Ready;
+        }
+
+        if(D29BexosConversation == convoStatus.Complete &&
+           D30VirusConversation != convoStatus.Complete
+        )
+        {
+            D30VirusConversation = convoStatus.Ready;
+            virusOnScreen = true;
+        }
+
+        if(D30VirusConversation == convoStatus.Complete &&
+           D31IVAALConversation != convoStatus.Complete
+        )
+        {
+            D31IVAALConversation = convoStatus.Ready;
+            virusOnScreen = false;
+        }
+
+        if(D31IVAALConversation == convoStatus.Complete &&
+           D32VirusConversation != convoStatus.Complete
+        )
+        {
+            D32VirusConversation = convoStatus.Ready;
+            virusOnScreen = true;
+        }
+
+        if(D32VirusConversation == convoStatus.Complete &&
+           D33IVAALConversation != convoStatus.Complete
+        )
+        {
+            D33IVAALConversation = convoStatus.Ready;
+            virusOnScreen = false;
+        }
+
+        if(D33IVAALConversation == convoStatus.Complete &&
+           D34VirusConversation != convoStatus.Complete
+        )
+        {
+            D34VirusConversation = convoStatus.Ready;
+            virusOnScreen = true;
+        }
+
+        if(D34VirusConversation == convoStatus.Complete &&
+           D35IVAALConversation != convoStatus.Complete
+        )
+        {
+            D35IVAALConversation = convoStatus.Ready;
+            virusOnScreen = false;
+        }
+
+        if(D35IVAALConversation == convoStatus.Complete &&
+           D36IVAALConversation != convoStatus.Complete
+        )
+        {
+            D36IVAALConversation = convoStatus.Ready;
+        }
+
+        if(D36IVAALConversation == convoStatus.Complete &&
+           D37IVAALConversation != convoStatus.Complete
+        )
+        {
+            D37IVAALConversation = convoStatus.Ready;
+        }
+
+        if(D37IVAALConversation == convoStatus.Complete &&
+           D38IVAALConversation != convoStatus.Complete
+        )
+        {
+            D38IVAALConversation = convoStatus.Ready;
+        }
+
+        if(D38IVAALConversation == convoStatus.Complete &&
+           D39IVAALConversation != convoStatus.Complete
+        )
+        {
+            D39IVAALConversation = convoStatus.Ready;
+        }
+
+        if(D39IVAALConversation == convoStatus.Complete &&
+           D40IVAALConversation != convoStatus.Complete
+        )
+        {
+            D40IVAALConversation = convoStatus.Ready;
+        }
+
+        if(D40IVAALConversation == convoStatus.Complete &&
+           D41IVAALConversation != convoStatus.Complete
+        )
+        {
+            D41IVAALConversation = convoStatus.Ready;
+        }
+
+        if(D41IVAALConversation == convoStatus.Complete &&
+           D42IVAALConversation != convoStatus.Complete
+        )
+        {
+            D42IVAALConversation = convoStatus.Ready;
+        }
+
+        if(D42IVAALConversation == convoStatus.Complete &&
+           D43VirusConversation != convoStatus.Complete
+        )
+        {
+            D43VirusConversation = convoStatus.Ready;
+            virusOnScreen = true;
+        }
+
+        if(D43VirusConversation == convoStatus.Complete &&
+           D44IVAALConversation != convoStatus.Complete
+        )
+        {
+            D44IVAALConversation = convoStatus.Ready;
+            virusOnScreen = false;
+        }
+
+        if(D44IVAALConversation == convoStatus.Complete &&
+           D45IVAALConversation != convoStatus.Complete
+        )
+        {
+            D45IVAALConversation = convoStatus.Ready;
+        }
+
+        if(D45IVAALConversation == convoStatus.Complete &&
+           D46VirusConversation != convoStatus.Complete
+        )
+        {
+            D46VirusConversation = convoStatus.Ready;
+            virusOnScreen = true;
+        }
+
+        if(D46VirusConversation == convoStatus.Complete &&
+           D47IVAALConversation != convoStatus.Complete
+        )
+        {
+            D47IVAALConversation = convoStatus.Ready;
+            virusOnScreen = false;
+        }
+
+        if(D47IVAALConversation == convoStatus.Complete &&
+           D48IVAALConversation != convoStatus.Complete
+        )
+        {
+            D48IVAALConversation = convoStatus.Ready;
+        }
+
+        if(D48IVAALConversation == convoStatus.Complete &&
+           D49VirusConversation != convoStatus.Complete
+        )
+        {
+            D49VirusConversation = convoStatus.Ready;
+            virusOnScreen = true;
+        }
+
+        if(D49VirusConversation == convoStatus.Complete &&
+           D50IVAALConversation != convoStatus.Complete
+        )
+        {
+            D50IVAALConversation = convoStatus.Ready;
+            virusOnScreen = false;
+        }
+
+        if(D50IVAALConversation == convoStatus.Complete &&
+           D51IVAALConversation != convoStatus.Complete
+        )
+        {
+            D51IVAALConversation = convoStatus.Ready;
+        }
+
+        if(D51IVAALConversation == convoStatus.Complete &&
+           D52BexosConversation != convoStatus.Complete
+        )
+        {
+            D52BexosConversation = convoStatus.Ready;
+        }
+
+        if(D52BexosConversation == convoStatus.Complete &&
+           D53VirusConversation != convoStatus.Complete
+        )
+        {
+            D53VirusConversation = convoStatus.Ready;
+            virusOnScreen = true;
+        }
+
+        if(D53VirusConversation == convoStatus.Complete &&
+           D54BexosConversation != convoStatus.Complete
+        )
+        {
+            D54BexosConversation = convoStatus.Ready;
+            virusOnScreen = false;
+        }
+
+        if(D54BexosConversation == convoStatus.Complete &&
+           D55VirusConversation != convoStatus.Complete
+        )
+        {
+            D55VirusConversation = convoStatus.Ready;
+            virusOnScreen = true;
+        }
+
+        if(D55VirusConversation == convoStatus.Complete &&
+           D56IVAALConversation != convoStatus.Complete
+        )
+        {
+            D56IVAALConversation = convoStatus.Ready;
+            virusOnScreen = false;
+        }
+
+        if(D56IVAALConversation == convoStatus.Complete &&
+           D57BexosConversation != convoStatus.Complete
+        )
+        {
+            D57BexosConversation = convoStatus.Ready;
+        }
+
+        if(D57BexosConversation == convoStatus.Complete &&
+           D58UnknownConversation != convoStatus.Complete
+        )
+        {
+            D58UnknownConversation = convoStatus.Ready;
+        }
+    }
 
     public void resetEntryTaskTimer()
     {

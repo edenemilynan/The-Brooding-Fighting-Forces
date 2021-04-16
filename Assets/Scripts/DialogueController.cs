@@ -10,14 +10,14 @@ public class DialogueController : MonoBehaviour
     public int tasksCompleted = 0;
     public int convosHad = 0;
     public bool secondConversation = true;
-    public bool thirdConversation  = true;
+    public bool thirdConversation = true;
     public bool startTruckingCompletionConversation = false;
     public bool startEntryIntroConversation = false;
     public bool startEntryErrorConversation = false;
     public bool startEntryCompletionConversation = false;
     public bool fourthConversation = true;
     public bool readyForFourthConvo = false;
-    public bool fifthConversation  = true;
+    public bool fifthConversation = true;
 	private string sceneName;
     public GameObject DialogueManager;
     public GameObject InputManager;
@@ -57,6 +57,10 @@ public class DialogueController : MonoBehaviour
 		{
 			ChapterTwoDialogueController();
 		}
+        else if (sceneName == "Chapter 3")
+        {
+            ChapterThreeDialogueController();
+        }
         
     }
 
@@ -314,30 +318,7 @@ public class DialogueController : MonoBehaviour
             triggerManager.Ch2ConfirmCleanSystemConversation = TriggerManager.convoStatus.Complete;
         }
 
-        // if(triggerManager.xxx == TriggerManager.convoStatus.Ready)
-        // {
-        //     TriggerThisDialogue(xxx)
-        //     triggerManager.xxx = TriggerManager.convoStatus.Complete;
-        // }
-
-        // if(triggerManager.xxx == TriggerManager.convoStatus.Ready)
-        // {
-        //     TriggerThisDialogue(xxx)
-        //     triggerManager.xxx = TriggerManager.convoStatus.Complete;
-        // }
-
-        // if(triggerManager.xxx == TriggerManager.convoStatus.Ready)
-        // {
-        //     TriggerThisDialogue(xxx)
-        //     triggerManager.xxx = TriggerManager.convoStatus.Complete;
-        // }
-
-        // if(triggerManager.xxx == TriggerManager.convoStatus.Ready)
-        // {
-        //     TriggerThisDialogue(xxx)
-        //     triggerManager.xxx = TriggerManager.convoStatus.Complete;
-        // }
-
+        
         // if(triggerManager.xxx == TriggerManager.convoStatus.Ready)
         // {
         //     TriggerThisDialogue(xxx)
@@ -360,11 +341,361 @@ public class DialogueController : MonoBehaviour
         // }
 	}
 
+    void ChapterThreeDialogueController()
+    {
+        if(triggerManager.D1IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D1IVAALConversation");
+            triggerManager.D1IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.D2VirusConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D2VirusConversation");
+            triggerManager.D2VirusConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.D3IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D3IVAALConversation");
+            triggerManager.D3IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.D4IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D4IVAALConversation");
+            triggerManager.D4IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.D5IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D5IVAALConversation");
+            triggerManager.D5IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.D6VirusConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D6VirusConversation");
+            triggerManager.D6VirusConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.D7IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D7IVAALConversation");
+            triggerManager.D7IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.D8IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D8IVAALConversation");
+            triggerManager.D8IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.D9VirusConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D9VirusConversation");
+            triggerManager.D9VirusConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.D10IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D10IVAALConversation");
+            triggerManager.D10IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.D11VirusConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D11VirusConversation");
+            triggerManager.D11VirusConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.D12IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D12IVAALConversation");
+            triggerManager.D12IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.D13IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D13IVAALConversation");
+            triggerManager.D13IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.D14IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D14IVAALConversation");
+            triggerManager.D14IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+
+        if(triggerManager.D15VirusConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D15VirusConversation");
+            triggerManager.D15VirusConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D16IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D16IVAALConversation");
+            triggerManager.D16IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D17VirusConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D17VirusConversation");
+            triggerManager.D17VirusConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D18IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D18IVAALConversation");
+            triggerManager.D18IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D19IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D19IVAALConversation");
+            triggerManager.D19IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D20IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D20IVAALConversation");
+            triggerManager.D20IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D21VirusConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D21VirusConversation");
+            triggerManager.D21VirusConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D22IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D22IVAALConversation");
+            triggerManager.D22IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D23VirusConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D23VirusConversation");
+            triggerManager.D23VirusConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D24IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D24IVAALConversation");
+            triggerManager.D24IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D25VirusConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D25VirusConversation");
+            triggerManager.D25VirusConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D26IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D26IVAALConversation");
+            triggerManager.D26IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D27BexosConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D27BexosConversation");
+            triggerManager.D27BexosConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D28BexosConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D28BexosConversation");
+            triggerManager.D28BexosConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D29BexosConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D29BexosConversation");
+            triggerManager.D29BexosConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D30VirusConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D30VirusConversation");
+            triggerManager.D30VirusConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D31IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D31IVAALConversation");
+            triggerManager.D31IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D32VirusConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D32VirusConversation");
+            triggerManager.D32VirusConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D33IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D33IVAALConversation");
+            triggerManager.D33IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D34VirusConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D34VirusConversation");
+            triggerManager.D34VirusConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D35IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D35IVAALConversation");
+            triggerManager.D35IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D36IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D36IVAALConversation");
+            triggerManager.D36IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D37IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D37IVAALConversation");
+            triggerManager.D37IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D38IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D38IVAALConversation");
+            triggerManager.D38IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D39IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D39IVAALConversation");
+            triggerManager.D39IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D40IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D40IVAALConversation");
+            triggerManager.D40IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D41IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D41IVAALConversation");
+            triggerManager.D41IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D42IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D42IVAALConversation");
+            triggerManager.D42IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D43VirusConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D43VirusConversation");
+            triggerManager.D43VirusConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D44IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D44IVAALConversation");
+            triggerManager.D44IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D45IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D45IVAALConversation");
+            triggerManager.D45IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D46VirusConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D46VirusConversation");
+            triggerManager.D46VirusConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D47IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D47IVAALConversation");
+            triggerManager.D47IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D48IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D48IVAALConversation");
+            triggerManager.D48IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D49VirusConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D49VirusConversation");
+            triggerManager.D49VirusConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D50IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D50IVAALConversation");
+            triggerManager.D50IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D51IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D51IVAALConversation");
+            triggerManager.D51IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D52BexosConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D52BexosConversation");
+            triggerManager.D52BexosConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D53VirusConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D53VirusConversation");
+            triggerManager.D53VirusConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D54BexosConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D54BexosConversation");
+            triggerManager.D54BexosConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D55VirusConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D55VirusConversation");
+            triggerManager.D55VirusConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D56IVAALConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D56IVAALConversation");
+            triggerManager.D56IVAALConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D57BexosConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D57BexosConversation");
+            triggerManager.D57BexosConversation = TriggerManager.convoStatus.Complete;
+        }
+        
+        if(triggerManager.D58UnknownConversation == TriggerManager.convoStatus.Ready)
+        {
+            TriggerThisDialogue("D58UnknownConversation");
+            triggerManager.D58UnknownConversation = TriggerManager.convoStatus.Complete;
+        }
+    }
+
 	void TriggerThisDialogue(string dialogueName)
 	{
 		GameObject conversation = GameObject.Find(dialogueName);
 		DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
-		triggerManager.convosHad += 1;
 
 		if (other != null)
 		{

@@ -55,7 +55,7 @@ public class TaskManager : MonoBehaviour
     public TruckingControls truckingControl;
     public TruckingController personApproaches;
     public TruckingController truckApproaches;
-    public InputManager manager;
+    public InputManager inputManager;
 
     
     // Start is called before the first frame update
@@ -182,7 +182,7 @@ public class TaskManager : MonoBehaviour
         if (tasksTrucking.Count != 0)
         {
             taskTrucking = tasksTrucking.Dequeue();
-            manager.taskWaitingTrucking = false;
+            inputManager.taskWaitingTrucking = false;
 
             if (taskTrucking == Tasks.truckRight)
             {
@@ -245,7 +245,7 @@ public class TaskManager : MonoBehaviour
         if (tasksEntry.Count != 0)
         {
             taskEntry = tasksEntry.Dequeue();
-            manager.taskWaitingEntry = false;
+            inputManager.taskWaitingEntry = false;
 
             if (taskEntry == Tasks.peopleAllow || taskEntry == Tasks.peopleDisallow)
             {
@@ -301,12 +301,9 @@ public class TaskManager : MonoBehaviour
             }
         }
 
-        for(int i = 1; i <= tasksEntry.Count; i++)
-        {
-            Tasks task = tasksEntry.Dequeue();
-            Debug.Log(task);
-            Ch2Queue3.Enqueue(task);
-        }
+        if(taskTrucking == Tasks.none) {inputManager.taskWaitingTrucking = true; Debug.Log("Fuckin' in Trucking Tasks");}
+        if(taskEntry == Tasks.none) {inputManager.taskWaitingEntry = true;}
+        if(taskSorting == Tasks.none) {inputManager.taskWaitingSorting = true;}
 
         // tasksTrucking.Enqueue(Tasks.none);
         // tasksEntry   .Enqueue(Tasks.none);
