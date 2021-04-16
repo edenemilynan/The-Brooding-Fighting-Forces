@@ -32,6 +32,7 @@ public class TaskManager : MonoBehaviour
     public Queue<Tasks> Ch2Queue2 = new Queue<Tasks>(new[] {Tasks.peopleDisallow});
     // Once Entryway task is complete
     public Queue<Tasks> Ch2Queue3 = new Queue<Tasks>(new[] {Tasks.truckRight,
+                                                            Tasks.truckAlarm,
                                                             Tasks.truckRight,
                                                             Tasks.peopleAllow,
                                                             Tasks.peopleDisallow,

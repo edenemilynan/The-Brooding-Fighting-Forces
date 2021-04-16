@@ -72,6 +72,7 @@ public class TriggerManager : MonoBehaviour
     public convoStatus D25VirusConversation = convoStatus.NotReady;
     public convoStatus D26IVAALConversation = convoStatus.NotReady;
     public convoStatus D27BexosConversation = convoStatus.NotReady;
+    public bool        exposeIVAAL = false;
     public convoStatus D28BexosConversation = convoStatus.NotReady;
     public convoStatus D29BexosConversation = convoStatus.NotReady;
     public convoStatus D30VirusConversation = convoStatus.NotReady;
@@ -141,6 +142,8 @@ public class TriggerManager : MonoBehaviour
     // Variable used to determine what happens in the conversations where a decision must be made
     public string lastMorseCommand;
     public bool   waitingOnInput;
+    public bool   endScene;
+    public int    endingCode = 0;
 
     public TaskManager taskManager;
     public InputManager inputManager;
@@ -159,6 +162,9 @@ public class TriggerManager : MonoBehaviour
 		sceneName = currentScene.name;
 
         entryTaskTimer = 120;
+
+
+
     }
 
     // Update is called once per frame
@@ -237,14 +243,13 @@ public class TriggerManager : MonoBehaviour
 
         if(Ch2EntryAlarmDecisionConversation == convoStatus.Complete &&
            Ch2InjuryReportConversation != convoStatus.Complete &&
-           truckTasksCompleted >= 3 &&
+           truckTasksCompleted >= 5 &&
            scannerTasksCompleted >= 3 &&
            sortingTasksCompleted >= 1)
         {
             Ch2InjuryReportConversation = convoStatus.Ready;
             Ch2NotCountingStartNumber = scannerTasksCompleted;
             taskManager.queueNewTasks(taskManager.Ch2Queue4);
-
         }
 
         if(Ch2InjuryReportConversation == convoStatus.Complete &&
@@ -301,7 +306,7 @@ public class TriggerManager : MonoBehaviour
 
         if(Ch2AllowPackagesDecisionConversation == convoStatus.Complete &&
            Ch2HeadOfficeMemoConversation != convoStatus.Complete &&
-           truckTasksCompleted >= 4 &&
+           truckTasksCompleted >= 5 &&
            scannerTasksCompleted >= 7 &&
            sortingTasksCompleted >= 4
            )
@@ -328,7 +333,7 @@ public class TriggerManager : MonoBehaviour
 	{
         if(dialogueActive != true)
         {
-            //ChapterThreeDialogueTriggers();
+            ChapterThreeDialogueTriggers();
         }
 
         // public bool phoneRinging;
@@ -363,9 +368,11 @@ public class TriggerManager : MonoBehaviour
 
 	}
 
-    /*void ChapterThreeDialogueTriggers()
+    void ChapterThreeDialogueTriggers()
     {
-        //TK Cue First Entryway task here
+
+        public bool activatedTerminationAnimation
+        // TK Make sure entry tasks are Queued in TaskManager
 
         if(D1IVAALConversation == convoStatus.Complete &&
            D2VirusConversation != convoStatus.Complete
@@ -373,7 +380,6 @@ public class TriggerManager : MonoBehaviour
         {
             D2VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
-            
         }
 
         if(D2VirusConversation == convoStatus.Complete &&
@@ -384,18 +390,24 @@ public class TriggerManager : MonoBehaviour
             virusOnScreen = false;
         }
 
+        // TK GOTO ENTRYWAY
         if(D3IVAALConversation == convoStatus.Complete &&
-           D4IVAALConversation  != convoStatus.Complete
+           D4IVAALConversation  != convoStatus.Complete &&
+           activeScreen == "entry"
         )
         {
             D4IVAALConversation = convoStatus.Ready;
         }
 
+        // TK Set the number of scanner tasks based on Queue in TaskManager
         if(D4IVAALConversation == convoStatus.Complete &&
-           D5IVAALConversation  != convoStatus.Complete
+           D5IVAALConversation  != convoStatus.Complete &&
+           activeScreen == "entry" &&
+           scannerTasksCompleted == 1 //tk this is the place
         )
         {
             D5IVAALConversation = convoStatus.Ready;
+            fallenAnimationActive = true;
         }
 
         if(D5IVAALConversation == convoStatus.Complete &&
@@ -404,25 +416,32 @@ public class TriggerManager : MonoBehaviour
         {
             D6VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
+            fallenAnimationActive = false;
         }
 
+        // TK Queue a sorting task
         if(D6VirusConversation == convoStatus.Complete &&
            D7IVAALConversation  != convoStatus.Complete
         )
         {
             D7IVAALConversation = convoStatus.Ready;
             virusOnScreen = false;
+            //TK QUEUE THE SORTING TASK HERE
         }
 
         if(D7IVAALConversation == convoStatus.Complete &&
-           D8IVAALConversation  != convoStatus.Complete
+           D8IVAALConversation  != convoStatus.Complete &&
+           activeScreen == "sorting" &&
+           sortingTasksCompleted == 1 //TK Change this later to proper value
         )
         {
             D8IVAALConversation = convoStatus.Ready;
+            // TK QUEUE MORE SORTING TASKS HERE
         }
 
         if(D8IVAALConversation == convoStatus.Complete &&
-           D9VirusConversation  != convoStatus.Complete
+           D9VirusConversation  != convoStatus.Complete &&
+           activeScreen == "sorting"
         )
         {
             D9VirusConversation = convoStatus.Ready;
@@ -430,17 +449,27 @@ public class TriggerManager : MonoBehaviour
         }
 
         if(D9VirusConversation == convoStatus.Complete &&
-           D10IVAALConversation != convoStatus.Complete
+           D10IVAALConversation != convoStatus.Complete)
+        {
+            virusOnScreen = false;
+        }
+
+        if(D9VirusConversation == convoStatus.Complete &&
+           D10IVAALConversation != convoStatus.Complete &&
+           activeScreen == "sorting" &&
+           sortingTasksCompleted == 1 //TK Change this later to the proper value
         )
         {
+            //TK DisAllow dialogue from leaving
+            //TK Queue Trucking Tasks
             D10IVAALConversation = convoStatus.Ready;
-            virusOnScreen = false;
         }
 
         if(D10IVAALConversation == convoStatus.Complete &&
            D11VirusConversation != convoStatus.Complete
         )
         {
+            //TK DisAllow dialogue from leaving
             D11VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
         }
@@ -451,20 +480,27 @@ public class TriggerManager : MonoBehaviour
         {
             D12IVAALConversation = convoStatus.Ready;
             virusOnScreen = false;
+            //TK Allow dialogue box to leave
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D12IVAALConversation == convoStatus.Complete &&
-           D13IVAALConversation != convoStatus.Complete
+           D13IVAALConversation != convoStatus.Complete &&
+           activeScreen == "truck" &&
+           truckTasksCompleted == 1 //TK Change this value to be the proper one based on number of tasks
         )
         {
+            //TK Queue another task (the door opening task)
             D13IVAALConversation = convoStatus.Ready;
         }
 
         if(D13IVAALConversation == convoStatus.Complete &&
-           D14IVAALConversation != convoStatus.Complete
+           D14IVAALConversation != convoStatus.Complete &&
+           activeScreen == "truck" // TK Add logic for determining if the truck has been correctly let in.
         )
         {
             D14IVAALConversation = convoStatus.Ready;
+            //TK Dont allow dialogue box to leave
         }
 
         if(D14IVAALConversation == convoStatus.Complete &&
@@ -473,6 +509,8 @@ public class TriggerManager : MonoBehaviour
         {
             D15VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
+            //TK Dont allow dialogue box to leave
+
         }
 
         if(D15VirusConversation == convoStatus.Complete &&
@@ -481,14 +519,18 @@ public class TriggerManager : MonoBehaviour
         {
             D16IVAALConversation = convoStatus.Ready;
             virusOnScreen = false;
+            //TK Allow Dialogue Box to Leave
+            //TK Queue the proper trucking, sorting, and entryway tasks
         }
 
         if(D16IVAALConversation == convoStatus.Complete &&
-           D17VirusConversation != convoStatus.Complete
+           D17VirusConversation != convoStatus.Complete 
+           // TK Add checks for being done the proper amount of tasks
         )
         {
             D17VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
+            //TK Dont allow dialogue box to leave
         }
 
         if(D17VirusConversation == convoStatus.Complete &&
@@ -497,26 +539,34 @@ public class TriggerManager : MonoBehaviour
         {
             D18IVAALConversation = convoStatus.Ready;
             virusOnScreen = false;
+            //TK Allow Dialogue Box to Leave
+            //TK Activate sorting Tasks
         }
 
         if(D18IVAALConversation == convoStatus.Complete &&
-           D19IVAALConversation != convoStatus.Complete
+           D19IVAALConversation != convoStatus.Complete 
+           // TK add check for completing the correct amount of sorting tasks
         )
         {
+            //TK queue more entryway tasks
             D19IVAALConversation = convoStatus.Ready;
         }
 
         if(D19IVAALConversation == convoStatus.Complete &&
            D20IVAALConversation != convoStatus.Complete
+           // TK Check for completing correct amount of entry tasks
         )
         {
+            // TK Queue more trucking tasks
             D20IVAALConversation = convoStatus.Ready;
         }
 
         if(D20IVAALConversation == convoStatus.Complete &&
            D21VirusConversation != convoStatus.Complete
+           // TK Add check for completing the correct amount of trucking tasks
         )
         {
+            //TK Dont allow dialogue box to leave
             D21VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
         }
@@ -525,6 +575,7 @@ public class TriggerManager : MonoBehaviour
            D22IVAALConversation != convoStatus.Complete
         )
         {
+            //TK Dont allow dialogue box to leave
             D22IVAALConversation = convoStatus.Ready;
             virusOnScreen = false;
         }
@@ -533,6 +584,7 @@ public class TriggerManager : MonoBehaviour
            D23VirusConversation != convoStatus.Complete
         )
         {
+            //TK Dont allow dialogue box to leave
             D23VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
         }
@@ -541,6 +593,7 @@ public class TriggerManager : MonoBehaviour
            D24IVAALConversation != convoStatus.Complete
         )
         {
+            //TK Dont allow dialogue box to leave
             D24IVAALConversation = convoStatus.Ready;
             virusOnScreen = false;
         }
@@ -549,16 +602,25 @@ public class TriggerManager : MonoBehaviour
            D25VirusConversation != convoStatus.Complete
         )
         {
+            // TK QUEUE A main task notification
+            //TK allow dialogue box to leave
             D25VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
         }
 
         if(D25VirusConversation == convoStatus.Complete &&
-           D26IVAALConversation != convoStatus.Complete
+           D26IVAALConversation != convoStatus.Complete)
+        {
+            virusOnScreen = false;
+        }
+
+        if(D25VirusConversation == convoStatus.Complete &&
+           D26IVAALConversation != convoStatus.Complete &&
+           activeScreen == "main"
         )
         {
             D26IVAALConversation = convoStatus.Ready;
-            virusOnScreen = false;
+            phoneRinging = true;
         }
 
         if(D26IVAALConversation == convoStatus.Complete &&
@@ -566,15 +628,27 @@ public class TriggerManager : MonoBehaviour
         )
         {
             D27BexosConversation = convoStatus.Ready;
+            phoneRinging = false;
+            onPhone = true;
         }
         
         if(D27BexosConversation == convoStatus.Complete &&
-           D28BexosConversation != convoStatus.Complete
+           D28BexosConversation != convoStatus.Complete &&
+           activeScreen == "main" && 
+           (lastMorseCommand == ".-" || lastMorseCommand == "-.")
         )
         {
-            D28BexosConversation = convoStatus.Ready;
+            if(lastMorseCommand == ".-") 
+            { 
+                D28BexosConversation = convoStatus.Ready; 
+            }
+            if(lastMorseCommand == "-.")
+            { 
+                D29BexosConversation = convoStatus.Ready;
+            }
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D28BexosConversation == convoStatus.Complete &&
            D29BexosConversation != convoStatus.Complete
         )
@@ -582,6 +656,10 @@ public class TriggerManager : MonoBehaviour
             D29BexosConversation = convoStatus.Ready;
         }
 
+        if(D29BexosConversation == convoStatus.complete &&
+           )
+
+        // TK Make sure these triggers are correct, friend
         if(D29BexosConversation == convoStatus.Complete &&
            D30VirusConversation != convoStatus.Complete
         )
@@ -590,6 +668,7 @@ public class TriggerManager : MonoBehaviour
             virusOnScreen = true;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D30VirusConversation == convoStatus.Complete &&
            D31IVAALConversation != convoStatus.Complete
         )
@@ -598,6 +677,7 @@ public class TriggerManager : MonoBehaviour
             virusOnScreen = false;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D31IVAALConversation == convoStatus.Complete &&
            D32VirusConversation != convoStatus.Complete
         )
@@ -606,6 +686,7 @@ public class TriggerManager : MonoBehaviour
             virusOnScreen = true;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D32VirusConversation == convoStatus.Complete &&
            D33IVAALConversation != convoStatus.Complete
         )
@@ -614,6 +695,7 @@ public class TriggerManager : MonoBehaviour
             virusOnScreen = false;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D33IVAALConversation == convoStatus.Complete &&
            D34VirusConversation != convoStatus.Complete
         )
@@ -622,6 +704,7 @@ public class TriggerManager : MonoBehaviour
             virusOnScreen = true;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D34VirusConversation == convoStatus.Complete &&
            D35IVAALConversation != convoStatus.Complete
         )
@@ -630,6 +713,7 @@ public class TriggerManager : MonoBehaviour
             virusOnScreen = false;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D35IVAALConversation == convoStatus.Complete &&
            D36IVAALConversation != convoStatus.Complete
         )
@@ -637,6 +721,7 @@ public class TriggerManager : MonoBehaviour
             D36IVAALConversation = convoStatus.Ready;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D36IVAALConversation == convoStatus.Complete &&
            D37IVAALConversation != convoStatus.Complete
         )
@@ -644,6 +729,7 @@ public class TriggerManager : MonoBehaviour
             D37IVAALConversation = convoStatus.Ready;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D37IVAALConversation == convoStatus.Complete &&
            D38IVAALConversation != convoStatus.Complete
         )
@@ -651,6 +737,7 @@ public class TriggerManager : MonoBehaviour
             D38IVAALConversation = convoStatus.Ready;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D38IVAALConversation == convoStatus.Complete &&
            D39IVAALConversation != convoStatus.Complete
         )
@@ -658,6 +745,7 @@ public class TriggerManager : MonoBehaviour
             D39IVAALConversation = convoStatus.Ready;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D39IVAALConversation == convoStatus.Complete &&
            D40IVAALConversation != convoStatus.Complete
         )
@@ -665,6 +753,7 @@ public class TriggerManager : MonoBehaviour
             D40IVAALConversation = convoStatus.Ready;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D40IVAALConversation == convoStatus.Complete &&
            D41IVAALConversation != convoStatus.Complete
         )
@@ -672,6 +761,7 @@ public class TriggerManager : MonoBehaviour
             D41IVAALConversation = convoStatus.Ready;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D41IVAALConversation == convoStatus.Complete &&
            D42IVAALConversation != convoStatus.Complete
         )
@@ -679,6 +769,7 @@ public class TriggerManager : MonoBehaviour
             D42IVAALConversation = convoStatus.Ready;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D42IVAALConversation == convoStatus.Complete &&
            D43VirusConversation != convoStatus.Complete
         )
@@ -687,6 +778,7 @@ public class TriggerManager : MonoBehaviour
             virusOnScreen = true;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D43VirusConversation == convoStatus.Complete &&
            D44IVAALConversation != convoStatus.Complete
         )
@@ -695,6 +787,7 @@ public class TriggerManager : MonoBehaviour
             virusOnScreen = false;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D44IVAALConversation == convoStatus.Complete &&
            D45IVAALConversation != convoStatus.Complete
         )
@@ -702,6 +795,7 @@ public class TriggerManager : MonoBehaviour
             D45IVAALConversation = convoStatus.Ready;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D45IVAALConversation == convoStatus.Complete &&
            D46VirusConversation != convoStatus.Complete
         )
@@ -710,6 +804,7 @@ public class TriggerManager : MonoBehaviour
             virusOnScreen = true;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D46VirusConversation == convoStatus.Complete &&
            D47IVAALConversation != convoStatus.Complete
         )
@@ -718,6 +813,7 @@ public class TriggerManager : MonoBehaviour
             virusOnScreen = false;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D47IVAALConversation == convoStatus.Complete &&
            D48IVAALConversation != convoStatus.Complete
         )
@@ -725,6 +821,7 @@ public class TriggerManager : MonoBehaviour
             D48IVAALConversation = convoStatus.Ready;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D48IVAALConversation == convoStatus.Complete &&
            D49VirusConversation != convoStatus.Complete
         )
@@ -733,6 +830,7 @@ public class TriggerManager : MonoBehaviour
             virusOnScreen = true;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D49VirusConversation == convoStatus.Complete &&
            D50IVAALConversation != convoStatus.Complete
         )
@@ -741,6 +839,7 @@ public class TriggerManager : MonoBehaviour
             virusOnScreen = false;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D50IVAALConversation == convoStatus.Complete &&
            D51IVAALConversation != convoStatus.Complete
         )
@@ -748,6 +847,7 @@ public class TriggerManager : MonoBehaviour
             D51IVAALConversation = convoStatus.Ready;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D51IVAALConversation == convoStatus.Complete &&
            D52BexosConversation != convoStatus.Complete
         )
@@ -755,6 +855,7 @@ public class TriggerManager : MonoBehaviour
             D52BexosConversation = convoStatus.Ready;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D52BexosConversation == convoStatus.Complete &&
            D53VirusConversation != convoStatus.Complete
         )
@@ -763,6 +864,7 @@ public class TriggerManager : MonoBehaviour
             virusOnScreen = true;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D53VirusConversation == convoStatus.Complete &&
            D54BexosConversation != convoStatus.Complete
         )
@@ -771,6 +873,7 @@ public class TriggerManager : MonoBehaviour
             virusOnScreen = false;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D54BexosConversation == convoStatus.Complete &&
            D55VirusConversation != convoStatus.Complete
         )
@@ -779,6 +882,7 @@ public class TriggerManager : MonoBehaviour
             virusOnScreen = true;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D55VirusConversation == convoStatus.Complete &&
            D56IVAALConversation != convoStatus.Complete
         )
@@ -787,6 +891,7 @@ public class TriggerManager : MonoBehaviour
             virusOnScreen = false;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D56IVAALConversation == convoStatus.Complete &&
            D57BexosConversation != convoStatus.Complete
         )
@@ -794,13 +899,14 @@ public class TriggerManager : MonoBehaviour
             D57BexosConversation = convoStatus.Ready;
         }
 
+        // TK Make sure these triggers are correct, friend
         if(D57BexosConversation == convoStatus.Complete &&
            D58UnknownConversation != convoStatus.Complete
         )
         {
             D58UnknownConversation = convoStatus.Ready;
         }
-    }*/
+    }
 
     public void resetEntryTaskTimer()
     {
