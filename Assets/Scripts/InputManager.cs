@@ -43,6 +43,8 @@ public class InputManager : MonoBehaviour
     private bool entryIntroConversationStarted = false;
     private bool entryErrorConversationActivated = false;
     private bool entryCompletionConversationActivated = false;
+    private bool sortingIntroConversationStarted = false;
+    private bool sortingCompletionConversationActivated = false;
 
     //1 will be right door, -1 will be left
     public int whichEntryDoor = 1;
@@ -639,6 +641,22 @@ public class InputManager : MonoBehaviour
             DialogueController.GetComponent<DialogueController>().startEntryCompletionConversation = true;
             entryCompletionConversationActivated = true;
         }
+
+        //Sorting convo
+        if (truckingCompletionConversationActivated && !sortingIntroConversationStarted && activeScreen == "sorting")
+        {
+            DialogueController.GetComponent<DialogueController>().startSortingIntroConversation = true;
+            sortingIntroConversationStarted = true;
+        }
+
+        if (sortingIntroConversationStarted && !sortingCompletionConversationActivated && activeScreen == "sorting" && sortManager.done)
+        {
+            DialogueController.GetComponent<DialogueController>().startSortingCompletionConversation = true;
+            sortingCompletionConversationActivated = true;
+        }
+
+
+
 
         if (convo4activated && activeScreen == "main" && !convo5activated)
         {

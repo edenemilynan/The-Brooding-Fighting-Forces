@@ -15,6 +15,8 @@ public class DialogueController : MonoBehaviour
     public bool startEntryIntroConversation = false;
     public bool startEntryErrorConversation = false;
     public bool startEntryCompletionConversation = false;
+    public bool startSortingIntroConversation = false;
+    public bool startSortingCompletionConversation = false;
     public bool fourthConversation = true;
     public bool readyForFourthConvo = false;
     public bool fifthConversation = true;
@@ -159,6 +161,33 @@ public class DialogueController : MonoBehaviour
             }
         }
 
+        if(startSortingIntroConversation)
+        {
+            GameObject conversation = GameObject.Find("SortingIntroConversation");
+            DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
+            startSortingIntroConversation = false;
+            //convosHad++;
+
+            if (other != null)
+            {
+                other.TriggerDialogue();
+            }
+
+        }
+
+        if (startSortingCompletionConversation)
+        {
+            GameObject conversation = GameObject.Find("SortingCompletionConversation");
+            DialogueTrigger other = (DialogueTrigger)conversation.GetComponent<DialogueTrigger>();
+            startSortingCompletionConversation = false;
+            //convosHad++;
+
+            if (other != null)
+            {
+                other.TriggerDialogue();
+            }
+
+        }
 
 
 

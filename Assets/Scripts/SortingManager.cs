@@ -13,6 +13,7 @@ public class SortingManager : MonoBehaviour
     public SortingCombinations sc;
     private int rand;
     private int gotRightCount = 0;
+    public bool done = false;
 
     //Testing variables
     //public SpriteRenderer valid;
@@ -157,6 +158,7 @@ public class SortingManager : MonoBehaviour
             triggerManager.sortingTasksCompleted += 1;
             reset();
             workers.sprite = null;
+            done = true;
             return true;
         }
 

@@ -1,0 +1,17 @@
+The last task we have is in sorting, enter to open!|I.V.A.A.L|6|
+Here your duties are a little more tricky.|I.V.A.A.L|5| 
+You are in charge of permitting packages to be sent out.|I.V.A.A.L|5|
+How do you determine which packages are okay and which are not?|I.V.A.A.L|5| 
+It is simple! Allow me to explain:|I.V.A.A.L|3|
+Packages must be sent in assortments of three.|I.V.A.A.L|5|
+Each assortment has certain restrictions.|I.V.A.A.L|4|
+Within these singular packages, you will find a single, a double, or a triple product. |I.V.A.A.L|4|
+A valid assortment follows one of the following patterns in number: 1,1,1 ; 2,2,2 ; 3,3,3 ; or 1,2,3.|I.V.A.A.L|6|
+For example, an assortment of 1,2,2 ; is not valid. |I.V.A.A.L|9|
+The products also hold unique shapes.|I.V.A.A.L|8|
+A similar pattern follows for valid assortments, +++, ===, OOO, +=O.|I.V.A.A.L|8|
+An assortment of ++O would not be valid. |I.V.A.A.L|7|
+If an assortment has passed your inspection, enter Affirmative and they will be sent away.|I.V.A.A.L|8|
+If it fails your inspection, enter Negative and they will be removed.|I.V.A.A.L|3|
+You must get three assortments correct to proceed to the next task!|I.V.A.A.L|4|
+Wow! You caught on much quicker than I expected. I will let you proceed from here.|I.V.A.A.L|3|
