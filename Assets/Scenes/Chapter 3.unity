@@ -734,7 +734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &63102001
 Animator:
   serializedVersion: 3
@@ -1922,6 +1922,7 @@ MonoBehaviour:
   D25VirusConversation: 0
   D26IVAALConversation: 0
   D27BexosConversation: 0
+  exposeIVAAL: 0
   D28BexosConversation: 0
   D29BexosConversation: 0
   D30VirusConversation: 0
@@ -1977,6 +1978,8 @@ MonoBehaviour:
   entryTaskTimer: 0
   lastMorseCommand: 
   waitingOnInput: 0
+  endScene: 0
+  endingCode: 0
   taskManager: {fileID: 1182270925}
   inputManager: {fileID: 1552562394}
 --- !u!4 &180654426
@@ -14931,9 +14934,9 @@ MonoBehaviour:
   explosion: {fileID: 269251274}
   staticScreen: {fileID: 2038909815}
   virusDeath: {fileID: 1812626716}
-  virusAnimation: {fileID: 0}
-  personFalling: {fileID: 0}
-  confirmationScreen: {fileID: 0}
+  virusAnimation: {fileID: 2138914063}
+  personFalling: {fileID: 798057663}
+  confirmationScreen: {fileID: 1082571775}
 --- !u!1 &1848734836
 GameObject:
   m_ObjectHideFlags: 0

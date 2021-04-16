@@ -131,7 +131,7 @@ public class DialogueManager : MonoBehaviour
 		// Play Dialogue Advancing Daw Sound
 		dialogueAudioPlayer.GetComponent<DialogueAudioPlayer>().PlayDialogueSound(3, 0.2f);
         string name = "I.V.A.A.L.";
-        int expression = 6;
+        int expression = 15;
         int sound = 0; //no sound
         string sentence = sentences.Dequeue();
         
