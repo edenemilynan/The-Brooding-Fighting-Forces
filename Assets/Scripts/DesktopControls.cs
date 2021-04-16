@@ -45,7 +45,7 @@ public class DesktopControls : MonoBehaviour
     public void hideOnThePhone()
     {
         if( !onThePhone.GetBool("visible")) { return; }
-        onThePhone.SetBool("visible", true);
+        onThePhone.SetBool("visible", false);
     }
 
     public void triggerExplosion()
@@ -70,11 +70,11 @@ public class DesktopControls : MonoBehaviour
 
     public void hideStatic()
     {
-        Debug.Log(staticScreen.GetBool("visible"));
+        // Debug.Log(staticScreen.GetBool("visible"));
         // if(staticScreen.GetBool("visible")) { return; }
-        Debug.Log("Hiding static");
-        staticScreen.SetBool("visible", true);
-        Debug.Log(staticScreen.GetBool("visible"));
+        // Debug.Log("Hiding static");
+        staticScreen.SetBool("visible", false);
+        // Debug.Log(staticScreen.GetBool("visible"));
 
     }
 
@@ -98,7 +98,7 @@ public class DesktopControls : MonoBehaviour
 
     public void hideVirusDeath()
     {
-        if(virusDeath.GetBool("visible")) { return; }
-        virusDeath.SetBool("visible", true);
+        if(!virusDeath.GetBool("visible")) { return; }
+        virusDeath.SetBool("visible", false);
     }
 }
