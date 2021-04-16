@@ -106,6 +106,12 @@ public class SortingManager : MonoBehaviour
             else
             {
                 //valid.sprite = sc.shapes[3];
+                --gotRightCount;
+                if(gotRightCount < 0)
+                {
+                    gotRightCount = 0;
+                }
+                triesCountChange(gotRightCount);
             }
             reroll();
             //Debug.Log(sc.combinations[rand][3]);
@@ -124,6 +130,12 @@ public class SortingManager : MonoBehaviour
             else
             {
                 //valid.sprite = sc.shapes[6];
+                --gotRightCount;
+                if (gotRightCount < 0)
+                {
+                    gotRightCount = 0;
+                }
+                triesCountChange(gotRightCount);
             }
             reroll();
         }
