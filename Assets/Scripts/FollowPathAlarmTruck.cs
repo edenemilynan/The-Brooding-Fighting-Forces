@@ -42,7 +42,7 @@ public class FollowPathAlarmTruck : MonoBehaviour
                 startedOnPath = true;
                 manager.entryLocked = true;
                 Destroy(counterPart);
-                //truck.SetInteger("facing", turn);
+                truck.SetInteger("facing", turn);
                 truck.GetComponent<Renderer>().enabled = true;
             }
 
