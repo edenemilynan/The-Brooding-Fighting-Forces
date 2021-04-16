@@ -11,6 +11,7 @@ public class DesktopControls : MonoBehaviour
     public Animator staticScreen;
     public Animator virusDeath;
     public Animator virusAnimation;
+    public Animator personFalling;
 
     // Start is called before the first frame update
     void Start()
@@ -81,12 +82,14 @@ public class DesktopControls : MonoBehaviour
     public void showVirusOnScreen()
     {
         //if( xxx.GetBool("visible")) { return; }
+        virusAnimation.SetBool("visible", true);
         Debug.Log("TK Add the call for showing the virus");
     }
 
     public void hideVirusOnScreen()
     {
         // if(!xxx.GetBool("visible")) { return; }
+        virusAnimation.SetBool("visible", false);
         Debug.Log("TK Add the call for hiding the virus");
     }
 
@@ -100,5 +103,13 @@ public class DesktopControls : MonoBehaviour
     {
         if(!virusDeath.GetBool("visible")) { return; }
         virusDeath.SetBool("visible", false);
+    }
+
+    public void personFalls()
+    {
+        if (!personFalling.GetBool("visible"))
+        {
+            personFalling.SetBool("visible", true);
+        }
     }
 }

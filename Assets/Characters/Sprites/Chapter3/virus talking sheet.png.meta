@@ -1,0 +1,440 @@
+fileFormatVersion: 2
+guid: 5b1aaefc277b84c4a99960bfa8a2b5e7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4143514767575630637
+    second: virus talking sheet_0
+  - first:
+      213: 8313264215499332049
+    second: virus talking sheet_1
+  - first:
+      213: 4031156548905217636
+    second: virus talking sheet_2
+  - first:
+      213: 4146094561952407438
+    second: virus talking sheet_3
+  - first:
+      213: -6665160396405273897
+    second: virus talking sheet_4
+  - first:
+      213: 2275345866053988956
+    second: virus talking sheet_5
+  - first:
+      213: -1558093635035784426
+    second: virus talking sheet_6
+  - first:
+      213: -2351146235207562674
+    second: virus talking sheet_7
+  - first:
+      213: 894690417189483553
+    second: virus talking sheet_8
+  - first:
+      213: 6495055398932420866
+    second: virus talking sheet_9
+  - first:
+      213: -8785483461508608989
+    second: virus talking sheet_10
+  - first:
+      213: -4843520194337398287
+    second: virus talking sheet_11
+  - first:
+      213: 6251996911842705525
+    second: virus talking sheet_12
+  - first:
+      213: 4447859414594968781
+    second: virus talking sheet_13
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: virus talking sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 277
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dcb11da5474f76c0800000000000000
+      internalID: -4143514767575630637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus talking sheet_1
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 0
+        width: 277
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d9ddc822c5ae5370800000000000000
+      internalID: 8313264215499332049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus talking sheet_2
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 0
+        width: 277
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46e2c73f58b81f730800000000000000
+      internalID: 4031156548905217636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus talking sheet_3
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 0
+        width: 277
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8f1a528903e98930800000000000000
+      internalID: 4146094561952407438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus talking sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1108
+        y: 0
+        width: 277
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7da0349dee79083a0800000000000000
+      internalID: -6665160396405273897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus talking sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1385
+        y: 0
+        width: 277
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c523d478207a39f10800000000000000
+      internalID: 2275345866053988956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus talking sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1662
+        y: 0
+        width: 277
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61b15e4181a806ae0800000000000000
+      internalID: -1558093635035784426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus talking sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1939
+        y: 0
+        width: 277
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4ac47bb4fc0f5fd0800000000000000
+      internalID: -2351146235207562674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus talking sheet_8
+      rect:
+        serializedVersion: 2
+        x: 2216
+        y: 0
+        width: 277
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1247684b1349a6c00800000000000000
+      internalID: 894690417189483553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus talking sheet_9
+      rect:
+        serializedVersion: 2
+        x: 2493
+        y: 0
+        width: 277
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20999d91972132a50800000000000000
+      internalID: 6495055398932420866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus talking sheet_10
+      rect:
+        serializedVersion: 2
+        x: 2770
+        y: 0
+        width: 277
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32cc5b8d651b31680800000000000000
+      internalID: -8785483461508608989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus talking sheet_11
+      rect:
+        serializedVersion: 2
+        x: 3047
+        y: 0
+        width: 277
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f1a61a9b0c58ccb0800000000000000
+      internalID: -4843520194337398287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus talking sheet_12
+      rect:
+        serializedVersion: 2
+        x: 3324
+        y: 0
+        width: 277
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 570493b111e83c650800000000000000
+      internalID: 6251996911842705525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: virus talking sheet_13
+      rect:
+        serializedVersion: 2
+        x: 3601
+        y: 0
+        width: 277
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcc5fc16298f9bd30800000000000000
+      internalID: 4447859414594968781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
