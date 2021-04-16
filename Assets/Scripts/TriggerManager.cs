@@ -370,8 +370,7 @@ public class TriggerManager : MonoBehaviour
 
     void ChapterThreeDialogueTriggers()
     {
-
-        public bool activatedTerminationAnimation
+        bool activatedTerminationAnimation;
         // TK Make sure entry tasks are Queued in TaskManager
 
         if(D1IVAALConversation == convoStatus.Complete &&
@@ -656,8 +655,9 @@ public class TriggerManager : MonoBehaviour
             D29BexosConversation = convoStatus.Ready;
         }
 
-        if(D29BexosConversation == convoStatus.complete &&
-           )
+        // Not sure if these lines has to be here
+        //if(D29BexosConversation == convoStatus.complete &&
+        //   )
 
         // TK Make sure these triggers are correct, friend
         if(D29BexosConversation == convoStatus.Complete &&
@@ -906,10 +906,11 @@ public class TriggerManager : MonoBehaviour
         {
             D58UnknownConversation = convoStatus.Ready;
         }
-    }
+     }
 
     public void resetEntryTaskTimer()
     {
         entryTaskTimer = entryTaskTimerValue;
     }
 }
+
