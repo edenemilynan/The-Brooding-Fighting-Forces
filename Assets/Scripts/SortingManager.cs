@@ -22,6 +22,7 @@ public class SortingManager : MonoBehaviour
         shape1.sprite = null;
         shape2.sprite = null;
         shape3.sprite = null;
+        workers.sprite = null;
 
         GameObject triggerManagerObj = GameObject.Find("/TriggerManager");
         if (triggerManagerObj != null)
@@ -87,7 +88,7 @@ public class SortingManager : MonoBehaviour
         if(command == "interact" && shape1.sprite == null)
         {
             gotRightCount = 0;
-            workers.sprite = sc.workers[1];
+            workers.sprite = sc.workers[0];
             triesCountChange(0);
             reroll();
         }
@@ -143,7 +144,7 @@ public class SortingManager : MonoBehaviour
             triggerManager.tasksCompleted += 1;
             triggerManager.sortingTasksCompleted += 1;
             reset();
-            workers.sprite = sc.workers[0];
+            workers.sprite = null;
             return true;
         }
 
