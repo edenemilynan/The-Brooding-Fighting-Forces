@@ -9,6 +9,7 @@ public class TruckingControls : MonoBehaviour
     public Animator ramp;
     public Animator indicatorLeft;
     public Animator indicatorRight;
+    public Animator alarm;
     public AudioClip doorSound;
     public AudioSource audioSource;
 
@@ -107,6 +108,16 @@ public class TruckingControls : MonoBehaviour
             rightTruckingDoor.SetBool("isHighlighted", true);
             leftTruckingDoor.SetBool("isHighlighted", false);
         }
+    }
+
+    public void playAlarm()
+    {
+        alarm.SetBool("visible", true);
+    }
+
+    public void resetAlarm()
+    {
+        alarm.SetBool("visible", false);
     }
 
 }
