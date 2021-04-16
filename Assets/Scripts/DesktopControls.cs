@@ -12,6 +12,7 @@ public class DesktopControls : MonoBehaviour
     public Animator virusDeath;
     public Animator virusAnimation;
     public Animator personFalling;
+    public Animator confirmationScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -111,5 +112,15 @@ public class DesktopControls : MonoBehaviour
         {
             personFalling.SetBool("visible", true);
         }
+    }
+
+    public void showConfirm()
+    {
+        confirmationScreen.SetBool("visible", true);
+    }
+
+    public void hideConfirm()
+    {
+        confirmationScreen.SetBool("visible", false);
     }
 }
