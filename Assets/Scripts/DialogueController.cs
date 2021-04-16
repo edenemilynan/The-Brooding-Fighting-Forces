@@ -55,10 +55,12 @@ public class DialogueController : MonoBehaviour
 		}
 		else if (sceneName == "Chapter 2")
 		{
-			ChapterTwoDialogueController();
+            Debug.Log("SHOULDN'T BE HAPPENING");
+            ChapterTwoDialogueController();
 		}
         else if (sceneName == "Chapter 3")
         {
+            Debug.Log("SHOULDN'T BE HAPPENING");
             ChapterThreeDialogueController();
         }
         

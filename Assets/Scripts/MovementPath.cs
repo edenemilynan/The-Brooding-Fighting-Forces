@@ -131,12 +131,12 @@ public class MovementPath : MonoBehaviour
         Debug.Log(name);
         Destroy(truck);
         Debug.Log("entryTaskTimer = " + triggerManager.entryTaskTimer);
-        if(name == "truck")
+        if(name == "truck" && taskNumber != 0)
         {
             Debug.Log("See ya Truck!");
             triggerManager.truckTasksCompleted++;
         }
-        else if(triggerManager.entryTaskTimer == 0)
+        else if(triggerManager.entryTaskTimer == 0 && taskNumber != 0)
         {
             Debug.Log("See ya Person!");
             triggerManager.scannerTasksCompleted++;
@@ -144,7 +144,11 @@ public class MovementPath : MonoBehaviour
         }
         
         dialogueController.tasksCompleted += taskNumber;
-        triggerManager.tasksCompleted += 1;
+        if (taskNumber != 0)
+        {
+            triggerManager.tasksCompleted += 1;
+        }
+        
 
     }
 }

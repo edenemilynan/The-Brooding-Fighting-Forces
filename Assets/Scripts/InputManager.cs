@@ -251,7 +251,10 @@ public class InputManager : MonoBehaviour
                     cameraController.entryCamera();
                     entryVisited = true;
 					triggerManager.entryVisited = true;
-                    truckingControl.resetAlarm();
+                    if (sceneName != "Chapter 1")
+                    {
+                        truckingControl.resetAlarm();
+                    }
                 }
 
             }
@@ -276,7 +279,10 @@ public class InputManager : MonoBehaviour
 					triggerManager.activeScreen = "sorting";
                     cameraController.sortingCamera();
 					triggerManager.sortingVisited = true;
-                    truckingControl.resetAlarm();
+                    if (sceneName != "Chapter 1")
+                    {
+                        truckingControl.resetAlarm();
+                    }
                 }
                 sortManager.checkIfComplete();
 
@@ -293,7 +299,10 @@ public class InputManager : MonoBehaviour
                     sortingControl.closeClipBoard();
 					triggerManager.activeScreen = "main";
                     cameraController.mainCamera();
-                    truckingControl.resetAlarm();
+                    if (sceneName != "Chapter 1")
+                    {
+                        truckingControl.resetAlarm();
+                    }
                 }
                 else
                 {
