@@ -109,9 +109,8 @@ public class TaskManager : MonoBehaviour
             tasksEntry.Enqueue(Tasks.none);
             tasksSorting.Enqueue(Tasks.none);
 
-            
-            taskTrucking = tasksTrucking.Dequeue();
-            truckingControl.rightIndicatorOn();
+
+            getTaskTrucking();
         }
 
         if (sceneName == "Chapter 2")

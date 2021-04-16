@@ -167,12 +167,14 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1160849567}
   - {fileID: 336632411}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 2095894175}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!1 &29878537
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,6 +877,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &74277950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 74277951}
+  m_Layer: 0
+  m_Name: P1P1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &74277951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74277950}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 223, y: -175, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1534432385}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &74818699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,12 +1100,14 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1160849567}
   - {fileID: 336632411}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 677842237}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!1 &136363181
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,6 +1210,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &142130521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 142130522}
+  m_Layer: 0
+  m_Name: P1P0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &142130522
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142130521}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 222, y: -66, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 356674976}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &142254224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,6 +1499,62 @@ Transform:
   m_Father: {fileID: 142254225}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &169268726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 169268727}
+  - component: {fileID: 169268728}
+  m_Layer: 0
+  m_Name: PathReject0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &169268727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169268726}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 222418815}
+  - {fileID: 938226749}
+  m_Father: {fileID: 296921759}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &169268728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169268726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c23c4740f37f048ae7c39cdb1bfbbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathSequence:
+  - {fileID: 938226749}
+  - {fileID: 222418815}
+  triggerManager: {fileID: 180654425}
+  dialogueController: {fileID: 492876998}
+  truck: {fileID: 828724643}
+  inputManager: {fileID: 0}
+  truckingInputManager: {fileID: 1552562394}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!1 &180654424
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,6 +1874,66 @@ Transform:
   m_Father: {fileID: 960250898}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &222418814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 222418815}
+  m_Layer: 0
+  m_Name: P1P0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &222418815
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222418814}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 222, y: -287, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 169268727}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &242167885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 242167886}
+  m_Layer: 0
+  m_Name: P1P1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &242167886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242167885}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 223, y: -63, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1534432385}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &251893564
 GameObject:
   m_ObjectHideFlags: 0
@@ -2071,6 +2251,8 @@ MonoBehaviour:
   truck: {fileID: 850348662}
   inputManager: {fileID: 0}
   truckingInputManager: {fileID: 1552562394}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
   taskManager: {fileID: 1182270925}
 --- !u!1 &294754998
 GameObject:
@@ -2185,6 +2367,9 @@ Transform:
   - {fileID: 609768209}
   - {fileID: 1824314285}
   - {fileID: 2080772604}
+  - {fileID: 1534432385}
+  - {fileID: 356674976}
+  - {fileID: 169268727}
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2650,6 +2835,62 @@ Transform:
   m_Father: {fileID: 1156034361}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &356674974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 356674976}
+  - component: {fileID: 356674975}
+  m_Layer: 0
+  m_Name: PathAccept0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &356674975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356674974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c23c4740f37f048ae7c39cdb1bfbbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathSequence:
+  - {fileID: 1349926735}
+  - {fileID: 142130522}
+  triggerManager: {fileID: 180654425}
+  dialogueController: {fileID: 492876998}
+  truck: {fileID: 439145961}
+  inputManager: {fileID: 0}
+  truckingInputManager: {fileID: 1552562394}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
+--- !u!4 &356674976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356674974}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 142130522}
+  - {fileID: 1349926735}
+  m_Father: {fileID: 296921759}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &366769277
 GameObject:
   m_ObjectHideFlags: 0
@@ -2712,12 +2953,14 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1848734837}
   - {fileID: 417231534}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 181080720}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!4 &373782948
 Transform:
   m_ObjectHideFlags: 0
@@ -3161,6 +3404,132 @@ Transform:
   m_Father: {fileID: 1848826606}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &439145961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 439145965}
+  - component: {fileID: 439145964}
+  - component: {fileID: 439145963}
+  - component: {fileID: 439145962}
+  m_Layer: 0
+  m_Name: truckAccept0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &439145962
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439145961}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 207a12dc3eec1a34bbdb63ae565294d8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &439145963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439145961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593108bcb8b7f744280d1802d78dc01a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: {fileID: 356674975}
+  pathController: {fileID: 1673880277}
+  truck: {fileID: 439145962}
+  manager: {fileID: 1552562394}
+  counterPart: {fileID: 828724643}
+  speed: 20
+  MaxDistanceToGoal: 0.1
+  currentPath: 2
+  turn: 0
+  morseLetter: .-
+  startedOnPath: 0
+--- !u!212 &439145964
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439145961}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -8796958678136069690, guid: 988936e0ad6e0694585c33379197dded,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.68, y: 0.77}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &439145965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439145961}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -170.56372, y: -48.57184, z: 455}
+  m_LocalScale: {x: 170.95099, y: 170.95099, z: 1}
+  m_Children: []
+  m_Father: {fileID: 653784340}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &440878056
 GameObject:
   m_ObjectHideFlags: 0
@@ -3399,12 +3768,14 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1160849567}
   - {fileID: 336632411}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 982081008}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!1 &488458429
 GameObject:
   m_ObjectHideFlags: 0
@@ -3975,6 +4346,8 @@ MonoBehaviour:
   truck: {fileID: 1867931895}
   inputManager: {fileID: 0}
   truckingInputManager: {fileID: 1552562394}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
   taskManager: {fileID: 1182270925}
 --- !u!1 &620477116
 GameObject:
@@ -4237,6 +4610,9 @@ Transform:
   - {fileID: 1867931899}
   - {fileID: 2097427277}
   - {fileID: 1728710462}
+  - {fileID: 2036015467}
+  - {fileID: 439145965}
+  - {fileID: 828724644}
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4497,12 +4873,14 @@ MonoBehaviour:
   - {fileID: 886681410}
   - {fileID: 440878057}
   - {fileID: 366769278}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 328509669}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 328509670}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!1 &713835861
 GameObject:
   m_ObjectHideFlags: 0
@@ -4758,12 +5136,14 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1848734837}
   - {fileID: 417231534}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 1600815908}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!4 &735264928
 Transform:
   m_ObjectHideFlags: 0
@@ -4828,12 +5208,14 @@ MonoBehaviour:
   - {fileID: 1047027030}
   - {fileID: 36428461}
   - {fileID: 1211157984}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 1629392916}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 1629392917}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!1 &755009972
 GameObject:
   m_ObjectHideFlags: 0
@@ -5007,12 +5389,140 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1160849567}
   - {fileID: 336632411}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 544446941}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
+--- !u!1 &828724643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 828724644}
+  - component: {fileID: 828724647}
+  - component: {fileID: 828724646}
+  - component: {fileID: 828724645}
+  m_Layer: 0
+  m_Name: truckReject0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &828724644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828724643}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -170.56372, y: -48.57184, z: 455}
+  m_LocalScale: {x: 170.95099, y: 170.95099, z: 1}
+  m_Children: []
+  m_Father: {fileID: 653784340}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &828724645
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828724643}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 207a12dc3eec1a34bbdb63ae565294d8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &828724646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828724643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593108bcb8b7f744280d1802d78dc01a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: {fileID: 169268728}
+  pathController: {fileID: 1673880277}
+  truck: {fileID: 828724645}
+  manager: {fileID: 1552562394}
+  counterPart: {fileID: 439145961}
+  speed: 20
+  MaxDistanceToGoal: 0.1
+  currentPath: 2
+  turn: 0
+  morseLetter: -.
+  startedOnPath: 0
+--- !u!212 &828724647
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828724643}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -8796958678136069690, guid: 988936e0ad6e0694585c33379197dded,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.68, y: 0.77}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &839879672
 GameObject:
   m_ObjectHideFlags: 0
@@ -5057,6 +5567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 0
+  pathAlarm: 0
 --- !u!1 &850033271
 GameObject:
   m_ObjectHideFlags: 0
@@ -5103,12 +5614,14 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1848734837}
   - {fileID: 417231534}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 1248082985}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!1 &850348662
 GameObject:
   m_ObjectHideFlags: 0
@@ -5393,6 +5906,36 @@ Transform:
   m_Father: {fileID: 47190304}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &938226748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 938226749}
+  m_Layer: 0
+  m_Name: P1P1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &938226749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938226748}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 223, y: -175, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 169268727}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &950912098
 GameObject:
   m_ObjectHideFlags: 0
@@ -5647,12 +6190,14 @@ MonoBehaviour:
   - {fileID: 489464300}
   - {fileID: 272772031}
   - {fileID: 216255279}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 1799701144}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 1799701145}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!1 &969319106
 GameObject:
   m_ObjectHideFlags: 0
@@ -5685,12 +6230,14 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1848734837}
   - {fileID: 417231534}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 1900086201}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!4 &969319108
 Transform:
   m_ObjectHideFlags: 0
@@ -6625,6 +7172,7 @@ MonoBehaviour:
   nTasks: 6
   truckingControl: {fileID: 996278799}
   personApproaches: {fileID: 839879674}
+  truckApproaches: {fileID: 0}
   manager: {fileID: 1552562394}
 --- !u!4 &1182270926
 Transform:
@@ -6881,6 +7429,36 @@ Transform:
   m_Father: {fileID: 745305102}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1237248408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1237248409}
+  m_Layer: 0
+  m_Name: P1P0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1237248409
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237248408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 222, y: -287, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1534432385}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1240745015
 GameObject:
   m_ObjectHideFlags: 0
@@ -6913,12 +7491,14 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1160849567}
   - {fileID: 336632411}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 2061185460}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!4 &1240745017
 Transform:
   m_ObjectHideFlags: 0
@@ -7543,6 +8123,36 @@ Transform:
   m_Father: {fileID: 653784340}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1349926734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1349926735}
+  m_Layer: 0
+  m_Name: P1P1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1349926735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349926734}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 223, y: -175, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 356674976}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1359666344
 GameObject:
   m_ObjectHideFlags: 0
@@ -7873,12 +8483,14 @@ MonoBehaviour:
   - {fileID: 1344139277}
   - {fileID: 251893565}
   - {fileID: 1711796361}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 1522277753}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 1522277754}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!1 &1392288540
 GameObject:
   m_ObjectHideFlags: 0
@@ -8048,12 +8660,14 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1848734837}
   - {fileID: 417231534}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 168138769}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!1 &1434044863
 GameObject:
   m_ObjectHideFlags: 0
@@ -8749,6 +9363,64 @@ Transform:
   m_Father: {fileID: 142254225}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1534432384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1534432385}
+  - component: {fileID: 1534432386}
+  m_Layer: 0
+  m_Name: PathAlarm0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1534432385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534432384}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1237248409}
+  - {fileID: 74277951}
+  - {fileID: 242167886}
+  m_Father: {fileID: 296921759}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1534432386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534432384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c23c4740f37f048ae7c39cdb1bfbbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathSequence:
+  - {fileID: 1237248409}
+  - {fileID: 74277951}
+  - {fileID: 242167886}
+  triggerManager: {fileID: 180654425}
+  dialogueController: {fileID: 492876998}
+  truck: {fileID: 2036015463}
+  inputManager: {fileID: 0}
+  truckingInputManager: {fileID: 1552562394}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 2036015464}
+  taskManager: {fileID: 0}
 --- !u!1 &1552562393
 GameObject:
   m_ObjectHideFlags: 0
@@ -9114,6 +9786,8 @@ MonoBehaviour:
   truck: {fileID: 1349512235}
   inputManager: {fileID: 0}
   truckingInputManager: {fileID: 1552562394}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
   taskManager: {fileID: 1182270925}
 --- !u!1 &1622226670
 GameObject:
@@ -9472,6 +10146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: -1
+  pathAlarm: 0
 --- !u!4 &1673880278
 Transform:
   m_ObjectHideFlags: 0
@@ -9897,12 +10572,14 @@ MonoBehaviour:
   - {fileID: 54501434}
   - {fileID: 320566853}
   - {fileID: 1959174509}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 1202430105}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 1202430106}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!1 &1726519813
 GameObject:
   m_ObjectHideFlags: 0
@@ -10541,12 +11218,14 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1848734837}
   - {fileID: 417231534}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 1022653277}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!4 &1791555998
 Transform:
   m_ObjectHideFlags: 0
@@ -10838,6 +11517,8 @@ MonoBehaviour:
   truck: {fileID: 2097427273}
   inputManager: {fileID: 0}
   truckingInputManager: {fileID: 1552562394}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
   taskManager: {fileID: 1182270925}
 --- !u!1 &1848734836
 GameObject:
@@ -10919,12 +11600,14 @@ MonoBehaviour:
   - {fileID: 1558302789}
   - {fileID: 1848734837}
   - {fileID: 417231534}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 1004315295}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 1004315296}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!1 &1853925603
 GameObject:
   m_ObjectHideFlags: 0
@@ -11617,12 +12300,14 @@ MonoBehaviour:
   - {fileID: 1472635976}
   - {fileID: 1160849567}
   - {fileID: 336632411}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 1392288540}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 1392288541}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!1 &1900086201
 GameObject:
   m_ObjectHideFlags: 0
@@ -11795,12 +12480,14 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1160849567}
   - {fileID: 336632411}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 1483039268}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!1 &1923240663
 GameObject:
   m_ObjectHideFlags: 0
@@ -11833,12 +12520,14 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1160849567}
   - {fileID: 336632411}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 412925755}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!4 &1923240665
 Transform:
   m_ObjectHideFlags: 0
@@ -12249,6 +12938,130 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &2036015463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2036015467}
+  - component: {fileID: 2036015466}
+  - component: {fileID: 2036015464}
+  - component: {fileID: 2036015465}
+  m_Layer: 0
+  m_Name: truckAlarm0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2036015464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036015463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 128abaca3bbf1274f809e96c07d4c301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: {fileID: 1534432386}
+  pathController: {fileID: 1673880277}
+  truck: {fileID: 2036015465}
+  truck1: {fileID: 2036015463}
+  speed: 20
+  MaxDistanceToGoal: 0.1
+  currentPath: 1
+  turn: 0
+  facing: 0
+--- !u!95 &2036015465
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036015463}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 207a12dc3eec1a34bbdb63ae565294d8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!212 &2036015466
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036015463}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -8796958678136069690, guid: 988936e0ad6e0694585c33379197dded,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.68, y: 0.77}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &2036015467
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036015463}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -170.56372, y: -48.57184, z: 455}
+  m_LocalScale: {x: 170.95099, y: 170.95099, z: 1}
+  m_Children: []
+  m_Father: {fileID: 653784340}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2038909813
 GameObject:
   m_ObjectHideFlags: 0
@@ -12383,12 +13196,14 @@ MonoBehaviour:
   pathSequence:
   - {fileID: 1848734837}
   - {fileID: 417231534}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 180654425}
   dialogueController: {fileID: 492876998}
   truck: {fileID: 1300717409}
   inputManager: {fileID: 1552562394}
   truckingInputManager: {fileID: 0}
-  taskManager: {fileID: 0}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
+  taskManager: {fileID: 1182270925}
 --- !u!4 &2044706077
 Transform:
   m_ObjectHideFlags: 0
@@ -12649,6 +13464,8 @@ MonoBehaviour:
   truck: {fileID: 1728710461}
   inputManager: {fileID: 0}
   truckingInputManager: {fileID: 1552562394}
+  pathPeople: {fileID: 0}
+  pathTruck: {fileID: 0}
   taskManager: {fileID: 1182270925}
 --- !u!4 &2080772604
 Transform:
