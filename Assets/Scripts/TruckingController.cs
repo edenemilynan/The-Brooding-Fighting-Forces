@@ -6,6 +6,7 @@ public class TruckingController : MonoBehaviour
 {
     public int path = -1;
     public int pathAlarm = 0;
+    public int pathOpen = 0;
     // Start is called before the first frame update
     void Start()
     {

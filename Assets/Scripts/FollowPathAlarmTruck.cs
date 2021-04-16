@@ -16,6 +16,7 @@ public class FollowPathAlarmTruck : MonoBehaviour
     public int currentPath;
     public int turn;
     public string morseLetter;
+    public bool openTruck;
 
     public bool startedOnPath = false;
 
@@ -35,26 +36,54 @@ public class FollowPathAlarmTruck : MonoBehaviour
     void Update()
     {
 
-        if ((currentPath == pathController.pathAlarm && manager.morseCommand == morseLetter) || startedOnPath == true)
+        if (!openTruck)
         {
-            if (startedOnPath == false)
+            if ((currentPath == pathController.pathAlarm && manager.morseCommand == morseLetter) || startedOnPath == true)
             {
-                startedOnPath = true;
-                manager.entryLocked = true;
-                Destroy(counterPart);
-                truck.SetInteger("facing", turn);
-                truck.GetComponent<Renderer>().enabled = true;
+                if (startedOnPath == false)
+                {
+                    startedOnPath = true;
+                    manager.truckingRightLocked = true;
+                    Destroy(counterPart);
+                    truck.SetInteger("facing", turn);
+                    truck.GetComponent<Renderer>().enabled = true;
+                }
+
+                transform.position = Vector3.MoveTowards(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
+
+                var distanceSquared = (transform.position - pointInPath.Current.position).sqrMagnitude;
+                if (distanceSquared < MaxDistanceToGoal * MaxDistanceToGoal)
+                {
+                    //truck.SetInteger("facing", turn);
+                    //person.SetInteger("facing", 0);
+                    pointInPath.MoveNext();
+
+                }
             }
+        }
 
-            transform.position = Vector3.MoveTowards(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
-
-            var distanceSquared = (transform.position - pointInPath.Current.position).sqrMagnitude;
-            if (distanceSquared < MaxDistanceToGoal * MaxDistanceToGoal)
+        else
+        {
+            if (currentPath == pathController.pathOpen || startedOnPath == true)
             {
-                //truck.SetInteger("facing", turn);
-                //person.SetInteger("facing", 0);
-                pointInPath.MoveNext();
+                if (startedOnPath == false)
+                {
+                    startedOnPath = true;
+                    manager.truckingRightLocked = true;
+                    truck.SetInteger("facing", turn);
+                    truck.GetComponent<Renderer>().enabled = true;
+                }
 
+                transform.position = Vector3.MoveTowards(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
+
+                var distanceSquared = (transform.position - pointInPath.Current.position).sqrMagnitude;
+                if (distanceSquared < MaxDistanceToGoal * MaxDistanceToGoal)
+                {
+                    //truck.SetInteger("facing", turn);
+                    //person.SetInteger("facing", 0);
+                    pointInPath.MoveNext();
+
+                }
             }
         }
 

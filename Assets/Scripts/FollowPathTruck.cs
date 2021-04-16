@@ -16,6 +16,9 @@ public class FollowPathTruck : MonoBehaviour
     public int turn;
     public int facing;
 
+    public bool truckOpen;
+    public InputManager inputManager;
+
     private IEnumerator<Transform> pointInPath;
     private bool pathChanged = false;
 
@@ -32,47 +35,66 @@ public class FollowPathTruck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (currentPath == pathController.pathAlarm)
+        if (!truckOpen)
         {
-
-            if ((currentPath % 2) == 0 && pathChanged == false)
+            if (currentPath == pathController.pathAlarm)
             {
-                truck.SetInteger("facing", turn);
-                pathChanged = true;
-                truck1.GetComponent<Renderer>().enabled = false;
-            }
 
-            transform.position = Vector3.MoveTowards(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
-
-            var distanceSquared = (transform.position - pointInPath.Current.position).sqrMagnitude;
-            if (distanceSquared < MaxDistanceToGoal * MaxDistanceToGoal)
-            {
-                //truck.SetInteger("facing", turn);
-                //person.SetInteger("facing", 0);
-                pointInPath.MoveNext();
-
-            }
-
-
-            /*if (transform.position == pointInPath.Current.position)
-            {
-                Destroy(gameObject);
-            }*/
-            /*else
-            {
-                if (movementScript.movingTo > movementScript.pathSequence.Length)
+                if (truckOpen)
                 {
-                    controllerScript.path = controllerScript.path + 1;
+                    inputManager.truckingRightLocked = true;
                 }
 
-            }*/
+                if ((currentPath % 2) == 0 && pathChanged == false)
+                {
+                    truck.SetInteger("facing", turn);
+                    pathChanged = true;
+                    truck1.GetComponent<Renderer>().enabled = false;
+                }
+
+                transform.position = Vector3.MoveTowards(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
+
+                var distanceSquared = (transform.position - pointInPath.Current.position).sqrMagnitude;
+                if (distanceSquared < MaxDistanceToGoal * MaxDistanceToGoal)
+                {
+                    //truck.SetInteger("facing", turn);
+                    //person.SetInteger("facing", 0);
+                    pointInPath.MoveNext();
+
+                }
+            }
         }
 
-        //else person.SetInteger("facing", 0);
+        else
+        {
+            if (currentPath == pathController.pathOpen)
+            {
 
+                if (truckOpen)
+                {
+                    inputManager.truckingRightLocked = true;
+                }
 
+                if ((currentPath % 2) == 0 && pathChanged == false)
+                {
+                    truck.SetInteger("facing", turn);
+                    pathChanged = true;
+                    truck1.GetComponent<Renderer>().enabled = false;
+                }
 
+                transform.position = Vector3.MoveTowards(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
+
+                var distanceSquared = (transform.position - pointInPath.Current.position).sqrMagnitude;
+                if (distanceSquared < MaxDistanceToGoal * MaxDistanceToGoal)
+                {
+                    //truck.SetInteger("facing", turn);
+                    //person.SetInteger("facing", 0);
+                    pointInPath.MoveNext();
+
+                }
+            }
+        }
+        
     }
 
 }

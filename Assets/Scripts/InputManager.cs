@@ -493,6 +493,13 @@ public class InputManager : MonoBehaviour
                             taskWaitingTrucking = true;
                             //Could add a variable here to say you disobeyed BrexCorp
                         }
+
+                        else if (taskManager.taskTrucking == TaskManager.Tasks.truckOpen && !taskWaitingTrucking)
+                        {
+                            TruckingController.GetComponent<TruckingController>().pathOpen += 1;
+                            truckingControl.rightIndicatorOff();
+                            taskWaitingTrucking = true;
+                        }
                     }
 
                     else

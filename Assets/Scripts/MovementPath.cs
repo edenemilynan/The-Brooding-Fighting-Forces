@@ -23,6 +23,8 @@ public class MovementPath : MonoBehaviour
     public FollowPathPeople pathPeople;
     public FollowPathTruck pathTruck;
 
+    public bool openTruck;
+
     public TaskManager taskManager; 
 
     //public TruckingController pathControl;
@@ -79,10 +81,15 @@ public class MovementPath : MonoBehaviour
                     if (pathPeople != null)
                     {
                         pathPeople.currentPath += 1;
+                        truck.GetComponent<Animator>().SetInteger("facing", pathPeople.turn);
                     }
-                    else pathTruck.currentPath += 1;
-                    truck.GetComponent<Animator>().SetInteger("facing", 0);
-                    taskNumber = 0;
+                    else
+                    {
+                        pathTruck.currentPath += 1;
+                        truck.GetComponent<Animator>().SetInteger("facing", pathTruck.turn);
+                    }
+                        //truck.GetComponent<Animator>().SetInteger("facing", turn);
+                        taskNumber = 0;
                     paused = true;
                     if (inputManager != null)
                     {

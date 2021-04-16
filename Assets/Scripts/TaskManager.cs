@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class TaskManager : MonoBehaviour
 {
     //Had to add allow/disallow to allow tracking of right/wrong decisions later
-    public enum Tasks {truckRight, truckLeft, truckAlarm, peopleAllow, peopleDisallow, sort, none};
+    public enum Tasks {truckRight, truckLeft, truckAlarm, truckOpen, peopleAllow, peopleDisallow, sort, none};
     public Queue<Tasks> tasksTrucking = new Queue<Tasks>();
     public Queue<Tasks> tasksEntry = new Queue<Tasks>();
     public Queue<Tasks> tasksSorting = new Queue<Tasks>();
@@ -169,8 +169,7 @@ public class TaskManager : MonoBehaviour
             tasksSorting.Enqueue(Tasks.none);
 
 
-            taskTrucking = tasksTrucking.Dequeue();
-            truckingControl.leftIndicatorOn();
+            getTaskTrucking();
             getTaskEntry();
             getTaskSorting();
         }
@@ -192,6 +191,11 @@ public class TaskManager : MonoBehaviour
             else if (taskTrucking == Tasks.truckLeft)
             {
                 truckingControl.leftIndicatorOn();
+            }
+
+            else if (taskTrucking == Tasks.truckOpen)
+            {
+                truckingControl.rightIndicatorOn();
             }
 
             else
@@ -296,6 +300,9 @@ public class TaskManager : MonoBehaviour
                     tasksSorting.Enqueue(task);
                     break;
                 case Tasks.truckAlarm:
+                    tasksTrucking.Enqueue(task);
+                    break;
+                case Tasks.truckOpen:
                     tasksTrucking.Enqueue(task);
                     break;
             }

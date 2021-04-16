@@ -328,7 +328,7 @@ public class TriggerManager : MonoBehaviour
 	{
         if(dialogueActive != true)
         {
-            ChapterThreeDialogueTriggers();
+            //ChapterThreeDialogueTriggers();
         }
 
         // public bool phoneRinging;
@@ -363,7 +363,7 @@ public class TriggerManager : MonoBehaviour
 
 	}
 
-    void ChapterThreeDialogueTriggers()
+    /*void ChapterThreeDialogueTriggers()
     {
         //TK Cue First Entryway task here
 
@@ -800,7 +800,7 @@ public class TriggerManager : MonoBehaviour
         {
             D58UnknownConversation = convoStatus.Ready;
         }
-    }
+    }*/
 
     public void resetEntryTaskTimer()
     {
