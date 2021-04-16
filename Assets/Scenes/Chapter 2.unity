@@ -3786,7 +3786,7 @@ MonoBehaviour:
   speed: 40
   MaxDistanceToGoal: 0.1
   currentPath: 11
-  turn: 2
+  turn: 0
 --- !u!95 &558038486
 Animator:
   serializedVersion: 3
@@ -5799,7 +5799,7 @@ MonoBehaviour:
   speed: 40
   MaxDistanceToGoal: 0.1
   currentPath: 1
-  turn: 2
+  turn: 0
 --- !u!95 &890207170
 Animator:
   serializedVersion: 3
@@ -9240,7 +9240,7 @@ MonoBehaviour:
   speed: 40
   MaxDistanceToGoal: 0.1
   currentPath: 9
-  turn: 2
+  turn: 0
 --- !u!95 &1249940411
 Animator:
   serializedVersion: 3
@@ -11211,7 +11211,7 @@ MonoBehaviour:
   speed: 40
   MaxDistanceToGoal: 0.1
   currentPath: 7
-  turn: 2
+  turn: 0
 --- !u!95 &1611619375
 Animator:
   serializedVersion: 3
@@ -12099,7 +12099,7 @@ MonoBehaviour:
   speed: 40
   MaxDistanceToGoal: 0.1
   currentPath: 5
-  turn: 2
+  turn: 0
 --- !u!95 &1669624110
 Animator:
   serializedVersion: 3
@@ -12437,7 +12437,7 @@ MonoBehaviour:
   speed: 40
   MaxDistanceToGoal: 0.1
   currentPath: 3
-  turn: 2
+  turn: 0
 --- !u!95 &1694052906
 Animator:
   serializedVersion: 3
@@ -13247,7 +13247,7 @@ MonoBehaviour:
   speed: 40
   MaxDistanceToGoal: 0.1
   currentPath: 13
-  turn: 2
+  turn: 0
 --- !u!95 &1761026878
 Animator:
   serializedVersion: 3
