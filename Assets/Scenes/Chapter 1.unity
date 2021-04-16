@@ -1146,7 +1146,7 @@ MonoBehaviour:
   fifthConversation: 1
   DialogueManager: {fileID: 1027721082}
   InputManager: {fileID: 232540500}
-  triggerManager: {fileID: 0}
+  triggerManager: {fileID: 1707808639}
 --- !u!1 &252806503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,7 +1670,7 @@ MonoBehaviour:
   truckingControl: {fileID: 131475754}
   personApproaches: {fileID: 965987684}
   truckApproaches: {fileID: 0}
-  manager: {fileID: 232540501}
+  inputManager: {fileID: 232540501}
 --- !u!4 &338986082
 Transform:
   m_ObjectHideFlags: 0
@@ -5026,6 +5026,7 @@ MonoBehaviour:
   changeInExpression: {fileID: 1282858797}
   talking: 0
   LastConversation: 0
+  triggerManager: {fileID: 1707808639}
 --- !u!4 &1027721084
 Transform:
   m_ObjectHideFlags: 0
@@ -8147,6 +8148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2cc917d50e468f46a3f825ec8c3dc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueActive: 0
   Ch1IntroConversation: 0
   Ch1SecondConversation: 0
   Ch1TruckingCompletionConversation: 0
@@ -8174,8 +8176,73 @@ MonoBehaviour:
   Ch2WaitingForAllowPackagesDecision: 0
   Ch2AllowPackagesDecision: 0
   Ch2HeadOfficeMemoConversation: 0
+  Ch2DisplayErrorMessageScreen: 0
   Ch2ConfirmCleanSystemConversation: 0
   Ch2ConfirmCleanSystem: 0
+  D1IVAALConversation: 0
+  D2VirusConversation: 0
+  D3IVAALConversation: 0
+  D4IVAALConversation: 0
+  D5IVAALConversation: 0
+  D6VirusConversation: 0
+  D7IVAALConversation: 0
+  D8IVAALConversation: 0
+  D9VirusConversation: 0
+  D10IVAALConversation: 0
+  D11VirusConversation: 0
+  D12IVAALConversation: 0
+  D13IVAALConversation: 0
+  D14IVAALConversation: 0
+  D15VirusConversation: 0
+  D16IVAALConversation: 0
+  D17VirusConversation: 0
+  D18IVAALConversation: 0
+  D19IVAALConversation: 0
+  D20IVAALConversation: 0
+  D21VirusConversation: 0
+  D22IVAALConversation: 0
+  D23VirusConversation: 0
+  D24IVAALConversation: 0
+  D25VirusConversation: 0
+  D26IVAALConversation: 0
+  D27BexosConversation: 0
+  D28BexosConversation: 0
+  D29BexosConversation: 0
+  D30VirusConversation: 0
+  D31IVAALConversation: 0
+  D32VirusConversation: 0
+  D33IVAALConversation: 0
+  D34VirusConversation: 0
+  D35IVAALConversation: 0
+  D36IVAALConversation: 0
+  D37IVAALConversation: 0
+  D38IVAALConversation: 0
+  D39IVAALConversation: 0
+  D40IVAALConversation: 0
+  D41IVAALConversation: 0
+  D42IVAALConversation: 0
+  D43VirusConversation: 0
+  D44IVAALConversation: 0
+  D45IVAALConversation: 0
+  D46VirusConversation: 0
+  D47IVAALConversation: 0
+  D48IVAALConversation: 0
+  D49VirusConversation: 0
+  D50IVAALConversation: 0
+  D51IVAALConversation: 0
+  D52BexosConversation: 0
+  D53VirusConversation: 0
+  D54BexosConversation: 0
+  D55VirusConversation: 0
+  D56IVAALConversation: 0
+  D57BexosConversation: 0
+  D58UnknownConversation: 0
+  phoneRinging: 0
+  fallenAnimationActive: 0
+  virusOnScreen: 0
+  terminatedAnimationActive: 0
+  camerasFritzing: 0
+  explosion: 0
   convosHad: 0
   tasksCompleted: 0
   truckTasksCompleted: 0

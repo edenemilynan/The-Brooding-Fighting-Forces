@@ -1950,11 +1950,14 @@ MonoBehaviour:
   D57BexosConversation: 0
   D58UnknownConversation: 0
   phoneRinging: 0
+  onPhone: 0
   fallenAnimationActive: 0
   virusOnScreen: 0
   terminatedAnimationActive: 0
   camerasFritzing: 0
   explosion: 0
+  virusDeath: 0
+  desktopControls: {fileID: 0}
   convosHad: 0
   tasksCompleted: 0
   truckTasksCompleted: 0
@@ -8651,8 +8654,8 @@ MonoBehaviour:
   nTasks: 6
   truckingControl: {fileID: 996278799}
   personApproaches: {fileID: 839879674}
-  truckApproaches: {fileID: 0}
-  inputManager: {fileID: 0}
+  truckApproaches: {fileID: 1673880277}
+  inputManager: {fileID: 1552562394}
 --- !u!4 &1182270926
 Transform:
   m_ObjectHideFlags: 0

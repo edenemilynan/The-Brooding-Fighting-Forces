@@ -107,11 +107,14 @@ public class TriggerManager : MonoBehaviour
 
     // Animation Triggers
     public bool phoneRinging;
+    public bool onPhone;
     public bool fallenAnimationActive;
     public bool virusOnScreen;
     public bool terminatedAnimationActive;
     public bool camerasFritzing;
     public bool explosion;
+    public bool virusDeath;
+    public DesktopControls desktopControls;
 
 
 	// General Triggers
@@ -327,6 +330,37 @@ public class TriggerManager : MonoBehaviour
         {
             ChapterThreeDialogueTriggers();
         }
+
+        // public bool phoneRinging;
+        // public bool onPhone;
+        // public bool fallenAnimationActive;
+        // public bool virusOnScreen;
+        // public bool terminatedAnimationActive;
+        // public bool camerasFritzing;
+        // public bool explosion;
+        // public bool virusDeath;
+
+        Debug.Log("I AM LOOKING AROUND IN HERE");
+
+        if(phoneRinging){ desktopControls.bexosCalling(); }
+        if(!phoneRinging){ desktopControls.hideBexosCall(); }
+
+        if(onPhone)  { desktopControls.areOnThePhone(); }
+        if(!onPhone) { desktopControls.hideOnThePhone(); }
+
+        if(explosion)  { desktopControls.triggerExplosion(); }
+        if(!explosion) { desktopControls.hideExplosion(); }
+
+        if(camerasFritzing)  { desktopControls.triggerStatic(); }
+        if(!camerasFritzing) { desktopControls.hideStatic(); }
+
+        if(virusOnScreen)  { desktopControls.showVirusOnScreen(); }
+        if(!virusOnScreen) { desktopControls.hideVirusOnScreen(); }
+
+        if(virusDeath)  { desktopControls.triggerVirusDeath(); }
+        if(!virusDeath) { desktopControls.hideVirusDeath(); }
+
+
 	}
 
     void ChapterThreeDialogueTriggers()
