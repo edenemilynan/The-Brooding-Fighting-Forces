@@ -963,7 +963,7 @@ public class TriggerManager : MonoBehaviour
         )
         {
             // TK Don't allow Dialogue Box to Leave
-            D52IVAALConversation = convoStatus.Ready;
+            D52BexosConversation = convoStatus.Ready;
         }
 
         if(D52BexosConversation == convoStatus.Complete &&
@@ -997,7 +997,7 @@ public class TriggerManager : MonoBehaviour
         if(D55VirusConversation == convoStatus.Complete &&
            D56IVAALConversation != convoStatus.Complete &&
            D57BexosConversation != convoStatus.Complete &&
-           virusOnScreen = true;)
+           virusOnScreen == true)
         {
             virusOnScreen = false;
         }
@@ -1011,7 +1011,7 @@ public class TriggerManager : MonoBehaviour
             if(lastMorseCommand == ".-")
             {
                 D56IVAALConversation = convoStatus.Ready;
-                endingCode = 4
+                endingCode = 4;
             } 
             if(lastMorseCommand == "-.")
             {
@@ -1032,7 +1032,7 @@ public class TriggerManager : MonoBehaviour
         }
 
         if(D57BexosConversation == convoStatus.Complete &&
-           D58UnknownConversation != convoStatus.Complete
+           D58UnknownConversation != convoStatus.Complete &&
            knocked == true && decisionTimer == 0)
         {
             D58UnknownConversation = convoStatus.Ready;
