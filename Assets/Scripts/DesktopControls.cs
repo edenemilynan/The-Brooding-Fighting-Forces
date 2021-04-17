@@ -15,7 +15,12 @@ public class DesktopControls : MonoBehaviour
     public Animator confirmationScreen;
     public Animator memo;
     public Animator alert;
+    public Animator terminateQuestion;
+    public Animator ending1;
     public Animator ending2;
+    public Animator ending3;
+    public Animator ending4;
+    public Animator ending5;
 
     // Start is called before the first frame update
     void Start()
@@ -147,8 +152,38 @@ public class DesktopControls : MonoBehaviour
         memo.SetBool("visible", true);
     }
 
+    public void showTerminate()
+    {
+        terminateQuestion.SetBool("visible", true);
+    }
+
+    public void hideTerminate()
+    {
+        terminateQuestion.SetBool("visible", false);
+    }
+
+    public void firstEnding()
+    {
+        ending1.SetBool("visible", true);
+    }
+
     public void secondEnding()
     {
         ending2.SetBool("visible", true);
+    }
+
+    public void thirdEnding()
+    {
+        ending3.SetBool("visible", true);
+    }
+
+    public void fourthEnding()
+    {
+        ending4.SetBool("visible", true);
+    }
+
+    public void fifthEnding()
+    {
+        ending5.SetBool("visible", true);
     }
 }
