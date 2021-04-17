@@ -8,6 +8,8 @@ public class Boxes : MonoBehaviour
     public Animator boxes;
     public Animator openBoxes;
     public Animator belt;
+    public AudioClip burrr;
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,7 @@ public class Boxes : MonoBehaviour
     public void roll()
     {
         belt.SetBool("rolling", true);
+        audioSource.PlayOneShot(burrr, 0.7F);
     }
 
     public void stopRoll()
