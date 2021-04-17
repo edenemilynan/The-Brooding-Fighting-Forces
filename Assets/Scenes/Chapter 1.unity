@@ -8259,6 +8259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueActive: 0
+  printQueueCounts: 0
   Ch1IntroConversation: 0
   Ch1SecondConversation: 0
   Ch1TruckingCompletionConversation: 0
@@ -9426,7 +9427,7 @@ GameObject:
   - component: {fileID: 1993634008}
   - component: {fileID: 1993634009}
   m_Layer: 0
-  m_Name: entryway yo1
+  m_Name: Entryway yo1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9540,6 +9541,7 @@ MonoBehaviour:
   redLight: {fileID: 113354661}
   greenLight: {fileID: 28180478}
   doorSound: {fileID: 8300000, guid: 4b46716b5e53dbe4ca94ecf7db5d5721, type: 3}
+  scannerSound: {fileID: 8300000, guid: 898d236313fea3b46a71a3594ba351a0, type: 3}
   audioSource: {fileID: 736064162}
 --- !u!1 &2016604489
 GameObject:
