@@ -22,6 +22,9 @@ public class DesktopControls : MonoBehaviour
     public Animator ending4;
     public Animator ending5;
 
+    public AudioClip ringSound;
+    public AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,7 @@ public class DesktopControls : MonoBehaviour
     {
         if(callFromBexos.GetBool("visible")) { return; }
         callFromBexos.SetBool("visible", true);
+        audioSource.PlayOneShot(ringSound, 0.7f);
     }
 
     public void hideBexosCall()
@@ -50,6 +54,7 @@ public class DesktopControls : MonoBehaviour
     {
         if(onThePhone.GetBool("visible")) { return; }
         onThePhone.SetBool("visible", true);
+        audioSource.Stop();
     }
 
     public void hideOnThePhone()
