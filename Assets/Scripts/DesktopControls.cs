@@ -15,6 +15,7 @@ public class DesktopControls : MonoBehaviour
     public Animator confirmationScreen;
     public Animator memo;
     public Animator alert;
+    public Animator ending2;
 
     // Start is called before the first frame update
     void Start()
@@ -144,5 +145,10 @@ public class DesktopControls : MonoBehaviour
     public void showAlert()
     {
         memo.SetBool("visible", true);
+    }
+
+    public void secondEnding()
+    {
+        ending2.SetBool("visible", true);
     }
 }
