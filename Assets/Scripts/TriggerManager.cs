@@ -107,6 +107,8 @@ public class TriggerManager : MonoBehaviour
     public convoStatus D58UnknownConversation = convoStatus.NotReady;
 
     public float decisionTimer = 0;
+    public bool knocked = false;
+    public bool caughtFire = false;
 
 
     // Animation Triggers
@@ -387,6 +389,21 @@ public class TriggerManager : MonoBehaviour
         if(endingCode == 2)
         {
             //TK Add logic for ending #2
+        }
+
+        if(endingCode == 3)
+        {
+            //TK Add logic for Ending #3
+        }
+
+        if(endingCode == 4)
+        {
+            //TK Add logic for Ending #4
+        }
+
+        if(endingCode == 5)
+        {
+            //TK Add logic for Ending #5
         }
         
 
@@ -906,114 +923,133 @@ public class TriggerManager : MonoBehaviour
             }
         }
 
-        // if(D43VirusConversation == convoStatus.Complete && virusOnScreen &&
-        //    D44IVAALConversation != convoStatus.Complete)
-        // {
-        //     virusOnScreen = false;
-        //     explosion = true;
-        //     decisionTimer = 5;
-        // }
-
-        // if(explosion && decisionTimer == 0 && 
-        //    D44IVAALConversation != convoStatus.Complete)
-        // {
-        //     decisionTimer = 5;
-        //     camerasFritzing = true;
-        //     explosion = false;
-        // }
-
-        // if(camerasFritzing && decisionTimer == 0 &&
-        //    D43VirusConversation == convoStatus.Complete &&
-        //    D44IVAALConversation != convoStatus.Complete)
-        // {
-        //     D44IVAALConversation = convoStatus.Ready;
-        //     endingCode = 2;
-        // }
-
-        // TK Make sure these triggers are correct, friend
         if(D48IVAALConversation == convoStatus.Complete &&
            D49VirusConversation != convoStatus.Complete
         )
         {
+            //TK Allow dialogue box to leave
             D49VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
         }
 
-        // TK Make sure these triggers are correct, friend
-        if(D49VirusConversation == convoStatus.Complete &&
-           D50IVAALConversation != convoStatus.Complete
-        )
+        
+
+        if(D49VirusConversation == convoStatus.Complete && virusOnScreen &&
+           D50IVAALConversation != convoStatus.Complete)
+        {
+            virusOnScreen = false;
+            explosion = true;
+            decisionTimer = 5;
+        }
+
+        if(explosion && decisionTimer == 0 && 
+           D50IVAALConversation != convoStatus.Complete)
+        {
+            decisionTimer = 5;
+            camerasFritzing = true;
+            explosion = false;
+        }
+
+        if(camerasFritzing && decisionTimer == 0 &&
+           D49VirusConversation == convoStatus.Complete &&
+           D50IVAALConversation != convoStatus.Complete)
         {
             D50IVAALConversation = convoStatus.Ready;
-            virusOnScreen = false;
+            endingCode = 3;
         }
 
-        // TK Make sure these triggers are correct, friend
-        if(D50IVAALConversation == convoStatus.Complete &&
-           D51IVAALConversation != convoStatus.Complete
-        )
-        {
-            D51IVAALConversation = convoStatus.Ready;
-        }
-
-        // TK Make sure these triggers are correct, friend
         if(D51IVAALConversation == convoStatus.Complete &&
            D52BexosConversation != convoStatus.Complete
         )
         {
-            D52BexosConversation = convoStatus.Ready;
+            // TK Don't allow Dialogue Box to Leave
+            D52IVAALConversation = convoStatus.Ready;
         }
 
-        // TK Make sure these triggers are correct, friend
         if(D52BexosConversation == convoStatus.Complete &&
            D53VirusConversation != convoStatus.Complete
         )
         {
+            // TK Don't allow Dialogue Box to Leave
             D53VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
         }
 
-        // TK Make sure these triggers are correct, friend
         if(D53VirusConversation == convoStatus.Complete &&
            D54BexosConversation != convoStatus.Complete
         )
         {
+            // TK Don't allow Dialogue Box to Leave
             D54BexosConversation = convoStatus.Ready;
             virusOnScreen = false;
         }
 
-        // TK Make sure these triggers are correct, friend
         if(D54BexosConversation == convoStatus.Complete &&
            D55VirusConversation != convoStatus.Complete
         )
         {
+            // TK Don't allow Dialogue Box to Leave
             D55VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
+            //TK Display TERMINATE image
         }
 
-        // TK Make sure these triggers are correct, friend
         if(D55VirusConversation == convoStatus.Complete &&
-           D56IVAALConversation != convoStatus.Complete
-        )
+           D56IVAALConversation != convoStatus.Complete &&
+           D57BexosConversation != convoStatus.Complete &&
+           virusOnScreen = true;)
         {
-            D56IVAALConversation = convoStatus.Ready;
             virusOnScreen = false;
         }
 
-        // TK Make sure these triggers are correct, friend
-        if(D56IVAALConversation == convoStatus.Complete &&
-           D57BexosConversation != convoStatus.Complete
+        if(D55VirusConversation == convoStatus.Complete &&
+           D56IVAALConversation != convoStatus.Complete &&
+           D57BexosConversation != convoStatus.Complete &&
+           (lastMorseCommand == ".-" || lastMorseCommand == "-.")
         )
         {
-            D57BexosConversation = convoStatus.Ready;
+            if(lastMorseCommand == ".-")
+            {
+                D56IVAALConversation = convoStatus.Ready;
+                endingCode = 4
+            } 
+            if(lastMorseCommand == "-.")
+            {
+                D57BexosConversation = convoStatus.Ready;
+            }
         }
 
-        // TK Make sure these triggers are correct, friend
+            // public bool knocked = false;
+            // public bool caughtFire = false;
+
         if(D57BexosConversation == convoStatus.Complete &&
-           D58UnknownConversation != convoStatus.Complete
+           knocked == false
         )
         {
+            knocked = true;
+            //TK Play knocking sound
+            decisionTimer = 5; //TK Maybe tweak this
+        }
+
+        if(D57BexosConversation == convoStatus.Complete &&
+           D58UnknownConversation != convoStatus.Complete
+           knocked == true && decisionTimer == 0)
+        {
             D58UnknownConversation = convoStatus.Ready;
+        }
+
+        if(D58UnknownConversation == convoStatus.Complete &&
+           caughtFire == false)
+        {
+            decisionTimer = 10;
+            //TK Add trigger for flame animation?
+            caughtFire = true;
+        }
+
+        if(D58UnknownConversation == convoStatus.Complete &&
+           caughtFire == true && decisionTimer == 0)
+        {
+            endingCode = 5;
         }
      }
 
