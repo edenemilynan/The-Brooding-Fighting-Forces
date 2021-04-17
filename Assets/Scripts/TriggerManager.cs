@@ -404,6 +404,7 @@ public class TriggerManager : MonoBehaviour
            activeScreen == "entry"
         )
         {
+			taskManager.queueNewTasks(taskManager.Ch3Queue1);
             D4IVAALConversation = convoStatus.Ready;
         }
 
@@ -434,7 +435,7 @@ public class TriggerManager : MonoBehaviour
         {
             D7IVAALConversation = convoStatus.Ready;
             virusOnScreen = false;
-            //TK QUEUE THE SORTING TASK HERE
+            taskManager.queueNewTasks(taskManager.Ch3Queue3);
         }
 
         if(D7IVAALConversation == convoStatus.Complete &&
@@ -444,7 +445,7 @@ public class TriggerManager : MonoBehaviour
         )
         {
             D8IVAALConversation = convoStatus.Ready;
-            // TK QUEUE MORE SORTING TASKS HERE
+            taskManager.queueNewTasks(taskManager.Ch3Queue4);
         }
 
         if(D8IVAALConversation == convoStatus.Complete &&
@@ -469,7 +470,7 @@ public class TriggerManager : MonoBehaviour
         )
         {
             //TK DisAllow dialogue from leaving
-            //TK Queue Trucking Tasks
+            taskManager.queueNewTasks(taskManager.Ch3Queue5);
             D10IVAALConversation = convoStatus.Ready;
         }
 
@@ -528,7 +529,7 @@ public class TriggerManager : MonoBehaviour
             D16IVAALConversation = convoStatus.Ready;
             virusOnScreen = false;
             //TK Allow Dialogue Box to Leave
-            //TK Queue the proper trucking, sorting, and entryway tasks
+            taskManager.queueNewTasks(taskManager.Ch3Queue6);
         }
 
         if(D16IVAALConversation == convoStatus.Complete &&
@@ -548,7 +549,7 @@ public class TriggerManager : MonoBehaviour
             D18IVAALConversation = convoStatus.Ready;
             virusOnScreen = false;
             //TK Allow Dialogue Box to Leave
-            //TK Activate sorting Tasks
+            taskManager.queueNewTasks(taskManager.Ch3Queue7);
         }
 
         if(D18IVAALConversation == convoStatus.Complete &&
@@ -556,7 +557,7 @@ public class TriggerManager : MonoBehaviour
            // TK add check for completing the correct amount of sorting tasks
         )
         {
-            //TK queue more entryway tasks
+            taskManager.queueNewTasks(taskManager.Ch3Queue8);
             D19IVAALConversation = convoStatus.Ready;
         }
 
@@ -565,7 +566,7 @@ public class TriggerManager : MonoBehaviour
            // TK Check for completing correct amount of entry tasks
         )
         {
-            // TK Queue more trucking tasks
+            taskManager.queueNewTasks(taskManager.Ch3Queue9);
             D20IVAALConversation = convoStatus.Ready;
         }
 
@@ -611,6 +612,7 @@ public class TriggerManager : MonoBehaviour
         )
         {
             // TK QUEUE A main task notification
+			TK taskManager.queueNewTasks(taskManager.Ch3Queue10);
             //TK allow dialogue box to leave
             D25VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
@@ -697,7 +699,7 @@ public class TriggerManager : MonoBehaviour
         )
         {
             //TK Dont allow dialogue box to leave
-            //TK Queue More Trucking Tasks
+            taskManager.queueNewTasks(taskManager.Ch3Queue11);
             D33IVAALConversation = convoStatus.Ready;
             virusOnScreen = false;
         }
@@ -737,7 +739,7 @@ public class TriggerManager : MonoBehaviour
            decisionTimer != 0
         )
         {
-            //TK Enqueue the entry task
+            taskManager.queueNewTasks(taskManager.Ch3Queue12);
             D36IVAALConversation = convoStatus.Ready;
             ignoredIVAALCount++;
         }
@@ -748,7 +750,7 @@ public class TriggerManager : MonoBehaviour
            decisionTimer == 0
         )
         {
-            //TK Enqueue the entry task (same one as above)
+            taskManager.queueNewTasks(taskManager.Ch3Queue12);
             D37IVAALConversation = convoStatus.Ready;
             obeyedIVAALCount++;
         }
@@ -772,7 +774,7 @@ public class TriggerManager : MonoBehaviour
            decisionTimer != 0
         )
         {
-            //TK Enqueue the sorting task (same as below)
+            taskManager.queueNewTasks(taskManager.Ch3Queue13);
             D39IVAALConversation = convoStatus.Ready;
             ignoredIVAALCount++;
         }
@@ -783,7 +785,7 @@ public class TriggerManager : MonoBehaviour
            decisionTimer == 0
         )
         {
-            //TK Enqueue the sorting task (same as above)
+            taskManager.queueNewTasks(taskManager.Ch3Queue13);
             D40IVAALConversation = convoStatus.Ready;
             obeyedIVAALCount++;
         }

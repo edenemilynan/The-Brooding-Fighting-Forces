@@ -60,7 +60,7 @@ public class TaskManager : MonoBehaviour
 															Tasks.peopleAllow,
 															Tasks.peopleDisallow});
 	// Person falling over
-	public Queue<Tasks> Ch3Queue2 = new Queue<Tasks> (new[] {Tasks.none}); // Notification to go to main
+	// public Queue<Tasks> Ch3Queue2 = new Queue<Tasks> (new[] {Tasks.none}); // Notification to go to main
 	// Are you starting to see?
 	public Queue<Tasks> Ch3Queue3 = new Queue<Tasks>(new[] {Tasks.sort});
 	// There is a task..., go to the task, do the task
