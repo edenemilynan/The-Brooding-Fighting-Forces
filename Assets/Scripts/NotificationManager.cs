@@ -33,11 +33,29 @@ public class NotificationManager : MonoBehaviour
         }
         else sNotif.SetBool("hideBounce", true);
 
-        if (taskManager.taskTrucking == TaskManager.Tasks.none && taskManager.taskEntry == TaskManager.Tasks.none && camera != "main")
+        DisplayMainNotif(SceneLoader.chapter, camera);
+    }
+
+    void DisplayMainNotif(int chapter, string camera)
+    {
+        if(chapter == 1)
         {
-            mNotif.SetBool("hideBounce", false);
+            if (taskManager.taskTrucking == TaskManager.Tasks.none && taskManager.taskEntry == TaskManager.Tasks.none && camera != "main")
+            {
+                mNotif.SetBool("hideBounce", false);
+            }
+            else mNotif.SetBool("hideBounce", true);
         }
-        else mNotif.SetBool("hideBounce", true);
+        
+
+        if(chapter == 2 || chapter == 3)
+        {
+            if (taskManager.taskTrucking == TaskManager.Tasks.none && camera != "main")
+            {
+                mNotif.SetBool("hideBounce", false);
+            }
+            else mNotif.SetBool("hideBounce", true);
+        }
     }
 
     /*public Sprite[] notifSprites;
