@@ -528,11 +528,10 @@ public class TriggerManager : MonoBehaviour
             //TK Allow dialogue box to leave
         }
 
-        // TK Make sure these triggers are correct, friend
         if(D12IVAALConversation == convoStatus.Complete &&
            D13IVAALConversation != convoStatus.Complete &&
            activeScreen == "truck" &&
-           truckTasksCompleted == 1 //TK Change this value to be the proper one based on number of tasks
+           truckTasksCompleted == 1
         )
         {
             //TK Queue another task (the door opening task)
@@ -701,6 +700,7 @@ public class TriggerManager : MonoBehaviour
         if(D28BexosConversation == convoStatus.Complete)
         {
             terminatedAnimationActive = true;
+            onPhone = false;
         }
 
         if(D29BexosConversation == convoStatus.Complete &&
@@ -710,6 +710,7 @@ public class TriggerManager : MonoBehaviour
             //TK Dont allow dialogue box to leave
             D30VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
+            onPhone = false;
         }
 
         if(D30VirusConversation == convoStatus.Complete &&

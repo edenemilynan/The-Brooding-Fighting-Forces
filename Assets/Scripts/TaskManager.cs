@@ -67,6 +67,9 @@ public class TaskManager : MonoBehaviour
 	public Queue<Tasks> Ch3Queue4 = new Queue<Tasks>(new[] {Tasks.sort});
 	// Bred to convo
 	public Queue<Tasks> Ch3Queue5 = new Queue<Tasks>(new[] {Tasks.truckLeft});
+
+    public Queue<Tasks> Ch3Queue5_1 = new Queue<Tasks>( new[] {Tasks.truckOpen} );
+
 	// Are you having fun
 	// Do the task, then knowledge is power
 	public Queue<Tasks> Ch3Queue6 = new Queue<Tasks>(new[] {Tasks.truckRight,
