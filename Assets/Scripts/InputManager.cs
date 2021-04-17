@@ -145,9 +145,9 @@ public class InputManager : MonoBehaviour
 
         if (taskWaitingTrucking == true && taskManager.tasksTrucking.Count != 0) 
         {
-            if (timerTrucking == 0 || taskManager.tasksTrucking.Peek() == TaskManager.Tasks.none || (taskManager.taskEntry == TaskManager.Tasks.none && taskManager.taskSorting == TaskManager.Tasks.none))
+            if (timerTrucking == 0 || taskManager.tasksTrucking.Peek() == TaskManager.Tasks.none || (taskManager.taskEntry == TaskManager.Tasks.none && taskManager.taskSorting == TaskManager.Tasks.none) || taskManager.tasksTrucking.Peek() == TaskManager.Tasks.waiting)
             {
-                if (truckingLeftOpen == false && truckingRightOpen == false)
+                if ((truckingLeftOpen == false && truckingRightOpen == false) || taskManager.tasksTrucking.Peek() == TaskManager.Tasks.waiting)
                 {
                     if (taskManager.tasksTrucking.Peek() == TaskManager.Tasks.truckLeft)
                     {
