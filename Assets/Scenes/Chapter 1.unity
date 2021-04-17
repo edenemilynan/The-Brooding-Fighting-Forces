@@ -5441,6 +5441,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueController: {fileID: 245659558}
+  boxFillSound: {fileID: 8300000, guid: 4620686d45331754093e03d5725c96f8, type: 3}
+  startSound: {fileID: 8300000, guid: 68cc4a49d077c584cae89d875318fd6e, type: 3}
+  audioSource: {fileID: 181311910}
   triggerManager: {fileID: 0}
   shape1: {fileID: 1267834355}
   shape2: {fileID: 1131874560}

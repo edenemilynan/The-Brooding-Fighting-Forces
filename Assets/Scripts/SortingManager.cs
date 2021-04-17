@@ -5,6 +5,10 @@ using UnityEngine;
 public class SortingManager : MonoBehaviour
 {
     public DialogueController dialogueController;
+    public AudioClip boxFillSound;
+    public AudioClip startSound;
+    public AudioSource audioSource;
+
 
     //Making a centralized location for all triggers to reside.
     public TriggerManager triggerManager;
@@ -88,6 +92,7 @@ public class SortingManager : MonoBehaviour
         //If there are no shapes, roll new ones
         if(command == "interact" && shape1.sprite == null)
         {
+            audioSource.PlayOneShot(startSound, 0.7f);
             gotRightCount = 0;
             workers.sprite = sc.workers[0];
             triesCountChange(0);
@@ -190,6 +195,7 @@ public class SortingManager : MonoBehaviour
     //Reroll shapes when command is affirm or negative
     void reroll()
     {
+        audioSource.PlayOneShot(boxFillSound, 0.7f);
         rand = Random.Range(0, sc.combinations.Count);
         shape1.sprite = sc.shapes[(int)sc.combinations[rand][0]];
         shape2.sprite = sc.shapes[(int)sc.combinations[rand][1]];
