@@ -149,7 +149,12 @@ public class TriggerManager : MonoBehaviour
     public bool   waitingOnInput;
     public bool   endScene;
     public int    endingCode = 0;
+    public bool activatedEnding;
     public int    performedFinalScanResultingTaskCount;
+
+    public bool reActivateTrucking;
+    public bool reActivateEntry;
+    public bool reActivateSorting;
 
     public TaskManager taskManager;
     public InputManager inputManager;
@@ -198,6 +203,10 @@ public class TriggerManager : MonoBehaviour
         }
 
         if(printQueueCounts) { printQueueQuantities(); }
+
+        if(reActivateTrucking) {taskManager.getTaskTrucking(); }
+        if(reActivateEntry) {taskManager.getTaskEntry(); }
+        if(reActivateSorting) {taskManager.getTaskSorting(); }
 
 
     }
@@ -344,7 +353,7 @@ public class TriggerManager : MonoBehaviour
 
 	void ChapterThreeTriggerController()
 	{
-        if(dialogueActive != true)
+        if(dialogueActive != true && !activatedEnding)
         {
             ChapterThreeDialogueTriggers();
         }
@@ -357,6 +366,11 @@ public class TriggerManager : MonoBehaviour
         // public bool camerasFritzing;
         // public bool explosion;
         // public bool virusDeath;
+
+        if(activatedEnding && decisionTimer == 0)
+        {
+            SceneManager.LoadScene(0);
+        }
 
         Debug.Log("I AM LOOKING AROUND IN HERE");
 
@@ -386,6 +400,13 @@ public class TriggerManager : MonoBehaviour
         // bool activatedTerminationAnimation;
         // TK Make sure entry tasks are Queued in TaskManager
 
+        if(endingCode == 1)
+        {
+            desktopControls.firstEnding();
+            decisionTimer = 15;
+            activatedEnding = true;
+        }
+
         if(endingCode == 2)
         {
             //TK Add logic for ending #2
@@ -398,7 +419,9 @@ public class TriggerManager : MonoBehaviour
 
         if(endingCode == 4)
         {
-            //TK Add logic for Ending #4
+            desktopControls.fourthEnding();
+            decisionTimer = 15;
+            activatedEnding = true;
         }
 
         if(endingCode == 5)
@@ -534,13 +557,14 @@ public class TriggerManager : MonoBehaviour
            truckTasksCompleted == 1
         )
         {
-            //TK Queue another task (the door opening task)
+            //taskManager.queueNewTasks(taskManager.Ch3Queue5_1);
             D13IVAALConversation = convoStatus.Ready;
         }
 
         if(D13IVAALConversation == convoStatus.Complete &&
            D14IVAALConversation != convoStatus.Complete &&
-           activeScreen == "truck" // TK Add logic for determining if the truck has been correctly let in.
+           activeScreen == "truck"
+           // TK Add logic for determining if the truck has been correctly let in.
         )
         {
             D14IVAALConversation = convoStatus.Ready;
@@ -568,7 +592,10 @@ public class TriggerManager : MonoBehaviour
         }
 
         if(D16IVAALConversation == convoStatus.Complete &&
-           D17VirusConversation != convoStatus.Complete 
+           D17VirusConversation != convoStatus.Complete &&
+           truckTasksCompleted >= 2 &&
+           scannerTasksCompleted >= 5 &&
+           sortingTasksCompleted >= 3
            // TK Add checks for being done the proper amount of tasks
         )
         {
@@ -646,7 +673,6 @@ public class TriggerManager : MonoBehaviour
            D25VirusConversation != convoStatus.Complete
         )
         {
-            // TK QUEUE A main task notification
 			taskManager.queueNewTasks(taskManager.Ch3Queue10);
             //TK allow dialogue box to leave
             D25VirusConversation = convoStatus.Ready;
@@ -654,9 +680,11 @@ public class TriggerManager : MonoBehaviour
         }
 
         if(D25VirusConversation == convoStatus.Complete &&
-           D26IVAALConversation != convoStatus.Complete)
+           D26IVAALConversation != convoStatus.Complete &&
+           virusOnScreen == false)
         {
             virusOnScreen = false;
+            //TK GO TO MAIN
         }
 
         if(D25VirusConversation == convoStatus.Complete &&
@@ -678,6 +706,14 @@ public class TriggerManager : MonoBehaviour
             phoneRinging = false;
             onPhone = true;
         }
+
+        if(D27BexosConversation == convoStatus.Complete &&
+           D28BexosConversation != convoStatus.Complete &&
+           D29BexosConversation != convoStatus.Complete &&
+           desktopControls.confirmationScreen.GetBool("visible") == false)
+        {
+            desktopControls.showConfirm();
+        }
         
         if(D27BexosConversation == convoStatus.Complete &&
            D28BexosConversation != convoStatus.Complete &&
@@ -686,10 +722,11 @@ public class TriggerManager : MonoBehaviour
            (lastMorseCommand == ".-" || lastMorseCommand == "-.")
         )
         {
+            desktopControls.hideConfirm();
             if(lastMorseCommand == ".-")
             {
                 D28BexosConversation = convoStatus.Ready;
-                // endingCode = 1;
+                endingCode = 1;
             }
             if(lastMorseCommand == "-.")
             {
@@ -771,6 +808,7 @@ public class TriggerManager : MonoBehaviour
         // Opened the door
         if(D35IVAALConversation == convoStatus.Complete &&
            D36IVAALConversation != convoStatus.Complete &&
+           D37IVAALConversation != convoStatus.Complete &&
            activeScreen == "truck" && 
            lastMorseCommand == ".-" &&
            decisionTimer != 0
@@ -783,6 +821,7 @@ public class TriggerManager : MonoBehaviour
 
         // Do not open door
         if(D35IVAALConversation == convoStatus.Complete &&
+           D36IVAALConversation != convoStatus.Complete &&
            D37IVAALConversation != convoStatus.Complete &&
            decisionTimer == 0
         )
@@ -806,6 +845,7 @@ public class TriggerManager : MonoBehaviour
         // Allow the person in (TK Right now it triggers for either direction)
         if(D38IVAALConversation == convoStatus.Complete &&
            D39IVAALConversation != convoStatus.Complete &&
+           D40IVAALConversation != convoStatus.Complete &&
            activeScreen == "entry" &&
            lastMorseCommand == ".-" &&
            decisionTimer != 0
@@ -818,6 +858,7 @@ public class TriggerManager : MonoBehaviour
 
         // Wait it out, not allowing them in
         if(D38IVAALConversation == convoStatus.Complete &&
+           D39IVAALConversation != convoStatus.Complete &&
            D40IVAALConversation != convoStatus.Complete &&
            decisionTimer == 0
         )
@@ -922,7 +963,7 @@ public class TriggerManager : MonoBehaviour
            D48IVAALConversation != convoStatus.Complete &&
            D51IVAALConversation != convoStatus.Complete &&
            (lastMorseCommand == ".-" || lastMorseCommand == "-.") &&
-           activeScreen == ""
+           activeScreen == "main"
         )
         {
             if(lastMorseCommand == "-.")
@@ -1012,6 +1053,7 @@ public class TriggerManager : MonoBehaviour
            virusOnScreen == true)
         {
             virusOnScreen = false;
+            desktopControls.showTerminate();
         }
 
         if(D55VirusConversation == convoStatus.Complete &&
@@ -1029,6 +1071,7 @@ public class TriggerManager : MonoBehaviour
             {
                 D57BexosConversation = convoStatus.Ready;
             }
+            desktopControls.hideTerminate();
         }
 
             // public bool knocked = false;
