@@ -10,6 +10,7 @@ public class SceneLoader : MonoBehaviour
     public CharacterButtons cb;
     public static string currentCharacter = "";
     public static int chapter = 0;
+    public static int endingNumber = 0;
 
     public void LoadNextScene()
     {

@@ -372,7 +372,7 @@ public class TriggerManager : MonoBehaviour
 
         if(activatedEnding && decisionTimer == 0)
         {
-            SceneManager.LoadScene(0); //TKTKTKTK HERE IS WHERE YOU WOULD CALL THE CREDITS SEQUENCE
+            SceneManager.LoadScene(8); //TKTKTKTK HERE IS WHERE YOU WOULD CALL THE CREDITS SEQUENCE
         }
 
         Debug.Log("I AM LOOKING AROUND IN HERE");
@@ -428,6 +428,7 @@ public class TriggerManager : MonoBehaviour
 
         if(endingCode == 4)
         {
+            SceneLoader.endingNumber = 4;
             desktopControls.fourthEnding();
             decisionTimer = 15;
             activatedEnding = true;

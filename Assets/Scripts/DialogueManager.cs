@@ -168,7 +168,7 @@ public class DialogueManager : MonoBehaviour
         {
             case "mento":
                 return "Mento";
-            case "petunia":
+            case "pentunia":
                 return "Petunia";
             case "sweth":
                 return "Sweth";

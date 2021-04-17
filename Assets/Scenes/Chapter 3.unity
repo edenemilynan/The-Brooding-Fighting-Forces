@@ -1939,6 +1939,7 @@ MonoBehaviour:
   D39IVAALConversation: 0
   D40IVAALConversation: 0
   D41IVAALConversation: 0
+  ignoreOrObey: 0
   D42IVAALConversation: 0
   D43VirusConversation: 0
   D44IVAALConversation: 0
@@ -1959,6 +1960,7 @@ MonoBehaviour:
   decisionTimer: 0
   knocked: 0
   caughtFire: 0
+  exploded: 0
   phoneRinging: 0
   onPhone: 0
   fallenAnimationActive: 0
@@ -1985,7 +1987,11 @@ MonoBehaviour:
   waitingOnInput: 0
   endScene: 0
   endingCode: 0
+  activatedEnding: 0
   performedFinalScanResultingTaskCount: 0
+  reActivateTrucking: 0
+  reActivateEntry: 0
+  reActivateSorting: 0
   taskManager: {fileID: 1182270925}
   inputManager: {fileID: 1552562394}
 --- !u!4 &180654426
@@ -7896,7 +7902,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 2149237723698619310, guid: 6edea2c475e1c704aa309adaecadc059,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
