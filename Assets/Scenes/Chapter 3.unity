@@ -4398,6 +4398,8 @@ MonoBehaviour:
   startEntryIntroConversation: 0
   startEntryErrorConversation: 0
   startEntryCompletionConversation: 0
+  startSortingIntroConversation: 0
+  startSortingCompletionConversation: 0
   fourthConversation: 1
   readyForFourthConvo: 0
   fifthConversation: 1
@@ -9129,6 +9131,7 @@ MonoBehaviour:
   numberTries: {fileID: 1477699727}
   workers: {fileID: 1541302289}
   sc: {fileID: 47190303}
+  done: 0
 --- !u!4 &1169827458
 Transform:
   m_ObjectHideFlags: 0
@@ -14231,7 +14234,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -15040,6 +15043,9 @@ MonoBehaviour:
   virusAnimation: {fileID: 2138914063}
   personFalling: {fileID: 798057663}
   confirmationScreen: {fileID: 1082571775}
+  memo: {fileID: 0}
+  alert: {fileID: 0}
+  ending2: {fileID: 0}
 --- !u!1 &1848734836
 GameObject:
   m_ObjectHideFlags: 0
