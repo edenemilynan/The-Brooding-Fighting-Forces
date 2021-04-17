@@ -440,8 +440,14 @@ public class TriggerManager : MonoBehaviour
            scannerTasksCompleted == 4
         )
         {
-            D5IVAALConversation = convoStatus.Ready;
+            // D5IVAALConversation = convoStatus.Ready;
             fallenAnimationActive = true;
+            decisionTimer = 7;
+        }
+
+        if(fallenAnimationActive == true && decisionTimer == 0)
+        {
+            D5IVAALConversation = convoStatus.Ready();
         }
 
         if(D5IVAALConversation == convoStatus.Complete &&
@@ -461,6 +467,7 @@ public class TriggerManager : MonoBehaviour
             D7IVAALConversation = convoStatus.Ready;
             virusOnScreen = false;
             taskManager.queueNewTasks(taskManager.Ch3Queue3);
+            taskManager.getTaskSorting();
         }
 
         if(D7IVAALConversation == convoStatus.Complete &&
