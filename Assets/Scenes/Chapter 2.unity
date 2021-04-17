@@ -606,6 +606,8 @@ MonoBehaviour:
   startEntryIntroConversation: 0
   startEntryErrorConversation: 0
   startEntryCompletionConversation: 0
+  startSortingIntroConversation: 0
+  startSortingCompletionConversation: 0
   fourthConversation: 1
   readyForFourthConvo: 0
   fifthConversation: 1
@@ -2674,6 +2676,7 @@ MonoBehaviour:
   numberTries: {fileID: 146254215}
   workers: {fileID: 283644296}
   sc: {fileID: 734295509}
+  done: 0
 --- !u!4 &241915707
 Transform:
   m_ObjectHideFlags: 0
@@ -7548,7 +7551,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9987,6 +9990,7 @@ MonoBehaviour:
   confirmationScreen: {fileID: 0}
   memo: {fileID: 999213799}
   alert: {fileID: 240573795}
+  ending2: {fileID: 0}
 --- !u!1 &1341519506
 GameObject:
   m_ObjectHideFlags: 0
