@@ -57,12 +57,12 @@ public class DialogueController : MonoBehaviour
 		}
 		else if (sceneName == "Chapter 2")
 		{
-            Debug.Log("SHOULDN'T BE HAPPENING");
+            //Debug.Log("SHOULDN'T BE HAPPENING");
             ChapterTwoDialogueController();
 		}
         else if (sceneName == "Chapter 3")
         {
-            Debug.Log("SHOULDN'T BE HAPPENING");
+            //Debug.Log("SHOULDN'T BE HAPPENING");
             ChapterThreeDialogueController();
         }
         
@@ -293,11 +293,10 @@ public class DialogueController : MonoBehaviour
             triggerManager.Ch2NotCountingConversation2 = TriggerManager.convoStatus.Complete;
         }
 
-
-        if(triggerManager.Ch2NotCountingConversation2 == TriggerManager.convoStatus.Ready)
+        if(triggerManager.Ch2NotCountingConversation3 == TriggerManager.convoStatus.Ready)
         {
-            TriggerThisDialogue("NotCountingConversation2");
-            triggerManager.Ch2NotCountingConversation2 = TriggerManager.convoStatus.Complete;
+            TriggerThisDialogue("NotCountingConversation3");
+            triggerManager.Ch2NotCountingConversation3 = TriggerManager.convoStatus.Complete;
         }
 
 
