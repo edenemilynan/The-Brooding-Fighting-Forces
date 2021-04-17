@@ -173,6 +173,9 @@ public class TaskManager : MonoBehaviour
             // tasksSorting.Enqueue(Tasks.none);
 
             queueNewTasks(Ch2Queue1);
+            getTaskTrucking();
+            getTaskEntry();
+            getTaskSorting();
         }
 
         if (sceneName == "Chapter 3")
@@ -349,9 +352,9 @@ public class TaskManager : MonoBehaviour
         
         Debug.Log(tasksEntry.Count);
 
-        getTaskTrucking();
-        getTaskEntry();
-        getTaskSorting();
+        //getTaskTrucking();
+        //getTaskEntry();
+        //getTaskSorting();
         
 
         // tasksTrucking.Enqueue(Tasks.none);

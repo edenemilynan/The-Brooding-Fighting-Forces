@@ -5486,9 +5486,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 767b9955dabb501448c078e175f7f890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskTrucking: 5
-  taskEntry: 5
-  taskSorting: 5
+  taskTrucking: 7
+  taskEntry: 7
+  taskSorting: 7
   nTasks: 6
   truckingControl: {fileID: 2091569315}
   personApproaches: {fileID: 847925312}
@@ -7009,8 +7009,8 @@ MonoBehaviour:
   truckingLeftLocked: 0
   entryLocked: 0
   taskWaitingTrucking: 0
-  taskWaitingEntry: 0
-  taskWaitingSorting: 0
+  taskWaitingEntry: 1
+  taskWaitingSorting: 1
   scannable: 0
   entryLeftOpen: 0
   entryRightOpen: 0
