@@ -155,7 +155,7 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("IsOpen", false);
         triggerManager.convosHad++;
         triggerManager.dialogueActive = false;
-        if(LastConversation)
+        if(LastConversation || (triggerManager.Ch2ConfirmCleanSystemConversation == TriggerManager.convoStatus.Complete))
         {
             SceneManager.LoadScene(1);
         }
