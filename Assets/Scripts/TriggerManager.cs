@@ -646,7 +646,7 @@ public class TriggerManager : MonoBehaviour
 
         if(D20IVAALConversation == convoStatus.Complete &&
            D21VirusConversation != convoStatus.Complete &&
-            truckTasksCompleted >= 4
+            truckTasksCompleted >= 3
         )
         {
             //TK Dont allow dialogue box to leave
