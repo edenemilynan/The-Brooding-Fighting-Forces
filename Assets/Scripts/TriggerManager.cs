@@ -378,7 +378,7 @@ public class TriggerManager : MonoBehaviour
         if(virusDeath)  { desktopControls.triggerVirusDeath(); }
         if(!virusDeath) { desktopControls.hideVirusDeath(); }
 
-
+        if (fallenAnimationActive) { desktopControls.personFalls(); }
 	}
 
     void ChapterThreeDialogueTriggers()
@@ -434,11 +434,10 @@ public class TriggerManager : MonoBehaviour
             D4IVAALConversation = convoStatus.Ready;
         }
 
-        // TK Set the number of scanner tasks based on Queue in TaskManager
         if(D4IVAALConversation == convoStatus.Complete &&
            D5IVAALConversation  != convoStatus.Complete &&
            activeScreen == "entry" &&
-           scannerTasksCompleted == 4 //tk this is the place
+           scannerTasksCompleted == 4
         )
         {
             D5IVAALConversation = convoStatus.Ready;
