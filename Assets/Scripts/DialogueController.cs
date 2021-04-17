@@ -346,6 +346,7 @@ public class DialogueController : MonoBehaviour
             }
             TriggerThisDialogue(dialogueName);
             triggerManager.Ch2ConfirmCleanSystemConversation = TriggerManager.convoStatus.Complete;
+            SceneManager.LoadScene(1);
         }
 
         
