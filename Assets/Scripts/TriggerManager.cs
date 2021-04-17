@@ -105,6 +105,8 @@ public class TriggerManager : MonoBehaviour
     public convoStatus D57BexosConversation = convoStatus.NotReady;
     public convoStatus D58UnknownConversation = convoStatus.NotReady;
 
+    public float decisionTimer = 0;
+
 
     // Animation Triggers
     public bool phoneRinging;
@@ -144,6 +146,7 @@ public class TriggerManager : MonoBehaviour
     public bool   waitingOnInput;
     public bool   endScene;
     public int    endingCode = 0;
+    public int    performedFinalScanResultingTaskCount;
 
     public TaskManager taskManager;
     public InputManager inputManager;
@@ -170,6 +173,8 @@ public class TriggerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if (sceneName == "Chapter 1")
 		{
 			ChapterOneTriggerController();
@@ -184,6 +189,10 @@ public class TriggerManager : MonoBehaviour
 		}
 
         if(entryTaskTimer > 0) {entryTaskTimer--;} //Decrementing the timer.
+        if(decisionTimer != 0) 
+        {
+            decisionTimer = Mathf.Max(0, decisionTimer - Time.deltaTime);
+        }
 
 
     }
@@ -242,9 +251,9 @@ public class TriggerManager : MonoBehaviour
 
         if(Ch2EntryAlarmDecisionConversation == convoStatus.Complete &&
            Ch2InjuryReportConversation != convoStatus.Complete &&
-           truckTasksCompleted == 3 &&
-           scannerTasksCompleted == 3 &&
-           sortingTasksCompleted == 1)
+           truckTasksCompleted >= 4 &&
+           scannerTasksCompleted >= 3 &&
+           sortingTasksCompleted >= 1)
         {
             Ch2InjuryReportConversation = convoStatus.Ready;
             Ch2NotCountingStartNumber = scannerTasksCompleted;
@@ -285,7 +294,7 @@ public class TriggerManager : MonoBehaviour
            activeScreen == "sorting")
         {
             Ch2PackagedFunFactConversation = convoStatus.Ready;
-            taskManager.queueNewTasks(taskManager.Ch2Queue6);
+            // taskManager.queueNewTasks(taskManager.Ch2Queue6);
 
         }
 
@@ -305,9 +314,9 @@ public class TriggerManager : MonoBehaviour
 
         if(Ch2AllowPackagesDecisionConversation == convoStatus.Complete &&
            Ch2HeadOfficeMemoConversation != convoStatus.Complete &&
-           truckTasksCompleted == 4 &&
+           truckTasksCompleted == 5 &&
            scannerTasksCompleted == 7 &&
-           sortingTasksCompleted == 4
+           sortingTasksCompleted == 3
            )
         {
             Ch2HeadOfficeMemoConversation = convoStatus.Ready;
@@ -369,8 +378,9 @@ public class TriggerManager : MonoBehaviour
 
     void ChapterThreeDialogueTriggers()
     {
-        bool activatedTerminationAnimation;
+        // bool activatedTerminationAnimation;
         // TK Make sure entry tasks are Queued in TaskManager
+        
 
         if(D1IVAALConversation == convoStatus.Complete &&
            D2VirusConversation != convoStatus.Complete
@@ -710,69 +720,100 @@ public class TriggerManager : MonoBehaviour
 
         if(D34VirusConversation == convoStatus.Complete &&
            D35IVAALConversation != convoStatus.Complete &&
-           activeScreen == "truck" //TK Change this to the proper number
+           activeScreen == "truck"
         )
         {
             D35IVAALConversation = convoStatus.Ready;
+            decisionTimer = 15;
+            obeyedIVAALCount = 0;
+            ignoredIVAALCount = 0;
         }
 
-        // TK Make sure these triggers are correct, friend
+        // Opened the door
         if(D35IVAALConversation == convoStatus.Complete &&
-           D36IVAALConversation != convoStatus.Complete
+           D36IVAALConversation != convoStatus.Complete &&
+           activeScreen == "truck" && 
+           lastMorseCommand == ".-" &&
+           decisionTimer != 0
         )
         {
+            //TK Enqueue the entry task
             D36IVAALConversation = convoStatus.Ready;
+            ignoredIVAALCount++;
         }
 
-        // TK Make sure these triggers are correct, friend
-        if(D36IVAALConversation == convoStatus.Complete &&
-           D37IVAALConversation != convoStatus.Complete
+        // Do not open door
+        if(D35IVAALConversation == convoStatus.Complete &&
+           D37IVAALConversation != convoStatus.Complete &&
+           decisionTimer == 0
         )
         {
+            //TK Enqueue the entry task (same one as above)
             D37IVAALConversation = convoStatus.Ready;
+            obeyedIVAALCount++;
         }
 
-        // TK Make sure these triggers are correct, friend
-        if(D37IVAALConversation == convoStatus.Complete &&
-           D38IVAALConversation != convoStatus.Complete
+        // Entry task decision
+        if((D37IVAALConversation == convoStatus.Complete ||
+            D36IVAALConversation == convoStatus.Complete) &&
+           D38IVAALConversation != convoStatus.Complete &&
+           activeScreen == "entry"
         )
         {
             D38IVAALConversation = convoStatus.Ready;
+            decisionTimer = 15;
         }
 
-        // TK Make sure these triggers are correct, friend
+        // Allow the person in (TK Right now it triggers for either direction)
         if(D38IVAALConversation == convoStatus.Complete &&
-           D39IVAALConversation != convoStatus.Complete
+           D39IVAALConversation != convoStatus.Complete &&
+           activeScreen == "entry" &&
+           lastMorseCommand == ".-" &&
+           decisionTimer != 0
         )
         {
+            //TK Enqueue the sorting task (same as below)
             D39IVAALConversation = convoStatus.Ready;
+            ignoredIVAALCount++;
         }
 
-        // TK Make sure these triggers are correct, friend
-        if(D39IVAALConversation == convoStatus.Complete &&
-           D40IVAALConversation != convoStatus.Complete
+        // Wait it out, not allowing them in
+        if(D38IVAALConversation == convoStatus.Complete &&
+           D40IVAALConversation != convoStatus.Complete &&
+           decisionTimer == 0
         )
         {
+            //TK Enqueue the sorting task (same as above)
             D40IVAALConversation = convoStatus.Ready;
+            obeyedIVAALCount++;
         }
 
-        // TK Make sure these triggers are correct, friend
-        if(D40IVAALConversation == convoStatus.Complete &&
-           D41IVAALConversation != convoStatus.Complete
+        //Sorting decision
+        if((D40IVAALConversation == convoStatus.Complete ||
+            D39IVAALConversation == convoStatus.Complete) &&
+           D41IVAALConversation != convoStatus.Complete &&
+           activeScreen == "sorting"
         )
         {
             D41IVAALConversation = convoStatus.Ready;
+            decisionTimer = 15;
+            performedFinalScanResultingTaskCount = sortingTasksCompleted + 1;
         }
 
-        // TK Make sure these triggers are correct, friend
+        //Scan them
         if(D41IVAALConversation == convoStatus.Complete &&
-           D42IVAALConversation != convoStatus.Complete
+           D42IVAALConversation != convoStatus.Complete &&
+           activeScreen == "sorting" &&
+           sortingTasksCompleted == performedFinalScanResultingTaskCount &&
+           decisionTimer != 0
         )
         {
+            //TK Don't allow dialogue box to leave
             D42IVAALConversation = convoStatus.Ready;
+            ignoredIVAALCount++;
         }
 
-        // TK Make sure these triggers are correct, friend
+        //You didn't do it, so I have to!
         if(D42IVAALConversation == convoStatus.Complete &&
            D43VirusConversation != convoStatus.Complete
         )
@@ -781,7 +822,28 @@ public class TriggerManager : MonoBehaviour
             virusOnScreen = true;
         }
 
-        // TK Make sure these triggers are correct, friend
+        if(D43VirusConversation == convoStatus.Complete && virusOnScreen &&
+           D44IVAALConversation != convoStatus.Complete)
+        {
+            virusOnScreen = false;
+            explosion = true;
+            decisionTimer = 5;
+        }
+
+        if(explosion && decisionTimer == 0 && 
+           D44IVAALConversation != convoStatus.Complete)
+        {
+            decisionTimer = 5;
+            camerasFritzing = true;
+            explosion = false;
+        }
+
+        if(camerasFritzing && decisionTimer == 0 &&
+           D44IVAALConversation != convoStatus.Complete)
+        {
+            D44IVAALConversation = convoStatus.Ready;
+        }
+
         if(D43VirusConversation == convoStatus.Complete &&
            D44IVAALConversation != convoStatus.Complete
         )
