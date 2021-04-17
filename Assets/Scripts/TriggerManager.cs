@@ -419,6 +419,8 @@ public class TriggerManager : MonoBehaviour
            D3IVAALConversation != convoStatus.Complete
         )
         {
+            taskManager.queueNewTasks(taskManager.Ch3Queue1);
+            taskManager.getTaskEntry();
             D3IVAALConversation = convoStatus.Ready;
             virusOnScreen = false;
         }
@@ -429,7 +431,6 @@ public class TriggerManager : MonoBehaviour
            activeScreen == "entry"
         )
         {
-			taskManager.queueNewTasks(taskManager.Ch3Queue1);
             D4IVAALConversation = convoStatus.Ready;
         }
 
