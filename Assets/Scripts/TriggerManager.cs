@@ -475,7 +475,7 @@ public class TriggerManager : MonoBehaviour
         if(D7IVAALConversation == convoStatus.Complete &&
            D8IVAALConversation  != convoStatus.Complete &&
            activeScreen == "sorting" &&
-           sortingTasksCompleted == 1 //TK Change this later to proper value
+           sortingTasksCompleted == 1 
         )
         {
             D8IVAALConversation = convoStatus.Ready;
@@ -484,7 +484,8 @@ public class TriggerManager : MonoBehaviour
 
         if(D8IVAALConversation == convoStatus.Complete &&
            D9VirusConversation  != convoStatus.Complete &&
-           activeScreen == "sorting"
+           activeScreen == "sorting" &&
+           sortingTasksCompleted == 2
         )
         {
             D9VirusConversation = convoStatus.Ready;
