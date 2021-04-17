@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class TaskManager : MonoBehaviour
 {
     //Had to add allow/disallow to allow tracking of right/wrong decisions later
-    public enum Tasks {truckRight, truckLeft, truckAlarm, truckOpen, peopleAllow, peopleDisallow, sort, none};
+    public enum Tasks {truckRight, truckLeft, truckAlarm, truckOpen, peopleAllow, peopleDisallow, sort, none, waiting};
     public Queue<Tasks> tasksTrucking = new Queue<Tasks>();
     public Queue<Tasks> tasksEntry = new Queue<Tasks>();
     public Queue<Tasks> tasksSorting = new Queue<Tasks>();
@@ -82,7 +82,7 @@ public class TaskManager : MonoBehaviour
 	// You are the ideal worker
 	public Queue<Tasks> Ch3Queue9 = new Queue<Tasks>(new[] {Tasks.truckRight});
 	// But you are not alone.
-	public Queue<Tasks> Ch3Queue10 = new Queue<Tasks>(new[] {Tasks.none}); // Notification to go to main
+	public Queue<Tasks> Ch3Queue10 = new Queue<Tasks>(new[] {Tasks.waiting}); // Notification to go to main
 	// Bexos call
 	// Weird trucking task
 	public Queue<Tasks> Ch3Queue11 = new Queue<Tasks>(new[] {Tasks.truckLeft});
@@ -343,6 +343,9 @@ public class TaskManager : MonoBehaviour
                     tasksTrucking.Enqueue(task);
                     break;
                 case Tasks.none:
+                    tasksTrucking.Enqueue(task);
+                    break;
+                case Tasks.waiting:
                     tasksTrucking.Enqueue(task);
                     break;
             }

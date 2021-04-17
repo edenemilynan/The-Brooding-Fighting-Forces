@@ -403,6 +403,8 @@ public class InputManager : MonoBehaviour
                     if (sortManager.checkIfComplete())
                     {
                         sortingControl.sendBoxes();
+                        triggerManager.tasksCompleted += 1;
+                        triggerManager.sortingTasksCompleted += 1;
                         taskWaitingSorting = true;
                         timerSorting = waitTime;
                     }
@@ -541,6 +543,8 @@ public class InputManager : MonoBehaviour
                     if (sortManager.checkIfComplete())
                     {
                         sortingControl.sendBoxes();
+                        triggerManager.tasksCompleted += 1;
+                        triggerManager.sortingTasksCompleted += 1;
                         taskWaitingSorting = true;
                         timerSorting = waitTime;
                     }

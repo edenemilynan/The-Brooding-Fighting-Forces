@@ -159,8 +159,8 @@ public class SortingManager : MonoBehaviour
         {
             Debug.Log("check if complete");
             dialogueController.tasksCompleted += 1;
-            triggerManager.tasksCompleted += 1;
-            triggerManager.sortingTasksCompleted += 1;
+            //triggerManager.tasksCompleted += 1;
+            //triggerManager.sortingTasksCompleted += 1;
             reset();
             workers.sprite = null;
             done = true;
