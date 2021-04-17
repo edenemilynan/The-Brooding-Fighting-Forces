@@ -88,6 +88,7 @@ public class TriggerManager : MonoBehaviour
     public convoStatus D39IVAALConversation = convoStatus.NotReady;
     public convoStatus D40IVAALConversation = convoStatus.NotReady;
     public convoStatus D41IVAALConversation = convoStatus.NotReady;
+    public bool ignoreOrObey = false;
     public convoStatus D42IVAALConversation = convoStatus.NotReady;
     public convoStatus D43VirusConversation = convoStatus.NotReady;
     public convoStatus D44IVAALConversation = convoStatus.NotReady;
@@ -109,6 +110,7 @@ public class TriggerManager : MonoBehaviour
     public float decisionTimer = 0;
     public bool knocked = false;
     public bool caughtFire = false;
+    public bool exploded = false;
 
 
     // Animation Triggers
@@ -171,6 +173,7 @@ public class TriggerManager : MonoBehaviour
  
 		// Retrieve the name of this scene.
 		sceneName = currentScene.name;
+        activeScreen = "main";
 
         entryTaskTimer = 120;
 
@@ -204,9 +207,9 @@ public class TriggerManager : MonoBehaviour
 
         if(printQueueCounts) { printQueueQuantities(); }
 
-        if(reActivateTrucking) {taskManager.getTaskTrucking(); }
-        if(reActivateEntry) {taskManager.getTaskEntry(); }
-        if(reActivateSorting) {taskManager.getTaskSorting(); }
+        if(reActivateTrucking) {taskManager.getTaskTrucking(); reActivateTrucking = false;}
+        if(reActivateEntry) {taskManager.getTaskEntry(); reActivateEntry = false;}
+        if(reActivateSorting) {taskManager.getTaskSorting(); reActivateSorting = false;}
 
 
     }
@@ -369,7 +372,7 @@ public class TriggerManager : MonoBehaviour
 
         if(activatedEnding && decisionTimer == 0)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(0); //TKTKTKTK HERE IS WHERE YOU WOULD CALL THE CREDITS SEQUENCE
         }
 
         Debug.Log("I AM LOOKING AROUND IN HERE");
@@ -409,12 +412,18 @@ public class TriggerManager : MonoBehaviour
 
         if(endingCode == 2)
         {
-            //TK Add logic for ending #2
+            desktopControls.secondEnding();
+            camerasFritzing = false;
+            explosion = false;
+            decisionTimer = 20;
+            activatedEnding = true;
         }
 
         if(endingCode == 3)
         {
-            //TK Add logic for Ending #3
+            desktopControls.thirdEnding();
+            decisionTimer = 15;
+            activatedEnding = true;
         }
 
         if(endingCode == 4)
@@ -426,7 +435,9 @@ public class TriggerManager : MonoBehaviour
 
         if(endingCode == 5)
         {
-            //TK Add logic for Ending #5
+            desktopControls.fifthEnding();
+            decisionTimer = 15;
+            activatedEnding = true;
         }
         
 
@@ -615,8 +626,8 @@ public class TriggerManager : MonoBehaviour
         }
 
         if(D18IVAALConversation == convoStatus.Complete &&
-           D19IVAALConversation != convoStatus.Complete 
-           // TK add check for completing the correct amount of sorting tasks
+           D19IVAALConversation != convoStatus.Complete &&
+           sortingTasksCompleted >= 4
         )
         {
             taskManager.queueNewTasks(taskManager.Ch3Queue8);
@@ -624,8 +635,8 @@ public class TriggerManager : MonoBehaviour
         }
 
         if(D19IVAALConversation == convoStatus.Complete &&
-           D20IVAALConversation != convoStatus.Complete
-           // TK Check for completing correct amount of entry tasks
+           D20IVAALConversation != convoStatus.Complete &&
+           scannerTasksCompleted >= 6
         )
         {
             taskManager.queueNewTasks(taskManager.Ch3Queue9);
@@ -633,8 +644,8 @@ public class TriggerManager : MonoBehaviour
         }
 
         if(D20IVAALConversation == convoStatus.Complete &&
-           D21VirusConversation != convoStatus.Complete
-           // TK Add check for completing the correct amount of trucking tasks
+           D21VirusConversation != convoStatus.Complete &&
+            truckTasksCompleted >= 4
         )
         {
             //TK Dont allow dialogue box to leave
@@ -681,7 +692,7 @@ public class TriggerManager : MonoBehaviour
 
         if(D25VirusConversation == convoStatus.Complete &&
            D26IVAALConversation != convoStatus.Complete &&
-           virusOnScreen == false)
+           virusOnScreen == true)
         {
             virusOnScreen = false;
             //TK GO TO MAIN
@@ -886,17 +897,46 @@ public class TriggerManager : MonoBehaviour
            D45IVAALConversation != convoStatus.Complete &&
            activeScreen == "sorting" &&
            sortingTasksCompleted >= performedFinalScanResultingTaskCount &&
-           decisionTimer != 0
+           decisionTimer != 0 &&
+           ignoreOrObey == false 
         )
         {
             //TK Don't allow dialogue box to leave
-            D42IVAALConversation = convoStatus.Ready;
             ignoredIVAALCount++;
+            ignoreOrObey = true;
+        }
+
+        if(D41IVAALConversation == convoStatus.Complete &&
+           D42IVAALConversation != convoStatus.Complete &&
+           D45IVAALConversation != convoStatus.Complete &&
+           decisionTimer == 0 &&
+           ignoreOrObey == false 
+        )
+        {
+            //TK Don't allow Dialogue box to Leave
+            obeyedIVAALCount++;
+            ignoreOrObey = true;
+        }
+
+        if(D41IVAALConversation == convoStatus.Complete &&
+           D42IVAALConversation != convoStatus.Complete &&
+           D45IVAALConversation != convoStatus.Complete &&
+           ignoreOrObey == true)
+        {
+            if(ignoredIVAALCount >= 2)
+            {
+                D42IVAALConversation = convoStatus.Ready;
+            }
+            if(obeyedIVAALCount >= 2)
+            {
+                D45IVAALConversation = convoStatus.Ready;
+            }
         }
 
         //You didn't do it, so I have to!
         if(D42IVAALConversation == convoStatus.Complete &&
-           D43VirusConversation != convoStatus.Complete
+           D43VirusConversation != convoStatus.Complete &&
+           ignoredIVAALCount >= 2
         )
         {
             //TK allow dialogue box to leave
@@ -905,37 +945,28 @@ public class TriggerManager : MonoBehaviour
         }
 
         if(D43VirusConversation == convoStatus.Complete && virusOnScreen &&
-           D44IVAALConversation != convoStatus.Complete)
+           D44IVAALConversation != convoStatus.Complete && !explosion)
         {
             virusOnScreen = false;
             explosion = true;
-            decisionTimer = 5;
+            decisionTimer = 2;
         }
 
-        if(explosion && decisionTimer == 0 && 
-           D44IVAALConversation != convoStatus.Complete)
+        if(D43VirusConversation == convoStatus.Complete && decisionTimer == 0 && 
+           D44IVAALConversation != convoStatus.Complete && !exploded)
         {
-            decisionTimer = 5;
+            decisionTimer = 2;
             camerasFritzing = true;
-            explosion = false;
+            exploded = true;
+            //explosion = false;
         }
 
-        if(camerasFritzing && decisionTimer == 0 &&
+        if(camerasFritzing && decisionTimer == 0 && exploded &&
            D43VirusConversation == convoStatus.Complete &&
            D44IVAALConversation != convoStatus.Complete)
         {
             D44IVAALConversation = convoStatus.Ready;
             endingCode = 2;
-        }
-
-        if(D41IVAALConversation == convoStatus.Complete &&
-           D42IVAALConversation != convoStatus.Complete &&
-           D45IVAALConversation != convoStatus.Complete &&
-           decisionTimer == 0
-        )
-        {
-            //TK Don't allow Dialogue box to Leave
-            D45IVAALConversation = convoStatus.Ready;
         }
 
         if(D45IVAALConversation == convoStatus.Complete &&
@@ -992,13 +1023,13 @@ public class TriggerManager : MonoBehaviour
         {
             virusOnScreen = false;
             explosion = true;
-            decisionTimer = 5;
+            decisionTimer = 2;
         }
 
         if(explosion && decisionTimer == 0 && 
            D50IVAALConversation != convoStatus.Complete)
         {
-            decisionTimer = 5;
+            decisionTimer = 2;
             camerasFritzing = true;
             explosion = false;
         }
