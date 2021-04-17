@@ -3031,7 +3031,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7562549318548036145, guid: 1ac5824524723e142ab2e0b209dcf92c,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6592,7 +6592,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7562549318548036145, guid: 1ac5824524723e142ab2e0b209dcf92c,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9990,7 +9990,12 @@ MonoBehaviour:
   confirmationScreen: {fileID: 0}
   memo: {fileID: 999213799}
   alert: {fileID: 240573795}
+  terminateQuestion: {fileID: 0}
+  ending1: {fileID: 0}
   ending2: {fileID: 0}
+  ending3: {fileID: 0}
+  ending4: {fileID: 0}
+  ending5: {fileID: 0}
 --- !u!1 &1341519506
 GameObject:
   m_ObjectHideFlags: 0
@@ -13397,6 +13402,7 @@ MonoBehaviour:
   D56IVAALConversation: 0
   D57BexosConversation: 0
   D58UnknownConversation: 0
+  decisionTimer: 0
   phoneRinging: 0
   onPhone: 0
   fallenAnimationActive: 0
@@ -13423,6 +13429,7 @@ MonoBehaviour:
   waitingOnInput: 0
   endScene: 0
   endingCode: 0
+  performedFinalScanResultingTaskCount: 0
   taskManager: {fileID: 846185829}
   inputManager: {fileID: 1030550523}
 --- !u!4 &1756705624

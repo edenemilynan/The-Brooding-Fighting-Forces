@@ -365,6 +365,7 @@ public class InputManager : MonoBehaviour
                             TruckingController.GetComponent<TruckingController>().pathAlarm += 1;
                             truckingControl.alarmIndicatorOff();
                             taskWaitingTrucking = true;
+                            timerTrucking = waitTime;
                             //Could add a variable here to say you obeyed BrexCorp
                         }
                     }
@@ -469,7 +470,7 @@ public class InputManager : MonoBehaviour
                         //Set person on rest of path, let know task is waiting to deque.
                         PeopleController.GetComponent<TruckingController>().path += 1;
                         taskWaitingEntry = true;
-                        timerEntry = waitTime;
+                        //timerEntry = waitTime;
                         scanned = false;
                         scannable = false;
                     } 

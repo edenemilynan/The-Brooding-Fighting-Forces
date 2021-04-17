@@ -28,11 +28,11 @@ public class TaskManager : MonoBehaviour
 
     // Initial Queue
     public Queue<Tasks> Ch2Queue1 = new Queue<Tasks>(new[] {Tasks.truckAlarm,
-															Tasks.truckRight});
+															Tasks.truckLeft});
     // Once first trucking task has been completed
     public Queue<Tasks> Ch2Queue2 = new Queue<Tasks>(new[] {Tasks.peopleDisallow});
     // Once Entryway task is complete
-    public Queue<Tasks> Ch2Queue3 = new Queue<Tasks>(new[] {Tasks.truckLeft,
+    public Queue<Tasks> Ch2Queue3 = new Queue<Tasks>(new[] {Tasks.truckRight,
                                                             Tasks.truckAlarm,
                                                             Tasks.truckRight,
                                                             Tasks.peopleAllow,
@@ -66,10 +66,10 @@ public class TaskManager : MonoBehaviour
 	// There is a task..., go to the task, do the task
 	public Queue<Tasks> Ch3Queue4 = new Queue<Tasks>(new[] {Tasks.sort});
 	// Bred to convo
-	public Queue<Tasks> Ch3Queue5 = new Queue<Tasks>(new[] {Tasks.truckRight});
+	public Queue<Tasks> Ch3Queue5 = new Queue<Tasks>(new[] {Tasks.truckLeft});
 	// Are you having fun
 	// Do the task, then knowledge is power
-	public Queue<Tasks> Ch3Queue6 = new Queue<Tasks>(new[] {Tasks.truckLeft,
+	public Queue<Tasks> Ch3Queue6 = new Queue<Tasks>(new[] {Tasks.truckRight,
 															Tasks.peopleAllow,
 															Tasks.sort});
 	// They all move forward
@@ -82,7 +82,7 @@ public class TaskManager : MonoBehaviour
 	public Queue<Tasks> Ch3Queue10 = new Queue<Tasks>(new[] {Tasks.none}); // Notification to go to main
 	// Bexos call
 	// Weird trucking task
-	public Queue<Tasks> Ch3Queue11 = new Queue<Tasks>(new[] {Tasks.truckRight});
+	public Queue<Tasks> Ch3Queue11 = new Queue<Tasks>(new[] {Tasks.truckLeft});
 	//  Weird entry task
 	public Queue<Tasks> Ch3Queue12 = new Queue<Tasks>(new[] {Tasks.peopleAllow});
 	// Weird sorting task
@@ -181,7 +181,7 @@ public class TaskManager : MonoBehaviour
         if (sceneName == "Chapter 3")
         {
             //Setting up chapter 3 tasks
-            tasksSorting.Enqueue(Tasks.sort);
+            /*tasksSorting.Enqueue(Tasks.sort);
             tasksSorting.Enqueue(Tasks.sort);
             tasksSorting.Enqueue(Tasks.sort);
             tasksSorting.Enqueue(Tasks.sort);
@@ -200,7 +200,7 @@ public class TaskManager : MonoBehaviour
             tasksEntry.Enqueue(Tasks.peopleAllow);
             tasksTrucking.Enqueue(Tasks.none);
             tasksEntry.Enqueue(Tasks.none);
-            tasksSorting.Enqueue(Tasks.none);
+            tasksSorting.Enqueue(Tasks.none);*/
 
 
             getTaskTrucking();
