@@ -437,7 +437,8 @@ public class TriggerManager : MonoBehaviour
         if(D4IVAALConversation == convoStatus.Complete &&
            D5IVAALConversation  != convoStatus.Complete &&
            activeScreen == "entry" &&
-           scannerTasksCompleted == 4
+           scannerTasksCompleted == 4 &&
+           fallenAnimationActive == false
         )
         {
             // D5IVAALConversation = convoStatus.Ready;
