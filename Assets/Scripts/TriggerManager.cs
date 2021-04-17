@@ -443,10 +443,11 @@ public class TriggerManager : MonoBehaviour
         {
             // D5IVAALConversation = convoStatus.Ready;
             fallenAnimationActive = true;
-            decisionTimer = 7;
+            decisionTimer = 4;
         }
 
-        if(fallenAnimationActive == true && decisionTimer == 0)
+        if(fallenAnimationActive == true && decisionTimer == 0 &&
+           D5IVAALConversation != convoStatus.Complete)
         {
             D5IVAALConversation = convoStatus.Ready;
         }

@@ -1865,6 +1865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueActive: 0
+  printQueueCounts: 0
   Ch1IntroConversation: 0
   Ch1SecondConversation: 0
   Ch1TruckingCompletionConversation: 0
@@ -1954,6 +1955,9 @@ MonoBehaviour:
   D56IVAALConversation: 0
   D57BexosConversation: 0
   D58UnknownConversation: 0
+  decisionTimer: 0
+  knocked: 0
+  caughtFire: 0
   phoneRinging: 0
   onPhone: 0
   fallenAnimationActive: 0
@@ -1980,6 +1984,7 @@ MonoBehaviour:
   waitingOnInput: 0
   endScene: 0
   endingCode: 0
+  performedFinalScanResultingTaskCount: 0
   taskManager: {fileID: 1182270925}
   inputManager: {fileID: 1552562394}
 --- !u!4 &180654426
@@ -2973,6 +2978,7 @@ MonoBehaviour:
   redLight: {fileID: 1622226673}
   greenLight: {fileID: 958016932}
   doorSound: {fileID: 8300000, guid: 4b46716b5e53dbe4ca94ecf7db5d5721, type: 3}
+  scannerSound: {fileID: 0}
   audioSource: {fileID: 385379228}
 --- !u!4 &327452822
 Transform:
@@ -5991,6 +5997,8 @@ MonoBehaviour:
   boxes: {fileID: 713835864}
   openBoxes: {fileID: 1513115172}
   belt: {fileID: 919221673}
+  burrr: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!95 &713835864
 Animator:
   serializedVersion: 3
@@ -6764,7 +6772,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -4277417873657843492, guid: f1387f6c0f6055945a0ddc36d848e30c,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -8188,6 +8196,7 @@ MonoBehaviour:
   indicatorRight: {fileID: 42127323}
   alarm: {fileID: 1974425941}
   doorSound: {fileID: 8300000, guid: 4b46716b5e53dbe4ca94ecf7db5d5721, type: 3}
+  rampSound: {fileID: 0}
   audioSource: {fileID: 385379228}
 --- !u!4 &996278800
 Transform:
@@ -9632,6 +9641,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueController: {fileID: 492876998}
+  boxFillSound: {fileID: 0}
+  startSound: {fileID: 0}
+  audioSource: {fileID: 0}
   triggerManager: {fileID: 180654425}
   shape1: {fileID: 465039828}
   shape2: {fileID: 693030162}
