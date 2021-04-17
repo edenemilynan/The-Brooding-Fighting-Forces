@@ -447,7 +447,7 @@ public class TriggerManager : MonoBehaviour
 
         if(fallenAnimationActive == true && decisionTimer == 0)
         {
-            D5IVAALConversation = convoStatus.Ready();
+            D5IVAALConversation = convoStatus.Ready;
         }
 
         if(D5IVAALConversation == convoStatus.Complete &&
