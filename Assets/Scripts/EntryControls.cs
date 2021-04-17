@@ -12,6 +12,7 @@ public class EntryControls : MonoBehaviour
     public Animator greenLight;
 
     public AudioClip doorSound;
+    public AudioClip scannerSound;
     public AudioSource audioSource;
 
     public void Start()
@@ -65,6 +66,7 @@ public class EntryControls : MonoBehaviour
     {
         scanner.SetBool("scan", true);
         scanBeam.SetTrigger("scan");
+        audioSource.PlayOneShot(scannerSound, 0.7f);
     }
 
     public void Allow()

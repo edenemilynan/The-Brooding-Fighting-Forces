@@ -620,7 +620,7 @@ public class TriggerManager : MonoBehaviour
         )
         {
             // TK QUEUE A main task notification
-			TK taskManager.queueNewTasks(taskManager.Ch3Queue10);
+			taskManager.queueNewTasks(taskManager.Ch3Queue10);
             //TK allow dialogue box to leave
             D25VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
