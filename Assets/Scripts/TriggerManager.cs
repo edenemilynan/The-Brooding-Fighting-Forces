@@ -8,6 +8,7 @@ public class TriggerManager : MonoBehaviour
 
 	public enum convoStatus {NotReady, Ready, Complete};
     public bool dialogueActive = false;
+    public bool printQueueCounts = false;
 
 	//Chapter 1 Triggers
 	public convoStatus Ch1IntroConversation;
@@ -194,6 +195,8 @@ public class TriggerManager : MonoBehaviour
             decisionTimer = Mathf.Max(0, decisionTimer - Time.deltaTime);
         }
 
+        if(printQueueCounts) { printQueueQuantities(); }
+
 
     }
 
@@ -314,9 +317,9 @@ public class TriggerManager : MonoBehaviour
 
         if(Ch2AllowPackagesDecisionConversation == convoStatus.Complete &&
            Ch2HeadOfficeMemoConversation != convoStatus.Complete &&
-           truckTasksCompleted == 5 &&
-           scannerTasksCompleted == 7 &&
-           sortingTasksCompleted == 3
+           truckTasksCompleted >= 6 &&
+           scannerTasksCompleted >= 7 &&
+           sortingTasksCompleted >= 3
            )
         {
             Ch2HeadOfficeMemoConversation = convoStatus.Ready;
@@ -380,6 +383,11 @@ public class TriggerManager : MonoBehaviour
     {
         // bool activatedTerminationAnimation;
         // TK Make sure entry tasks are Queued in TaskManager
+
+        if(endingCode == 2)
+        {
+            //TK Add logic for ending #2
+        }
         
 
         if(D1IVAALConversation == convoStatus.Complete &&
@@ -803,8 +811,9 @@ public class TriggerManager : MonoBehaviour
         //Scan them
         if(D41IVAALConversation == convoStatus.Complete &&
            D42IVAALConversation != convoStatus.Complete &&
+           D45IVAALConversation != convoStatus.Complete &&
            activeScreen == "sorting" &&
-           sortingTasksCompleted == performedFinalScanResultingTaskCount &&
+           sortingTasksCompleted >= performedFinalScanResultingTaskCount &&
            decisionTimer != 0
         )
         {
@@ -818,6 +827,7 @@ public class TriggerManager : MonoBehaviour
            D43VirusConversation != convoStatus.Complete
         )
         {
+            //TK allow dialogue box to leave
             D43VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
         }
@@ -839,32 +849,28 @@ public class TriggerManager : MonoBehaviour
         }
 
         if(camerasFritzing && decisionTimer == 0 &&
+           D43VirusConversation == convoStatus.Complete &&
            D44IVAALConversation != convoStatus.Complete)
         {
             D44IVAALConversation = convoStatus.Ready;
+            endingCode = 2;
         }
 
-        if(D43VirusConversation == convoStatus.Complete &&
-           D44IVAALConversation != convoStatus.Complete
+        if(D41IVAALConversation == convoStatus.Complete &&
+           D42IVAALConversation != convoStatus.Complete &&
+           D45IVAALConversation != convoStatus.Complete &&
+           decisionTimer == 0
         )
         {
-            D44IVAALConversation = convoStatus.Ready;
-            virusOnScreen = false;
-        }
-
-        // TK Make sure these triggers are correct, friend
-        if(D44IVAALConversation == convoStatus.Complete &&
-           D45IVAALConversation != convoStatus.Complete
-        )
-        {
+            //TK Don't allow Dialogue box to Leave
             D45IVAALConversation = convoStatus.Ready;
         }
 
-        // TK Make sure these triggers are correct, friend
         if(D45IVAALConversation == convoStatus.Complete &&
            D46VirusConversation != convoStatus.Complete
         )
         {
+            //TK Don't allow Dialogue box to Leave
             D46VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
         }
@@ -874,17 +880,53 @@ public class TriggerManager : MonoBehaviour
            D47IVAALConversation != convoStatus.Complete
         )
         {
+            //TK allow Dialogue box to Leave
+            //TK Trigger Main Screen Notification
             D47IVAALConversation = convoStatus.Ready;
             virusOnScreen = false;
         }
 
-        // TK Make sure these triggers are correct, friend
+        //Let's get this show on the road?
         if(D47IVAALConversation == convoStatus.Complete &&
-           D48IVAALConversation != convoStatus.Complete
+           D48IVAALConversation != convoStatus.Complete &&
+           D51IVAALConversation != convoStatus.Complete &&
+           (lastMorseCommand == ".-" || lastMorseCommand == "-.") &&
+           activeScreen == ""
         )
         {
-            D48IVAALConversation = convoStatus.Ready;
+            if(lastMorseCommand == "-.")
+            {
+                D48IVAALConversation = convoStatus.Ready;
+            }
+            if(lastMorseCommand == ".-")
+            {
+                D51IVAALConversation = convoStatus.Ready;
+            }
         }
+
+        // if(D43VirusConversation == convoStatus.Complete && virusOnScreen &&
+        //    D44IVAALConversation != convoStatus.Complete)
+        // {
+        //     virusOnScreen = false;
+        //     explosion = true;
+        //     decisionTimer = 5;
+        // }
+
+        // if(explosion && decisionTimer == 0 && 
+        //    D44IVAALConversation != convoStatus.Complete)
+        // {
+        //     decisionTimer = 5;
+        //     camerasFritzing = true;
+        //     explosion = false;
+        // }
+
+        // if(camerasFritzing && decisionTimer == 0 &&
+        //    D43VirusConversation == convoStatus.Complete &&
+        //    D44IVAALConversation != convoStatus.Complete)
+        // {
+        //     D44IVAALConversation = convoStatus.Ready;
+        //     endingCode = 2;
+        // }
 
         // TK Make sure these triggers are correct, friend
         if(D48IVAALConversation == convoStatus.Complete &&
@@ -976,6 +1018,13 @@ public class TriggerManager : MonoBehaviour
     public void resetEntryTaskTimer()
     {
         entryTaskTimer = entryTaskTimerValue;
+    }
+
+    private void printQueueQuantities()
+    {
+        Debug.Log("Trucking has " + taskManager.tasksTrucking.Count + " tasks");
+        Debug.Log("Entry has " + taskManager.tasksEntry.Count + " tasks");
+        Debug.Log("Sorting has " + taskManager.tasksSorting.Count + " tasks");
     }
 }
 
