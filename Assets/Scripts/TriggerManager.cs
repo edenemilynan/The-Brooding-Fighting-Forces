@@ -438,7 +438,7 @@ public class TriggerManager : MonoBehaviour
         if(D4IVAALConversation == convoStatus.Complete &&
            D5IVAALConversation  != convoStatus.Complete &&
            activeScreen == "entry" &&
-           scannerTasksCompleted == 1 //tk this is the place
+           scannerTasksCompleted == 4 //tk this is the place
         )
         {
             D5IVAALConversation = convoStatus.Ready;
