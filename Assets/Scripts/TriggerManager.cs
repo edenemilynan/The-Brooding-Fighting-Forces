@@ -485,7 +485,7 @@ public class TriggerManager : MonoBehaviour
         if(D8IVAALConversation == convoStatus.Complete &&
            D9VirusConversation  != convoStatus.Complete &&
            activeScreen == "sorting" &&
-           sortingTasksCompleted == 2
+           sortingTasksCompleted == 1
         )
         {
             D9VirusConversation = convoStatus.Ready;
@@ -501,11 +501,12 @@ public class TriggerManager : MonoBehaviour
         if(D9VirusConversation == convoStatus.Complete &&
            D10IVAALConversation != convoStatus.Complete &&
            activeScreen == "sorting" &&
-           sortingTasksCompleted == 1 //TK Change this later to the proper value
+           sortingTasksCompleted == 2
         )
         {
             //TK DisAllow dialogue from leaving
             taskManager.queueNewTasks(taskManager.Ch3Queue5);
+            taskManager.getTaskTrucking();
             D10IVAALConversation = convoStatus.Ready;
         }
 
