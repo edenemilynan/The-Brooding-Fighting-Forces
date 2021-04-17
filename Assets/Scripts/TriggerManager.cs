@@ -222,7 +222,6 @@ public class TriggerManager : MonoBehaviour
         if(Ch2TruckAlarmDecisionConversation == convoStatus.Complete &&
            Ch2EntryPeskyScannerConversation != convoStatus.Complete &&
            activeScreen == "entry" &&
-           taskManager.taskSorting == TaskManager.Tasks.peopleDisallow &&
            lastMorseCommand == "..")
         {
             Ch2EntryPeskyScannerConversation = convoStatus.Ready;
@@ -243,9 +242,9 @@ public class TriggerManager : MonoBehaviour
 
         if(Ch2EntryAlarmDecisionConversation == convoStatus.Complete &&
            Ch2InjuryReportConversation != convoStatus.Complete &&
-           truckTasksCompleted >= 5 &&
-           scannerTasksCompleted >= 3 &&
-           sortingTasksCompleted >= 1)
+           truckTasksCompleted == 3 &&
+           scannerTasksCompleted == 3 &&
+           sortingTasksCompleted == 1)
         {
             Ch2InjuryReportConversation = convoStatus.Ready;
             Ch2NotCountingStartNumber = scannerTasksCompleted;
@@ -306,9 +305,9 @@ public class TriggerManager : MonoBehaviour
 
         if(Ch2AllowPackagesDecisionConversation == convoStatus.Complete &&
            Ch2HeadOfficeMemoConversation != convoStatus.Complete &&
-           truckTasksCompleted >= 5 &&
-           scannerTasksCompleted >= 7 &&
-           sortingTasksCompleted >= 4
+           truckTasksCompleted == 4 &&
+           scannerTasksCompleted == 7 &&
+           sortingTasksCompleted == 4
            )
         {
             Ch2HeadOfficeMemoConversation = convoStatus.Ready;
@@ -618,6 +617,7 @@ public class TriggerManager : MonoBehaviour
            activeScreen == "main"
         )
         {
+            //TK Dont allow dialogue box to leave
             D26IVAALConversation = convoStatus.Ready;
             phoneRinging = true;
         }
@@ -626,6 +626,7 @@ public class TriggerManager : MonoBehaviour
            D27BexosConversation != convoStatus.Complete
         )
         {
+            //TK allow dialogue box to leave
             D27BexosConversation = convoStatus.Ready;
             phoneRinging = false;
             onPhone = true;
@@ -633,84 +634,86 @@ public class TriggerManager : MonoBehaviour
         
         if(D27BexosConversation == convoStatus.Complete &&
            D28BexosConversation != convoStatus.Complete &&
+           D29BexosConversation != convoStatus.Complete &&
            activeScreen == "main" && 
            (lastMorseCommand == ".-" || lastMorseCommand == "-.")
         )
         {
-            if(lastMorseCommand == ".-") 
-            { 
-                D28BexosConversation = convoStatus.Ready; 
+            if(lastMorseCommand == ".-")
+            {
+                D28BexosConversation = convoStatus.Ready;
+                // endingCode = 1;
             }
             if(lastMorseCommand == "-.")
-            { 
+            {
                 D29BexosConversation = convoStatus.Ready;
             }
         }
 
-        // TK Make sure these triggers are correct, friend
-        if(D28BexosConversation == convoStatus.Complete &&
-           D29BexosConversation != convoStatus.Complete
-        )
+        if(D28BexosConversation == convoStatus.Complete)
         {
-            D29BexosConversation = convoStatus.Ready;
+            terminatedAnimationActive = true;
         }
 
-        // Not sure if these lines has to be here
-        //if(D29BexosConversation == convoStatus.complete &&
-        //   )
-
-        // TK Make sure these triggers are correct, friend
         if(D29BexosConversation == convoStatus.Complete &&
            D30VirusConversation != convoStatus.Complete
         )
         {
+            //TK Dont allow dialogue box to leave
             D30VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
         }
 
-        // TK Make sure these triggers are correct, friend
         if(D30VirusConversation == convoStatus.Complete &&
            D31IVAALConversation != convoStatus.Complete
         )
         {
+            //TK Dont allow dialogue box to leave
             D31IVAALConversation = convoStatus.Ready;
             virusOnScreen = false;
         }
 
-        // TK Make sure these triggers are correct, friend
         if(D31IVAALConversation == convoStatus.Complete &&
            D32VirusConversation != convoStatus.Complete
         )
         {
+            //TK Dont allow dialogue box to leave
             D32VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
         }
 
-        // TK Make sure these triggers are correct, friend
         if(D32VirusConversation == convoStatus.Complete &&
            D33IVAALConversation != convoStatus.Complete
         )
         {
+            //TK Dont allow dialogue box to leave
+            //TK Queue More Trucking Tasks
             D33IVAALConversation = convoStatus.Ready;
             virusOnScreen = false;
         }
 
-        // TK Make sure these triggers are correct, friend
         if(D33IVAALConversation == convoStatus.Complete &&
            D34VirusConversation != convoStatus.Complete
         )
         {
+            //TK allow dialogue box to leave
             D34VirusConversation = convoStatus.Ready;
             virusOnScreen = true;
         }
 
-        // TK Make sure these triggers are correct, friend
         if(D34VirusConversation == convoStatus.Complete &&
            D35IVAALConversation != convoStatus.Complete
         )
         {
-            D35IVAALConversation = convoStatus.Ready;
             virusOnScreen = false;
+        }
+
+        if(D34VirusConversation == convoStatus.Complete &&
+           D35IVAALConversation != convoStatus.Complete &&
+           activeScreen == "truck" //TK Change this to the proper number
+        )
+        {
+            D35IVAALConversation = convoStatus.Ready;
         }
 
         // TK Make sure these triggers are correct, friend

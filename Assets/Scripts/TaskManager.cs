@@ -138,11 +138,6 @@ public class TaskManager : MonoBehaviour
             // tasksSorting.Enqueue(Tasks.none);
 
             queueNewTasks(Ch2Queue1);
-
-
-            getTaskTrucking();
-            getTaskEntry();
-            getTaskSorting();
         }
 
         if (sceneName == "Chapter 3")
@@ -309,9 +304,20 @@ public class TaskManager : MonoBehaviour
             }
         }
 
-        if(taskTrucking == Tasks.none) {inputManager.taskWaitingTrucking = true; Debug.Log("Fuckin' in Trucking Tasks");}
-        if(taskEntry == Tasks.none) {inputManager.taskWaitingEntry = true;}
-        if(taskSorting == Tasks.none) {inputManager.taskWaitingSorting = true;}
+        // if(taskTrucking == Tasks.none) {inputManager.taskWaitingTrucking = true; Debug.Log("Fuckin' in Trucking Tasks");}
+        // if(taskEntry == Tasks.none) {inputManager.taskWaitingEntry = true;}
+        // if(taskSorting == Tasks.none) {inputManager.taskWaitingSorting = true;}
+
+        // inputManager.taskWaitingTrucking = true;
+        // inputManager.taskWaitingEntry = true;
+        // inputManager.taskWaitingSorting = true;
+        
+        Debug.Log(tasksEntry.Count);
+
+        getTaskTrucking();
+        getTaskEntry();
+        getTaskSorting();
+        
 
         // tasksTrucking.Enqueue(Tasks.none);
         // tasksEntry   .Enqueue(Tasks.none);
