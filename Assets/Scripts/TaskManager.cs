@@ -339,6 +339,9 @@ public class TaskManager : MonoBehaviour
                 case Tasks.truckOpen:
                     tasksTrucking.Enqueue(task);
                     break;
+                case Tasks.none:
+                    tasksTrucking.Enqueue(task);
+                    break;
             }
         }
 
