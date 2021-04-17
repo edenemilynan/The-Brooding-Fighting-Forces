@@ -22,7 +22,8 @@ public class CharacterButtons : MonoBehaviour
             petuniaAlive = true;
             swethAlive = true;
             mentoAlive = true;
-            SceneManager.LoadScene(0);
+            SceneLoader.chapter = 0;
+            //SceneManager.LoadScene(0);
         }
 
         //Disable buttons
