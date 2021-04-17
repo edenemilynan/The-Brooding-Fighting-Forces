@@ -232,7 +232,7 @@ public class TaskManager : MonoBehaviour
                 truckingControl.rightIndicatorOn();
             }
 
-            else
+            else if (taskTrucking == Tasks.truckAlarm)
             {
                 truckingControl.alarmIndicatorOn();
                 truckApproaches.pathAlarm += 1;
