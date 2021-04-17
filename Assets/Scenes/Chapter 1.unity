@@ -738,6 +738,7 @@ MonoBehaviour:
   indicatorRight: {fileID: 610254352}
   alarm: {fileID: 0}
   doorSound: {fileID: 8300000, guid: 4b46716b5e53dbe4ca94ecf7db5d5721, type: 3}
+  rampSound: {fileID: 8300000, guid: f12f06dc1fe5e0141aaeb333383e22de, type: 3}
   audioSource: {fileID: 736064162}
 --- !u!1 &146682004
 GameObject:

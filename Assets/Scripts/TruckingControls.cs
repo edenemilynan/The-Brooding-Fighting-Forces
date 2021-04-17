@@ -11,6 +11,7 @@ public class TruckingControls : MonoBehaviour
     public Animator indicatorRight;
     public Animator alarm;
     public AudioClip doorSound;
+    public AudioClip rampSound;
     public AudioSource audioSource;
 
     // Start is called before the first frame update
@@ -68,6 +69,7 @@ public class TruckingControls : MonoBehaviour
             ramp.SetBool("rampDown", true);
         }
         else ramp.SetBool("rampDown", false);
+        audioSource.PlayOneShot(rampSound, 0.7f);
     }
 
     public void truckLeftOpen()
