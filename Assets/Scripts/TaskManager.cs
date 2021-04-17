@@ -27,11 +27,12 @@ public class TaskManager : MonoBehaviour
     // Chapter 2 Queues
 
     // Initial Queue
-    public Queue<Tasks> Ch2Queue1 = new Queue<Tasks>(new[] {Tasks.truckAlarm});
+    public Queue<Tasks> Ch2Queue1 = new Queue<Tasks>(new[] {Tasks.truckAlarm,
+															Tasks.truckRight});
     // Once first trucking task has been completed
     public Queue<Tasks> Ch2Queue2 = new Queue<Tasks>(new[] {Tasks.peopleDisallow});
     // Once Entryway task is complete
-    public Queue<Tasks> Ch2Queue3 = new Queue<Tasks>(new[] {Tasks.truckRight,
+    public Queue<Tasks> Ch2Queue3 = new Queue<Tasks>(new[] {Tasks.truckLeft,
                                                             Tasks.truckAlarm,
                                                             Tasks.truckRight,
                                                             Tasks.peopleAllow,
@@ -45,13 +46,47 @@ public class TaskManager : MonoBehaviour
     public Queue<Tasks> Ch2Queue5 = new Queue<Tasks>(new[] {Tasks.sort});
 
     // Once Lead Lined Boxes Convo is Done
-    public Queue<Tasks> Ch2Queue6 = new Queue<Tasks>(new[] {Tasks.sort});
+    // public Queue<Tasks> Ch2Queue6 = new Queue<Tasks>(new[] {Tasks.sort});
 
     //Once decision for wether to let through invalid sorting task is complete
     public Queue<Tasks> Ch2Queue7 = new Queue<Tasks>(new[] {Tasks.truckLeft,
                                                             Tasks.peopleDisallow,
                                                             Tasks.sort});
-
+	
+    // Chapter 3 Queues
+	// Play intro convo
+	public Queue<Tasks> Ch3Queue1 = new Queue<Tasks>(new[] {Tasks.peopleAllow,
+															Tasks.peopleDisallow,
+															Tasks.peopleAllow,
+															Tasks.peopleDisallow});
+	// Person falling over
+	public Queue<Tasks> Ch3Queue2 = new Queue<Tasks> (new[] {Tasks.none}); // Notification to go to main
+	// Are you starting to see?
+	public Queue<Tasks> Ch3Queue3 = new Queue<Tasks>(new[] {Tasks.sort});
+	// There is a task..., go to the task, do the task
+	public Queue<Tasks> Ch3Queue4 = new Queue<Tasks>(new[] {Tasks.sort});
+	// Bred to convo
+	public Queue<Tasks> Ch3Queue5 = new Queue<Tasks>(new[] {Tasks.truckRight});
+	// Are you having fun
+	// Do the task, then knowledge is power
+	public Queue<Tasks> Ch3Queue6 = new Queue<Tasks>(new[] {Tasks.truckLeft,
+															Tasks.peopleAllow,
+															Tasks.sort});
+	// They all move forward
+	public Queue<Tasks> Ch3Queue7 = new Queue<Tasks>(new[] {Tasks.sort});
+	// You are doing exactly what he hopes of you
+	public Queue<Tasks> Ch3Queue8 = new Queue<Tasks>(new[] {Tasks.peopleDisallow});
+	// You are the ideal worker
+	public Queue<Tasks> Ch3Queue9 = new Queue<Tasks>(new[] {Tasks.truckRight});
+	// But you are not alone.
+	public Queue<Tasks> Ch3Queue10 = new Queue<Tasks>(new[] {Tasks.none}); // Notification to go to main
+	// Bexos call
+	// Weird trucking task
+	public Queue<Tasks> Ch3Queue11 = new Queue<Tasks>(new[] {Tasks.truckRight});
+	//  Weird entry task
+	public Queue<Tasks> Ch3Queue12 = new Queue<Tasks>(new[] {Tasks.peopleAllow});
+	// Weird sorting task
+	public Queue<Tasks> Ch3Queue13 = new Queue<Tasks>(new[] {Tasks.sort});
 
     public TruckingControls truckingControl;
     public TruckingController personApproaches;
