@@ -1,1 +1,10 @@
-# A Class Project for INT D 450 (U of A) Made in Unity
+# TEMNAI
+Play on itch.io : https://elovie.itch.io/temnai
+
+Contributors:<br />
+Harper Bendico (Art|Writing) <br />
+Seth Karstad (Programming|Writing) <br />
+Eden Knechtel (Programming|Writing) <br />
+Erin Lovie (Art|Writing) <br />
+Jandaile De Guzman (Programming) <br />
+Christopher Wood (Audio) <br />
